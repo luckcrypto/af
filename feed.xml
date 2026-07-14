@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>aircraft.fyi</title>
+  <link>https://aircraft.fyi</link>
+  <description>Every aircraft, at true scale. Long-form aviation writing, sourced and dated.</description>
+  <language>en-GB</language>
+  <lastBuildDate>Tue, 14 Jul 2026 23:48:48 GMT</lastBuildDate>
+  <atom:link href="https://aircraft.fyi/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>Why the four-engine airliner is extinct</title>
+    <link>https://aircraft.fyi/blog/why-the-four-engine-airliner-is-extinct</link>
+    <guid isPermaLink="true">https://aircraft.fyi/blog/why-the-four-engine-airliner-is-extinct</guid>
+    <pubDate>Tue, 14 Jul 2026 00:00:00 GMT</pubDate>
+    <description>The 747, the A340 and the A380 were not beaten by a better aeroplane. They were beaten by a rule change, and by an engine that stopped breaking.</description>
+  </item>
+  <item>
+    <title>Is supersonic travel actually coming back?</title>
+    <link>https://aircraft.fyi/blog/is-supersonic-travel-coming-back</link>
+    <guid isPermaLink="true">https://aircraft.fyi/blog/is-supersonic-travel-coming-back</guid>
+    <pubDate>Tue, 14 Jul 2026 00:00:00 GMT</pubDate>
+    <description>Boom Supersonic has flown a demonstrator, built a factory and taken 130 orders. It still has not run its engine. Here is where the comeback really stands in mid-2026 — and how Overture measures up against Concorde.</description>
+  </item>
+</channel>
+</rss>
