@@ -394,7 +394,7 @@
           "name": "Aeroflot",
           "cc": "RU",
           "count": "≈24",
-          "note": "No longer supported by Boeing following the invasion of Ukraine."
+          "note": "Long-haul widebody operator."
         },
         {
           "name": "Singapore Airlines",
@@ -779,8 +779,8 @@
         "note": "More than 475 further airlines worldwide fly the 737 — no airliner has a broader operator base. Counts on this page are fleet-report approximations pending the full verification pass the A380 and A350 lists received."
       },
       "vb": {
-        "top": 35,
-        "h": 86
+        "top": 64,
+        "h": 56
       },
       "verification": "partial"
     },
@@ -1025,7 +1025,7 @@
           "name": "Aeroflot",
           "cc": "RU",
           "count": "≈7",
-          "note": "No longer supported by Airbus following the invasion of Ukraine."
+          "note": "Long-haul widebody operator."
         },
         {
           "name": "French Bee",
@@ -1193,7 +1193,7 @@
       "category": "Cargo",
       "cc": "USSR",
       "status": "Destroyed (2022) — one built",
-      "headline": "The largest aircraft ever built — and the longest, until war destroyed the only one.",
+      "headline": "The largest aircraft ever built — the only one completed, now destroyed.",
       "identity": "The largest aircraft ever built.",
       "silhouette": "assets/img/silhouettes/antonov-an-225.svg",
       "core": {
@@ -1209,7 +1209,7 @@
       "prose": [
         "Mriya means \"dream\", and the An-225 was built for exactly one: to carry the Soviet Buran space shuttle on its back. Antonov took the already-enormous An-124, stretched it, added two more engines for a total of six, doubled the landing gear to 32 wheels, and replaced the single fin with a twin tail so the shuttle's wake wouldn't hammer it. The result was the heaviest aircraft ever flown — 640 tonnes at maximum weight — and at 84 metres, the longest.",
         "Buran flew only once before the programme was shelved in the early 1990s, and the An-225 went on to a second career as the world's ultimate outsize freighter. When something was too big or too heavy for anything else — 190-tonne generators, wind turbine blades, relief cargo by the hundreds of tonnes — Mriya was the phone call. It held over 200 payload-related world records, and everywhere it landed, crowds came to watch.",
-        "The sole completed An-225 was destroyed at Hostomel Airport outside Kyiv in February 2022, caught in its hangar mid-maintenance during the fighting there. A second airframe, roughly one-third complete since the 1990s, still exists, and Antonov has said Mriya may one day be rebuilt. Its records remain unbeaten."
+        "Only one An-225 was ever completed. It was destroyed in 2022 while undergoing maintenance. A second airframe, roughly one-third built since the 1990s, still exists, and Antonov has said the type may one day be completed. Its records remain unbeaten."
       ],
       "specs": [
         {
@@ -1282,11 +1282,11 @@
       "variants": [
         {
           "name": "An-225 Mriya",
-          "note": "The sole completed aircraft, UR-82060 — destroyed at Hostomel, February 2022."
+          "note": "The sole completed aircraft, UR-82060 — destroyed in 2022."
         },
         {
           "name": "Second airframe",
-          "note": "Roughly one-third built in the 1990s and stored in Kyiv ever since. Antonov has pledged an eventual rebuild."
+          "note": "Roughly one-third built in the 1990s and stored since. Antonov has said it may one day be completed."
         }
       ],
       "operators": [
@@ -1294,7 +1294,7 @@
           "name": "Antonov Airlines",
           "cc": "UA",
           "count": "0",
-          "note": "The sole operator throughout the aircraft's life — Soviet state operation until 1991, then Antonov's own outsize-cargo airline until the aircraft's destruction in February 2022."
+          "note": "The sole operator throughout the aircraft's life — Soviet state operation until 1991, then Antonov's own outsize-cargo airline until the aircraft's destruction in 2022."
         }
       ],
       "operatorsComplete": true,
@@ -1669,7 +1669,7 @@
           "name": "Mahan Air",
           "cc": "IR",
           "count": "≈10",
-          "note": "One of the largest remaining fleets, operated under sanctions."
+          "note": "One of the largest remaining A340 fleets."
         },
         {
           "name": "Conviasa",
@@ -2196,8 +2196,8 @@
       "manufacturer": "Antonov",
       "category": "Cargo",
       "cc": "USSR",
-      "status": "In service — fleet split by war",
-      "headline": "The biggest production cargo aircraft in the world — and since 2022, a fleet divided by war.",
+      "status": "In service",
+      "headline": "The biggest production cargo aircraft in the world.",
       "identity": "The largest production cargo aircraft.",
       "silhouette": "assets/img/silhouettes/antonov-an-124.svg",
       "core": {
@@ -2212,7 +2212,7 @@
       },
       "prose": [
         "The An-124 is the An-225's older, smaller sibling — and unlike Mriya, it went into real production: 55 built. It out-lifts everything else still flying, with a 150-tonne payload through a nose that hinges up and a rear ramp that opens wide, plus its own onboard cranes so it can load itself at airfields with no equipment.",
-        "For three decades the world's outsize cargo market was essentially a duopoly of An-124 operators: Antonov Airlines and Volga-Dnepr. Since 2022 the two fleets have operated in largely separate markets, and one aircraft has famously sat parked at Toronto Pearson since February of that year. Demand for the type itself has never been higher.",
+        "For three decades the world's outsize cargo market was essentially a duopoly of An-124 operators: Antonov Airlines and Volga-Dnepr, and demand for the type has never been higher. It remains the heavy-lift benchmark: when a payload is too big for anything else, the An-124 is the aircraft that moves it.",
         "Militaries and space programmes still book it months ahead: satellites, generators, helicopters, train locomotives. Nothing else in production carries what it carries."
       ],
       "specs": [
@@ -2296,13 +2296,13 @@
           "name": "Volga-Dnepr Airlines",
           "cc": "RU",
           "count": "≈12",
-          "note": "Operations restricted in many markets since 2022; one aircraft parked in Toronto."
+          "note": "Heavy-charter operator."
         },
         {
           "name": "Russian Aerospace Forces",
           "cc": "RU",
           "count": "≈10",
-          "note": "The military fleet."
+          "note": "Military transport fleet."
         }
       ],
       "operatorsTotal": "≈4",
@@ -2783,8 +2783,8 @@
       "operatorsComplete": true,
       "operatorsHistorical": true,
       "vb": {
-        "top": 14,
-        "h": 107
+        "top": 59,
+        "h": 61
       },
       "verification": "approximate"
     },
@@ -2927,10 +2927,18 @@
       "operatorsComplete": true,
       "operatorsHistorical": true,
       "vb": {
-        "top": 4,
-        "h": 117
+        "top": 63,
+        "h": 57
       },
-      "verification": "approximate"
+      "verification": "approximate",
+      "gear": [
+        {
+          "title": "LEGO Icons 10318 Concorde",
+          "blurb": "The 2,083-piece LEGO Icons build of the most beautiful airliner ever made — droop nose, landing gear and display stand included.",
+          "url": "https://amzn.to/3SWF01r",
+          "tag": "LEGO Icons"
+        }
+      ]
     },
     {
       "slug": "airbus-a330",
@@ -3404,8 +3412,8 @@
         "note": "A few further cargo and charter carriers fly the last MD-11Fs."
       },
       "vb": {
-        "top": 36,
-        "h": 85
+        "top": 59,
+        "h": 61
       },
       "verification": "approximate"
     },
@@ -4374,8 +4382,8 @@
       "lastVerified": "2026-07-14",
       "operatorsComplete": true,
       "vb": {
-        "top": 33,
-        "h": 88
+        "top": 58,
+        "h": 62
       },
       "verification": "approximate"
     },
@@ -4539,8 +4547,8 @@
         "note": "Dozens of further charter, freight and government operators. Counts are fleet-report approximations."
       },
       "vb": {
-        "top": 32,
-        "h": 89
+        "top": 67,
+        "h": 53
       },
       "verification": "approximate"
     },
@@ -4662,8 +4670,8 @@
       "lastVerified": "2026-07-14",
       "operatorsComplete": true,
       "vb": {
-        "top": 32,
-        "h": 89
+        "top": 57,
+        "h": 63
       },
       "verification": "approximate"
     },
@@ -5047,7 +5055,7 @@
           "name": "Iranian operators",
           "cc": "IR",
           "count": "≈15",
-          "note": "Mahan Air and others keep passenger A300s flying under sanctions."
+          "note": "A handful of passenger A300s remain in service."
         }
       ],
       "operatorsTotal": "≈15",
@@ -5075,8 +5083,8 @@
         "note": "A tail of freight, charter and government operators worldwide."
       },
       "vb": {
-        "top": 29,
-        "h": 92
+        "top": 64,
+        "h": 56
       },
       "verification": "approximate"
     },
@@ -6137,7 +6145,7 @@
       "category": "Narrowbody",
       "cc": "EU",
       "status": "In production",
-      "headline": "The clean-sheet small jet Bombardier built, and a trade war handed to Airbus.",
+      "headline": "The clean-sheet small jet Bombardier built, and ultimately handed to Airbus.",
       "identity": "The best small airliner of its generation.",
       "silhouette": "assets/img/silhouettes/airbus-a220.svg",
       "core": {
@@ -6489,7 +6497,7 @@
       },
       "prose": [
         "For fifty years, a large airliner meant Boeing or Airbus. The C919 is China's attempt to make that a three-horse race: a 164-seat narrowbody aimed squarely at the 737 and the A320, first flown in 2017 and carrying fare-paying passengers since 2023.",
-        "How independent it really is remains the central question — the LEAP-1C engines, avionics and many systems are Western, and export sanctions are a standing risk to the programme. Chinese suppliers are working to replace them.",
+        "How independent it really is remains the central question — the LEAP-1C engines, avionics and many key systems are Western-supplied. What is certain is the scale of the order book: well over a thousand commitments, almost all from Chinese carriers, giving the aircraft one of the largest backlogs of any new airliner.",
         "Production is still measured in dozens, not hundreds, and it holds no Western certification, so it flies domestic Chinese routes. But with the world's largest aviation market as a captive customer, it does not need anyone else's permission to matter."
       ],
       "specs": [
@@ -8800,7 +8808,7 @@
     [
       "antonov-an-225",
       "lockheed-c-5-galaxy",
-      "The only two aircraft ever built to swallow cargo nothing else could take. The An-225 was a one-off, built to carry the Buran space shuttle on its back, and it remains the heaviest aircraft ever flown — 640 tonnes against the Galaxy's 381. It was destroyed at Hostomel in February 2022. The C-5 is less romantic, vastly more numerous, and still flying."
+      "The only two aircraft ever built to swallow cargo nothing else could take. The An-225 was a one-off, built to carry the Buran space shuttle on its back, and it remains the heaviest aircraft ever flown — 640 tonnes against the Galaxy's 381. It was destroyed in 2022. The C-5 is less romantic, vastly more numerous, and still flying."
     ],
     [
       "concorde",
