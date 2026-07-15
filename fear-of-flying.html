@@ -11,22 +11,22 @@
 <link rel="alternate" type="application/rss+xml" title="aircraft.fyi" href="/feed.xml">
 <meta name="color-scheme" content="light only">
 
-<title>Methodology — how aircraft.fyi calculates its numbers</title>
-<meta name="description" content="How every aircraft.fyi derived metric is computed, where the core specifications come from, and how corrections work. Every number, explained.">
-<link rel="canonical" href="https://aircraft.fyi/methodology">
+<title>Scared of flying? The engineering that makes it safe</title>
+<meta name="description" content="A calm, factual guide to the fear of flying — what turbulence really is, why the noises happen, how aircraft are built to cope, and gentle ways to feel more in control. Understanding is the cure for a lot of fear.">
+<link rel="canonical" href="https://aircraft.fyi/fear-of-flying">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="aircraft.fyi">
-<meta property="og:url" content="https://aircraft.fyi/methodology">
+<meta property="og:url" content="https://aircraft.fyi/fear-of-flying">
 <meta property="og:site_name" content="aircraft.fyi">
-<meta property="og:title" content="Methodology — how aircraft.fyi calculates its numbers">
-<meta property="og:description" content="How every aircraft.fyi derived metric is computed, where the core specifications come from, and how corrections work. Every number, explained.">
+<meta property="og:title" content="Scared of flying? The engineering that makes it safe">
+<meta property="og:description" content="A calm, factual guide to the fear of flying — what turbulence really is, why the noises happen, how aircraft are built to cope, and gentle ways to feel more in control. Understanding is the cure for a lot of fear.">
 <meta property="og:image" content="https://aircraft.fyi/assets/img/og/default.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Methodology — how aircraft.fyi calculates its numbers">
+<meta property="og:image:alt" content="Scared of flying? The engineering that makes it safe">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Methodology — how aircraft.fyi calculates its numbers">
-<meta name="twitter:description" content="How every aircraft.fyi derived metric is computed, where the core specifications come from, and how corrections work. Every number, explained.">
+<meta name="twitter:title" content="Scared of flying? The engineering that makes it safe">
+<meta name="twitter:description" content="A calm, factual guide to the fear of flying — what turbulence really is, why the noises happen, how aircraft are built to cope, and gentle ways to feel more in control. Understanding is the cure for a lot of fear.">
 <meta name="twitter:image" content="https://aircraft.fyi/assets/img/og/default.png">
 <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
@@ -39,7 +39,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/main.css">
 
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"How aircraft.fyi calculates its numbers","url":"https://aircraft.fyi/methodology"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Scared of flying? The engineering that makes it safe","description":"What turbulence really is, why the noises happen, and how aircraft are built to cope.","url":"https://aircraft.fyi/fear-of-flying"}</script>
 </head>
 <body>
 <a class="skip" href="#content">Skip to content</a>
@@ -310,39 +310,70 @@
 <main id="content">
 
 <section class="hero"><div class="wrap">
-<h1>How we calculate our numbers</h1>
-<p class="lead">Every derived metric on this site is computed from the sourced core specification. Here is exactly how — so the numbers are checkable, and citable.</p>
+<div class="crumb"><a href="/">Home</a> › Scared of flying</div>
+<h1>Scared of flying? Let&rsquo;s demystify it.</h1>
+<p class="lead">Most fear of flying is really a fear of the <em>unknown</em> — a strange noise, a sudden bump, a feeling with no explanation. This whole site exists to explain these machines, so here is the calm, honest version: what is actually happening up there, and why the aircraft is built to handle every bit of it.</p>
 </div></section>
+
 <section class="section" style="padding-top:0"><div class="wrap">
-<span class="eyebrow">Our numbers</span>
-<h2 class="title" style="margin-bottom:8px">Every derived metric, formula by formula</h2>
-<div class="qa" style="margin-top:12px"><div style="padding:16px 18px">
-<h3 style="font-size:1.1rem;margin-bottom:6px">Seats per metre</h3>
-<p style="color:var(--muted);font-size:.92rem;margin:0 0 6px"><b style="color:var(--text)">Formula:</b> typical seats ÷ fuselage length</p>
-<p style="color:var(--muted);font-size:.92rem;margin:0">A density proxy you can compare across sizes. It is how the A380's double deck shows up in a single number — more seats per metre of fuselage than anything else flying.</p>
-</div></div>
-<div class="qa" style="margin-top:12px"><div style="padding:16px 18px">
-<h3 style="font-size:1.1rem;margin-bottom:6px">Range per tonne</h3>
-<p style="color:var(--muted);font-size:.92rem;margin:0 0 6px"><b style="color:var(--text)">Formula:</b> maximum range ÷ MTOW in tonnes</p>
-<p style="color:var(--muted);font-size:.92rem;margin:0">How far each tonne of maximum weight takes you. Smaller aircraft score dramatically higher — it is an honest way to see why the industry moved from quads to light twins.</p>
-</div></div>
-<div class="qa" style="margin-top:12px"><div style="padding:16px 18px">
-<h3 style="font-size:1.1rem;margin-bottom:6px">Span-to-length ratio</h3>
-<p style="color:var(--muted);font-size:.92rem;margin:0 0 6px"><b style="color:var(--text)">Formula:</b> wingspan ÷ fuselage length</p>
-<p style="color:var(--muted);font-size:.92rem;margin:0">A shape signature. Above 1.0 the wing is wider than the aircraft is long — rare, and the A380 is the only one here that does it.</p>
-</div></div>
-<div class="mf-rg" style="margin-top:24px"><b>Caveats.</b> Derived metrics use each family's flagship variant as specified in its table. Typical seating is the manufacturer's multi-class figure; real airline layouts vary. These are comparison tools, not operational data.</div>
-<h3 style="margin-top:40px;font-size:1.15rem">What the ✓ tick actually means</h3>
+<span class="eyebrow">The big one</span>
+<h2 class="title" style="margin-bottom:8px">Turbulence feels dangerous. It isn&rsquo;t.</h2>
 <div class="prose" style="margin-top:12px">
-<p>Operator fleet counts move constantly, and most aviation sites quietly present a stale number as fact. We do not. Every operator row on this site is one of two things, and we say which.</p>
-<p>A row marked <b>✓</b> has been individually checked against a named, dated source — an airline filing, a manufacturer statement, or a maintained fleet record — and that source is listed at the bottom of the page. A row marked <b>≈</b> is an approximate snapshot: broadly right, good enough to reason about, and not something you should quote in a contract. Currently <b>7 of 264</b> operator rows carry a tick, and the flagship fleets — Emirates, Southwest, United — are among them. That number will only go up.</p>
-<p>We would rather show you an honest ≈ than a confident lie.</p>
+<p>Turbulence is just uneven air — pockets moving at slightly different speeds, the way a boat rocks on choppy water. It feels dramatic because you can&rsquo;t see it coming, but to the aircraft it is completely routine. Wings are not rigid: they are engineered to <b>flex</b>, and on a big airliner the wingtips can move several metres up and down without any trouble at all. That flexing is the wing doing its job, not a sign of strain.</p>
+<p>Test aircraft are deliberately pushed far beyond anything you will ever feel — wings bent upward past 1.5 times the worst imaginable load until they finally break, purely to prove how enormous the margin is. The bumps on your flight are a tiny fraction of what the airframe shrugs off by design. Pilots slow down or change altitude in turbulence mostly for <em>your comfort</em>, not because the aircraft is in any danger.</p>
+<p>The single best thing you can do: keep your seatbelt loosely fastened the whole flight. Not because the plane is at risk — but because it means a sudden bump can never unseat you. That one habit removes the only real hazard turbulence poses.</p>
 </div>
-<h3 style="margin-top:40px;font-size:1.15rem">Where the core data comes from</h3>
+</div></section>
+
+<section class="section" style="padding-top:0"><div class="wrap">
+<span class="eyebrow">The mindset shift</span>
+<h2 class="title" style="margin-bottom:8px">Learn to think like a pilot</h2>
 <div class="prose" style="margin-top:12px">
-<p>Core specifications are taken from manufacturer documents — Boeing and Airbus airport-planning manuals and technical pages — and type certificate data sheets, cited per row on every spec table. Operator fleet counts are approximate snapshots, marked with ≈ and a last-verified date, and re-checked against airline press material.</p>
-<p>Where sources conflict, we say so on the page and cite both. If you spot an error, tell us — corrections are made visibly, not silently.</p>
+<p>Here is the single idea that turns fear into fascination: <b>almost every movement you feel is the direct result of an input the pilot chose to make.</b> The aircraft is not being thrown around — it is being <em>flown</em>, deliberately, by two people following a precise plan. Once you understand what they are doing and why, the bumps and turns stop being mysterious forces and become a conversation you can follow.</p>
+<p>Take off and landing — the parts that scare people most — are the most <em>hands-on</em> of all, and that is exactly why so much is happening. On take-off the pilot pulls back to rotate the nose up, so you feel pushed into your seat as the jet climbs steeply and deliberately. The engines are at high power on purpose; that is the plan, not a struggle. Moments later the power eases back to a calmer climb setting, the nose lowers slightly, and you feel the change — because the pilot <em>commanded</em> it, right on schedule.</p>
+<p>Landing is the same story in reverse. The sinking feeling as the aircraft descends is a controlled, chosen descent. The whine and rumble is the pilot lowering flaps and gear to fly slower and steadier. A bank to one side is a planned turn onto the final approach. Even a firm touchdown is usually intentional — on a wet runway pilots plant the aircraft down firmly on purpose, to get the wheels gripping. Every one of those sensations has a hand on a control behind it.</p>
+<p>So the trick that works: instead of bracing against each movement, ask yourself <em>&ldquo;what did the pilot just do to make that happen?&rdquo;</em> Climbing, easing power, banking into a turn, extending flaps, descending. You will nearly always be right — and the moment you can name the input, the fear has nothing left to feed on. You have stopped being a passenger something is happening <em>to</em>, and started being someone who understands the flight.</p>
 </div>
+</div></section>
+
+<section class="section" style="padding-top:0"><div class="wrap">
+<span class="eyebrow">That noise</span>
+<h2 class="title" style="margin-bottom:8px">The sounds are the aircraft working &mdash; here&rsquo;s each one</h2>
+<div class="qa-list">
+<details class="qa" open><summary>A loud whirr or clunk after take-off<i class="caret"></i></summary><div class="body">The landing gear retracting into the belly, then the doors closing over it. It is meant to be firm and loud. A few minutes later you may hear the reverse: the whine of the wing flaps sliding back in as the plane picks up speed.</div></details>
+<details class="qa"><summary>A change in engine pitch, like it&rsquo;s &ldquo;giving up&rdquo;<i class="caret"></i></summary><div class="body">Completely normal. Just after take-off the pilots reduce power from full-thrust to a quieter climb setting — it is planned, and it happens on every single flight. The engines are still doing exactly what they should.</div></details>
+<details class="qa"><summary>Barking or dog-like sounds before push-back (Airbus)<i class="caret"></i></summary><div class="body">A hydraulic pump on many Airbus jets, nicknamed the &ldquo;barking dog.&rdquo; Odd, but entirely mechanical and harmless — just a pump doing its job.</div></details>
+<details class="qa"><summary>A bong or chime mid-flight<i class="caret"></i></summary><div class="body">Usually just the crew signalling each other, or the seatbelt sign changing. It is an intercom tone, nothing more — the aviation equivalent of a doorbell.</div></details>
+<details class="qa"><summary>Rushing air / a whooshing hiss<i class="caret"></i></summary><div class="body">Air conditioning and pressurisation, constantly cycling fresh air through the cabin. Cabin air is fully refreshed every couple of minutes, cleaner than most offices.</div></details>
+</div>
+</div></section>
+
+<section class="section" style="padding-top:0"><div class="wrap">
+<span class="eyebrow">Built for it</span>
+<h2 class="title" style="margin-bottom:8px">How much the aircraft can take</h2>
+<div class="prose" style="margin-top:12px">
+<p>Modern airliners are among the most redundant machines ever built. Two or more engines, and a fully loaded jet can climb and fly safely on just one — pilots train for it constantly. Multiple independent hydraulic systems, multiple electrical systems, backups for the backups. If something fails, there is almost always a second and third way to do the same job.</p>
+<p>A jet does not fall if the engines quit, either — it glides. An airliner at cruise can glide well over 100 kilometres with no thrust at all, giving crews enormous time and distance to restart or divert. Lightning strikes aircraft routinely and the charge simply flows around the metal skin and off the other side; passengers rarely even notice.</p>
+<p>And every one of those pilots has rehearsed the rare scenarios hundreds of times in simulators before they ever carry you. When something unusual happens, they are not surprised — they are running a checklist they know by heart.</p>
+</div>
+</div></section>
+
+<section class="section" style="padding-top:0"><div class="wrap">
+<span class="eyebrow">In your control</span>
+<h2 class="title" style="margin-bottom:8px">Gentle things that genuinely help</h2>
+<div class="prose" style="margin-top:12px">
+<p><b>Choose your seat.</b> A seat over the wing, toward the middle of the aircraft, feels the least motion — it is the balance point, the way the centre of a see-saw barely moves. A window seat lets some people feel more oriented; an aisle helps others feel less boxed in. Pick what suits <em>you</em>.</p>
+<p><b>Breathe slowly and deliberately.</b> Fear speeds up your breathing, which fuels more fear. Breathe in for four counts, out for six. The long exhale is the part that calms your nervous system — do it for a minute and the physical panic genuinely eases.</p>
+<p><b>Tell a crew member.</b> Cabin crew help nervous flyers all the time and will happily check in on you. Knowing someone calm knows how you feel is a real comfort — and they have seen every bump a thousand times.</p>
+<p><b>Give your mind a job.</b> A gripping playlist, a film you&rsquo;ve saved, a game, a conversation. Anticipation feeds fear; occupying your attention starves it.</p>
+<p><b>Learn what the flight will feel like.</b> Bumps on climb-out, the engine easing back, the flaps humming, a turn banking the whole cabin — all normal. When you know the script, the surprises stop being frightening.</p>
+</div>
+</div></section>
+
+<section class="section" style="padding-top:0"><div class="wrap">
+<div class="mf-rg" style="line-height:1.6">
+<b>If your fear runs deeper than nerves.</b> For some people, flight anxiety is a genuine phobia, and no web page can talk that away — nor should it try. That is not a weakness; it is a common, treatable thing. Airline-run and pilot-led <b>fear-of-flying courses</b> have excellent track records, and a GP or a therapist trained in anxiety (CBT works especially well here) can help you get back in the air for good. Reaching out for that support is a strong, sensible move — and the reward is the whole world opening back up to you.</div>
+<p class="sub" style="margin-top:22px;text-align:center">Curious rather than calm now? That is the goal. <a href="/explained" style="color:var(--gold)">Explore how these machines actually work &rarr;</a></p>
 </div></section>
 </main>
 

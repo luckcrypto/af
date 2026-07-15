@@ -33,7 +33,7 @@
 <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png">
 <link rel="icon" href="assets/img/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
-<link rel="manifest" href="assets/site.webmanifest">
+<link rel="manifest" href="/site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -329,6 +329,7 @@
 <h2 class="title">Aircraft, page by page</h2>
 <p class="sub">Every silhouette below is sized by real wingspan — the bigger the aircraft, the bigger it draws. Each page carries the full sourced spec table, every variant, and every operator.</p>
 <div class="filterbar" id="fleetFilter" role="group" aria-label="Filter the fleet by type">
+<span class="fsort-lbl">Filter</span>
 <button class="fchip" type="button" data-filter="all" aria-pressed="true">All <span class="n">43</span></button>
 <button class="fchip" type="button" data-filter="widebody" aria-pressed="false">Widebody <span class="n">12</span></button>
 <button class="fchip" type="button" data-filter="narrowbody" aria-pressed="false">Narrowbody <span class="n">9</span></button>
@@ -344,6 +345,7 @@
 <span class="fsort-lbl">Sort</span>
 <button class="fchip" type="button" data-sort="wingspan" aria-pressed="true">Wingspan</button>
 <button class="fchip" type="button" data-sort="length" aria-pressed="false">Length</button>
+<button class="fchip" type="button" data-sort="manufacturer" aria-pressed="false">Manufacturer</button>
 <button class="fchip" type="button" data-sort="height" aria-pressed="false">Height</button>
 <button class="fchip" type="button" data-sort="mtow" aria-pressed="false">Weight</button>
 <button class="fchip" type="button" data-sort="year" aria-pressed="false">First flight</button>
@@ -358,9 +360,9 @@
 <button class="fchip cols-m" type="button" data-cols="m2" aria-pressed="true">2</button>
 </div>
 </div>
-<div class="grid2 cardgrid" id="fleetGrid"><article class="acard" data-cat="propliners" data-slug="hughes-h-4-hercules" data-wingspan="97.54" data-length="66.65" data-height="24.18" data-mtow="180000" data-year="1947" data-name="hughes h-4 hercules">
+<div class="grid2 cardgrid" id="fleetGrid"><article class="acard" data-cat="propliners" data-slug="hughes-h-4-hercules" data-wingspan="97.54" data-length="66.65" data-height="24.18" data-mtow="180000" data-year="1947" data-name="hughes h-4 hercules" data-manufacturer="hughes">
 <button class="addcmp" type="button" data-slug="hughes-h-4-hercules" data-short="Hughes H-4" aria-pressed="false" title="Add to compare tray" aria-label="Add Hughes H-4 Hercules to the compare tray">⇄</button>
-<div class="sil"><div class="silbox" title="Wingspan 97.54 m — drawn at 98% of the widest wings ever built"><svg viewBox="0 57 260 64" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:98%">
+<div class="sil"><div class="silbox" style="--pct:98%" title="Wingspan 97.54 m — drawn at 98% of the widest wings ever built"><svg viewBox="0 57 260 64" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:var(--silw,98%);--silw-d:98%;color:#4F8FA6">
 <g fill="currentColor"><path d="M14.0 95.1 L127.3 99.1 L132.7 99.1 L246.0 95.1 L246.0 97.3 L132.7 104.9 L127.3 104.9 L14.0 97.3 Z"/>
 <path d="M109.4 100.8 L109.3 101.3 L109.2 101.9 L109.0 102.3 L108.7 102.8 L108.4 103.2 L108.0 103.6 L107.5 103.8 L107.0 104.0 L106.5 104.2 L106.0 104.2 L105.5 104.2 L104.9 104.0 L104.4 103.8 L104.0 103.6 L103.6 103.2 L103.2 102.8 L103.0 102.3 L102.8 101.9 L102.6 101.3 L102.6 100.8 L102.6 100.3 L102.8 99.7 L103.0 99.3 L103.2 98.8 L103.6 98.4 L104.0 98.0 L104.4 97.8 L104.9 97.6 L105.5 97.4 L106.0 97.4 L106.5 97.4 L107.0 97.6 L107.5 97.8 L108.0 98.0 L108.4 98.4 L108.7 98.8 L109.0 99.3 L109.2 99.7 L109.3 100.3 Z M108.9 100.8 L108.8 101.5 L108.6 102.1 L108.3 102.6 L107.8 103.1 L107.3 103.4 L106.6 103.7 L106.0 103.7 L105.3 103.7 L104.7 103.4 L104.2 103.1 L103.7 102.6 L103.4 102.1 L103.1 101.5 L103.1 100.8 L103.1 100.1 L103.4 99.5 L103.7 99.0 L104.2 98.5 L104.7 98.2 L105.3 97.9 L106.0 97.9 L106.6 97.9 L107.3 98.2 L107.8 98.5 L108.3 99.0 L108.6 99.5 L108.8 100.1 Z" fill-rule="evenodd"/>
 <path d="M107.4 100.8 L107.3 101.2 L107.1 101.6 L106.8 102.0 L106.4 102.2 L106.0 102.2 L105.5 102.2 L105.1 102.0 L104.8 101.6 L104.6 101.2 L104.6 100.8 L104.6 100.4 L104.8 100.0 L105.1 99.6 L105.5 99.4 L106.0 99.4 L106.4 99.4 L106.8 99.6 L107.1 100.0 L107.3 100.4 Z"/>
@@ -385,9 +387,9 @@
 <div class="stats"><div><span class="k">Length</span><span class="v">66.65 m</span></div><div><span class="k">Wingspan</span><span class="v">97.54 m</span></div><div><span class="k">Height</span><span class="v">24.18 m</span></div><div><span class="k">MTOW</span><span class="v">180,000 kg</span></div></div>
 <a class="mini" href="/aircraft/hughes-h-4-hercules">Full specification &rarr;</a>
 </article>
-<article class="acard" data-cat="freighters" data-slug="antonov-an-225" data-wingspan="88.4" data-length="84" data-height="18.1" data-mtow="640000" data-year="1988" data-name="antonov an-225 mriya">
+<article class="acard" data-cat="freighters" data-slug="antonov-an-225" data-wingspan="88.4" data-length="84" data-height="18.1" data-mtow="640000" data-year="1988" data-name="antonov an-225 mriya" data-manufacturer="antonov">
 <button class="addcmp" type="button" data-slug="antonov-an-225" data-short="Antonov An-225" aria-pressed="false" title="Add to compare tray" aria-label="Add Antonov An-225 Mriya to the compare tray">⇄</button>
-<div class="sil"><div class="silbox" title="Wingspan 88.4 m — drawn at 94% of the widest wings ever built"><svg viewBox="0 67 260 54" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:94%">
+<div class="sil"><div class="silbox" style="--pct:94%" title="Wingspan 88.4 m — drawn at 94% of the widest wings ever built"><svg viewBox="0 67 260 54" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:var(--silw,94%);--silw-d:94%;color:#4E7C77">
 <g fill="currentColor"><path d="M14.0 109.4 L127.5 101.4 L132.5 101.4 L246.0 109.4 L246.0 111.6 L132.5 107.0 L127.5 107.0 L14.0 111.6 Z"/>
 <path d="M98.5 104.3 L101.7 104.3 L101.7 111.8 L98.5 111.8 Z"/>
 <path d="M105.1 111.8 L105.0 112.6 L104.8 113.3 L104.5 114.1 L104.1 114.7 L103.6 115.3 L103.0 115.8 L102.4 116.2 L101.6 116.5 L100.9 116.7 L100.1 116.8 L99.3 116.7 L98.5 116.5 L97.8 116.2 L97.1 115.8 L96.5 115.3 L96.0 114.7 L95.6 114.1 L95.3 113.3 L95.1 112.6 L95.1 111.8 L95.1 111.0 L95.3 110.2 L95.6 109.5 L96.0 108.8 L96.5 108.3 L97.1 107.7 L97.8 107.3 L98.5 107.0 L99.3 106.8 L100.1 106.8 L100.9 106.8 L101.6 107.0 L102.4 107.3 L103.0 107.7 L103.6 108.3 L104.1 108.8 L104.5 109.5 L104.8 110.2 L105.0 111.0 Z M102.8 111.8 L102.7 112.5 L102.5 113.2 L102.0 113.7 L101.5 114.2 L100.8 114.4 L100.1 114.5 L99.4 114.4 L98.7 114.2 L98.1 113.7 L97.7 113.2 L97.4 112.5 L97.3 111.8 L97.4 111.1 L97.7 110.4 L98.1 109.8 L98.7 109.4 L99.4 109.1 L100.1 109.0 L100.8 109.1 L101.5 109.4 L102.0 109.8 L102.5 110.4 L102.7 111.1 Z" fill-rule="evenodd"/>
@@ -410,9 +412,9 @@
 <div class="stats"><div><span class="k">Length</span><span class="v">84.00 m</span></div><div><span class="k">Wingspan</span><span class="v">88.40 m</span></div><div><span class="k">Height</span><span class="v">18.10 m</span></div><div><span class="k">MTOW</span><span class="v">640,000 kg</span></div></div>
 <a class="mini" href="/aircraft/antonov-an-225">Full specification &rarr;</a>
 </article>
-<article class="acard" data-cat="widebody" data-slug="airbus-a380" data-wingspan="79.75" data-length="72.72" data-height="24.09" data-mtow="575000" data-year="2005" data-name="airbus a380">
+<article class="acard" data-cat="widebody" data-slug="airbus-a380" data-wingspan="79.75" data-length="72.72" data-height="24.09" data-mtow="575000" data-year="2005" data-name="airbus a380" data-manufacturer="airbus">
 <button class="addcmp" type="button" data-slug="airbus-a380" data-short="Airbus A380" aria-pressed="false" title="Add to compare tray" aria-label="Add Airbus A380 to the compare tray">⇄</button>
-<div class="sil"><div class="silbox" title="Wingspan 79.75 m — drawn at 91% of the widest wings ever built"><svg viewBox="0 44 260 77" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:91%">
+<div class="sil"><div class="silbox" style="--pct:91%" title="Wingspan 79.75 m — drawn at 91% of the widest wings ever built"><svg viewBox="0 44 260 77" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:var(--silw,91%);--silw-d:91%;color:#3E6FB0">
 <g fill="currentColor"><path d="M16.0 95.1 L126.9 106.1 L133.1 106.1 L244.0 95.1 L244.0 97.3 L133.1 111.6 L126.9 111.6 L16.0 97.3 Z"/>
 <path d="M16.5 91.1 L14.0 91.1 L14.0 100.3 L16.5 100.3 Z"/>
 <path d="M243.5 91.1 L246.0 91.1 L246.0 100.3 L243.5 100.3 Z"/>
@@ -431,9 +433,9 @@
 <div class="stats"><div><span class="k">Length</span><span class="v">72.72 m</span></div><div><span class="k">Wingspan</span><span class="v">79.75 m</span></div><div><span class="k">Height</span><span class="v">24.09 m</span></div><div><span class="k">MTOW</span><span class="v">575,000 kg</span></div></div>
 <a class="mini" href="/aircraft/airbus-a380">Full specification &rarr;</a>
 </article>
-<article class="acard" data-cat="freighters" data-slug="antonov-an-124" data-wingspan="73.3" data-length="69.1" data-height="20.78" data-mtow="402000" data-year="1982" data-name="antonov an-124 ruslan">
+<article class="acard" data-cat="freighters" data-slug="antonov-an-124" data-wingspan="73.3" data-length="69.1" data-height="20.78" data-mtow="402000" data-year="1982" data-name="antonov an-124 ruslan" data-manufacturer="antonov">
 <button class="addcmp" type="button" data-slug="antonov-an-124" data-short="Antonov An-124" aria-pressed="false" title="Add to compare tray" aria-label="Add Antonov An-124 Ruslan to the compare tray">⇄</button>
-<div class="sil"><div class="silbox" title="Wingspan 73.3 m — drawn at 88% of the widest wings ever built"><svg viewBox="0 49 260 72" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:88%">
+<div class="sil"><div class="silbox" style="--pct:88%" title="Wingspan 73.3 m — drawn at 88% of the widest wings ever built"><svg viewBox="0 49 260 72" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:var(--silw,88%);--silw-d:88%;color:#4E7C77">
 <g fill="currentColor"><path d="M14.0 108.4 L127.0 100.4 L133.0 100.4 L246.0 108.4 L246.0 110.6 L133.0 106.0 L127.0 106.0 L14.0 110.6 Z"/>
 <path d="M92.9 103.7 L96.1 103.7 L96.1 111.2 L92.9 111.2 Z"/>
 <path d="M99.7 111.2 L99.6 112.0 L99.4 112.8 L99.1 113.5 L98.7 114.2 L98.1 114.8 L97.5 115.4 L96.8 115.8 L96.1 116.1 L95.3 116.3 L94.5 116.4 L93.6 116.3 L92.9 116.1 L92.1 115.8 L91.4 115.4 L90.8 114.8 L90.3 114.2 L89.8 113.5 L89.5 112.8 L89.3 112.0 L89.3 111.2 L89.3 110.3 L89.5 109.5 L89.8 108.8 L90.3 108.1 L90.8 107.5 L91.4 106.9 L92.1 106.5 L92.9 106.2 L93.6 106.0 L94.5 106.0 L95.3 106.0 L96.1 106.2 L96.8 106.5 L97.5 106.9 L98.1 107.5 L98.7 108.1 L99.1 108.8 L99.4 109.5 L99.6 110.3 Z M97.3 111.2 L97.2 111.9 L96.9 112.6 L96.5 113.2 L95.9 113.6 L95.2 113.9 L94.5 114.0 L93.7 113.9 L93.0 113.6 L92.4 113.2 L92.0 112.6 L91.7 111.9 L91.6 111.2 L91.7 110.4 L92.0 109.7 L92.4 109.1 L93.0 108.7 L93.7 108.4 L94.5 108.3 L95.2 108.4 L95.9 108.7 L96.5 109.1 L96.9 109.7 L97.2 110.4 Z" fill-rule="evenodd"/>
@@ -446,13 +448,13 @@
 <path d="M126.8 106.4 L128.7 52.2 L131.3 52.2 L133.2 106.4 Z"/>
 <path d="M140.1 106.4 L140.0 108.2 L139.6 110.0 L139.0 111.6 L138.2 113.2 L137.2 114.6 L136.0 115.7 L134.6 116.7 L133.1 117.4 L131.6 117.8 L130.0 118.0 L128.4 117.8 L126.9 117.4 L125.4 116.7 L124.0 115.7 L122.8 114.6 L121.8 113.2 L121.0 111.6 L120.4 110.0 L120.0 108.2 L119.9 106.4 L120.0 104.6 L120.4 102.8 L121.0 101.2 L121.8 99.6 L122.8 98.2 L124.0 97.1 L125.4 96.1 L126.9 95.4 L128.4 95.0 L130.0 94.8 L131.6 95.0 L133.1 95.4 L134.6 96.1 L136.0 97.1 L137.2 98.2 L138.2 99.6 L139.0 101.2 L139.6 102.8 L140.0 104.6 Z M124.7 103.5 L135.3 103.5 L135.3 105.3 L124.7 105.3 Z" fill-rule="evenodd"/></g></svg></div></div>
 <h3><a href="/aircraft/antonov-an-124">Antonov An-124 Ruslan</a></h3>
-<p class="kicker">Antonov · In service — fleet split by war</p>
+<p class="kicker">Antonov · In service</p>
 <div class="stats"><div><span class="k">Length</span><span class="v">69.10 m</span></div><div><span class="k">Wingspan</span><span class="v">73.30 m</span></div><div><span class="k">Height</span><span class="v">20.78 m</span></div><div><span class="k">MTOW</span><span class="v">402,000 kg</span></div></div>
 <a class="mini" href="/aircraft/antonov-an-124">Full specification &rarr;</a>
 </article>
-<article class="acard" data-cat="widebody" data-slug="boeing-777x" data-wingspan="71.75" data-length="76.72" data-height="19.68" data-mtow="351533" data-year="2020" data-name="boeing 777x">
+<article class="acard" data-cat="widebody" data-slug="boeing-777x" data-wingspan="71.75" data-length="76.72" data-height="19.68" data-mtow="351533" data-year="2020" data-name="boeing 777x" data-manufacturer="boeing">
 <button class="addcmp" type="button" data-slug="boeing-777x" data-short="Boeing 777X" aria-pressed="false" title="Add to compare tray" aria-label="Add Boeing 777X to the compare tray">⇄</button>
-<div class="sil"><div class="silbox" title="Wingspan 71.75 m — drawn at 87% of the widest wings ever built"><svg viewBox="0 51 260 70" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:87%">
+<div class="sil"><div class="silbox" style="--pct:87%" title="Wingspan 71.75 m — drawn at 87% of the widest wings ever built"><svg viewBox="0 51 260 70" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:var(--silw,87%);--silw-d:87%;color:#3E6FB0">
 <g fill="currentColor"><path d="M20.0 92.8 L127.0 104.8 L133.0 104.8 L240.0 92.8 L240.0 94.7 L133.0 110.0 L127.0 110.0 L20.0 94.7 Z"/>
 <path d="M20.0 92.8 L14.0 87.8 L17.0 87.8 L23.0 94.7 Z"/>
 <path d="M240.0 92.8 L246.0 87.8 L243.0 87.8 L237.0 94.7 Z"/>
@@ -467,9 +469,9 @@
 <div class="stats"><div><span class="k">Length (777-9)</span><span class="v">76.72 m</span></div><div><span class="k">Wingspan (extended)</span><span class="v">71.75 m</span></div><div><span class="k">Wingspan (folded)</span><span class="v">64.85 m</span></div><div><span class="k">Height</span><span class="v">19.68 m</span></div></div>
 <a class="mini" href="/aircraft/boeing-777x">Full specification &rarr;</a>
 </article>
-<article class="acard" data-cat="propliners" data-slug="bristol-brabazon" data-wingspan="70.1" data-length="53.95" data-height="15.24" data-mtow="131542" data-year="1949" data-name="bristol brabazon">
+<article class="acard" data-cat="propliners" data-slug="bristol-brabazon" data-wingspan="70.1" data-length="53.95" data-height="15.24" data-mtow="131542" data-year="1949" data-name="bristol brabazon" data-manufacturer="bristol">
 <button class="addcmp" type="button" data-slug="bristol-brabazon" data-short="Bristol Brabazon" aria-pressed="false" title="Add to compare tray" aria-label="Add Bristol Brabazon to the compare tray">⇄</button>
-<div class="sil"><div class="silbox" title="Wingspan 70.1 m — drawn at 86% of the widest wings ever built"><svg viewBox="0 64 260 57" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:86%">
+<div class="sil"><div class="silbox" style="--pct:86%" title="Wingspan 70.1 m — drawn at 86% of the widest wings ever built"><svg viewBox="0 64 260 57" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:var(--silw,86%);--silw-d:86%;color:#A9895F">
 <g fill="currentColor"><path d="M14.0 102.9 L127.5 108.9 L132.5 108.9 L246.0 102.9 L246.0 105.2 L132.5 114.9 L127.5 114.9 L14.0 105.2 Z"/>
 <path d="M104.0 109.9 L104.0 110.5 L103.9 111.1 L103.6 111.7 L103.3 112.2 L102.9 112.7 L102.4 113.1 L101.9 113.4 L101.3 113.7 L100.7 113.8 L100.0 113.9 L99.4 113.8 L98.8 113.7 L98.2 113.4 L97.7 113.1 L97.2 112.7 L96.8 112.2 L96.5 111.7 L96.2 111.1 L96.1 110.5 L96.0 109.9 L96.1 109.2 L96.2 108.6 L96.5 108.1 L96.8 107.5 L97.2 107.0 L97.7 106.6 L98.2 106.3 L98.8 106.1 L99.4 105.9 L100.0 105.9 L100.7 105.9 L101.3 106.1 L101.9 106.3 L102.4 106.6 L102.9 107.0 L103.3 107.5 L103.6 108.1 L103.9 108.6 L104.0 109.2 Z M103.5 109.9 L103.4 110.6 L103.1 111.4 L102.7 112.0 L102.2 112.6 L101.5 113.0 L100.8 113.2 L100.0 113.3 L99.3 113.2 L98.6 113.0 L97.9 112.6 L97.4 112.0 L96.9 111.4 L96.7 110.6 L96.6 109.9 L96.7 109.1 L96.9 108.4 L97.4 107.7 L97.9 107.2 L98.6 106.8 L99.3 106.5 L100.0 106.4 L100.8 106.5 L101.5 106.8 L102.2 107.2 L102.7 107.7 L103.1 108.4 L103.4 109.1 Z" fill-rule="evenodd"/>
 <path d="M101.7 109.9 L101.6 110.4 L101.4 110.9 L101.0 111.2 L100.6 111.5 L100.0 111.6 L99.5 111.5 L99.1 111.2 L98.7 110.9 L98.5 110.4 L98.4 109.9 L98.5 109.4 L98.7 108.9 L99.1 108.5 L99.5 108.3 L100.0 108.2 L100.6 108.3 L101.0 108.5 L101.4 108.9 L101.6 109.4 Z"/>
@@ -486,9 +488,9 @@
 <div class="stats"><div><span class="k">Length</span><span class="v">53.95 m</span></div><div><span class="k">Wingspan</span><span class="v">70.10 m</span></div><div><span class="k">Height</span><span class="v">15.24 m</span></div><div><span class="k">MTOW</span><span class="v">131,542 kg</span></div></div>
 <a class="mini" href="/aircraft/bristol-brabazon">Full specification &rarr;</a>
 </article>
-<article class="acard" data-cat="widebody" data-slug="boeing-747" data-wingspan="68.4" data-length="76.25" data-height="19.4" data-mtow="447700" data-year="1969" data-name="boeing 747">
+<article class="acard" data-cat="widebody" data-slug="boeing-747" data-wingspan="68.4" data-length="76.25" data-height="19.4" data-mtow="447700" data-year="1969" data-name="boeing 747" data-manufacturer="boeing">
 <button class="addcmp" type="button" data-slug="boeing-747" data-short="Boeing 747" aria-pressed="false" title="Add to compare tray" aria-label="Add Boeing 747 to the compare tray">⇄</button>
-<div class="sil"><div class="silbox" title="Wingspan 68.4 m — drawn at 86% of the widest wings ever built"><svg viewBox="0 49 260 72" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:86%">
+<div class="sil"><div class="silbox" style="--pct:86%" title="Wingspan 68.4 m — drawn at 86% of the widest wings ever built"><svg viewBox="0 49 260 72" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:var(--silw,86%);--silw-d:86%;color:#3E6FB0">
 <g fill="currentColor"><path d="M14.0 96.4 L126.7 108.4 L133.3 108.4 L246.0 96.4 L246.0 98.4 L133.3 113.6 L126.7 113.6 L14.0 98.4 Z"/>
 <path d="M85.9 104.8 L89.1 104.8 L89.1 112.2 L85.9 112.2 Z"/>
 <path d="M93.3 112.2 L93.2 113.1 L93.0 114.0 L92.7 114.8 L92.2 115.6 L91.6 116.3 L90.9 116.9 L90.1 117.4 L89.3 117.7 L88.4 117.9 L87.5 118.0 L86.6 117.9 L85.7 117.7 L84.9 117.4 L84.1 116.9 L83.4 116.3 L82.8 115.6 L82.3 114.8 L82.0 114.0 L81.8 113.1 L81.7 112.2 L81.8 111.3 L82.0 110.4 L82.3 109.6 L82.8 108.8 L83.4 108.1 L84.1 107.5 L84.9 107.0 L85.7 106.7 L86.6 106.5 L87.5 106.4 L88.4 106.5 L89.3 106.7 L90.1 107.0 L90.9 107.5 L91.6 108.1 L92.2 108.8 L92.7 109.6 L93.0 110.4 L93.2 111.3 Z M90.7 112.2 L90.6 113.0 L90.2 113.8 L89.7 114.5 L89.1 115.0 L88.3 115.3 L87.5 115.4 L86.7 115.3 L85.9 115.0 L85.2 114.5 L84.7 113.8 L84.4 113.0 L84.3 112.2 L84.4 111.4 L84.7 110.6 L85.2 109.9 L85.9 109.4 L86.7 109.1 L87.5 109.0 L88.3 109.1 L89.1 109.4 L89.7 109.9 L90.2 110.6 L90.6 111.4 Z" fill-rule="evenodd"/>
@@ -506,9 +508,9 @@
 <div class="stats"><div><span class="k">Length (747-8)</span><span class="v">76.25 m</span></div><div><span class="k">Wingspan</span><span class="v">68.40 m</span></div><div><span class="k">Height</span><span class="v">19.40 m</span></div><div><span class="k">MTOW</span><span class="v">447,700 kg</span></div></div>
 <a class="mini" href="/aircraft/boeing-747">Full specification &rarr;</a>
 </article>
-<article class="acard" data-cat="military-transports" data-slug="lockheed-c-5-galaxy" data-wingspan="67.89" data-length="75.31" data-height="19.85" data-mtow="381024" data-year="1968" data-name="lockheed c-5 galaxy">
+<article class="acard" data-cat="military-transports" data-slug="lockheed-c-5-galaxy" data-wingspan="67.89" data-length="75.31" data-height="19.85" data-mtow="381024" data-year="1968" data-name="lockheed c-5 galaxy" data-manufacturer="lockheed martin">
 <button class="addcmp" type="button" data-slug="lockheed-c-5-galaxy" data-short="Lockheed C-5" aria-pressed="false" title="Add to compare tray" aria-label="Add Lockheed C-5 Galaxy to the compare tray">⇄</button>
-<div class="sil"><div class="silbox" title="Wingspan 67.89 m — drawn at 85% of the widest wings ever built"><svg viewBox="0 47 260 74" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:85%">
+<div class="sil"><div class="silbox" style="--pct:85%" title="Wingspan 67.89 m — drawn at 85% of the widest wings ever built"><svg viewBox="0 47 260 74" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:var(--silw,85%);--silw-d:85%;color:#5F7488">
 <g fill="currentColor"><path d="M14.0 108.7 L126.2 99.7 L133.8 99.7 L246.0 108.7 L246.0 111.1 L133.8 105.5 L126.2 105.5 L14.0 111.1 Z"/>
 <path d="M86.8 103.7 L90.0 103.7 L90.0 111.3 L86.8 111.3 Z"/>
 <path d="M93.6 111.3 L93.6 112.1 L93.4 112.9 L93.0 113.6 L92.6 114.3 L92.1 114.9 L91.5 115.5 L90.8 115.9 L90.0 116.2 L89.2 116.4 L88.4 116.5 L87.6 116.4 L86.8 116.2 L86.1 115.9 L85.4 115.5 L84.7 114.9 L84.2 114.3 L83.8 113.6 L83.5 112.9 L83.3 112.1 L83.2 111.3 L83.3 110.4 L83.5 109.6 L83.8 108.9 L84.2 108.2 L84.7 107.6 L85.4 107.0 L86.1 106.6 L86.8 106.3 L87.6 106.1 L88.4 106.1 L89.2 106.1 L90.0 106.3 L90.8 106.6 L91.5 107.0 L92.1 107.6 L92.6 108.2 L93.0 108.9 L93.4 109.6 L93.6 110.4 Z M91.3 111.3 L91.2 112.0 L90.9 112.7 L90.4 113.3 L89.8 113.7 L89.2 114.0 L88.4 114.1 L87.7 114.0 L87.0 113.7 L86.4 113.3 L85.9 112.7 L85.7 112.0 L85.6 111.3 L85.7 110.5 L85.9 109.8 L86.4 109.2 L87.0 108.8 L87.7 108.5 L88.4 108.4 L89.2 108.5 L89.8 108.8 L90.4 109.2 L90.9 109.8 L91.2 110.5 Z" fill-rule="evenodd"/>
@@ -526,9 +528,9 @@
 <div class="stats"><div><span class="k">Length</span><span class="v">75.31 m</span></div><div><span class="k">Wingspan</span><span class="v">67.89 m</span></div><div><span class="k">Height</span><span class="v">19.85 m</span></div><div><span class="k">MTOW</span><span class="v">381,024 kg</span></div></div>
 <a class="mini" href="/aircraft/lockheed-c-5-galaxy">Full specification &rarr;</a>
 </article>
-<article class="acard" data-cat="widebody" data-slug="boeing-777" data-wingspan="64.8" data-length="73.86" data-height="18.5" data-mtow="351533" data-year="1994" data-name="boeing 777">
+<article class="acard" data-cat="widebody" data-slug="boeing-777" data-wingspan="64.8" data-length="73.86" data-height="18.5" data-mtow="351533" data-year="1994" data-name="boeing 777" data-manufacturer="boeing">
 <button class="addcmp" type="button" data-slug="boeing-777" data-short="Boeing 777" aria-pressed="false" title="Add to compare tray" aria-label="Add Boeing 777 to the compare tray">⇄</button>
-<div class="sil"><div class="silbox" title="Wingspan 64.8 m — drawn at 84% of the widest wings ever built"><svg viewBox="0 48 260 73" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:84%">
+<div class="sil"><div class="silbox" style="--pct:84%" title="Wingspan 64.8 m — drawn at 84% of the widest wings ever built"><svg viewBox="0 48 260 73" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:var(--silw,84%);--silw-d:84%;color:#3E6FB0">
 <g fill="currentColor"><path d="M20.0 94.4 L126.7 105.4 L133.3 105.4 L240.0 94.4 L240.0 96.5 L133.3 110.8 L126.7 110.8 L20.0 96.5 Z"/>
 <path d="M20.0 94.4 L14.0 89.4 L17.0 89.4 L23.0 96.5 Z"/>
 <path d="M240.0 94.4 L246.0 89.4 L243.0 89.4 L237.0 96.5 Z"/>
@@ -543,9 +545,9 @@
 <div class="stats"><div><span class="k">Length (-300ER)</span><span class="v">73.86 m</span></div><div><span class="k">Wingspan</span><span class="v">64.80 m</span></div><div><span class="k">Height</span><span class="v">18.50 m</span></div><div><span class="k">MTOW</span><span class="v">351,533 kg</span></div></div>
 <a class="mini" href="/aircraft/boeing-777">Full specification &rarr;</a>
 </article>
-<article class="acard" data-cat="widebody" data-slug="airbus-a350" data-wingspan="64.75" data-length="73.79" data-height="17.08" data-mtow="322000" data-year="2013" data-name="airbus a350">
+<article class="acard" data-cat="widebody" data-slug="airbus-a350" data-wingspan="64.75" data-length="73.79" data-height="17.08" data-mtow="322000" data-year="2013" data-name="airbus a350" data-manufacturer="airbus">
 <button class="addcmp" type="button" data-slug="airbus-a350" data-short="Airbus A350" aria-pressed="false" title="Add to compare tray" aria-label="Add Airbus A350 to the compare tray">⇄</button>
-<div class="sil"><div class="silbox" title="Wingspan 64.75 m — drawn at 84% of the widest wings ever built"><svg viewBox="0 53 260 68" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:84%">
+<div class="sil"><div class="silbox" style="--pct:84%" title="Wingspan 64.75 m — drawn at 84% of the widest wings ever built"><svg viewBox="0 53 260 68" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:var(--silw,84%);--silw-d:84%;color:#3E6FB0">
 <g fill="currentColor"><path d="M15.5 94.8 L126.8 106.8 L133.2 106.8 L244.5 94.8 L244.5 96.8 L133.2 112.0 L126.8 112.0 L15.5 96.8 Z"/>
 <path d="M15.5 94.8 L14.0 85.8 L18.0 85.8 L20.0 96.8 Z"/>
 <path d="M244.5 94.8 L246.0 85.8 L242.0 85.8 L240.0 96.8 Z"/>
@@ -560,9 +562,9 @@
 <div class="stats"><div><span class="k">Length (-1000)</span><span class="v">73.79 m</span></div><div><span class="k">Wingspan</span><span class="v">64.75 m</span></div><div><span class="k">Height</span><span class="v">17.08 m</span></div><div><span class="k">MTOW</span><span class="v">322,000 kg</span></div></div>
 <a class="mini" href="/aircraft/airbus-a350">Full specification &rarr;</a>
 </article>
-<article class="acard" data-cat="freighters" data-slug="boeing-dreamlifter" data-wingspan="64.44" data-length="71.68" data-height="21.54" data-mtow="364235" data-year="2006" data-name="boeing 747 dreamlifter">
+<article class="acard" data-cat="freighters" data-slug="boeing-dreamlifter" data-wingspan="64.44" data-length="71.68" data-height="21.54" data-mtow="364235" data-year="2006" data-name="boeing 747 dreamlifter" data-manufacturer="boeing">
 <button class="addcmp" type="button" data-slug="boeing-dreamlifter" data-short="Boeing 747 Dreamlifter" aria-pressed="false" title="Add to compare tray" aria-label="Add Boeing 747 Dreamlifter to the compare tray">⇄</button>
-<div class="sil"><div class="silbox" title="Wingspan 64.44 m — drawn at 84% of the widest wings ever built"><svg viewBox="0 37 260 84" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:84%">
+<div class="sil"><div class="silbox" style="--pct:84%" title="Wingspan 64.44 m — drawn at 84% of the widest wings ever built"><svg viewBox="0 37 260 84" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:var(--silw,84%);--silw-d:84%;color:#2F5D63">
 <g fill="currentColor"><path d="M14.0 97.4 L126.5 108.4 L133.5 108.4 L246.0 97.4 L246.0 99.4 L133.5 113.6 L126.5 113.6 L14.0 99.4 Z"/>
 <path d="M85.4 105.1 L88.6 105.1 L88.6 112.4 L85.4 112.4 Z"/>
 <path d="M92.6 112.4 L92.5 113.2 L92.3 114.1 L92.0 114.9 L91.5 115.7 L91.0 116.3 L90.3 116.9 L89.5 117.4 L88.7 117.7 L87.9 117.9 L87.0 118.0 L86.1 117.9 L85.3 117.7 L84.5 117.4 L83.7 116.9 L83.0 116.3 L82.5 115.7 L82.0 114.9 L81.7 114.1 L81.5 113.2 L81.4 112.4 L81.5 111.5 L81.7 110.6 L82.0 109.8 L82.5 109.1 L83.0 108.4 L83.7 107.8 L84.5 107.4 L85.3 107.0 L86.1 106.8 L87.0 106.8 L87.9 106.8 L88.7 107.0 L89.5 107.4 L90.3 107.8 L91.0 108.4 L91.5 109.1 L92.0 109.8 L92.3 110.6 L92.5 111.5 Z M90.1 112.4 L90.0 113.2 L89.7 113.9 L89.2 114.5 L88.5 115.0 L87.8 115.3 L87.0 115.4 L86.2 115.3 L85.5 115.0 L84.8 114.5 L84.3 113.9 L84.0 113.2 L83.9 112.4 L84.0 111.6 L84.3 110.8 L84.8 110.2 L85.5 109.7 L86.2 109.4 L87.0 109.3 L87.8 109.4 L88.5 109.7 L89.2 110.2 L89.7 110.8 L90.0 111.6 Z" fill-rule="evenodd"/>
@@ -580,9 +582,9 @@
 <div class="stats"><div><span class="k">Length</span><span class="v">71.68 m</span></div><div><span class="k">Wingspan</span><span class="v">64.44 m</span></div><div><span class="k">Height</span><span class="v">21.54 m</span></div><div><span class="k">MTOW</span><span class="v">364,235 kg</span></div></div>
 <a class="mini" href="/aircraft/boeing-dreamlifter">Full specification &rarr;</a>
 </article>
-<article class="acard" data-cat="freighters" data-slug="antonov-an-22" data-wingspan="64.4" data-length="57.92" data-height="12.53" data-mtow="250000" data-year="1965" data-name="antonov an-22 antei">
+<article class="acard" data-cat="freighters" data-slug="antonov-an-22" data-wingspan="64.4" data-length="57.92" data-height="12.53" data-mtow="250000" data-year="1965" data-name="antonov an-22 antei" data-manufacturer="antonov">
 <button class="addcmp" type="button" data-slug="antonov-an-22" data-short="Antonov An-22" aria-pressed="false" title="Add to compare tray" aria-label="Add Antonov An-22 Antei to the compare tray">⇄</button>
-<div class="sil"><div class="silbox" title="Wingspan 64.4 m — drawn at 84% of the widest wings ever built"><svg viewBox="0 69 260 52" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:84%">
+<div class="sil"><div class="silbox" style="--pct:84%" title="Wingspan 64.4 m — drawn at 84% of the widest wings ever built"><svg viewBox="0 69 260 52" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:var(--silw,84%);--silw-d:84%;color:#4E7C77">
 <g fill="currentColor"><path d="M14.0 106.1 L126.8 100.1 L133.2 100.1 L246.0 106.1 L246.0 108.3 L133.2 105.5 L126.8 105.5 L14.0 108.3 Z"/>
 <path d="M100.7 104.1 L100.6 104.8 L100.4 105.5 L100.1 106.2 L99.8 106.8 L99.3 107.3 L98.8 107.8 L98.1 108.2 L97.5 108.5 L96.8 108.6 L96.1 108.7 L95.3 108.6 L94.6 108.5 L94.0 108.2 L93.3 107.8 L92.8 107.3 L92.3 106.8 L92.0 106.2 L91.7 105.5 L91.5 104.8 L91.5 104.1 L91.5 103.4 L91.7 102.7 L92.0 102.0 L92.3 101.4 L92.8 100.8 L93.3 100.4 L94.0 100.0 L94.6 99.7 L95.3 99.5 L96.1 99.5 L96.8 99.5 L97.5 99.7 L98.1 100.0 L98.8 100.4 L99.3 100.8 L99.8 101.4 L100.1 102.0 L100.4 102.7 L100.6 103.4 Z M100.0 104.1 L99.9 105.0 L99.6 105.8 L99.1 106.6 L98.5 107.2 L97.8 107.7 L96.9 107.9 L96.1 108.0 L95.2 107.9 L94.3 107.7 L93.6 107.2 L93.0 106.6 L92.5 105.8 L92.2 105.0 L92.1 104.1 L92.2 103.2 L92.5 102.4 L93.0 101.6 L93.6 101.0 L94.3 100.5 L95.2 100.2 L96.1 100.1 L96.9 100.2 L97.8 100.5 L98.5 101.0 L99.1 101.6 L99.6 102.4 L99.9 103.2 Z" fill-rule="evenodd"/>
 <path d="M98.0 104.1 L97.9 104.7 L97.6 105.2 L97.2 105.7 L96.6 105.9 L96.1 106.0 L95.5 105.9 L94.9 105.7 L94.5 105.2 L94.2 104.7 L94.1 104.1 L94.2 103.5 L94.5 103.0 L94.9 102.5 L95.5 102.3 L96.1 102.2 L96.6 102.3 L97.2 102.5 L97.6 103.0 L97.9 103.5 Z"/>
@@ -601,9 +603,9 @@
 <div class="stats"><div><span class="k">Length</span><span class="v">57.92 m</span></div><div><span class="k">Wingspan</span><span class="v">64.40 m</span></div><div><span class="k">Height</span><span class="v">12.53 m</span></div><div><span class="k">MTOW</span><span class="v">250,000 kg</span></div></div>
 <a class="mini" href="/aircraft/antonov-an-22">Full specification &rarr;</a>
 </article>
-<article class="acard" data-cat="widebody" data-slug="airbus-a330" data-wingspan="64" data-length="63.66" data-height="16.79" data-mtow="251000" data-year="1992" data-name="airbus a330">
+<article class="acard" data-cat="widebody" data-slug="airbus-a330" data-wingspan="64" data-length="63.66" data-height="16.79" data-mtow="251000" data-year="1992" data-name="airbus a330" data-manufacturer="airbus">
 <button class="addcmp" type="button" data-slug="airbus-a330" data-short="Airbus A330" aria-pressed="false" title="Add to compare tray" aria-label="Add Airbus A330 to the compare tray">⇄</button>
-<div class="sil"><div class="silbox" title="Wingspan 64 m — drawn at 83% of the widest wings ever built"><svg viewBox="0 54 260 67" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:83%">
+<div class="sil"><div class="silbox" style="--pct:83%" title="Wingspan 64 m — drawn at 83% of the widest wings ever built"><svg viewBox="0 54 260 67" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:var(--silw,83%);--silw-d:83%;color:#3E6FB0">
 <g fill="currentColor"><path d="M15.5 95.4 L126.9 107.4 L133.1 107.4 L244.5 95.4 L244.5 97.4 L133.1 112.6 L126.9 112.6 L15.5 97.4 Z"/>
 <path d="M15.5 95.4 L14.0 86.4 L18.0 86.4 L20.0 97.4 Z"/>
 <path d="M244.5 95.4 L246.0 86.4 L242.0 86.4 L240.0 97.4 Z"/>
@@ -618,9 +620,9 @@
 <div class="stats"><div><span class="k">Length (A330-900)</span><span class="v">63.66 m</span></div><div><span class="k">Wingspan</span><span class="v">64.00 m</span></div><div><span class="k">Height</span><span class="v">16.79 m</span></div><div><span class="k">MTOW</span><span class="v">251,000 kg</span></div></div>
 <a class="mini" href="/aircraft/airbus-a330">Full specification &rarr;</a>
 </article>
-<article class="acard" data-cat="widebody" data-slug="airbus-a340" data-wingspan="63.45" data-length="75.36" data-height="17.93" data-mtow="380000" data-year="1991" data-name="airbus a340">
+<article class="acard" data-cat="widebody" data-slug="airbus-a340" data-wingspan="63.45" data-length="75.36" data-height="17.93" data-mtow="380000" data-year="1991" data-name="airbus a340" data-manufacturer="airbus">
 <button class="addcmp" type="button" data-slug="airbus-a340" data-short="Airbus A340" aria-pressed="false" title="Add to compare tray" aria-label="Add Airbus A340 to the compare tray">⇄</button>
-<div class="sil"><div class="silbox" title="Wingspan 63.45 m — drawn at 83% of the widest wings ever built"><svg viewBox="0 49 260 72" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:83%">
+<div class="sil"><div class="silbox" style="--pct:83%" title="Wingspan 63.45 m — drawn at 83% of the widest wings ever built"><svg viewBox="0 49 260 72" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:var(--silw,83%);--silw-d:83%;color:#3E6FB0">
 <g fill="currentColor"><path d="M14.0 98.0 L126.9 109.0 L133.1 109.0 L246.0 98.0 L246.0 100.0 L133.1 114.0 L126.9 114.0 L14.0 100.0 Z"/>
 <path d="M90.6 106.2 L93.8 106.2 L93.8 113.0 L90.6 113.0 Z"/>
 <path d="M97.2 113.0 L97.1 113.8 L97.0 114.6 L96.7 115.3 L96.3 116.0 L95.7 116.6 L95.1 117.1 L94.5 117.5 L93.8 117.8 L93.0 118.0 L92.2 118.0 L91.4 118.0 L90.7 117.8 L89.9 117.5 L89.3 117.1 L88.7 116.6 L88.2 116.0 L87.8 115.3 L87.5 114.6 L87.3 113.8 L87.2 113.0 L87.3 112.3 L87.5 111.5 L87.8 110.8 L88.2 110.1 L88.7 109.5 L89.3 109.0 L89.9 108.6 L90.7 108.3 L91.4 108.1 L92.2 108.0 L93.0 108.1 L93.8 108.3 L94.5 108.6 L95.1 109.0 L95.7 109.5 L96.3 110.1 L96.7 110.8 L97.0 111.5 L97.1 112.3 Z M95.0 113.0 L94.9 113.8 L94.6 114.4 L94.2 115.0 L93.6 115.4 L92.9 115.7 L92.2 115.8 L91.5 115.7 L90.8 115.4 L90.3 115.0 L89.8 114.4 L89.6 113.8 L89.5 113.0 L89.6 112.3 L89.8 111.7 L90.3 111.1 L90.8 110.7 L91.5 110.4 L92.2 110.3 L92.9 110.4 L93.6 110.7 L94.2 111.1 L94.6 111.7 L94.9 112.3 Z" fill-rule="evenodd"/>
@@ -637,9 +639,9 @@
 <div class="stats"><div><span class="k">Length (-600)</span><span class="v">75.36 m</span></div><div><span class="k">Wingspan</span><span class="v">63.45 m</span></div><div><span class="k">Height</span><span class="v">17.93 m</span></div><div><span class="k">MTOW</span><span class="v">380,000 kg</span></div></div>
 <a class="mini" href="/aircraft/airbus-a340">Full specification &rarr;</a>
 </article>
-<article class="acard" data-cat="freighters" data-slug="airbus-beluga" data-wingspan="60.3" data-length="63.1" data-height="18.9" data-mtow="227000" data-year="2018" data-name="airbus beluga">
+<article class="acard" data-cat="freighters" data-slug="airbus-beluga" data-wingspan="60.3" data-length="63.1" data-height="18.9" data-mtow="227000" data-year="2018" data-name="airbus beluga" data-manufacturer="airbus">
 <button class="addcmp" type="button" data-slug="airbus-beluga" data-short="Airbus Beluga" aria-pressed="false" title="Add to compare tray" aria-label="Add Airbus Beluga to the compare tray">⇄</button>
-<div class="sil"><div class="silbox" title="Wingspan 60.3 m — drawn at 82% of the widest wings ever built"><svg viewBox="0 42 260 79" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:82%">
+<div class="sil"><div class="silbox" style="--pct:82%" title="Wingspan 60.3 m — drawn at 82% of the widest wings ever built"><svg viewBox="0 42 260 79" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:var(--silw,82%);--silw-d:82%;color:#2F5D63">
 <g fill="currentColor"><path d="M15.5 96.9 L126.7 107.9 L133.3 107.9 L244.5 96.9 L244.5 98.9 L133.3 112.9 L126.7 112.9 L15.5 98.9 Z"/>
 <path d="M15.5 96.9 L14.0 87.9 L18.0 87.9 L20.0 98.9 Z"/>
 <path d="M244.5 96.9 L246.0 87.9 L242.0 87.9 L240.0 98.9 Z"/>
@@ -655,9 +657,9 @@
 <div class="stats"><div><span class="k">Length (XL)</span><span class="v">63.10 m</span></div><div><span class="k">Wingspan (XL)</span><span class="v">60.30 m</span></div><div><span class="k">Height (XL)</span><span class="v">18.90 m</span></div><div><span class="k">MTOW (XL)</span><span class="v">227,000 kg</span></div></div>
 <a class="mini" href="/aircraft/airbus-beluga">Full specification &rarr;</a>
 </article>
-<article class="acard" data-cat="widebody" data-slug="boeing-787" data-wingspan="60.12" data-length="68.28" data-height="17.02" data-mtow="254011" data-year="2009" data-name="boeing 787 dreamliner">
+<article class="acard" data-cat="widebody" data-slug="boeing-787" data-wingspan="60.12" data-length="68.28" data-height="17.02" data-mtow="254011" data-year="2009" data-name="boeing 787 dreamliner" data-manufacturer="boeing">
 <button class="addcmp" type="button" data-slug="boeing-787" data-short="Boeing 787" aria-pressed="false" title="Add to compare tray" aria-label="Add Boeing 787 Dreamliner to the compare tray">⇄</button>
-<div class="sil"><div class="silbox" title="Wingspan 60.12 m — drawn at 82% of the widest wings ever built"><svg viewBox="0 49 260 72" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:82%">
+<div class="sil"><div class="silbox" style="--pct:82%" title="Wingspan 60.12 m — drawn at 82% of the widest wings ever built"><svg viewBox="0 49 260 72" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:var(--silw,82%);--silw-d:82%;color:#3E6FB0">
 <g fill="currentColor"><path d="M20.0 94.4 L126.7 108.4 L133.3 108.4 L240.0 94.4 L240.0 96.2 L133.3 113.4 L126.7 113.4 L20.0 96.2 Z"/>
 <path d="M20.0 94.4 L14.0 89.4 L17.0 89.4 L23.0 96.2 Z"/>
 <path d="M240.0 94.4 L246.0 89.4 L243.0 89.4 L237.0 96.2 Z"/>
@@ -672,9 +674,9 @@
 <div class="stats"><div><span class="k">Length (787-10)</span><span class="v">68.28 m</span></div><div><span class="k">Wingspan</span><span class="v">60.12 m</span></div><div><span class="k">Height</span><span class="v">17.02 m</span></div><div><span class="k">MTOW</span><span class="v">254,011 kg</span></div></div>
 <a class="mini" href="/aircraft/boeing-787">Full specification &rarr;</a>
 </article>
-<article class="acard" data-cat="widebody" data-slug="ilyushin-il-96" data-wingspan="60.11" data-length="63.94" data-height="15.7" data-mtow="270000" data-year="1988" data-name="ilyushin il-96">
+<article class="acard" data-cat="widebody" data-slug="ilyushin-il-96" data-wingspan="60.11" data-length="63.94" data-height="15.7" data-mtow="270000" data-year="1988" data-name="ilyushin il-96" data-manufacturer="ilyushin">
 <button class="addcmp" type="button" data-slug="ilyushin-il-96" data-short="Ilyushin Il-96" aria-pressed="false" title="Add to compare tray" aria-label="Add Ilyushin Il-96 to the compare tray">⇄</button>
-<div class="sil"><div class="silbox" title="Wingspan 60.11 m — drawn at 82% of the widest wings ever built"><svg viewBox="0 54 260 67" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:82%">
+<div class="sil"><div class="silbox" style="--pct:82%" title="Wingspan 60.11 m — drawn at 82% of the widest wings ever built"><svg viewBox="0 54 260 67" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:var(--silw,82%);--silw-d:82%;color:#3E6FB0">
 <g fill="currentColor"><path d="M16.0 98.5 L126.5 109.5 L133.5 109.5 L244.0 98.5 L244.0 100.5 L133.5 114.5 L126.5 114.5 L16.0 100.5 Z"/>
 <path d="M16.5 94.5 L14.0 94.5 L14.0 103.5 L16.5 103.5 Z"/>
 <path d="M243.5 94.5 L246.0 94.5 L246.0 103.5 L243.5 103.5 Z"/>
@@ -693,9 +695,9 @@
 <div class="stats"><div><span class="k">Length (Il-96-400)</span><span class="v">63.94 m</span></div><div><span class="k">Wingspan</span><span class="v">60.11 m</span></div><div><span class="k">Height</span><span class="v">15.70 m</span></div><div><span class="k">MTOW (-400)</span><span class="v">270,000 kg</span></div></div>
 <a class="mini" href="/aircraft/ilyushin-il-96">Full specification &rarr;</a>
 </article>
-<article class="acard" data-cat="bombers" data-slug="boeing-b-52" data-wingspan="56.4" data-length="48.5" data-height="12.4" data-mtow="219600" data-year="1952" data-name="boeing b-52 stratofortress">
+<article class="acard" data-cat="bombers" data-slug="boeing-b-52" data-wingspan="56.4" data-length="48.5" data-height="12.4" data-mtow="219600" data-year="1952" data-name="boeing b-52 stratofortress" data-manufacturer="boeing">
 <button class="addcmp" type="button" data-slug="boeing-b-52" data-short="Boeing B-52" aria-pressed="false" title="Add to compare tray" aria-label="Add Boeing B-52 Stratofortress to the compare tray">⇄</button>
-<div class="sil"><div class="silbox" title="Wingspan 56.4 m — drawn at 80% of the widest wings ever built"><svg viewBox="0 64 260 57" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:80%">
+<div class="sil"><div class="silbox" style="--pct:80%" title="Wingspan 56.4 m — drawn at 80% of the widest wings ever built"><svg viewBox="0 64 260 57" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:var(--silw,80%);--silw-d:80%;color:#3B4657">
 <g fill="currentColor"><path d="M14.0 113.0 L127.7 104.0 L132.3 104.0 L246.0 113.0 L246.0 114.9 L132.3 108.8 L127.7 108.8 L14.0 114.9 Z"/>
 <path d="M98.9 107.1 L102.1 107.1 L102.1 112.8 L98.9 112.8 Z"/>
 <path d="M100.6 112.8 L100.6 113.3 L100.4 113.8 L100.2 114.3 L100.0 114.8 L99.6 115.2 L99.2 115.5 L98.8 115.8 L98.3 116.0 L97.7 116.2 L97.2 116.2 L96.7 116.2 L96.2 116.0 L95.7 115.8 L95.2 115.5 L94.8 115.2 L94.5 114.8 L94.2 114.3 L94.0 113.8 L93.9 113.3 L93.8 112.8 L93.9 112.3 L94.0 111.7 L94.2 111.3 L94.5 110.8 L94.8 110.4 L95.2 110.0 L95.7 109.8 L96.2 109.6 L96.7 109.4 L97.2 109.4 L97.7 109.4 L98.3 109.6 L98.8 109.8 L99.2 110.0 L99.6 110.4 L100.0 110.8 L100.2 111.3 L100.4 111.7 L100.6 112.3 Z M99.0 112.8 L98.9 113.3 L98.7 113.8 L98.4 114.1 L97.9 114.4 L97.5 114.5 L97.0 114.5 L96.5 114.4 L96.1 114.1 L95.7 113.8 L95.5 113.3 L95.4 112.8 L95.5 112.3 L95.7 111.8 L96.1 111.5 L96.5 111.2 L97.0 111.0 L97.5 111.0 L97.9 111.2 L98.4 111.5 L98.7 111.8 L98.9 112.3 Z" fill-rule="evenodd"/>
@@ -716,9 +718,9 @@
 <div class="stats"><div><span class="k">Length</span><span class="v">48.50 m</span></div><div><span class="k">Wingspan</span><span class="v">56.40 m</span></div><div><span class="k">Height</span><span class="v">12.40 m</span></div><div><span class="k">MTOW</span><span class="v">219,600 kg</span></div></div>
 <a class="mini" href="/aircraft/boeing-b-52">Full specification &rarr;</a>
 </article>
-<article class="acard" data-cat="bombers" data-slug="tupolev-tu-160" data-wingspan="55.7" data-length="54.1" data-height="13.1" data-mtow="275000" data-year="1981" data-name="tupolev tu-160">
+<article class="acard" data-cat="bombers" data-slug="tupolev-tu-160" data-wingspan="55.7" data-length="54.1" data-height="13.1" data-mtow="275000" data-year="1981" data-name="tupolev tu-160" data-manufacturer="tupolev">
 <button class="addcmp" type="button" data-slug="tupolev-tu-160" data-short="Tupolev Tu-160" aria-pressed="false" title="Add to compare tray" aria-label="Add Tupolev Tu-160 to the compare tray">⇄</button>
-<div class="sil"><div class="silbox" title="Wingspan 55.7 m — drawn at 79% of the widest wings ever built"><svg viewBox="0 60 260 61" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:79%">
+<div class="sil"><div class="silbox" style="--pct:79%" title="Wingspan 55.7 m — drawn at 79% of the widest wings ever built"><svg viewBox="0 60 260 61" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:var(--silw,79%);--silw-d:79%;color:#3B4657">
 <g fill="currentColor"><path d="M14.0 109.8 L127.8 106.8 L132.2 106.8 L246.0 109.8 L246.0 111.4 L132.2 111.0 L127.8 111.0 L14.0 111.4 Z"/>
 <path d="M110.1 108.1 L113.3 108.1 L113.3 114.5 L110.1 114.5 Z"/>
 <path d="M105.7 111.1 L117.7 111.1 L117.7 118.0 L105.7 118.0 Z M107.1 112.6 L116.2 112.6 L116.2 116.4 L107.1 116.4 Z" fill-rule="evenodd"/>
@@ -731,9 +733,9 @@
 <div class="stats"><div><span class="k">Length</span><span class="v">54.10 m</span></div><div><span class="k">Wingspan (spread)</span><span class="v">55.70 m</span></div><div><span class="k">Wingspan (swept)</span><span class="v">35.60 m</span></div><div><span class="k">Height</span><span class="v">13.10 m</span></div></div>
 <a class="mini" href="/aircraft/tupolev-tu-160">Full specification &rarr;</a>
 </article>
-<article class="acard" data-cat="widebody" data-slug="boeing-767" data-wingspan="51.92" data-length="61.37" data-height="16.87" data-mtow="204116" data-year="1981" data-name="boeing 767">
+<article class="acard" data-cat="widebody" data-slug="boeing-767" data-wingspan="51.92" data-length="61.37" data-height="16.87" data-mtow="204116" data-year="1981" data-name="boeing 767" data-manufacturer="boeing">
 <button class="addcmp" type="button" data-slug="boeing-767" data-short="Boeing 767" aria-pressed="false" title="Add to compare tray" aria-label="Add Boeing 767 to the compare tray">⇄</button>
-<div class="sil"><div class="silbox" title="Wingspan 51.92 m — drawn at 77% of the widest wings ever built"><svg viewBox="0 39 260 82" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:77%">
+<div class="sil"><div class="silbox" style="--pct:77%" title="Wingspan 51.92 m — drawn at 77% of the widest wings ever built"><svg viewBox="0 39 260 82" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:var(--silw,77%);--silw-d:77%;color:#3E6FB0">
 <g fill="currentColor"><path d="M20.0 96.6 L126.6 108.6 L133.4 108.6 L240.0 96.6 L240.0 98.5 L133.4 113.6 L126.6 113.6 L20.0 98.5 Z"/>
 <path d="M20.0 96.6 L14.0 91.6 L17.0 91.6 L23.0 98.5 Z"/>
 <path d="M240.0 96.6 L246.0 91.6 L243.0 91.6 L237.0 98.5 Z"/>
@@ -748,9 +750,9 @@
 <div class="stats"><div><span class="k">Length (767-400ER)</span><span class="v">61.37 m</span></div><div><span class="k">Wingspan (-400ER)</span><span class="v">51.92 m</span></div><div><span class="k">Height</span><span class="v">16.87 m</span></div><div><span class="k">MTOW (-400ER)</span><span class="v">204,116 kg</span></div></div>
 <a class="mini" href="/aircraft/boeing-767">Full specification &rarr;</a>
 </article>
-<article class="acard" data-cat="military-transports" data-slug="boeing-c-17" data-wingspan="51.75" data-length="53.04" data-height="16.8" data-mtow="265352" data-year="1991" data-name="boeing c-17 globemaster iii">
+<article class="acard" data-cat="military-transports" data-slug="boeing-c-17" data-wingspan="51.75" data-length="53.04" data-height="16.8" data-mtow="265352" data-year="1991" data-name="boeing c-17 globemaster iii" data-manufacturer="boeing">
 <button class="addcmp" type="button" data-slug="boeing-c-17" data-short="Boeing C-17" aria-pressed="false" title="Add to compare tray" aria-label="Add Boeing C-17 Globemaster III to the compare tray">⇄</button>
-<div class="sil"><div class="silbox" title="Wingspan 51.75 m — drawn at 77% of the widest wings ever built"><svg viewBox="0 39 260 82" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:77%">
+<div class="sil"><div class="silbox" style="--pct:77%" title="Wingspan 51.75 m — drawn at 77% of the widest wings ever built"><svg viewBox="0 39 260 82" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:var(--silw,77%);--silw-d:77%;color:#5F7488">
 <g fill="currentColor"><path d="M16.0 105.3 L125.6 97.3 L134.4 97.3 L244.0 105.3 L244.0 107.6 L134.4 102.9 L125.6 102.9 L16.0 107.6 Z"/>
 <path d="M16.5 101.3 L14.0 101.3 L14.0 110.6 L16.5 110.6 Z"/>
 <path d="M243.5 101.3 L246.0 101.3 L246.0 110.6 L243.5 110.6 Z"/>
@@ -770,9 +772,9 @@
 <div class="stats"><div><span class="k">Length</span><span class="v">53.04 m</span></div><div><span class="k">Wingspan</span><span class="v">51.75 m</span></div><div><span class="k">Height</span><span class="v">16.80 m</span></div><div><span class="k">MTOW</span><span class="v">265,352 kg</span></div></div>
 <a class="mini" href="/aircraft/boeing-c-17">Full specification &rarr;</a>
 </article>
-<article class="acard" data-cat="trijets" data-slug="mcdonnell-douglas-md-11" data-wingspan="51.66" data-length="61.62" data-height="17.6" data-mtow="286000" data-year="1990" data-name="mcdonnell douglas md-11">
+<article class="acard" data-cat="trijets" data-slug="mcdonnell-douglas-md-11" data-wingspan="51.66" data-length="61.62" data-height="17.6" data-mtow="286000" data-year="1990" data-name="mcdonnell douglas md-11" data-manufacturer="mcdonnell douglas">
 <button class="addcmp" type="button" data-slug="mcdonnell-douglas-md-11" data-short="MD-11" aria-pressed="false" title="Add to compare tray" aria-label="Add McDonnell Douglas MD-11 to the compare tray">⇄</button>
-<div class="sil"><div class="silbox" title="Wingspan 51.66 m — drawn at 77% of the widest wings ever built"><svg viewBox="0 36 260 85" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:77%">
+<div class="sil"><div class="silbox" style="--pct:77%" title="Wingspan 51.66 m — drawn at 77% of the widest wings ever built"><svg viewBox="0 59 260 61" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:var(--silw,77%);--silw-d:77%;color:#7E6A9E">
 <g fill="currentColor"><path d="M16.0 97.5 L125.9 108.5 L134.1 108.5 L244.0 97.5 L244.0 99.5 L134.1 113.7 L125.9 113.7 L16.0 99.5 Z"/>
 <path d="M16.5 93.5 L14.0 93.5 L14.0 102.5 L16.5 102.5 Z"/>
 <path d="M243.5 93.5 L246.0 93.5 L246.0 102.5 L243.5 102.5 Z"/>
@@ -781,16 +783,16 @@
 <path d="M176.8 104.6 L180.0 104.6 L180.0 111.9 L176.8 111.9 Z"/>
 <path d="M184.2 111.9 L184.1 112.8 L183.9 113.7 L183.5 114.5 L183.1 115.3 L182.5 116.0 L181.8 116.6 L181.0 117.0 L180.2 117.4 L179.3 117.6 L178.4 117.7 L177.5 117.6 L176.6 117.4 L175.7 117.0 L175.0 116.6 L174.3 116.0 L173.7 115.3 L173.2 114.5 L172.8 113.7 L172.6 112.8 L172.6 111.9 L172.6 111.0 L172.8 110.1 L173.2 109.2 L173.7 108.5 L174.3 107.8 L175.0 107.2 L175.7 106.7 L176.6 106.4 L177.5 106.1 L178.4 106.1 L179.3 106.1 L180.2 106.4 L181.0 106.7 L181.8 107.2 L182.5 107.8 L183.1 108.5 L183.5 109.2 L183.9 110.1 L184.1 111.0 Z M181.6 111.9 L181.4 112.7 L181.1 113.5 L180.6 114.1 L180.0 114.6 L179.2 115.0 L178.4 115.1 L177.5 115.0 L176.8 114.6 L176.1 114.1 L175.6 113.5 L175.3 112.7 L175.2 111.9 L175.3 111.0 L175.6 110.3 L176.1 109.6 L176.8 109.1 L177.5 108.8 L178.4 108.7 L179.2 108.8 L180.0 109.1 L180.6 109.6 L181.1 110.3 L181.4 111.0 Z" fill-rule="evenodd"/>
 <path d="M134.6 88.5 L134.5 89.2 L134.4 89.9 L134.1 90.5 L133.7 91.2 L133.3 91.7 L132.7 92.2 L132.1 92.6 L131.4 92.8 L130.7 93.0 L130.0 93.1 L129.3 93.0 L128.6 92.8 L127.9 92.6 L127.3 92.2 L126.7 91.7 L126.3 91.2 L125.9 90.5 L125.6 89.9 L125.5 89.2 L125.4 88.5 L125.5 87.7 L125.6 87.0 L125.9 86.4 L126.3 85.7 L126.7 85.2 L127.3 84.7 L127.9 84.4 L128.6 84.1 L129.3 83.9 L130.0 83.9 L130.7 83.9 L131.4 84.1 L132.1 84.4 L132.7 84.7 L133.3 85.2 L133.7 85.7 L134.1 86.4 L134.4 87.0 L134.5 87.7 Z M132.4 88.5 L132.3 89.1 L132.0 89.7 L131.6 90.3 L131.0 90.6 L130.3 90.8 L129.7 90.8 L129.0 90.6 L128.4 90.3 L128.0 89.7 L127.7 89.1 L127.6 88.5 L127.7 87.8 L128.0 87.2 L128.4 86.6 L129.0 86.3 L129.7 86.1 L130.3 86.1 L131.0 86.3 L131.6 86.6 L132.0 87.2 L132.3 87.8 Z" fill-rule="evenodd"/>
-<path d="M126.4 104.5 L128.6 39.0 L131.4 39.0 L133.6 104.5 Z"/>
+<path d="M126.4 104.5 L128.6 62 L131.4 62 L133.6 104.5 Z"/>
 <path d="M143.5 104.5 L143.4 106.6 L142.9 108.7 L142.0 110.6 L140.9 112.4 L139.6 114.1 L137.9 115.4 L136.1 116.5 L134.2 117.4 L132.1 117.9 L130.0 118.0 L127.9 117.9 L125.8 117.4 L123.9 116.5 L122.1 115.4 L120.4 114.1 L119.1 112.4 L118.0 110.6 L117.1 108.7 L116.6 106.6 L116.5 104.5 L116.6 102.4 L117.1 100.3 L118.0 98.4 L119.1 96.6 L120.4 94.9 L122.1 93.6 L123.9 92.5 L125.8 91.6 L127.9 91.1 L130.0 91.0 L132.1 91.1 L134.2 91.6 L136.1 92.5 L137.9 93.6 L139.6 94.9 L140.9 96.6 L142.0 98.4 L142.9 100.3 L143.4 102.4 Z M123.0 104.1 L137.0 104.1 L137.0 105.9 L123.0 105.9 Z" fill-rule="evenodd"/></g></svg></div></div>
 <h3><a href="/aircraft/mcdonnell-douglas-md-11">McDonnell Douglas MD-11</a></h3>
 <p class="kicker">McDonnell Douglas · In service (freighters)</p>
 <div class="stats"><div><span class="k">Length</span><span class="v">61.62 m</span></div><div><span class="k">Wingspan</span><span class="v">51.66 m</span></div><div><span class="k">Height</span><span class="v">17.60 m</span></div><div><span class="k">MTOW</span><span class="v">286,000 kg</span></div></div>
 <a class="mini" href="/aircraft/mcdonnell-douglas-md-11">Full specification &rarr;</a>
 </article>
-<article class="acard" data-cat="propliners" data-slug="tupolev-tu-114" data-wingspan="51.1" data-length="54.1" data-height="15.5" data-mtow="175000" data-year="1957" data-name="tupolev tu-114">
+<article class="acard" data-cat="propliners" data-slug="tupolev-tu-114" data-wingspan="51.1" data-length="54.1" data-height="15.5" data-mtow="175000" data-year="1957" data-name="tupolev tu-114" data-manufacturer="tupolev">
 <button class="addcmp" type="button" data-slug="tupolev-tu-114" data-short="Tupolev Tu-114" aria-pressed="false" title="Add to compare tray" aria-label="Add Tupolev Tu-114 to the compare tray">⇄</button>
-<div class="sil"><div class="silbox" title="Wingspan 51.1 m — drawn at 77% of the widest wings ever built"><svg viewBox="0 44 260 77" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:77%">
+<div class="sil"><div class="silbox" style="--pct:77%" title="Wingspan 51.1 m — drawn at 77% of the widest wings ever built"><svg viewBox="0 44 260 77" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:var(--silw,77%);--silw-d:77%;color:#8AA98C">
 <g fill="currentColor"><path d="M14.0 114.2 L127.1 108.2 L132.9 108.2 L246.0 114.2 L246.0 116.1 L132.9 113.0 L127.1 113.0 L14.0 116.1 Z"/>
 <path d="M102.2 111.9 L102.2 112.7 L102.0 113.5 L101.7 114.3 L101.3 114.9 L100.7 115.6 L100.1 116.1 L99.4 116.5 L98.7 116.8 L97.9 117.0 L97.0 117.1 L96.2 117.0 L95.4 116.8 L94.7 116.5 L94.0 116.1 L93.4 115.6 L92.8 114.9 L92.4 114.3 L92.1 113.5 L91.9 112.7 L91.8 111.9 L91.9 111.1 L92.1 110.3 L92.4 109.5 L92.8 108.8 L93.4 108.2 L94.0 107.7 L94.7 107.3 L95.4 106.9 L96.2 106.8 L97.0 106.7 L97.9 106.8 L98.7 106.9 L99.4 107.3 L100.1 107.7 L100.7 108.2 L101.3 108.8 L101.7 109.5 L102.0 110.3 L102.2 111.1 Z M101.5 111.9 L101.4 112.9 L101.1 113.8 L100.5 114.7 L99.8 115.4 L99.0 115.9 L98.0 116.3 L97.0 116.4 L96.0 116.3 L95.1 115.9 L94.3 115.4 L93.5 114.7 L93.0 113.8 L92.7 112.9 L92.6 111.9 L92.7 110.9 L93.0 110.0 L93.5 109.1 L94.3 108.4 L95.1 107.9 L96.0 107.5 L97.0 107.4 L98.0 107.5 L99.0 107.9 L99.8 108.4 L100.5 109.1 L101.1 110.0 L101.4 110.9 Z" fill-rule="evenodd"/>
 <path d="M99.2 111.9 L99.1 112.6 L98.8 113.2 L98.3 113.7 L97.7 114.0 L97.0 114.1 L96.4 114.0 L95.8 113.7 L95.3 113.2 L95.0 112.6 L94.9 111.9 L95.0 111.2 L95.3 110.6 L95.8 110.1 L96.4 109.8 L97.0 109.7 L97.7 109.8 L98.3 110.1 L98.8 110.6 L99.1 111.2 Z"/>
@@ -807,9 +809,9 @@
 <div class="stats"><div><span class="k">Length</span><span class="v">54.10 m</span></div><div><span class="k">Wingspan</span><span class="v">51.10 m</span></div><div><span class="k">Height</span><span class="v">15.50 m</span></div><div><span class="k">MTOW</span><span class="v">175,000 kg</span></div></div>
 <a class="mini" href="/aircraft/tupolev-tu-114">Full specification &rarr;</a>
 </article>
-<article class="acard" data-cat="freighters" data-slug="ilyushin-il-76" data-wingspan="50.5" data-length="46.59" data-height="14.76" data-mtow="195000" data-year="1971" data-name="ilyushin il-76">
+<article class="acard" data-cat="freighters" data-slug="ilyushin-il-76" data-wingspan="50.5" data-length="46.59" data-height="14.76" data-mtow="195000" data-year="1971" data-name="ilyushin il-76" data-manufacturer="ilyushin">
 <button class="addcmp" type="button" data-slug="ilyushin-il-76" data-short="Ilyushin Il-76" aria-pressed="false" title="Add to compare tray" aria-label="Add Ilyushin Il-76 to the compare tray">⇄</button>
-<div class="sil"><div class="silbox" title="Wingspan 50.5 m — drawn at 76% of the widest wings ever built"><svg viewBox="0 47 260 74" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:76%">
+<div class="sil"><div class="silbox" style="--pct:76%" title="Wingspan 50.5 m — drawn at 76% of the widest wings ever built"><svg viewBox="0 47 260 74" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:var(--silw,76%);--silw-d:76%;color:#4E7C77">
 <g fill="currentColor"><path d="M14.0 107.6 L126.7 100.6 L133.3 100.6 L246.0 107.6 L246.0 109.7 L133.3 105.8 L126.7 105.8 L14.0 109.7 Z"/>
 <path d="M92.2 103.6 L95.4 103.6 L95.4 110.5 L92.2 110.5 Z"/>
 <path d="M98.6 110.5 L98.5 111.2 L98.3 112.0 L98.1 112.7 L97.7 113.3 L97.2 113.9 L96.6 114.4 L96.0 114.8 L95.3 115.0 L94.5 115.2 L93.8 115.3 L93.0 115.2 L92.3 115.0 L91.6 114.8 L91.0 114.4 L90.4 113.9 L89.9 113.3 L89.5 112.7 L89.2 112.0 L89.0 111.2 L89.0 110.5 L89.0 109.7 L89.2 109.0 L89.5 108.3 L89.9 107.7 L90.4 107.1 L91.0 106.6 L91.6 106.2 L92.3 105.9 L93.0 105.7 L93.8 105.7 L94.5 105.7 L95.3 105.9 L96.0 106.2 L96.6 106.6 L97.2 107.1 L97.7 107.7 L98.1 108.3 L98.3 109.0 L98.5 109.7 Z M96.4 110.5 L96.3 111.2 L96.1 111.8 L95.6 112.3 L95.1 112.8 L94.5 113.0 L93.8 113.1 L93.1 113.0 L92.5 112.8 L91.9 112.3 L91.5 111.8 L91.2 111.2 L91.1 110.5 L91.2 109.8 L91.5 109.2 L91.9 108.6 L92.5 108.2 L93.1 107.9 L93.8 107.8 L94.5 107.9 L95.1 108.2 L95.6 108.6 L96.1 109.2 L96.3 109.8 Z" fill-rule="evenodd"/>
@@ -827,25 +829,25 @@
 <div class="stats"><div><span class="k">Length</span><span class="v">46.59 m</span></div><div><span class="k">Wingspan</span><span class="v">50.50 m</span></div><div><span class="k">Height</span><span class="v">14.76 m</span></div><div><span class="k">MTOW (MD-90A)</span><span class="v">≈210,000 kg</span></div></div>
 <a class="mini" href="/aircraft/ilyushin-il-76">Full specification &rarr;</a>
 </article>
-<article class="acard" data-cat="trijets" data-slug="mcdonnell-douglas-dc-10" data-wingspan="50.4" data-length="55.5" data-height="17.7" data-mtow="259450" data-year="1970" data-name="mcdonnell douglas dc-10">
+<article class="acard" data-cat="trijets" data-slug="mcdonnell-douglas-dc-10" data-wingspan="50.4" data-length="55.5" data-height="17.7" data-mtow="259450" data-year="1970" data-name="mcdonnell douglas dc-10" data-manufacturer="mcdonnell douglas">
 <button class="addcmp" type="button" data-slug="mcdonnell-douglas-dc-10" data-short="DC-10" aria-pressed="false" title="Add to compare tray" aria-label="Add McDonnell Douglas DC-10 to the compare tray">⇄</button>
-<div class="sil"><div class="silbox" title="Wingspan 50.4 m — drawn at 76% of the widest wings ever built"><svg viewBox="0 33 260 88" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:76%">
+<div class="sil"><div class="silbox" style="--pct:76%" title="Wingspan 50.4 m — drawn at 76% of the widest wings ever built"><svg viewBox="0 58 260 62" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:var(--silw,76%);--silw-d:76%;color:#7E6A9E">
 <g fill="currentColor"><path d="M14.0 98.1 L125.8 108.1 L134.2 108.1 L246.0 98.1 L246.0 100.1 L134.2 113.3 L125.8 113.3 L14.0 100.1 Z"/>
 <path d="M79.8 104.7 L83.0 104.7 L83.0 111.9 L79.8 111.9 Z"/>
 <path d="M87.2 111.9 L87.1 112.9 L86.9 113.7 L86.6 114.6 L86.1 115.4 L85.5 116.0 L84.8 116.6 L84.0 117.1 L83.2 117.5 L82.3 117.7 L81.4 117.7 L80.5 117.7 L79.6 117.5 L78.8 117.1 L78.0 116.6 L77.3 116.0 L76.7 115.4 L76.2 114.6 L75.9 113.7 L75.7 112.9 L75.6 111.9 L75.7 111.0 L75.9 110.2 L76.2 109.3 L76.7 108.5 L77.3 107.8 L78.0 107.3 L78.8 106.8 L79.6 106.4 L80.5 106.2 L81.4 106.1 L82.3 106.2 L83.2 106.4 L84.0 106.8 L84.8 107.3 L85.5 107.8 L86.1 108.5 L86.6 109.3 L86.9 110.2 L87.1 111.0 Z M84.6 111.9 L84.5 112.8 L84.2 113.5 L83.7 114.2 L83.0 114.7 L82.2 115.0 L81.4 115.1 L80.6 115.0 L79.8 114.7 L79.2 114.2 L78.7 113.5 L78.3 112.8 L78.2 111.9 L78.3 111.1 L78.7 110.4 L79.2 109.7 L79.8 109.2 L80.6 108.9 L81.4 108.8 L82.2 108.9 L83.0 109.2 L83.7 109.7 L84.2 110.4 L84.5 111.1 Z" fill-rule="evenodd"/>
 <path d="M177.0 104.7 L180.2 104.7 L180.2 111.9 L177.0 111.9 Z"/>
 <path d="M184.4 111.9 L184.3 112.9 L184.1 113.7 L183.8 114.6 L183.3 115.4 L182.7 116.0 L182.0 116.6 L181.2 117.1 L180.4 117.5 L179.5 117.7 L178.6 117.7 L177.7 117.7 L176.8 117.5 L176.0 117.1 L175.2 116.6 L174.5 116.0 L173.9 115.4 L173.4 114.6 L173.1 113.7 L172.9 112.9 L172.8 111.9 L172.9 111.0 L173.1 110.2 L173.4 109.3 L173.9 108.5 L174.5 107.8 L175.2 107.3 L176.0 106.8 L176.8 106.4 L177.7 106.2 L178.6 106.1 L179.5 106.2 L180.4 106.4 L181.2 106.8 L182.0 107.3 L182.7 107.8 L183.3 108.5 L183.8 109.3 L184.1 110.2 L184.3 111.0 Z M181.8 111.9 L181.7 112.8 L181.3 113.5 L180.8 114.2 L180.2 114.7 L179.4 115.0 L178.6 115.1 L177.8 115.0 L177.0 114.7 L176.3 114.2 L175.8 113.5 L175.5 112.8 L175.4 111.9 L175.5 111.1 L175.8 110.4 L176.3 109.7 L177.0 109.2 L177.8 108.9 L178.6 108.8 L179.4 108.9 L180.2 109.2 L180.8 109.7 L181.3 110.4 L181.7 111.1 Z" fill-rule="evenodd"/>
 <path d="M134.8 87.6 L134.7 88.4 L134.6 89.1 L134.3 89.8 L133.9 90.4 L133.4 91.0 L132.8 91.5 L132.2 91.9 L131.5 92.2 L130.8 92.3 L130.0 92.4 L129.2 92.3 L128.5 92.2 L127.8 91.9 L127.2 91.5 L126.6 91.0 L126.1 90.4 L125.7 89.8 L125.4 89.1 L125.3 88.4 L125.2 87.6 L125.3 86.9 L125.4 86.1 L125.7 85.4 L126.1 84.8 L126.6 84.2 L127.2 83.7 L127.8 83.3 L128.5 83.0 L129.2 82.9 L130.0 82.8 L130.8 82.9 L131.5 83.0 L132.2 83.3 L132.8 83.7 L133.4 84.2 L133.9 84.8 L134.3 85.4 L134.6 86.1 L134.7 86.9 Z M132.5 87.6 L132.4 88.3 L132.1 89.0 L131.6 89.5 L131.0 89.9 L130.4 90.1 L129.6 90.1 L129.0 89.9 L128.4 89.5 L127.9 89.0 L127.6 88.3 L127.5 87.6 L127.6 86.9 L127.9 86.3 L128.4 85.7 L129.0 85.3 L129.6 85.1 L130.4 85.1 L131.0 85.3 L131.6 85.7 L132.1 86.3 L132.4 86.9 Z" fill-rule="evenodd"/>
-<path d="M126.3 104.1 L128.5 36.5 L131.5 36.5 L133.7 104.1 Z"/>
+<path d="M126.3 104.1 L128.5 61 L131.5 61 L133.7 104.1 Z"/>
 <path d="M143.9 104.1 L143.7 106.3 L143.2 108.4 L142.3 110.4 L141.2 112.2 L139.8 113.9 L138.1 115.3 L136.3 116.4 L134.3 117.3 L132.2 117.8 L130.0 118.0 L127.8 117.8 L125.7 117.3 L123.7 116.4 L121.9 115.3 L120.2 113.9 L118.8 112.2 L117.7 110.4 L116.8 108.4 L116.3 106.3 L116.1 104.1 L116.3 101.9 L116.8 99.8 L117.7 97.8 L118.8 96.0 L120.2 94.3 L121.9 92.9 L123.7 91.8 L125.7 90.9 L127.8 90.4 L130.0 90.2 L132.2 90.4 L134.3 90.9 L136.3 91.8 L138.1 92.9 L139.8 94.3 L141.2 96.0 L142.3 97.8 L143.2 99.8 L143.7 101.9 Z M122.8 103.7 L137.2 103.7 L137.2 105.5 L122.8 105.5 Z" fill-rule="evenodd"/></g></svg></div></div>
 <h3><a href="/aircraft/mcdonnell-douglas-dc-10">McDonnell Douglas DC-10</a></h3>
 <p class="kicker">McDonnell Douglas · Retired (special missions)</p>
 <div class="stats"><div><span class="k">Length (DC-10-30)</span><span class="v">55.50 m</span></div><div><span class="k">Wingspan</span><span class="v">50.40 m</span></div><div><span class="k">Height</span><span class="v">17.70 m</span></div><div><span class="k">MTOW (-30)</span><span class="v">259,450 kg</span></div></div>
 <a class="mini" href="/aircraft/mcdonnell-douglas-dc-10">Full specification &rarr;</a>
 </article>
-<article class="acard" data-cat="widebody" data-slug="ilyushin-il-86" data-wingspan="48.06" data-length="59.54" data-height="15.68" data-mtow="215000" data-year="1976" data-name="ilyushin il-86">
+<article class="acard" data-cat="widebody" data-slug="ilyushin-il-86" data-wingspan="48.06" data-length="59.54" data-height="15.68" data-mtow="215000" data-year="1976" data-name="ilyushin il-86" data-manufacturer="ilyushin">
 <button class="addcmp" type="button" data-slug="ilyushin-il-86" data-short="Ilyushin Il-86" aria-pressed="false" title="Add to compare tray" aria-label="Add Ilyushin Il-86 to the compare tray">⇄</button>
-<div class="sil"><div class="silbox" title="Wingspan 48.06 m — drawn at 75% of the widest wings ever built"><svg viewBox="0 39 260 82" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:75%">
+<div class="sil"><div class="silbox" style="--pct:75%" title="Wingspan 48.06 m — drawn at 75% of the widest wings ever built"><svg viewBox="0 39 260 82" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:var(--silw,75%);--silw-d:75%;color:#3E6FB0">
 <g fill="currentColor"><path d="M14.0 97.3 L125.6 107.3 L134.4 107.3 L246.0 97.3 L246.0 99.4 L134.4 112.5 L125.6 112.5 L14.0 99.4 Z"/>
 <path d="M87.4 104.6 L90.6 104.6 L90.6 111.5 L87.4 111.5 Z"/>
 <path d="M94.0 111.5 L93.9 112.2 L93.7 113.0 L93.4 113.7 L93.0 114.4 L92.5 115.0 L91.9 115.5 L91.3 115.9 L90.5 116.2 L89.8 116.4 L89.0 116.5 L88.2 116.4 L87.4 116.2 L86.7 115.9 L86.0 115.5 L85.4 115.0 L84.9 114.4 L84.5 113.7 L84.2 113.0 L84.0 112.2 L84.0 111.5 L84.0 110.7 L84.2 109.9 L84.5 109.2 L84.9 108.5 L85.4 107.9 L86.0 107.4 L86.7 107.0 L87.4 106.7 L88.2 106.5 L89.0 106.5 L89.8 106.5 L90.5 106.7 L91.3 107.0 L91.9 107.4 L92.5 107.9 L93.0 108.5 L93.4 109.2 L93.7 109.9 L93.9 110.7 Z M91.7 111.5 L91.6 112.2 L91.4 112.8 L90.9 113.4 L90.4 113.8 L89.7 114.1 L89.0 114.2 L88.3 114.1 L87.6 113.8 L87.0 113.4 L86.6 112.8 L86.3 112.2 L86.2 111.5 L86.3 110.8 L86.6 110.1 L87.0 109.5 L87.6 109.1 L88.3 108.8 L89.0 108.7 L89.7 108.8 L90.4 109.1 L90.9 109.5 L91.4 110.1 L91.6 110.8 Z" fill-rule="evenodd"/>
@@ -862,25 +864,25 @@
 <div class="stats"><div><span class="k">Length</span><span class="v">59.54 m</span></div><div><span class="k">Wingspan</span><span class="v">48.06 m</span></div><div><span class="k">Height</span><span class="v">15.68 m</span></div><div><span class="k">MTOW</span><span class="v">215,000 kg</span></div></div>
 <a class="mini" href="/aircraft/ilyushin-il-86">Full specification &rarr;</a>
 </article>
-<article class="acard" data-cat="trijets" data-slug="lockheed-l-1011" data-wingspan="47.34" data-length="54.17" data-height="16.87" data-mtow="195045" data-year="1970" data-name="lockheed l-1011 tristar">
+<article class="acard" data-cat="trijets" data-slug="lockheed-l-1011" data-wingspan="47.34" data-length="54.17" data-height="16.87" data-mtow="195045" data-year="1970" data-name="lockheed l-1011 tristar" data-manufacturer="lockheed">
 <button class="addcmp" type="button" data-slug="lockheed-l-1011" data-short="Lockheed L-1011" aria-pressed="false" title="Add to compare tray" aria-label="Add Lockheed L-1011 TriStar to the compare tray">⇄</button>
-<div class="sil"><div class="silbox" title="Wingspan 47.34 m — drawn at 74% of the widest wings ever built"><svg viewBox="0 32 260 89" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:74%">
+<div class="sil"><div class="silbox" style="--pct:74%" title="Wingspan 47.34 m — drawn at 74% of the widest wings ever built"><svg viewBox="0 57 260 63" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:var(--silw,74%);--silw-d:74%;color:#7E6A9E">
 <g fill="currentColor"><path d="M14.0 97.2 L125.6 107.2 L134.4 107.2 L246.0 97.2 L246.0 99.2 L134.4 112.4 L125.6 112.4 L14.0 99.2 Z"/>
 <path d="M79.2 103.8 L82.4 103.8 L82.4 110.8 L79.2 110.8 Z"/>
 <path d="M86.4 110.8 L86.4 111.7 L86.2 112.6 L85.8 113.4 L85.4 114.1 L84.8 114.8 L84.1 115.4 L83.4 115.8 L82.6 116.2 L81.7 116.4 L80.8 116.4 L79.9 116.4 L79.1 116.2 L78.3 115.8 L77.5 115.4 L76.9 114.8 L76.3 114.1 L75.8 113.4 L75.5 112.6 L75.3 111.7 L75.2 110.8 L75.3 110.0 L75.5 109.1 L75.8 108.3 L76.3 107.5 L76.9 106.9 L77.5 106.3 L78.3 105.8 L79.1 105.5 L79.9 105.3 L80.8 105.2 L81.7 105.3 L82.6 105.5 L83.4 105.8 L84.1 106.3 L84.8 106.9 L85.4 107.5 L85.8 108.3 L86.2 109.1 L86.4 110.0 Z M83.9 110.8 L83.8 111.6 L83.5 112.4 L83.0 113.0 L82.4 113.5 L81.6 113.8 L80.8 113.9 L80.0 113.8 L79.3 113.5 L78.6 113.0 L78.2 112.4 L77.8 111.6 L77.7 110.8 L77.8 110.0 L78.2 109.3 L78.6 108.7 L79.3 108.2 L80.0 107.9 L80.8 107.8 L81.6 107.9 L82.4 108.2 L83.0 108.7 L83.5 109.3 L83.8 110.0 Z" fill-rule="evenodd"/>
 <path d="M177.6 103.8 L180.8 103.8 L180.8 110.8 L177.6 110.8 Z"/>
 <path d="M184.8 110.8 L184.7 111.7 L184.5 112.6 L184.2 113.4 L183.7 114.1 L183.1 114.8 L182.5 115.4 L181.7 115.8 L180.9 116.2 L180.1 116.4 L179.2 116.4 L178.3 116.4 L177.4 116.2 L176.6 115.8 L175.9 115.4 L175.2 114.8 L174.6 114.1 L174.2 113.4 L173.8 112.6 L173.6 111.7 L173.6 110.8 L173.6 110.0 L173.8 109.1 L174.2 108.3 L174.6 107.5 L175.2 106.9 L175.9 106.3 L176.6 105.8 L177.4 105.5 L178.3 105.3 L179.2 105.2 L180.1 105.3 L180.9 105.5 L181.7 105.8 L182.5 106.3 L183.1 106.9 L183.7 107.5 L184.2 108.3 L184.5 109.1 L184.7 110.0 Z M182.3 110.8 L182.2 111.6 L181.8 112.4 L181.4 113.0 L180.7 113.5 L180.0 113.8 L179.2 113.9 L178.4 113.8 L177.6 113.5 L177.0 113.0 L176.5 112.4 L176.2 111.6 L176.1 110.8 L176.2 110.0 L176.5 109.3 L177.0 108.7 L177.6 108.2 L178.4 107.9 L179.2 107.8 L180.0 107.9 L180.7 108.2 L181.4 108.7 L181.8 109.3 L182.2 110.0 Z" fill-rule="evenodd"/>
 <path d="M134.4 86.0 L134.3 86.7 L134.2 87.4 L133.9 88.0 L133.6 88.6 L133.1 89.1 L132.6 89.6 L132.0 89.9 L131.4 90.2 L130.7 90.4 L130.0 90.4 L129.3 90.4 L128.6 90.2 L128.0 89.9 L127.4 89.6 L126.9 89.1 L126.4 88.6 L126.1 88.0 L125.8 87.4 L125.7 86.7 L125.6 86.0 L125.7 85.3 L125.8 84.7 L126.1 84.0 L126.4 83.4 L126.9 82.9 L127.4 82.5 L128.0 82.1 L128.6 81.8 L129.3 81.7 L130.0 81.6 L130.7 81.7 L131.4 81.8 L132.0 82.1 L132.6 82.5 L133.1 82.9 L133.6 83.4 L133.9 84.0 L134.2 84.7 L134.3 85.3 Z M132.3 86.0 L132.2 86.7 L131.9 87.3 L131.5 87.8 L131.0 88.1 L130.3 88.3 L129.7 88.3 L129.0 88.1 L128.5 87.8 L128.1 87.3 L127.8 86.7 L127.7 86.0 L127.8 85.4 L128.1 84.8 L128.5 84.3 L129.0 83.9 L129.7 83.8 L130.3 83.8 L131.0 83.9 L131.5 84.3 L131.9 84.8 L132.2 85.4 Z" fill-rule="evenodd"/>
-<path d="M126.3 103.2 L128.5 35.3 L131.5 35.3 L133.7 103.2 Z"/>
+<path d="M126.3 103.2 L128.5 60 L131.5 60 L133.7 103.2 Z"/>
 <path d="M144.8 103.2 L144.6 105.5 L144.0 107.8 L143.1 109.9 L141.9 111.9 L140.4 113.6 L138.7 115.1 L136.7 116.3 L134.6 117.2 L132.3 117.8 L130.0 118.0 L127.7 117.8 L125.4 117.2 L123.3 116.3 L121.3 115.1 L119.6 113.6 L118.1 111.9 L116.9 109.9 L116.0 107.8 L115.4 105.5 L115.2 103.2 L115.4 100.9 L116.0 98.6 L116.9 96.5 L118.1 94.5 L119.6 92.8 L121.3 91.3 L123.3 90.1 L125.4 89.2 L127.7 88.6 L130.0 88.4 L132.3 88.6 L134.6 89.2 L136.7 90.1 L138.7 91.3 L140.4 92.8 L141.9 94.5 L143.1 96.5 L144.0 98.6 L144.6 100.9 Z M122.3 102.8 L137.7 102.8 L137.7 104.6 L122.3 104.6 Z" fill-rule="evenodd"/></g></svg></div></div>
 <h3><a href="/aircraft/lockheed-l-1011">Lockheed L-1011 TriStar</a></h3>
 <p class="kicker">Lockheed · Retired (one rocket launcher)</p>
 <div class="stats"><div><span class="k">Length (L-1011-1)</span><span class="v">54.17 m</span></div><div><span class="k">Wingspan</span><span class="v">47.34 m</span></div><div><span class="k">Height</span><span class="v">16.87 m</span></div><div><span class="k">MTOW (-200)</span><span class="v">195,045 kg</span></div></div>
 <a class="mini" href="/aircraft/lockheed-l-1011">Full specification &rarr;</a>
 </article>
-<article class="acard" data-cat="narrowbody" data-slug="douglas-dc-8" data-wingspan="45.23" data-length="57.12" data-height="13.11" data-mtow="158757" data-year="1958" data-name="douglas dc-8">
+<article class="acard" data-cat="narrowbody" data-slug="douglas-dc-8" data-wingspan="45.23" data-length="57.12" data-height="13.11" data-mtow="158757" data-year="1958" data-name="douglas dc-8" data-manufacturer="douglas">
 <button class="addcmp" type="button" data-slug="douglas-dc-8" data-short="Douglas DC-8" aria-pressed="false" title="Add to compare tray" aria-label="Add Douglas DC-8 to the compare tray">⇄</button>
-<div class="sil"><div class="silbox" title="Wingspan 45.23 m — drawn at 73% of the widest wings ever built"><svg viewBox="0 47 260 74" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:73%">
+<div class="sil"><div class="silbox" style="--pct:73%" title="Wingspan 45.23 m — drawn at 73% of the widest wings ever built"><svg viewBox="0 47 260 74" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:var(--silw,73%);--silw-d:73%;color:#6FA0C8">
 <g fill="currentColor"><path d="M14.0 100.4 L127.1 110.4 L132.9 110.4 L246.0 100.4 L246.0 102.2 L132.9 114.8 L127.1 114.8 L14.0 102.2 Z"/>
 <path d="M91.2 108.0 L94.4 108.0 L94.4 113.8 L91.2 113.8 Z"/>
 <path d="M97.0 113.8 L96.9 114.4 L96.8 115.1 L96.5 115.7 L96.2 116.2 L95.7 116.7 L95.2 117.2 L94.7 117.5 L94.1 117.8 L93.4 117.9 L92.8 118.0 L92.1 117.9 L91.5 117.8 L90.9 117.5 L90.3 117.2 L89.8 116.7 L89.4 116.2 L89.0 115.7 L88.8 115.1 L88.6 114.4 L88.6 113.8 L88.6 113.1 L88.8 112.5 L89.0 111.9 L89.4 111.3 L89.8 110.8 L90.3 110.4 L90.9 110.0 L91.5 109.8 L92.1 109.6 L92.8 109.6 L93.4 109.6 L94.1 109.8 L94.7 110.0 L95.2 110.4 L95.7 110.8 L96.2 111.3 L96.5 111.9 L96.8 112.5 L96.9 113.1 Z M95.1 113.8 L95.0 114.4 L94.8 114.9 L94.4 115.4 L93.9 115.8 L93.4 116.0 L92.8 116.1 L92.2 116.0 L91.6 115.8 L91.1 115.4 L90.8 114.9 L90.5 114.4 L90.5 113.8 L90.5 113.2 L90.8 112.6 L91.1 112.1 L91.6 111.8 L92.2 111.5 L92.8 111.5 L93.4 111.5 L93.9 111.8 L94.4 112.1 L94.8 112.6 L95.0 113.2 Z" fill-rule="evenodd"/>
@@ -897,24 +899,24 @@
 <div class="stats"><div><span class="k">Length (Super 61/63)</span><span class="v">57.12 m</span></div><div><span class="k">Wingspan (Super 63)</span><span class="v">45.23 m</span></div><div><span class="k">Height</span><span class="v">13.11 m</span></div><div><span class="k">MTOW (Super 63)</span><span class="v">158,757 kg</span></div></div>
 <a class="mini" href="/aircraft/douglas-dc-8">Full specification &rarr;</a>
 </article>
-<article class="acard" data-cat="widebody" data-slug="airbus-a300" data-wingspan="44.84" data-length="54.08" data-height="16.62" data-mtow="171700" data-year="1972" data-name="airbus a300">
+<article class="acard" data-cat="widebody" data-slug="airbus-a300" data-wingspan="44.84" data-length="54.08" data-height="16.62" data-mtow="171700" data-year="1972" data-name="airbus a300" data-manufacturer="airbus">
 <button class="addcmp" type="button" data-slug="airbus-a300" data-short="Airbus A300" aria-pressed="false" title="Add to compare tray" aria-label="Add Airbus A300 to the compare tray">⇄</button>
-<div class="sil"><div class="silbox" title="Wingspan 44.84 m — drawn at 73% of the widest wings ever built"><svg viewBox="0 29 260 92" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:73%">
+<div class="sil"><div class="silbox" style="--pct:73%" title="Wingspan 44.84 m — drawn at 73% of the widest wings ever built"><svg viewBox="0 64 260 56" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:var(--silw,73%);--silw-d:73%;color:#3E6FB0">
 <g fill="currentColor"><path d="M14.0 96.4 L125.6 107.4 L134.4 107.4 L246.0 96.4 L246.0 98.4 L134.4 112.4 L125.6 112.4 L14.0 98.4 Z"/>
 <path d="M80.3 103.6 L83.5 103.6 L83.5 110.9 L80.3 110.9 Z"/>
 <path d="M87.9 110.9 L87.9 111.9 L87.7 112.8 L87.3 113.6 L86.8 114.4 L86.2 115.2 L85.5 115.8 L84.7 116.3 L83.8 116.6 L82.9 116.8 L81.9 116.9 L81.0 116.8 L80.1 116.6 L79.2 116.3 L78.4 115.8 L77.7 115.2 L77.1 114.4 L76.6 113.6 L76.2 112.8 L76.0 111.9 L75.9 110.9 L76.0 110.0 L76.2 109.1 L76.6 108.2 L77.1 107.4 L77.7 106.7 L78.4 106.1 L79.2 105.6 L80.1 105.2 L81.0 105.0 L81.9 104.9 L82.9 105.0 L83.8 105.2 L84.7 105.6 L85.5 106.1 L86.2 106.7 L86.8 107.4 L87.3 108.2 L87.7 109.1 L87.9 110.0 Z M85.2 110.9 L85.1 111.8 L84.8 112.6 L84.3 113.3 L83.6 113.8 L82.8 114.1 L81.9 114.2 L81.1 114.1 L80.3 113.8 L79.6 113.3 L79.1 112.6 L78.8 111.8 L78.6 110.9 L78.8 110.1 L79.1 109.3 L79.6 108.6 L80.3 108.1 L81.1 107.7 L81.9 107.6 L82.8 107.7 L83.6 108.1 L84.3 108.6 L84.8 109.3 L85.1 110.1 Z" fill-rule="evenodd"/>
 <path d="M176.5 103.6 L179.7 103.6 L179.7 110.9 L176.5 110.9 Z"/>
 <path d="M184.1 110.9 L184.0 111.9 L183.8 112.8 L183.4 113.6 L182.9 114.4 L182.3 115.2 L181.6 115.8 L180.8 116.3 L179.9 116.6 L179.0 116.8 L178.1 116.9 L177.1 116.8 L176.2 116.6 L175.3 116.3 L174.5 115.8 L173.8 115.2 L173.2 114.4 L172.7 113.6 L172.3 112.8 L172.1 111.9 L172.1 110.9 L172.1 110.0 L172.3 109.1 L172.7 108.2 L173.2 107.4 L173.8 106.7 L174.5 106.1 L175.3 105.6 L176.2 105.2 L177.1 105.0 L178.1 104.9 L179.0 105.0 L179.9 105.2 L180.8 105.6 L181.6 106.1 L182.3 106.7 L182.9 107.4 L183.4 108.2 L183.8 109.1 L184.0 110.0 Z M181.4 110.9 L181.2 111.8 L180.9 112.6 L180.4 113.3 L179.7 113.8 L178.9 114.1 L178.1 114.2 L177.2 114.1 L176.4 113.8 L175.7 113.3 L175.2 112.6 L174.9 111.8 L174.8 110.9 L174.9 110.1 L175.2 109.3 L175.7 108.6 L176.4 108.1 L177.2 107.7 L178.1 107.6 L178.9 107.7 L179.7 108.1 L180.4 108.6 L180.9 109.3 L181.2 110.1 Z" fill-rule="evenodd"/>
-<path d="M126.1 103.4 L128.4 32.0 L131.6 32.0 L133.9 103.4 Z"/>
+<path d="M126.1 103.4 L128.4 67 L131.6 67 L133.9 103.4 Z"/>
 <path d="M144.6 103.4 L144.4 105.7 L143.9 107.9 L143.0 110.0 L141.8 112.0 L140.3 113.7 L138.6 115.2 L136.6 116.4 L134.5 117.3 L132.3 117.8 L130.0 118.0 L127.7 117.8 L125.5 117.3 L123.4 116.4 L121.4 115.2 L119.7 113.7 L118.2 112.0 L117.0 110.0 L116.1 107.9 L115.6 105.7 L115.4 103.4 L115.6 101.1 L116.1 98.9 L117.0 96.8 L118.2 94.8 L119.7 93.1 L121.4 91.6 L123.4 90.4 L125.5 89.5 L127.7 89.0 L130.0 88.8 L132.3 89.0 L134.5 89.5 L136.6 90.4 L138.6 91.6 L140.3 93.1 L141.8 94.8 L143.0 96.8 L143.9 98.9 L144.4 101.1 Z M122.4 103.0 L137.6 103.0 L137.6 104.8 L122.4 104.8 Z" fill-rule="evenodd"/></g></svg></div></div>
 <h3><a href="/aircraft/airbus-a300">Airbus A300</a></h3>
 <p class="kicker">Airbus · Out of production (2007) — in service</p>
 <div class="stats"><div><span class="k">Length (A300-600)</span><span class="v">54.08 m</span></div><div><span class="k">Wingspan</span><span class="v">44.84 m</span></div><div><span class="k">Height</span><span class="v">16.62 m</span></div><div><span class="k">MTOW (-600R)</span><span class="v">171,700 kg</span></div></div>
 <a class="mini" href="/aircraft/airbus-a300">Full specification &rarr;</a>
 </article>
-<article class="acard" data-cat="narrowbody" data-slug="vickers-vc10" data-wingspan="44.55" data-length="52.32" data-height="12.04" data-mtow="151900" data-year="1962" data-name="vickers vc10">
+<article class="acard" data-cat="narrowbody" data-slug="vickers-vc10" data-wingspan="44.55" data-length="52.32" data-height="12.04" data-mtow="151900" data-year="1962" data-name="vickers vc10" data-manufacturer="vickers">
 <button class="addcmp" type="button" data-slug="vickers-vc10" data-short="Vickers VC10" aria-pressed="false" title="Add to compare tray" aria-label="Add Vickers VC10 to the compare tray">⇄</button>
-<div class="sil"><div class="silbox" title="Wingspan 44.55 m — drawn at 73% of the widest wings ever built"><svg viewBox="0 52 260 69" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:73%">
+<div class="sil"><div class="silbox" style="--pct:73%" title="Wingspan 44.55 m — drawn at 73% of the widest wings ever built"><svg viewBox="0 52 260 69" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:var(--silw,73%);--silw-d:73%;color:#6FA0C8">
 <g fill="currentColor"><path d="M14.0 103.6 L127.1 111.6 L132.9 111.6 L246.0 103.6 L246.0 105.4 L132.9 116.0 L127.1 116.0 L14.0 105.4 Z"/>
 <path d="M120.4 104.0 L120.3 104.5 L120.2 105.1 L120.0 105.6 L119.7 106.1 L119.3 106.6 L118.9 106.9 L118.4 107.3 L117.8 107.5 L117.3 107.6 L116.7 107.7 L116.1 107.6 L115.6 107.5 L115.0 107.3 L114.5 106.9 L114.1 106.6 L113.7 106.1 L113.4 105.6 L113.2 105.1 L113.0 104.5 L113.0 104.0 L113.0 103.4 L113.2 102.8 L113.4 102.3 L113.7 101.8 L114.1 101.3 L114.5 101.0 L115.0 100.7 L115.6 100.4 L116.1 100.3 L116.7 100.3 L117.3 100.3 L117.8 100.4 L118.4 100.7 L118.9 101.0 L119.3 101.3 L119.7 101.8 L120.0 102.3 L120.2 102.8 L120.3 103.4 Z M118.6 104.0 L118.5 104.5 L118.3 105.0 L118.0 105.4 L117.5 105.7 L117.0 105.9 L116.4 105.9 L115.9 105.7 L115.4 105.4 L115.1 105.0 L114.8 104.5 L114.8 104.0 L114.8 103.4 L115.1 102.9 L115.4 102.5 L115.9 102.2 L116.4 102.1 L117.0 102.1 L117.5 102.2 L118.0 102.5 L118.3 102.9 L118.5 103.4 Z" fill-rule="evenodd"/>
 <path d="M113.2 104.0 L113.1 104.5 L113.0 105.1 L112.8 105.6 L112.5 106.1 L112.1 106.6 L111.7 106.9 L111.2 107.3 L110.6 107.5 L110.1 107.6 L109.5 107.7 L108.9 107.6 L108.3 107.5 L107.8 107.3 L107.3 106.9 L106.9 106.6 L106.5 106.1 L106.2 105.6 L106.0 105.1 L105.8 104.5 L105.8 104.0 L105.8 103.4 L106.0 102.8 L106.2 102.3 L106.5 101.8 L106.9 101.3 L107.3 101.0 L107.8 100.7 L108.3 100.4 L108.9 100.3 L109.5 100.3 L110.1 100.3 L110.6 100.4 L111.2 100.7 L111.7 101.0 L112.1 101.3 L112.5 101.8 L112.8 102.3 L113.0 102.8 L113.1 103.4 Z M111.4 104.0 L111.3 104.5 L111.1 105.0 L110.7 105.4 L110.3 105.7 L109.8 105.9 L109.2 105.9 L108.7 105.7 L108.2 105.4 L107.9 105.0 L107.6 104.5 L107.6 104.0 L107.6 103.4 L107.9 102.9 L108.2 102.5 L108.7 102.2 L109.2 102.1 L109.8 102.1 L110.3 102.2 L110.7 102.5 L111.1 102.9 L111.3 103.4 Z" fill-rule="evenodd"/>
@@ -928,9 +930,9 @@
 <div class="stats"><div><span class="k">Length (Super VC10)</span><span class="v">52.32 m</span></div><div><span class="k">Wingspan</span><span class="v">44.55 m</span></div><div><span class="k">Height</span><span class="v">12.04 m</span></div><div><span class="k">MTOW (Super)</span><span class="v">151,900 kg</span></div></div>
 <a class="mini" href="/aircraft/vickers-vc10">Full specification &rarr;</a>
 </article>
-<article class="acard" data-cat="narrowbody" data-slug="ilyushin-il-62" data-wingspan="43.2" data-length="53.12" data-height="12.35" data-mtow="165000" data-year="1963" data-name="ilyushin il-62">
+<article class="acard" data-cat="narrowbody" data-slug="ilyushin-il-62" data-wingspan="43.2" data-length="53.12" data-height="12.35" data-mtow="165000" data-year="1963" data-name="ilyushin il-62" data-manufacturer="ilyushin">
 <button class="addcmp" type="button" data-slug="ilyushin-il-62" data-short="Ilyushin Il-62" aria-pressed="false" title="Add to compare tray" aria-label="Add Ilyushin Il-62 to the compare tray">⇄</button>
-<div class="sil"><div class="silbox" title="Wingspan 43.2 m — drawn at 72% of the widest wings ever built"><svg viewBox="0 48 260 73" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:72%">
+<div class="sil"><div class="silbox" style="--pct:72%" title="Wingspan 43.2 m — drawn at 72% of the widest wings ever built"><svg viewBox="0 48 260 73" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:var(--silw,72%);--silw-d:72%;color:#6FA0C8">
 <g fill="currentColor"><path d="M14.0 103.0 L126.9 111.0 L133.1 111.0 L246.0 103.0 L246.0 104.8 L133.1 115.4 L126.9 115.4 L14.0 104.8 Z"/>
 <path d="M120.0 103.1 L119.9 103.8 L119.8 104.4 L119.6 104.9 L119.2 105.4 L118.8 105.9 L118.4 106.3 L117.9 106.6 L117.3 106.9 L116.7 107.0 L116.1 107.0 L115.5 107.0 L114.9 106.9 L114.3 106.6 L113.8 106.3 L113.3 105.9 L112.9 105.4 L112.6 104.9 L112.4 104.4 L112.2 103.8 L112.2 103.1 L112.2 102.5 L112.4 101.9 L112.6 101.4 L112.9 100.9 L113.3 100.4 L113.8 100.0 L114.3 99.7 L114.9 99.4 L115.5 99.3 L116.1 99.2 L116.7 99.3 L117.3 99.4 L117.9 99.7 L118.4 100.0 L118.8 100.4 L119.2 100.9 L119.6 101.4 L119.8 101.9 L119.9 102.5 Z M118.1 103.1 L118.0 103.7 L117.8 104.2 L117.4 104.7 L116.9 105.0 L116.4 105.2 L115.8 105.2 L115.2 105.0 L114.8 104.7 L114.4 104.2 L114.1 103.7 L114.1 103.1 L114.1 102.6 L114.4 102.1 L114.8 101.6 L115.2 101.3 L115.8 101.1 L116.4 101.1 L116.9 101.3 L117.4 101.6 L117.8 102.1 L118.0 102.6 Z" fill-rule="evenodd"/>
 <path d="M112.4 103.1 L112.3 103.8 L112.2 104.4 L112.0 104.9 L111.6 105.4 L111.2 105.9 L110.8 106.3 L110.3 106.6 L109.7 106.9 L109.1 107.0 L108.5 107.0 L107.9 107.0 L107.3 106.9 L106.7 106.6 L106.2 106.3 L105.7 105.9 L105.3 105.4 L105.0 104.9 L104.8 104.4 L104.6 103.8 L104.6 103.1 L104.6 102.5 L104.8 101.9 L105.0 101.4 L105.3 100.9 L105.7 100.4 L106.2 100.0 L106.7 99.7 L107.3 99.4 L107.9 99.3 L108.5 99.2 L109.1 99.3 L109.7 99.4 L110.3 99.7 L110.8 100.0 L111.2 100.4 L111.6 100.9 L112.0 101.4 L112.2 101.9 L112.3 102.5 Z M110.5 103.1 L110.4 103.7 L110.2 104.2 L109.8 104.7 L109.3 105.0 L108.8 105.2 L108.2 105.2 L107.6 105.0 L107.2 104.7 L106.8 104.2 L106.5 103.7 L106.5 103.1 L106.5 102.6 L106.8 102.1 L107.2 101.6 L107.6 101.3 L108.2 101.1 L108.8 101.1 L109.3 101.3 L109.8 101.6 L110.2 102.1 L110.4 102.6 Z" fill-rule="evenodd"/>
@@ -944,24 +946,24 @@
 <div class="stats"><div><span class="k">Length</span><span class="v">53.12 m</span></div><div><span class="k">Wingspan</span><span class="v">43.20 m</span></div><div><span class="k">Height</span><span class="v">12.35 m</span></div><div><span class="k">MTOW (Il-62M)</span><span class="v">165,000 kg</span></div></div>
 <a class="mini" href="/aircraft/ilyushin-il-62">Full specification &rarr;</a>
 </article>
-<article class="acard" data-cat="narrowbody" data-slug="boeing-757" data-wingspan="38.05" data-length="54.47" data-height="13.56" data-mtow="123830" data-year="1982" data-name="boeing 757">
+<article class="acard" data-cat="narrowbody" data-slug="boeing-757" data-wingspan="38.05" data-length="54.47" data-height="13.56" data-mtow="123830" data-year="1982" data-name="boeing 757" data-manufacturer="boeing">
 <button class="addcmp" type="button" data-slug="boeing-757" data-short="Boeing 757" aria-pressed="false" title="Add to compare tray" aria-label="Add Boeing 757 to the compare tray">⇄</button>
-<div class="sil"><div class="silbox" title="Wingspan 38.05 m — drawn at 69% of the widest wings ever built"><svg viewBox="0 32 260 89" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:69%">
+<div class="sil"><div class="silbox" style="--pct:69%" title="Wingspan 38.05 m — drawn at 69% of the widest wings ever built"><svg viewBox="0 67 260 53" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:var(--silw,69%);--silw-d:69%;color:#6FA0C8">
 <g fill="currentColor"><path d="M14.0 98.7 L126.6 108.7 L133.4 108.7 L246.0 98.7 L246.0 100.5 L133.4 113.3 L126.6 113.3 L14.0 100.5 Z"/>
 <path d="M83.5 105.6 L86.7 105.6 L86.7 112.4 L83.5 112.4 Z"/>
 <path d="M90.7 112.4 L90.6 113.3 L90.4 114.1 L90.1 114.9 L89.6 115.7 L89.0 116.3 L88.4 116.9 L87.6 117.4 L86.8 117.7 L86.0 117.9 L85.1 118.0 L84.2 117.9 L83.4 117.7 L82.5 117.4 L81.8 116.9 L81.1 116.3 L80.6 115.7 L80.1 114.9 L79.8 114.1 L79.6 113.3 L79.5 112.4 L79.6 111.5 L79.8 110.6 L80.1 109.8 L80.6 109.1 L81.1 108.4 L81.8 107.8 L82.5 107.4 L83.4 107.0 L84.2 106.8 L85.1 106.8 L86.0 106.8 L86.8 107.0 L87.6 107.4 L88.4 107.8 L89.0 108.4 L89.6 109.1 L90.1 109.8 L90.4 110.6 L90.6 111.5 Z M88.2 112.4 L88.1 113.2 L87.8 113.9 L87.3 114.6 L86.6 115.0 L85.9 115.4 L85.1 115.5 L84.3 115.4 L83.5 115.0 L82.9 114.6 L82.4 113.9 L82.1 113.2 L82.0 112.4 L82.1 111.6 L82.4 110.8 L82.9 110.2 L83.5 109.7 L84.3 109.4 L85.1 109.3 L85.9 109.4 L86.6 109.7 L87.3 110.2 L87.8 110.8 L88.1 111.6 Z" fill-rule="evenodd"/>
 <path d="M173.3 105.6 L176.5 105.6 L176.5 112.4 L173.3 112.4 Z"/>
 <path d="M180.5 112.4 L180.4 113.3 L180.2 114.1 L179.9 114.9 L179.4 115.7 L178.9 116.3 L178.2 116.9 L177.5 117.4 L176.6 117.7 L175.8 117.9 L174.9 118.0 L174.0 117.9 L173.2 117.7 L172.4 117.4 L171.6 116.9 L171.0 116.3 L170.4 115.7 L169.9 114.9 L169.6 114.1 L169.4 113.3 L169.3 112.4 L169.4 111.5 L169.6 110.6 L169.9 109.8 L170.4 109.1 L171.0 108.4 L171.6 107.8 L172.4 107.4 L173.2 107.0 L174.0 106.8 L174.9 106.8 L175.8 106.8 L176.6 107.0 L177.5 107.4 L178.2 107.8 L178.9 108.4 L179.4 109.1 L179.9 109.8 L180.2 110.6 L180.4 111.5 Z M178.0 112.4 L177.9 113.2 L177.6 113.9 L177.1 114.6 L176.5 115.0 L175.7 115.4 L174.9 115.5 L174.1 115.4 L173.4 115.0 L172.7 114.6 L172.2 113.9 L171.9 113.2 L171.8 112.4 L171.9 111.6 L172.2 110.8 L172.7 110.2 L173.4 109.7 L174.1 109.4 L174.9 109.3 L175.7 109.4 L176.5 109.7 L177.1 110.2 L177.6 110.8 L177.9 111.6 Z" fill-rule="evenodd"/>
-<path d="M126.2 104.7 L128.5 35.3 L131.5 35.3 L133.8 104.7 Z"/>
+<path d="M126.2 104.7 L128.5 70 L131.5 70 L133.8 104.7 Z"/>
 <path d="M141.5 104.7 L141.3 106.7 L140.9 108.6 L140.2 110.4 L139.3 112.0 L138.1 113.5 L136.7 114.8 L135.2 115.8 L133.5 116.6 L131.8 117.0 L130.0 117.2 L128.2 117.0 L126.5 116.6 L124.8 115.8 L123.3 114.8 L121.9 113.5 L120.7 112.0 L119.8 110.4 L119.1 108.6 L118.7 106.7 L118.5 104.7 L118.7 102.7 L119.1 100.8 L119.8 99.0 L120.7 97.4 L121.9 95.9 L123.3 94.6 L124.8 93.6 L126.5 92.8 L128.2 92.4 L130.0 92.2 L131.8 92.4 L133.5 92.8 L135.2 93.6 L136.7 94.6 L138.1 95.9 L139.3 97.4 L140.2 99.0 L140.9 100.8 L141.3 102.7 Z M124.0 104.2 L136.0 104.2 L136.0 106.0 L124.0 106.0 Z" fill-rule="evenodd"/></g></svg></div></div>
 <h3><a href="/aircraft/boeing-757">Boeing 757</a></h3>
 <p class="kicker">Boeing · Out of production (2004) — in service</p>
 <div class="stats"><div><span class="k">Length (757-300)</span><span class="v">54.47 m</span></div><div><span class="k">Wingspan</span><span class="v">38.05 m</span></div><div><span class="k">Height</span><span class="v">13.56 m</span></div><div><span class="k">MTOW (-300)</span><span class="v">123,830 kg</span></div></div>
 <a class="mini" href="/aircraft/boeing-757">Full specification &rarr;</a>
 </article>
-<article class="acard" data-cat="narrowbody" data-slug="boeing-737" data-wingspan="35.92" data-length="39.52" data-height="12.3" data-mtow="82191" data-year="1967" data-name="boeing 737">
+<article class="acard" data-cat="narrowbody" data-slug="boeing-737" data-wingspan="35.92" data-length="39.52" data-height="12.3" data-mtow="82191" data-year="1967" data-name="boeing 737" data-manufacturer="boeing">
 <button class="addcmp" type="button" data-slug="boeing-737" data-short="Boeing 737" aria-pressed="false" title="Add to compare tray" aria-label="Add Boeing 737 to the compare tray">⇄</button>
-<div class="sil"><div class="silbox" title="Wingspan 35.92 m — drawn at 67% of the widest wings ever built"><svg viewBox="0 35 260 86" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:67%">
+<div class="sil"><div class="silbox" style="--pct:67%" title="Wingspan 35.92 m — drawn at 67% of the widest wings ever built"><svg viewBox="0 64 260 56" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:var(--silw,67%);--silw-d:67%;color:#6FA0C8">
 <g fill="currentColor"><path d="M15.5 97.9 L126.4 107.9 L133.6 107.9 L244.5 97.9 L244.5 99.7 L133.6 112.5 L126.4 112.5 L15.5 99.7 Z"/>
 <path d="M15.5 97.9 L14.0 88.9 L18.0 88.9 L20.0 99.7 Z"/>
 <path d="M244.5 97.9 L246.0 88.9 L242.0 88.9 L240.0 99.7 Z"/>
@@ -969,16 +971,16 @@
 <path d="M92.7 112.0 L92.6 112.9 L92.4 113.8 L92.0 114.7 L91.6 115.5 L90.9 116.2 L90.2 116.8 L89.4 117.3 L88.6 117.7 L87.6 117.9 L86.7 118.0 L85.8 117.9 L84.8 117.7 L84.0 117.3 L83.2 116.8 L82.5 116.2 L81.8 115.5 L81.4 114.7 L81.0 113.8 L80.8 112.9 L80.7 112.0 L80.8 111.1 L81.0 110.1 L81.4 109.3 L81.8 108.5 L82.5 107.8 L83.2 107.1 L84.0 106.6 L84.8 106.3 L85.8 106.1 L86.7 106.0 L87.6 106.1 L88.6 106.3 L89.4 106.6 L90.2 107.1 L90.9 107.8 L91.6 108.5 L92.0 109.3 L92.4 110.1 L92.6 111.1 Z M90.0 112.0 L89.9 112.8 L89.6 113.6 L89.0 114.3 L88.4 114.9 L87.6 115.2 L86.7 115.3 L85.8 115.2 L85.1 114.9 L84.4 114.3 L83.8 113.6 L83.5 112.8 L83.4 112.0 L83.5 111.1 L83.8 110.3 L84.4 109.7 L85.1 109.1 L85.8 108.8 L86.7 108.7 L87.6 108.8 L88.4 109.1 L89.0 109.7 L89.6 110.3 L89.9 111.1 Z" fill-rule="evenodd"/>
 <path d="M171.7 104.9 L174.9 104.9 L174.9 112.0 L171.7 112.0 Z"/>
 <path d="M179.3 112.0 L179.2 112.9 L179.0 113.8 L178.6 114.7 L178.2 115.5 L177.5 116.2 L176.8 116.8 L176.0 117.3 L175.2 117.7 L174.2 117.9 L173.3 118.0 L172.4 117.9 L171.4 117.7 L170.6 117.3 L169.8 116.8 L169.1 116.2 L168.4 115.5 L168.0 114.7 L167.6 113.8 L167.4 112.9 L167.3 112.0 L167.4 111.1 L167.6 110.1 L168.0 109.3 L168.4 108.5 L169.1 107.8 L169.8 107.1 L170.6 106.6 L171.4 106.3 L172.4 106.1 L173.3 106.0 L174.2 106.1 L175.2 106.3 L176.0 106.6 L176.8 107.1 L177.5 107.8 L178.2 108.5 L178.6 109.3 L179.0 110.1 L179.2 111.1 Z M176.6 112.0 L176.5 112.8 L176.2 113.6 L175.6 114.3 L174.9 114.9 L174.2 115.2 L173.3 115.3 L172.4 115.2 L171.6 114.9 L171.0 114.3 L170.4 113.6 L170.1 112.8 L170.0 112.0 L170.1 111.1 L170.4 110.3 L171.0 109.7 L171.6 109.1 L172.4 108.8 L173.3 108.7 L174.2 108.8 L174.9 109.1 L175.6 109.7 L176.2 110.3 L176.5 111.1 Z" fill-rule="evenodd"/>
-<path d="M126.4 103.9 L128.6 38.6 L131.4 38.6 L133.6 103.9 Z"/>
+<path d="M126.4 103.9 L128.6 67 L131.4 67 L133.6 103.9 Z"/>
 <path d="M142.1 103.9 L142.0 105.9 L141.5 107.9 L140.8 109.8 L139.8 111.5 L138.6 113.1 L137.1 114.4 L135.5 115.4 L133.8 116.2 L131.9 116.7 L130.0 116.8 L128.1 116.7 L126.2 116.2 L124.5 115.4 L122.9 114.4 L121.4 113.1 L120.2 111.5 L119.2 109.8 L118.5 107.9 L118.0 105.9 L117.9 103.9 L118.0 101.9 L118.5 99.9 L119.2 98.0 L120.2 96.3 L121.4 94.7 L122.9 93.4 L124.5 92.4 L126.2 91.6 L128.1 91.1 L130.0 91.0 L131.9 91.1 L133.8 91.6 L135.5 92.4 L137.1 93.4 L138.6 94.7 L139.8 96.3 L140.8 98.0 L141.5 99.9 L142.0 101.9 Z M123.7 103.5 L136.3 103.5 L136.3 105.3 L123.7 105.3 Z" fill-rule="evenodd"/></g></svg></div></div>
 <h3><a href="/aircraft/boeing-737">Boeing 737</a></h3>
 <p class="kicker">Boeing · In production (MAX series)</p>
 <div class="stats"><div><span class="k">Length (MAX 8)</span><span class="v">39.52 m</span></div><div><span class="k">Wingspan</span><span class="v">35.92 m</span></div><div><span class="k">Height</span><span class="v">12.30 m</span></div><div><span class="k">MTOW</span><span class="v">82,191 kg</span></div></div>
 <a class="mini" href="/aircraft/boeing-737">Full specification &rarr;</a>
 </article>
-<article class="acard" data-cat="narrowbody" data-slug="airbus-a320" data-wingspan="35.8" data-length="44.51" data-height="11.76" data-mtow="97000" data-year="1987" data-name="airbus a320 family">
+<article class="acard" data-cat="narrowbody" data-slug="airbus-a320" data-wingspan="35.8" data-length="44.51" data-height="11.76" data-mtow="97000" data-year="1987" data-name="airbus a320 family" data-manufacturer="airbus">
 <button class="addcmp" type="button" data-slug="airbus-a320" data-short="Airbus A320" aria-pressed="false" title="Add to compare tray" aria-label="Add Airbus A320 family to the compare tray">⇄</button>
-<div class="sil"><div class="silbox" title="Wingspan 35.8 m — drawn at 67% of the widest wings ever built"><svg viewBox="0 38 260 83" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:67%">
+<div class="sil"><div class="silbox" style="--pct:67%" title="Wingspan 35.8 m — drawn at 67% of the widest wings ever built"><svg viewBox="0 38 260 83" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:var(--silw,67%);--silw-d:67%;color:#6FA0C8">
 <g fill="currentColor"><path d="M15.5 99.0 L126.2 108.0 L133.8 108.0 L244.5 99.0 L244.5 100.8 L133.8 112.4 L126.2 112.4 L15.5 100.8 Z"/>
 <path d="M15.5 99.0 L14.0 90.0 L18.0 90.0 L20.0 100.8 Z"/>
 <path d="M244.5 99.0 L246.0 90.0 L242.0 90.0 L240.0 100.8 Z"/>
@@ -993,9 +995,9 @@
 <div class="stats"><div><span class="k">Length (A321neo)</span><span class="v">44.51 m</span></div><div><span class="k">Wingspan</span><span class="v">35.80 m</span></div><div><span class="k">Height</span><span class="v">11.76 m</span></div><div><span class="k">MTOW (A321XLR)</span><span class="v">97,000 kg</span></div></div>
 <a class="mini" href="/aircraft/airbus-a320">Full specification &rarr;</a>
 </article>
-<article class="acard" data-cat="narrowbody" data-slug="comac-c919" data-wingspan="35.8" data-length="38.9" data-height="11.95" data-mtow="77300" data-year="2017" data-name="comac c919">
+<article class="acard" data-cat="narrowbody" data-slug="comac-c919" data-wingspan="35.8" data-length="38.9" data-height="11.95" data-mtow="77300" data-year="2017" data-name="comac c919" data-manufacturer="comac">
 <button class="addcmp" type="button" data-slug="comac-c919" data-short="COMAC C919" aria-pressed="false" title="Add to compare tray" aria-label="Add COMAC C919 to the compare tray">⇄</button>
-<div class="sil"><div class="silbox" title="Wingspan 35.8 m — drawn at 67% of the widest wings ever built"><svg viewBox="0 37 260 84" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:67%">
+<div class="sil"><div class="silbox" style="--pct:67%" title="Wingspan 35.8 m — drawn at 67% of the widest wings ever built"><svg viewBox="0 37 260 84" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:var(--silw,67%);--silw-d:67%;color:#6FA0C8">
 <g fill="currentColor"><path d="M15.5 99.0 L126.2 108.0 L133.8 108.0 L244.5 99.0 L244.5 100.8 L133.8 112.4 L126.2 112.4 L15.5 100.8 Z"/>
 <path d="M15.5 99.0 L14.0 90.0 L18.0 90.0 L20.0 100.8 Z"/>
 <path d="M244.5 99.0 L246.0 90.0 L242.0 90.0 L240.0 100.8 Z"/>
@@ -1010,9 +1012,9 @@
 <div class="stats"><div><span class="k">Length</span><span class="v">38.90 m</span></div><div><span class="k">Wingspan</span><span class="v">35.80 m</span></div><div><span class="k">Height</span><span class="v">11.95 m</span></div><div><span class="k">MTOW</span><span class="v">77,300 kg</span></div></div>
 <a class="mini" href="/aircraft/comac-c919">Full specification &rarr;</a>
 </article>
-<article class="acard" data-cat="narrowbody" data-slug="airbus-a220" data-wingspan="35.1" data-length="38.71" data-height="11.5" data-mtow="70900" data-year="2013" data-name="airbus a220">
+<article class="acard" data-cat="narrowbody" data-slug="airbus-a220" data-wingspan="35.1" data-length="38.71" data-height="11.5" data-mtow="70900" data-year="2013" data-name="airbus a220" data-manufacturer="airbus">
 <button class="addcmp" type="button" data-slug="airbus-a220" data-short="Airbus A220" aria-pressed="false" title="Add to compare tray" aria-label="Add Airbus A220 to the compare tray">⇄</button>
-<div class="sil"><div class="silbox" title="Wingspan 35.1 m — drawn at 66% of the widest wings ever built"><svg viewBox="0 39 260 82" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:66%">
+<div class="sil"><div class="silbox" style="--pct:66%" title="Wingspan 35.1 m — drawn at 66% of the widest wings ever built"><svg viewBox="0 39 260 82" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:var(--silw,66%);--silw-d:66%;color:#6FA0C8">
 <g fill="currentColor"><path d="M16.0 99.0 L126.5 108.0 L133.5 108.0 L244.0 99.0 L244.0 100.7 L133.5 112.2 L126.5 112.2 L16.0 100.7 Z"/>
 <path d="M16.5 95.0 L14.0 95.0 L14.0 103.7 L16.5 103.7 Z"/>
 <path d="M243.5 95.0 L246.0 95.0 L246.0 103.7 L243.5 103.7 Z"/>
@@ -1027,9 +1029,9 @@
 <div class="stats"><div><span class="k">Length (A220-300)</span><span class="v">38.71 m</span></div><div><span class="k">Wingspan</span><span class="v">35.10 m</span></div><div><span class="k">Height</span><span class="v">11.50 m</span></div><div><span class="k">MTOW</span><span class="v">70,900 kg</span></div></div>
 <a class="mini" href="/aircraft/airbus-a220">Full specification &rarr;</a>
 </article>
-<article class="acard" data-cat="narrowbody" data-slug="embraer-e-jet-e2" data-wingspan="35.1" data-length="41.5" data-height="10.9" data-mtow="61500" data-year="2016" data-name="embraer e-jet e2">
+<article class="acard" data-cat="narrowbody" data-slug="embraer-e-jet-e2" data-wingspan="35.1" data-length="41.5" data-height="10.9" data-mtow="61500" data-year="2016" data-name="embraer e-jet e2" data-manufacturer="embraer">
 <button class="addcmp" type="button" data-slug="embraer-e-jet-e2" data-short="Embraer E-Jet E2" aria-pressed="false" title="Add to compare tray" aria-label="Add Embraer E-Jet E2 to the compare tray">⇄</button>
-<div class="sil"><div class="silbox" title="Wingspan 35.1 m — drawn at 66% of the widest wings ever built"><svg viewBox="0 43 260 78" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:66%">
+<div class="sil"><div class="silbox" style="--pct:66%" title="Wingspan 35.1 m — drawn at 66% of the widest wings ever built"><svg viewBox="0 43 260 78" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:var(--silw,66%);--silw-d:66%;color:#6FA0C8">
 <g fill="currentColor"><path d="M20.0 99.6 L127.0 108.6 L133.0 108.6 L240.0 99.6 L240.0 101.3 L133.0 112.6 L127.0 112.6 L20.0 101.3 Z"/>
 <path d="M20.0 99.6 L14.0 94.6 L17.0 94.6 L23.0 101.3 Z"/>
 <path d="M240.0 99.6 L246.0 94.6 L243.0 94.6 L237.0 101.3 Z"/>
@@ -1044,9 +1046,9 @@
 <div class="stats"><div><span class="k">Length (E195-E2)</span><span class="v">41.50 m</span></div><div><span class="k">Wingspan</span><span class="v">35.10 m</span></div><div><span class="k">Height</span><span class="v">10.90 m</span></div><div><span class="k">MTOW</span><span class="v">61,500 kg</span></div></div>
 <a class="mini" href="/aircraft/embraer-e-jet-e2">Full specification &rarr;</a>
 </article>
-<article class="acard" data-cat="trijets" data-slug="boeing-727" data-wingspan="32.92" data-length="46.69" data-height="10.36" data-mtow="95028" data-year="1963" data-name="boeing 727">
+<article class="acard" data-cat="trijets" data-slug="boeing-727" data-wingspan="32.92" data-length="46.69" data-height="10.36" data-mtow="95028" data-year="1963" data-name="boeing 727" data-manufacturer="boeing">
 <button class="addcmp" type="button" data-slug="boeing-727" data-short="Boeing 727" aria-pressed="false" title="Add to compare tray" aria-label="Add Boeing 727 to the compare tray">⇄</button>
-<div class="sil"><div class="silbox" title="Wingspan 32.92 m — drawn at 65% of the widest wings ever built"><svg viewBox="0 42 260 79" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:65%">
+<div class="sil"><div class="silbox" style="--pct:65%" title="Wingspan 32.92 m — drawn at 65% of the widest wings ever built"><svg viewBox="0 42 260 79" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:var(--silw,65%);--silw-d:65%;color:#7E6A9E">
 <g fill="currentColor"><path d="M14.0 100.6 L126.0 108.6 L134.0 108.6 L246.0 100.6 L246.0 102.4 L134.0 113.0 L126.0 113.0 L14.0 102.4 Z"/>
 <path d="M116.9 98.5 L116.9 99.1 L116.8 99.7 L116.5 100.2 L116.2 100.7 L115.9 101.1 L115.4 101.5 L115.0 101.8 L114.4 102.0 L113.9 102.1 L113.3 102.1 L112.8 102.1 L112.2 102.0 L111.7 101.8 L111.2 101.5 L110.8 101.1 L110.4 100.7 L110.1 100.2 L109.9 99.7 L109.8 99.1 L109.7 98.5 L109.8 98.0 L109.9 97.4 L110.1 96.9 L110.4 96.4 L110.8 96.0 L111.2 95.6 L111.7 95.3 L112.2 95.1 L112.8 95.0 L113.3 94.9 L113.9 95.0 L114.4 95.1 L115.0 95.3 L115.4 95.6 L115.9 96.0 L116.2 96.4 L116.5 96.9 L116.8 97.4 L116.9 98.0 Z M115.2 98.5 L115.1 99.1 L114.9 99.6 L114.6 100.0 L114.1 100.2 L113.6 100.4 L113.1 100.4 L112.6 100.2 L112.1 100.0 L111.8 99.6 L111.5 99.1 L111.5 98.5 L111.5 98.0 L111.8 97.5 L112.1 97.1 L112.6 96.8 L113.1 96.7 L113.6 96.7 L114.1 96.8 L114.6 97.1 L114.9 97.5 L115.1 98.0 Z" fill-rule="evenodd"/>
 <path d="M150.3 98.5 L150.2 99.1 L150.1 99.7 L149.9 100.2 L149.6 100.7 L149.2 101.1 L148.8 101.5 L148.3 101.8 L147.8 102.0 L147.2 102.1 L146.7 102.1 L146.1 102.1 L145.6 102.0 L145.0 101.8 L144.6 101.5 L144.1 101.1 L143.8 100.7 L143.5 100.2 L143.2 99.7 L143.1 99.1 L143.1 98.5 L143.1 98.0 L143.2 97.4 L143.5 96.9 L143.8 96.4 L144.1 96.0 L144.6 95.6 L145.0 95.3 L145.6 95.1 L146.1 95.0 L146.7 94.9 L147.2 95.0 L147.8 95.1 L148.3 95.3 L148.8 95.6 L149.2 96.0 L149.6 96.4 L149.9 96.9 L150.1 97.4 L150.2 98.0 Z M148.5 98.5 L148.5 99.1 L148.2 99.6 L147.9 100.0 L147.4 100.2 L146.9 100.4 L146.4 100.4 L145.9 100.2 L145.4 100.0 L145.1 99.6 L144.9 99.1 L144.8 98.5 L144.9 98.0 L145.1 97.5 L145.4 97.1 L145.9 96.8 L146.4 96.7 L146.9 96.7 L147.4 96.8 L147.9 97.1 L148.2 97.5 L148.5 98.0 Z" fill-rule="evenodd"/>
@@ -1059,9 +1061,9 @@
 <div class="stats"><div><span class="k">Length (727-200)</span><span class="v">46.69 m</span></div><div><span class="k">Wingspan</span><span class="v">32.92 m</span></div><div><span class="k">Height</span><span class="v">10.36 m</span></div><div><span class="k">MTOW (-200 Adv)</span><span class="v">95,028 kg</span></div></div>
 <a class="mini" href="/aircraft/boeing-727">Full specification &rarr;</a>
 </article>
-<article class="acard" data-cat="bombers" data-slug="north-american-xb-70" data-wingspan="32" data-length="56.62" data-height="9.14" data-mtow="246365" data-year="1964" data-name="north american xb-70 valkyrie">
+<article class="acard" data-cat="bombers" data-slug="north-american-xb-70" data-wingspan="32" data-length="56.62" data-height="9.14" data-mtow="246365" data-year="1964" data-name="north american xb-70 valkyrie" data-manufacturer="north american">
 <button class="addcmp" type="button" data-slug="north-american-xb-70" data-short="XB-70" aria-pressed="false" title="Add to compare tray" aria-label="Add North American XB-70 Valkyrie to the compare tray">⇄</button>
-<div class="sil"><div class="silbox" title="Wingspan 32 m — drawn at 64% of the widest wings ever built"><svg viewBox="0 48 260 73" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:64%">
+<div class="sil"><div class="silbox" style="--pct:64%" title="Wingspan 32 m — drawn at 64% of the widest wings ever built"><svg viewBox="0 48 260 73" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:var(--silw,64%);--silw-d:64%;color:#9C6F86">
 <g fill="currentColor"><path d="M14.0 110.7 L126.5 105.7 L133.5 105.7 L246.0 110.7 L246.0 112.5 L133.5 109.7 L126.5 109.7 L14.0 112.5 Z"/>
 <path d="M106.4 107.5 L109.6 107.5 L109.6 114.1 L106.4 114.1 Z"/>
 <path d="M101.2 110.2 L114.7 110.2 L114.7 118.0 L101.2 118.0 Z M102.8 112.0 L113.1 112.0 L113.1 116.3 L102.8 116.3 Z" fill-rule="evenodd"/>
@@ -1076,24 +1078,24 @@
 <div class="stats"><div><span class="k">Length</span><span class="v">56.62 m</span></div><div><span class="k">Wingspan</span><span class="v">32.00 m</span></div><div><span class="k">Height</span><span class="v">9.14 m</span></div><div><span class="k">MTOW</span><span class="v">246,365 kg</span></div></div>
 <a class="mini" href="/aircraft/north-american-xb-70">Full specification &rarr;</a>
 </article>
-<article class="acard" data-cat="supersonic" data-slug="tupolev-tu-144" data-wingspan="28.8" data-length="65.7" data-height="12.5" data-mtow="207000" data-year="1968" data-name="tupolev tu-144">
+<article class="acard" data-cat="supersonic" data-slug="tupolev-tu-144" data-wingspan="28.8" data-length="65.7" data-height="12.5" data-mtow="207000" data-year="1968" data-name="tupolev tu-144" data-manufacturer="tupolev">
 <button class="addcmp" type="button" data-slug="tupolev-tu-144" data-short="Tupolev Tu-144" aria-pressed="false" title="Add to compare tray" aria-label="Add Tupolev Tu-144 to the compare tray">⇄</button>
-<div class="sil"><div class="silbox" title="Wingspan 28.8 m — drawn at 62% of the widest wings ever built"><svg viewBox="0 14 260 107" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:62%">
+<div class="sil"><div class="silbox" style="--pct:62%" title="Wingspan 28.8 m — drawn at 62% of the widest wings ever built"><svg viewBox="0 59 260 61" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:var(--silw,62%);--silw-d:62%;color:#5B4E8C">
 <g fill="currentColor"><path d="M14.0 110.5 L126.0 107.5 L134.0 107.5 L246.0 110.5 L246.0 112.1 L134.0 111.1 L126.0 111.1 L14.0 112.1 Z"/>
 <path d="M98.7 109.1 L101.9 109.1 L101.9 114.7 L98.7 114.7 Z"/>
 <path d="M94.5 111.4 L106.0 111.4 L106.0 118.0 L94.5 118.0 Z M95.9 112.8 L104.6 112.8 L104.6 116.5 L95.9 116.5 Z" fill-rule="evenodd"/>
 <path d="M158.1 109.1 L161.3 109.1 L161.3 114.7 L158.1 114.7 Z"/>
 <path d="M154.0 111.4 L165.5 111.4 L165.5 118.0 L154.0 118.0 Z M155.4 112.8 L164.1 112.8 L164.1 116.5 L155.4 116.5 Z" fill-rule="evenodd"/>
-<path d="M125.5 98.5 L128.2 17.3 L131.8 17.3 L134.5 98.5 Z"/>
+<path d="M125.5 98.5 L128.2 62 L131.8 62 L134.5 98.5 Z"/>
 <path d="M143.3 98.5 L143.1 100.6 L142.6 102.7 L141.8 104.7 L140.8 106.5 L139.4 108.2 L137.8 109.6 L136.0 110.7 L134.1 111.5 L132.1 112.0 L130.0 112.2 L127.9 112.0 L125.9 111.5 L124.0 110.7 L122.2 109.6 L120.6 108.2 L119.2 106.5 L118.2 104.7 L117.4 102.7 L116.9 100.6 L116.7 98.5 L116.9 96.4 L117.4 94.3 L118.2 92.3 L119.2 90.5 L120.6 88.8 L122.2 87.4 L124.0 86.3 L125.9 85.5 L127.9 85.0 L130.0 84.8 L132.1 85.0 L134.1 85.5 L136.0 86.3 L137.8 87.4 L139.4 88.8 L140.8 90.5 L141.8 92.3 L142.6 94.3 L143.1 96.4 Z M123.1 97.9 L136.9 97.9 L136.9 99.7 L123.1 99.7 Z" fill-rule="evenodd"/></g></svg></div></div>
 <h3><a href="/aircraft/tupolev-tu-144">Tupolev Tu-144</a></h3>
 <p class="kicker">Tupolev · Retired</p>
 <div class="stats"><div><span class="k">Length</span><span class="v">65.70 m</span></div><div><span class="k">Wingspan</span><span class="v">28.80 m</span></div><div><span class="k">Height</span><span class="v">12.50 m</span></div><div><span class="k">MTOW (Tu-144D)</span><span class="v">207,000 kg</span></div></div>
 <a class="mini" href="/aircraft/tupolev-tu-144">Full specification &rarr;</a>
 </article>
-<article class="acard" data-cat="propliners" data-slug="dhc-8-q400" data-wingspan="28.42" data-length="32.83" data-height="8.34" data-mtow="30481" data-year="1998" data-name="de havilland canada dash 8-400">
+<article class="acard" data-cat="propliners" data-slug="dhc-8-q400" data-wingspan="28.42" data-length="32.83" data-height="8.34" data-mtow="30481" data-year="1998" data-name="de havilland canada dash 8-400" data-manufacturer="de havilland canada">
 <button class="addcmp" type="button" data-slug="dhc-8-q400" data-short="Dash 8-400" aria-pressed="false" title="Add to compare tray" aria-label="Add De Havilland Canada Dash 8-400 to the compare tray">⇄</button>
-<div class="sil"><div class="silbox" title="Wingspan 28.42 m — drawn at 61% of the widest wings ever built"><svg viewBox="0 46 260 75" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:61%">
+<div class="sil"><div class="silbox" style="--pct:61%" title="Wingspan 28.42 m — drawn at 61% of the widest wings ever built"><svg viewBox="0 46 260 75" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:var(--silw,61%);--silw-d:61%;color:#8AA98C">
 <g fill="currentColor"><path d="M14.0 102.0 L126.7 99.0 L133.3 99.0 L246.0 102.0 L246.0 104.4 L133.3 104.0 L126.7 104.0 L14.0 104.4 Z"/>
 <path d="M106.7 102.1 L106.5 104.4 L106.0 106.7 L105.1 108.9 L103.9 110.9 L102.3 112.7 L100.5 114.2 L98.5 115.4 L96.4 116.3 L94.1 116.9 L91.7 117.1 L89.4 116.9 L87.1 116.3 L84.9 115.4 L82.9 114.2 L81.1 112.7 L79.6 110.9 L78.4 108.9 L77.4 106.7 L76.9 104.4 L76.7 102.1 L76.9 99.7 L77.4 97.4 L78.4 95.3 L79.6 93.2 L81.1 91.5 L82.9 89.9 L84.9 88.7 L87.1 87.8 L89.4 87.2 L91.7 87.1 L94.1 87.2 L96.4 87.8 L98.5 88.7 L100.5 89.9 L102.3 91.5 L103.9 93.2 L105.1 95.3 L106.0 97.4 L106.5 99.7 Z M104.6 102.1 L104.3 104.9 L103.3 107.7 L101.8 110.1 L99.8 112.1 L97.3 113.7 L94.6 114.6 L91.7 115.0 L88.8 114.6 L86.1 113.7 L83.7 112.1 L81.6 110.1 L80.1 107.7 L79.1 104.9 L78.8 102.1 L79.1 99.2 L80.1 96.5 L81.6 94.0 L83.7 92.0 L86.1 90.4 L88.8 89.5 L91.7 89.2 L94.6 89.5 L97.3 90.4 L99.8 92.0 L101.8 94.0 L103.3 96.5 L104.3 99.2 Z" fill-rule="evenodd"/>
 <path d="M98.0 102.1 L97.7 104.0 L96.8 105.8 L95.4 107.2 L93.7 108.1 L91.7 108.4 L89.8 108.1 L88.0 107.2 L86.6 105.8 L85.7 104.0 L85.4 102.1 L85.7 100.1 L86.6 98.4 L88.0 97.0 L89.8 96.1 L91.7 95.8 L93.7 96.1 L95.4 97.0 L96.8 98.4 L97.7 100.1 Z"/>
@@ -1107,9 +1109,9 @@
 <div class="stats"><div><span class="k">Length</span><span class="v">32.83 m</span></div><div><span class="k">Wingspan</span><span class="v">28.42 m</span></div><div><span class="k">Height</span><span class="v">8.34 m</span></div><div><span class="k">MTOW</span><span class="v">30,481 kg</span></div></div>
 <a class="mini" href="/aircraft/dhc-8-q400">Full specification &rarr;</a>
 </article>
-<article class="acard" data-cat="propliners" data-slug="atr-72" data-wingspan="27.05" data-length="27.17" data-height="7.65" data-mtow="23000" data-year="1988" data-name="atr 72">
+<article class="acard" data-cat="propliners" data-slug="atr-72" data-wingspan="27.05" data-length="27.17" data-height="7.65" data-mtow="23000" data-year="1988" data-name="atr 72" data-manufacturer="atr">
 <button class="addcmp" type="button" data-slug="atr-72" data-short="ATR 72" aria-pressed="false" title="Add to compare tray" aria-label="Add ATR 72 to the compare tray">⇄</button>
-<div class="sil"><div class="silbox" title="Wingspan 27.05 m — drawn at 60% of the widest wings ever built"><svg viewBox="0 49 260 72" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:60%">
+<div class="sil"><div class="silbox" style="--pct:60%" title="Wingspan 27.05 m — drawn at 60% of the widest wings ever built"><svg viewBox="0 49 260 72" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:var(--silw,60%);--silw-d:60%;color:#8AA98C">
 <g fill="currentColor"><path d="M14.0 101.0 L126.7 99.0 L133.3 99.0 L246.0 101.0 L246.0 103.3 L133.3 103.8 L126.7 103.8 L14.0 103.3 Z"/>
 <path d="M106.7 101.6 L106.5 104.0 L106.0 106.3 L105.0 108.5 L103.8 110.5 L102.3 112.3 L100.5 113.8 L98.5 115.0 L96.3 115.9 L94.0 116.5 L91.7 116.6 L89.3 116.5 L87.0 115.9 L84.9 115.0 L82.9 113.8 L81.1 112.3 L79.5 110.5 L78.3 108.5 L77.4 106.3 L76.9 104.0 L76.7 101.6 L76.9 99.3 L77.4 97.0 L78.3 94.8 L79.5 92.8 L81.1 91.0 L82.9 89.5 L84.9 88.3 L87.0 87.4 L89.3 86.8 L91.7 86.6 L94.0 86.8 L96.3 87.4 L98.5 88.3 L100.5 89.5 L102.3 91.0 L103.8 92.8 L105.0 94.8 L106.0 97.0 L106.5 99.3 Z M104.6 101.6 L104.3 104.5 L103.3 107.2 L101.8 109.7 L99.7 111.7 L97.3 113.3 L94.6 114.2 L91.7 114.5 L88.8 114.2 L86.1 113.3 L83.6 111.7 L81.6 109.7 L80.1 107.2 L79.1 104.5 L78.8 101.6 L79.1 98.8 L80.1 96.1 L81.6 93.6 L83.6 91.6 L86.1 90.0 L88.8 89.1 L91.7 88.7 L94.6 89.1 L97.3 90.0 L99.7 91.6 L101.8 93.6 L103.3 96.1 L104.3 98.8 Z" fill-rule="evenodd"/>
 <path d="M98.0 101.6 L97.7 103.6 L96.8 105.4 L95.4 106.7 L93.6 107.6 L91.7 107.9 L89.7 107.6 L88.0 106.7 L86.6 105.4 L85.7 103.6 L85.4 101.6 L85.7 99.7 L86.6 97.9 L88.0 96.6 L89.7 95.7 L91.7 95.3 L93.6 95.7 L95.4 96.6 L96.8 97.9 L97.7 99.7 Z"/>
@@ -1123,15 +1125,15 @@
 <div class="stats"><div><span class="k">Length (ATR 72-600)</span><span class="v">27.17 m</span></div><div><span class="k">Wingspan</span><span class="v">27.05 m</span></div><div><span class="k">Height</span><span class="v">7.65 m</span></div><div><span class="k">MTOW</span><span class="v">23,000 kg</span></div></div>
 <a class="mini" href="/aircraft/atr-72">Full specification &rarr;</a>
 </article>
-<article class="acard" data-cat="supersonic" data-slug="concorde" data-wingspan="25.6" data-length="61.66" data-height="12.2" data-mtow="185070" data-year="1969" data-name="concorde">
+<article class="acard" data-cat="supersonic" data-slug="concorde" data-wingspan="25.6" data-length="61.66" data-height="12.2" data-mtow="185070" data-year="1969" data-name="concorde" data-manufacturer="aérospatiale / bac">
 <button class="addcmp" type="button" data-slug="concorde" data-short="Concorde" aria-pressed="false" title="Add to compare tray" aria-label="Add Concorde to the compare tray">⇄</button>
-<div class="sil"><div class="silbox" title="Wingspan 25.6 m — drawn at 59% of the widest wings ever built"><svg viewBox="0 4 260 117" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:59%">
+<div class="sil"><div class="silbox" style="--pct:59%" title="Wingspan 25.6 m — drawn at 59% of the widest wings ever built"><svg viewBox="0 63 260 57" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:var(--silw,59%);--silw-d:59%;color:#5B4E8C">
 <g fill="currentColor"><path d="M14.0 111.5 L126.1 107.5 L133.9 107.5 L246.0 111.5 L246.0 113.0 L133.9 110.9 L126.1 110.9 L14.0 113.0 Z"/>
 <path d="M84.5 109.8 L87.7 109.8 L87.7 114.9 L84.5 114.9 Z"/>
 <path d="M80.6 111.7 L91.6 111.7 L91.6 118.0 L80.6 118.0 Z M81.9 113.1 L90.2 113.1 L90.2 116.6 L81.9 116.6 Z" fill-rule="evenodd"/>
 <path d="M172.3 109.8 L175.5 109.8 L175.5 114.9 L172.3 114.9 Z"/>
 <path d="M168.4 111.7 L179.4 111.7 L179.4 118.0 L168.4 118.0 Z M169.8 113.1 L178.1 113.1 L178.1 116.6 L169.8 116.6 Z" fill-rule="evenodd"/>
-<path d="M125.0 98.5 L128.0 7.4 L132.0 7.4 L135.0 98.5 Z"/>
+<path d="M125.0 98.5 L128.0 66 L132.0 66 L135.0 98.5 Z"/>
 <path d="M143.1 98.5 L142.9 100.8 L142.4 103.1 L141.6 105.3 L140.6 107.3 L139.2 109.1 L137.7 110.6 L135.9 111.8 L134.0 112.7 L132.0 113.3 L130.0 113.5 L128.0 113.3 L126.0 112.7 L124.1 111.8 L122.3 110.6 L120.8 109.1 L119.4 107.3 L118.4 105.3 L117.6 103.1 L117.1 100.8 L117.0 98.5 L117.1 96.2 L117.6 93.9 L118.4 91.7 L119.4 89.7 L120.8 87.9 L122.3 86.4 L124.1 85.2 L126.0 84.3 L128.0 83.7 L130.0 83.5 L132.0 83.7 L134.0 84.3 L135.9 85.2 L137.7 86.4 L139.2 87.9 L140.6 89.7 L141.6 91.7 L142.4 93.9 L142.9 96.2 Z M123.2 97.8 L136.8 97.8 L136.8 99.6 L123.2 99.6 Z" fill-rule="evenodd"/></g></svg></div></div>
 <h3><a href="/aircraft/concorde">Concorde</a></h3>
 <p class="kicker">Aérospatiale / BAC · Retired 2003</p>
@@ -1229,7 +1231,7 @@
 </div>
 <div>
 <h3 class="mf-h">Reference</h3>
-<ul><li><a href="/manufacturers">Manufacturers</a></li><li><a href="/types">Aircraft types</a></li><li><a href="/records/longest-aircraft">Longest aircraft</a></li><li><a href="/blog">Blog</a></li><li><a href="/explained">Explained</a></li><li><a href="/compare">Compare aircraft</a></li><li><a href="/bring-back-concorde">Bring back Concorde</a></li><li><a href="/methodology">Methodology</a></li><li><a href="/quiz">The Silhouette Quiz</a></li></ul>
+<ul><li><a href="/manufacturers">Manufacturers</a></li><li><a href="/types">Aircraft types</a></li><li><a href="/records/longest-aircraft">Longest aircraft</a></li><li><a href="/blog">Blog</a></li><li><a href="/explained">Explained</a></li><li><a href="/compare">Compare aircraft</a></li><li><a href="/bring-back-concorde">Bring back Concorde</a></li><li><a href="/methodology">Methodology</a></li><li><a href="/quiz">The Silhouette Quiz</a></li><li><a href="/gear">The hangar shop</a></li><li><a href="/fear-of-flying">Scared of flying?</a></li><li><a href="/travel-classes">Classes &amp; points</a></li></ul>
 </div>
 <div>
 <h3 class="mf-h">Site</h3>
