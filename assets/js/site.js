@@ -352,6 +352,11 @@
     var cards = [].slice.call(grid.querySelectorAll('.acard'));
     cards.sort(function(a, b){
       if (key === 'name') return a.getAttribute('data-name') < b.getAttribute('data-name') ? -1 : 1;
+      if (key === 'manufacturer'){
+        var am = a.getAttribute('data-manufacturer') || '', bm = b.getAttribute('data-manufacturer') || '';
+        if (am !== bm) return am < bm ? -1 : 1;
+        return parseFloat(b.getAttribute('data-wingspan') || 0) - parseFloat(a.getAttribute('data-wingspan') || 0);
+      }
       return parseFloat(b.getAttribute('data-' + key) || 0) - parseFloat(a.getAttribute('data-' + key) || 0);
     });
     cards.forEach(function(c){ grid.appendChild(c); });
@@ -479,5 +484,39 @@
   menu.addEventListener('click', function(e){
     var a = e.target.closest ? e.target.closest('a[data-lang]') : null;
     if (a) { try { localStorage.setItem('acfyi.lang', a.getAttribute('data-lang')); } catch(err){} }
+  });
+})();
+
+/* ---------- hangar shop: "owned" ticks, saved on-device ---------- */
+(function(){
+  var items = [].slice.call(document.querySelectorAll('.gearitem[data-key]'));
+  if (!items.length) return;
+  items.forEach(function(it){
+    var key = it.getAttribute('data-key');
+    var btn = it.querySelector('.gi-own');
+    if (!btn) return;
+    var on = false;
+    try { on = localStorage.getItem(key) === '1'; } catch (e) {}
+    function paint(){ it.classList.toggle('owned', on); btn.setAttribute('aria-pressed', String(on)); btn.textContent = on ? 'Owned \u2713' : 'Own it'; }
+    paint();
+    btn.addEventListener('click', function(){
+      on = !on;
+      try { on ? localStorage.setItem(key, '1') : localStorage.removeItem(key); } catch (e) {}
+      paint();
+    });
+  });
+})();
+
+/* ---------- legend: copy a hex swatch ---------- */
+(function(){
+  var btns = [].slice.call(document.querySelectorAll('.slg-hex'));
+  if (!btns.length) return;
+  btns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var hex = btn.getAttribute('data-hex');
+      var done = function(){ var old = btn.textContent; btn.textContent = 'Copied \u2713'; btn.classList.add('ok'); setTimeout(function(){ btn.textContent = old; btn.classList.remove('ok'); }, 1100); };
+      try { navigator.clipboard.writeText(hex).then(done, function(){ btn.textContent = hex; }); }
+      catch (e) { done(); }
+    });
   });
 })();
