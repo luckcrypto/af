@@ -283,7 +283,8 @@ table.compare tbody tr:hover{background:rgba(14,20,28,.03)}
 .dm-val{font-family:var(--display);font-weight:700;font-size:1.15rem;font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
 .dm-formula{display:block;font-weight:500;font-size:.72rem;color:var(--muted);margin-top:4px}
 .verified{font-size:.78rem;color:var(--muted);margin-top:12px;font-family:var(--display);font-weight:600}
-@media(max-width:880px){.statstrip{grid-template-columns:repeat(auto-fit,minmax(96px,1fr))}.dgrid{grid-template-columns:1fr}}
+@media(max-width:880px){.statstrip{grid-template-columns:repeat(auto-fit,minmax(96px,1fr))}.dgrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.dgrid{grid-template-columns:1fr}}
 .oprow.other{background:#EDF1F6}
 .oprow.other .count{color:var(--muted)}
 
