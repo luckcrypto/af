@@ -175,6 +175,34 @@ ${AL.filter(x => x.cargo).map(alink).join('\n')}
 </div>
 </div>
 </div>
+<div class="mn-group" data-key="explore">
+<button class="mn-top" type="button" aria-expanded="false" aria-haspopup="true"><svg class="gi" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2.5 3 6.5v7l7 4 7-4v-7z"/><path d="M10 2.5v15M3 6.5l7 4 7-4"/></svg>Explore<i class="caret"></i></button>
+<div class="mn-panel" role="menu">
+<div class="mn-panel-inner" style="grid-template-columns:1fr 1fr 1fr">
+<div>
+<div class="mn-col-h">Understand</div>
+<a class="mn-link" href="/explained"><span class="lbl">Explained</span><span class="arr">&rarr;</span></a>
+<a class="mn-link" href="/types"><span class="lbl">Aircraft types</span><span class="arr">&rarr;</span></a>
+<a class="mn-link" href="/manufacturers"><span class="lbl">Manufacturers</span><span class="arr">&rarr;</span></a>
+<a class="mn-link" href="/methodology"><span class="lbl">Methodology</span><span class="arr">&rarr;</span></a>
+</div>
+<div>
+<div class="mn-col-h">Play &amp; compare</div>
+<a class="mn-link" href="/quiz"><span class="lbl">The Silhouette Quiz</span><span class="arr">&rarr;</span></a>
+<a class="mn-link" href="/compare"><span class="lbl">Compare aircraft</span><span class="arr">&rarr;</span></a>
+<a class="mn-link" href="/records"><span class="lbl">Record boards</span><span class="arr">&rarr;</span></a>
+<a class="mn-link" href="/bring-back-concorde"><span class="lbl">Bring back Concorde</span><span class="arr">&rarr;</span></a>
+</div>
+<div>
+<div class="mn-col-h">For travellers</div>
+<a class="mn-link" href="/fear-of-flying"><span class="lbl">Scared of flying?</span><span class="arr">&rarr;</span></a>
+<a class="mn-link" href="/travel-classes"><span class="lbl">Classes &amp; points</span><span class="arr">&rarr;</span></a>
+<a class="mn-link" href="/gear"><span class="lbl">The hangar shop</span><span class="arr">&rarr;</span></a>
+<a class="mn-link" href="/blog"><span class="lbl">The blog</span><span class="arr">&rarr;</span></a>
+</div>
+</div>
+</div>
+</div>
 </div>
 ${I18N_LANGS.length ? `<div class="lang" id="langPill">
 <button class="lang-btn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Language"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="10" cy="10" r="7.2"/><path d="M2.8 10h14.4M10 2.8c2.5 2.3 2.5 12.1 0 14.4M10 2.8c-2.5 2.3-2.5 12.1 0 14.4"/></svg><span class="lang-cur">EN</span></button>
@@ -220,8 +248,13 @@ ${TY.map(t => mlink('/types/' + t.slug, t.name, '')).join('\n')}
 </div>
 <a class="mn-acc-direct" href="/records/longest-aircraft">Records</a>
 <a class="mn-acc-direct" href="/compare">Compare aircraft</a>
+<a class="mn-acc-direct" href="/quiz">The Silhouette Quiz</a>
 <a class="mn-acc-direct" href="/blog">Blog</a>
 <a class="mn-acc-direct" href="/explained">Explained</a>
+<a class="mn-acc-direct" href="/methodology">Methodology</a>
+<a class="mn-acc-direct" href="/fear-of-flying">Scared of flying?</a>
+<a class="mn-acc-direct" href="/travel-classes">Classes &amp; points</a>
+<a class="mn-acc-direct" href="/gear">The hangar shop</a>
 <a class="mn-acc-direct" href="/bring-back-concorde">Bring back Concorde</a>
 </div>
 <div class="mn-drawer-foot"><a class="mn-cta" href="/#fleet">Explore the fleet</a></div>
@@ -332,11 +365,22 @@ function renderPage({ file, urlPath, title, description, ogImage, jsonld, conten
 
 /* ---------- derived metrics: computed from core, never hand-authored ---------- */
 const METRICS = DATA.methodology.metrics;
+/* FAQPage schema from Q&A pairs — pairs with the visible accordions for rich SERP results */
+function faqLd(qas) {
+  return { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: qas.map(qa => ({
+    '@type': 'Question', name: qa.q,
+    acceptedAnswer: { '@type': 'Answer', text: qa.a }
+  })) };
+}
+
 function metricValue(key, a) {
   const c = a.core;
   if (key === 'seatsPerMetre') return c.seats_typical ? c.seats_typical / c.length_m : null;
   if (key === 'rangePerTonne') return (c.range_km && c.mtow_kg) ? c.range_km / (c.mtow_kg / 1000) : null;
   if (key === 'spanRatio') return (c.wingspan_m && c.length_m) ? c.wingspan_m / c.length_m : null;
+  if (key === 'massPerMetre') return (c.mtow_kg && c.length_m) ? (c.mtow_kg / 1000) / c.length_m : null;
+  if (key === 'rangeHours') return (c.range_km && c.speed_kmh) ? c.range_km / c.speed_kmh : null;
+  if (key === 'massPerSeat') return (c.mtow_kg && c.seats_typical) ? c.mtow_kg / c.seats_typical : null;
   return null;
 }
 function metricPool(key) {
@@ -578,6 +622,14 @@ ${AL.map(al => `<article class="acard"><h3>${al.iata ? `<span class="iata" style
 <article class="acard"><h3><a href="/types">Aircraft types</a></h3><p style="color:var(--muted);font-size:.92rem;margin:0 0 14px">Widebody, narrowbody, freighter, military transport, bomber, supersonic, trijet, propliner — every category explained.</p><a class="mini" href="/types">All types &rarr;</a></article>
 <article class="acard"><h3><a href="/blog">The blog</a></h3><p style="color:var(--muted);font-size:.92rem;margin:0 0 14px">Long-form writing on the aircraft we cover — sourced, dated, and honest about what nobody knows yet.</p><a class="mini" href="/blog">Read the blog &rarr;</a></article>
 <article class="acard"><h3><a href="/explained">Explained</a></h3><p style="color:var(--muted);font-size:.92rem;margin:0 0 14px">MTOW, ETOPS, range versus payload, winglets, turbofans — the ideas behind every spec table.</p><a class="mini" href="/explained">Start reading &rarr;</a></article>
+</div>
+</div></section>
+<section class="section" style="padding-top:0"><div class="wrap">
+<span class="eyebrow">For travellers</span>
+<h2 class="title">Before you fly</h2>
+<div class="pillars two">
+<article class="acard"><h3><a href="/fear-of-flying">Scared of flying?</a></h3><p style="color:var(--muted);font-size:.92rem;margin:0 0 14px">The fear is usually a fear of the unknown. Learn to think like a pilot, understand every noise and movement, and let the engineering put you at ease.</p><a class="mini" href="/fear-of-flying">Feel calmer &rarr;</a></article>
+<article class="acard"><h3><a href="/travel-classes">Fly better for less</a></h3><p style="color:var(--muted);font-size:.92rem;margin:0 0 14px">How the cabins really differ, the evergreen tricks for cheaper flights, and how points can turn an economy budget into a business-class seat.</p><a class="mini" href="/travel-classes">Fly smarter &rarr;</a></article>
 </div>
 </div></section>
 <section class="section" style="padding-top:0"><div class="wrap">
@@ -1145,7 +1197,12 @@ renderPage({
   file: 'fear-of-flying.html', urlPath: '/fear-of-flying', current: '',
   title: 'Scared of flying? The engineering that makes it safe',
   description: 'A calm, factual guide to the fear of flying — what turbulence really is, why the noises happen, how aircraft are built to cope, and gentle ways to feel more in control. Understanding is the cure for a lot of fear.',
-  jsonld: { '@context': 'https://schema.org', '@type': 'Article', headline: 'Scared of flying? The engineering that makes it safe', description: 'What turbulence really is, why the noises happen, and how aircraft are built to cope.', url: 'https://aircraft.fyi/fear-of-flying' },
+  jsonld: [{ '@context': 'https://schema.org', '@type': 'Article', headline: 'Scared of flying? The engineering that makes it safe', description: 'What turbulence really is, why the noises happen, and how aircraft are built to cope.', url: 'https://aircraft.fyi/fear-of-flying' }, faqLd([
+    { q: 'Is turbulence dangerous?', a: 'No. Turbulence is just uneven air, and aircraft wings are built to flex several metres and withstand far more than any turbulence you will ever feel. Pilots slow down mainly for comfort, not safety. Keep your seatbelt loosely fastened and it poses no real hazard.' },
+    { q: 'What is the loud clunk after take-off?', a: 'That is the landing gear retracting into the belly and the doors closing over it. It is meant to be firm and loud. Minutes later you may hear the wing flaps sliding back in as the aircraft speeds up.' },
+    { q: 'Why does the engine sound like it is giving up after take-off?', a: 'It is not. Just after take-off the pilots reduce power from full thrust to a quieter climb setting. It is planned and happens on every flight.' },
+    { q: 'Can a plane still fly if an engine fails?', a: 'Yes. A fully loaded airliner can climb and fly safely on one engine, and pilots train for it constantly. If all thrust is lost the aircraft glides — an airliner at cruise can glide well over 100 kilometres.' }
+  ])],
   content: `
 <section class="hero"><div class="wrap">
 <div class="crumb"><a href="/">Home</a> › Scared of flying</div>
@@ -1211,7 +1268,7 @@ renderPage({
 <section class="section" style="padding-top:0"><div class="wrap">
 <div class="mf-rg" style="line-height:1.6">
 <b>If your fear runs deeper than nerves.</b> For some people, flight anxiety is a genuine phobia, and no web page can talk that away — nor should it try. That is not a weakness; it is a common, treatable thing. Airline-run and pilot-led <b>fear-of-flying courses</b> have excellent track records, and a GP or a therapist trained in anxiety (CBT works especially well here) can help you get back in the air for good. Reaching out for that support is a strong, sensible move — and the reward is the whole world opening back up to you.</div>
-<p class="sub" style="margin-top:22px;text-align:center">Curious rather than calm now? That is the goal. <a href="/explained" style="color:var(--gold)">Explore how these machines actually work &rarr;</a></p>
+<p class="sub" style="margin-top:22px;text-align:center">Curious rather than calm now? That is the goal. <a href="/explained" style="color:var(--gold)">Explore how these machines work</a> — or plan the trip itself with our guide to <a href="/travel-classes" style="color:var(--gold)">classes, bargains &amp; points &rarr;</a></p>
 </div></section>`
 });
 
@@ -1220,12 +1277,18 @@ renderPage({
   file: 'travel-classes.html', urlPath: '/travel-classes', current: '',
   title: 'Flight classes, bargains & points — fly better for less',
   description: 'How economy, premium economy, business and first really differ, the evergreen strategies for cheaper flights, and how transferable points can unlock business and first-class seats. Durable principles, not deals that expire.',
-  jsonld: { '@context': 'https://schema.org', '@type': 'Article', headline: 'Flight classes, bargains & points — how to fly better for less', description: 'How the cabins differ, how to find cheaper flights, and how points unlock premium seats.', url: 'https://aircraft.fyi/travel-classes' },
+  jsonld: [{ '@context': 'https://schema.org', '@type': 'Article', headline: 'Flight classes, bargains & points', description: 'How the cabins differ, how to find cheaper flights, and how points unlock premium seats.', url: 'https://aircraft.fyi/travel-classes' }, faqLd([
+    { q: 'What is the difference between premium economy and business class?', a: 'Premium economy is a bigger, more reclined seat with better food and service, but still an upright seat. Business class on long-haul usually means a lie-flat bed, lounge access and direct aisle access. Premium economy is often the best value; business is the biggest comfort leap for overnight flights.' },
+    { q: 'How do points and miles get you business or first class?', a: 'The cash price and points price of a seat are largely unrelated. A business seat costing thousands in cash may cost a points total you can realistically earn from everyday spending and sign-up bonuses. Points are worth most in premium cabins, so saving them for business or first gives the best value.' },
+    { q: 'Are transferable points better than an airline credit card?', a: 'Usually yes. Transferable points from major card programmes move to many airline and hotel partners, so you are not locked to one airline or exposed to a single programme devaluing. A co-branded airline card ties you to that one airline.' },
+    { q: 'When is the cheapest time to book flights?', a: 'For most international trips a booking window of roughly one to three months out tends to land near the lowest fares. Mid-week departures and the shoulder weeks either side of peak season are reliably cheaper. Painfully early rarely wins and last-minute long-haul is usually expensive.' }
+  ])],
   content: `
 <section class="hero"><div class="wrap">
 <div class="crumb"><a href="/">Home</a> › Classes, bargains &amp; points</div>
 <h1>Fly better for less</h1>
 <p class="lead">How the cabins actually differ, the strategies for cheaper flights that never go out of date, and how points and miles can turn an economy budget into a business-class seat. We stick to <em>durable principles</em> — the specifics of any card or programme change constantly, so treat named examples as a starting point and always check current terms yourself.</p>
+<p class="sub" style="margin-top:10px">First time in the air, or a nervous flyer? Start with <a href="/fear-of-flying" style="color:var(--gold)">our guide to feeling calm on board &rarr;</a></p>
 </div></section>
 
 <section class="section" style="padding-top:0"><div class="wrap">
