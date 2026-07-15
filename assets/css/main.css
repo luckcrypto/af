@@ -344,6 +344,7 @@ a.recrow:hover{background:#F5F7FA}
 /* silbox: the svg width % is measured against the full inner width of the white window */
 .acard .sil .silbox{width:100%;display:flex;align-items:center;justify-content:center}
 .acard .sil .silbox svg{max-width:none;height:auto}
+  .acard .sil .silbox svg{--silw:100%;width:100% !important}
 
 /* ---------- Scale Engine ---------- */
 .scalePicks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:18px}
@@ -407,7 +408,11 @@ a.recrow:hover{background:#F5F7FA}
 .fchip[aria-pressed="true"] .n{opacity:.85}
 .fchip:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 @media (forced-colors:active){.fchip[aria-pressed="true"]{background:Highlight;color:HighlightText}}
-@media(max-width:640px){.filterbar{gap:6px;margin:16px 0 20px}.fchip{padding:7px 11px;font-size:.78rem}}
+@media(max-width:640px){
+  .filterbar{gap:6px;margin:16px 0 20px}
+  .fchip{padding:7px 11px;font-size:.78rem;flex:1 1 auto;text-align:center;justify-content:center}
+  .filterbar .fsort-lbl{flex:1 1 100%;text-align:center;margin-bottom:2px}
+}
 
 /* verified operator tick */
 .vtick{display:inline-block;margin-left:5px;color:var(--mint);font-weight:700;font-size:.8em;cursor:help}
@@ -626,6 +631,10 @@ html[dir="rtl"] .i18n-note{border-left:1px solid var(--line);border-right:3px so
 /* ---------- fleet tools: filter row, then sort + grid together on one tidy line ---------- */
 #fleetFilter{margin:20px 0 12px}
 .fleetTools{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px 28px;margin:0 0 22px}
+@media(max-width:640px){
+  .fleetTools{flex-direction:column;align-items:stretch;gap:12px}
+  .fleetTools .filterbar{width:100%;margin:0}
+}
 .fleetTools .filterbar{margin:0}
 .colsbar{gap:8px}
 
@@ -734,3 +743,52 @@ html[dir="rtl"] .i18n-note{border-left:1px solid var(--line);border-right:3px so
 
 /* temporary launch banner (home) — delete this rule + the div in build.js when done */
 .wip{background:#F5F7FA;border-bottom:1px solid var(--line);text-align:center;font-family:var(--display);font-weight:600;font-size:.82rem;color:var(--muted);padding:9px 16px;letter-spacing:.02em}
+
+/* ---------- affiliate: gear card (aircraft pages) + hangar shop (/gear) ---------- */
+.gearcard{display:flex;gap:16px;align-items:flex-start;background:#FFFFFF;border:1px solid var(--line);border-radius:var(--radius-sm);box-shadow:inset 0 1px 0 rgba(255,255,255,.7);padding:18px;margin:8px 0 26px;max-width:70ch;margin-left:auto;margin-right:auto}
+.gear-tag{display:inline-block;font-family:var(--display);font-size:.62rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);border:1px solid var(--line-2);border-radius:6px;padding:.25em .6em;margin-bottom:8px}
+.gearcard .gear-body h3{font-size:1.05rem;margin:0 0 6px}
+.gearcard .gear-body p{color:var(--muted);font-size:.92rem;margin:0 0 12px}
+.gear-cta{display:inline-block;background:var(--gold);color:#FFFFFF;font-family:var(--display);font-weight:700;font-size:.86rem;border-radius:11px;padding:.6em 1.1em;text-decoration:none}
+.gear-cta:link,.gear-cta:visited{color:#FFFFFF}
+.gear-cta:hover{filter:brightness(1.05)}
+.gear-disc{font-size:.72rem;color:var(--muted);margin:12px 0 0;line-height:1.5}
+.gearlist{display:grid;gap:16px;max-width:760px;margin:14px auto 0}
+.gearitem{background:#FFFFFF;border:1px solid var(--line);border-radius:var(--radius-sm);box-shadow:inset 0 1px 0 rgba(255,255,255,.7);padding:22px}
+.gearitem h3{font-size:1.15rem;margin:0 0 8px}
+.gearitem p{color:var(--muted);margin:0 0 16px}
+.gear-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.gear-alt{font-family:var(--display);font-weight:600;font-size:.86rem;color:var(--text);text-decoration:none;border:1px solid var(--line);border-radius:11px;padding:.55em 1em}
+.gear-alt:hover{border-color:var(--gold);color:var(--gold)}
+
+/* ---------- hangar shop: groups + owned checklist ---------- */
+.geargroup{margin:0 0 34px}
+.geargroup .eyebrow{text-align:center}
+.geargroup > .sub{text-align:center;max-width:60ch}
+.gi-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}
+.gi-own{font-family:var(--display);font-weight:700;font-size:.68rem;letter-spacing:.04em;color:var(--muted);background:#FFFFFF;border:1px solid var(--line);border-radius:999px;padding:.35em .8em;cursor:pointer;white-space:nowrap}
+.gi-own:hover{border-color:var(--line-2);color:var(--text)}
+.gi-own[aria-pressed="true"]{color:#FFFFFF;background:#1E8E3E;border-color:#1E8E3E}
+.gearitem.owned{border-color:#1E8E3E;box-shadow:inset 0 1px 0 rgba(255,255,255,.7),inset 0 0 0 1px rgba(30,142,62,.25)}
+
+/* ---------- silhouette category legend ---------- */
+.sillegend{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 18px;background:#FFFFFF;border:1px solid var(--line);border-radius:var(--radius-sm);box-shadow:inset 0 1px 0 rgba(255,255,255,.7);padding:18px 20px}
+.slg{display:inline-flex;align-items:center;gap:8px;font-family:var(--display);font-weight:600;font-size:.8rem;color:var(--text)}
+.slg i{width:16px;height:16px;border-radius:5px;flex:0 0 auto;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
+
+/* legend chips: name links + copyable hex */
+.slg{display:inline-flex;align-items:center;gap:8px}
+.slg-link{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:var(--text);font-family:var(--display);font-weight:600;font-size:.8rem}
+.slg-link:hover{color:var(--gold)}
+.slg-hex{font-family:var(--mono,ui-monospace,monospace);font-size:.68rem;font-weight:600;color:var(--muted);background:#F5F7FA;border:1px solid var(--line);border-radius:6px;padding:.2em .5em;cursor:pointer;letter-spacing:.02em}
+.slg-hex:hover{border-color:var(--line-2);color:var(--text)}
+.slg-hex.ok{color:#1E8E3E;border-color:#1E8E3E}
+
+/* ---------- two-tier sources ---------- */
+.srcwrap{max-width:64ch;margin:10px auto 0;text-align:left}
+.src-sub{display:block;font-family:var(--display);font-size:.66rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.src-primary{margin:0}
+.src-further{margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+
+/* stacked accordions on guide pages */
+.qa-list{display:flex;flex-direction:column;gap:8px;margin-top:14px}
