@@ -7901,6 +7901,27 @@
         "why": "A shape signature. Above 1.0 the wing is wider than the aircraft is long — rare, and the A380 is the only one here that does it.",
         "unit": "",
         "decimals": 2
+      },
+      {
+        "key": "massPerMetre",
+        "name": "Weight per metre",
+        "formula": "MTOW ÷ fuselage length",
+        "unit": "t/m",
+        "decimals": 2
+      },
+      {
+        "key": "rangeHours",
+        "name": "Range in hours",
+        "formula": "maximum range ÷ cruise speed",
+        "unit": "h",
+        "decimals": 1
+      },
+      {
+        "key": "massPerSeat",
+        "name": "Weight per seat",
+        "formula": "MTOW ÷ typical seats",
+        "unit": "kg",
+        "decimals": 0
       }
     ],
     "caveats": "Derived metrics use each family's flagship variant as specified in its table. Typical seating is the manufacturer's multi-class figure; real airline layouts vary. These are comparison tools, not operational data."
