@@ -10,6 +10,34 @@ const path = require('path');
 const ROOT = __dirname;                       // build/ — data + templates live here
 const SITE = path.join(ROOT, '..');
 const STAMP = new Date().toISOString().slice(0, 10);
+const GEAR = [
+  { group: 'Build it yourself', note: 'The LEGO sets worth clearing desk space for.', items: [
+    { title: 'LEGO Icons 10318 Concorde', blurb: 'The 2,083-piece flagship of the most beautiful airliner ever made — droop nose, retractable gear, display stand. The centrepiece of any desk.', url: 'https://amzn.to/3SWF01r', link: '/aircraft/concorde', tag: 'Display shelf' },
+    { title: 'LEGO City 60367 Passenger Aeroplane', blurb: 'A wide-body with a full ground crew — pushback tug, catering loader, baggage truck, apron bus and nine minifigures. The best starter set for a young avgeek.', url: 'https://amzn.to/4hdX695', link: '', tag: 'Younger pilots' }
+  ] },
+  { group: 'On the shelf', note: 'Die-cast models and reference books — the collector\u2019s core.', items: [
+    { title: 'Die-cast airliners (1:400 & 1:200)', blurb: 'Gemini Jets and Herpa are the names to know — accurately scaled metal models in real airline liveries. Search your favourite carrier and scale; the A380 and 747 look superb on a shelf.', q: 'Gemini Jets 1:400 diecast airliner', link: '/records/longest-aircraft', tag: 'Collectors' },
+    { title: 'Aviation reference books', blurb: 'From airliner-recognition guides to the deep engineering histories. A good coffee-table book on jet development is the natural companion to this site.', q: 'commercial aviation airliner book', link: '/explained', tag: 'Reading' }
+  ] },
+  { group: 'Track the skies', note: 'Turn real aircraft overhead into data on your screen.', items: [
+    { title: 'RTL-SDR receiver (ADS-B / Flightradar)', blurb: 'A cheap software-defined-radio USB stick that picks up ADS-B — the signals aircraft broadcast — so you can track everything flying near you and even feed Flightradar24. The gateway drug of plane-spotting tech.', q: 'RTL-SDR ADS-B receiver USB', link: '', tag: 'Spotter tech' },
+    { title: 'Plane-spotting binoculars (8x42)', blurb: '8x42 is the spotter\u2019s sweet spot — bright, steady, wide enough to find a jet on approach and hold it. The classic airfield-fence companion.', q: '8x42 binoculars plane spotting', link: '', tag: 'Spotter tech' }
+  ] },
+  { group: 'In the cockpit (at home)', note: 'The flight-sim hardware that makes it feel real.', items: [
+    { title: 'Flight-sim joystick & throttle (HOTAS)', blurb: 'A HOTAS — hands-on throttle-and-stick — is the single biggest upgrade to any flight simulator. Logitech and Thrustmaster make the go-to starter sets.', q: 'HOTAS flight simulator joystick throttle', link: '/compare', tag: 'Flight sim' }
+  ] }
+];
+const amz = q => 'https://www.amazon.co.uk/s?k=' + encodeURIComponent(q) + '&tag=luck11106-21';
+const WIKI = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'wiki.json'), 'utf8'));
+/* two-tier sources: Primary (the factual backbone) + Further reading (verified Wikipedia only).
+   furtherSlug is looked up in WIKI[kind]; if absent, the Further-reading tier is simply omitted. */
+function sourcesBlock(primary, kind, slug, label) {
+  const prim = primary.map(s => `<li style="margin-bottom:8px"><a href="${esc(s.url)}" rel="noopener" target="_blank" style="color:var(--muted);font-size:.88rem">${esc(s.name)} &nearr;</a></li>`).join('\n');
+  const w = WIKI[kind] && WIKI[kind][slug];
+  const further = w ? `<div class="src-further"><span class="src-sub">Further reading</span><ul style="list-style:none;margin:8px 0 0;padding:0"><li><a href="https://en.wikipedia.org/wiki/${w}" rel="noopener" target="_blank" style="color:var(--muted);font-size:.88rem">${esc(label)} on Wikipedia &nearr;</a></li></ul></div>` : '';
+  return `<div class="srcwrap"><div class="src-primary"><span class="src-sub">Primary sources</span><ul style="list-style:none;margin:8px 0 0;padding:0">${prim}</ul></div>${further}</div>`;
+}
+const AFFDISC = 'As an Amazon Associate, aircraft.fyi earns from qualifying purchases. This never affects the price you pay, and links are chosen on merit \u2014 never paid placement.';
 
 /* LAUNCH CONFIG: English-only. To open a market later, add its code here (e.g. ['es'])
    once (a) Search Console shows real demand from that language and (b) the prose for it
@@ -225,7 +253,7 @@ ${BRAND('mf-logo mn-logo')}
 </div>
 <div>
 <h3 class="mf-h">Reference</h3>
-<ul><li><a href="/manufacturers">Manufacturers</a></li><li><a href="/types">Aircraft types</a></li><li><a href="/records/longest-aircraft">Longest aircraft</a></li><li><a href="/blog">Blog</a></li><li><a href="/explained">Explained</a></li><li><a href="/compare">Compare aircraft</a></li><li><a href="/bring-back-concorde">Bring back Concorde</a></li><li><a href="/methodology">Methodology</a></li><li><a href="/quiz">The Silhouette Quiz</a></li></ul>
+<ul><li><a href="/manufacturers">Manufacturers</a></li><li><a href="/types">Aircraft types</a></li><li><a href="/records/longest-aircraft">Longest aircraft</a></li><li><a href="/blog">Blog</a></li><li><a href="/explained">Explained</a></li><li><a href="/compare">Compare aircraft</a></li><li><a href="/bring-back-concorde">Bring back Concorde</a></li><li><a href="/methodology">Methodology</a></li><li><a href="/quiz">The Silhouette Quiz</a></li><li><a href="/gear">The hangar shop</a></li><li><a href="/fear-of-flying">Scared of flying?</a></li><li><a href="/travel-classes">Classes &amp; points</a></li></ul>
 </div>
 <div>
 <h3 class="mf-h">Site</h3>
@@ -367,17 +395,40 @@ for (const a of DATA.aircraft) {
   if (!m) throw new Error('no silhouette geometry for ' + a.slug);
   SIL[a.slug] = m[1].trim();
 }
+const CATCOLOR = {
+  'Widebody':            '#3E6FB0',   /* semi-pastel jet blue */
+  'Narrowbody':         '#6FA0C8',   /* lighter sky blue */
+  'Supersonic transport':'#5B4E8C',   /* burple / violet-navy */
+  'Strategic bomber':   '#3B4657',   /* slate navy */
+  'Military transport': '#5F7488',   /* steel grey-blue */
+  'Cargo':              '#4E7C77',   /* muted teal */
+  'Outsize freighter':  '#2F5D63',   /* deep teal */
+  'Trijet':             '#7E6A9E',   /* soft plum */
+  'Turboprop airliner': '#8AA98C',   /* sage green */
+  'Piston airliner':    '#A9895F',   /* warm taupe */
+  'Flying boat':        '#4F8FA6',   /* lagoon blue */
+  'Experimental':       '#9C6F86'    /* dusky mauve */
+};
+const CATLINK = {
+  'Widebody': 'widebody', 'Narrowbody': 'narrowbody',
+  'Supersonic transport': 'supersonic', 'Strategic bomber': 'bombers',
+  'Military transport': 'military-transports', 'Cargo': 'freighters',
+  'Outsize freighter': 'freighters', 'Trijet': 'trijets',
+  'Turboprop airliner': 'propliners', 'Piston airliner': 'propliners',
+  'Flying boat': 'propliners', 'Experimental': 'bombers'
+};
+const catColor = a => CATCOLOR[a.category] || 'var(--text)';
 const MAXSPAN = Math.max(...DATA.aircraft.map(x => x.core.wingspan_m || 0));
 const silScaled = a => {
   const pct = Math.max(46, Math.round(98 * Math.pow((a.core.wingspan_m || 0) / MAXSPAN, 0.38)));
-  return `<div class="silbox" title="Wingspan ${a.core.wingspan_m} m — drawn at ${pct}% of the widest wings ever built"><svg viewBox="0 ${a.vb.top} 260 ${a.vb.h}" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:${pct}%">
+  return `<div class="silbox" style="--pct:${pct}%" title="Wingspan ${a.core.wingspan_m} m — drawn at ${pct}% of the widest wings ever built"><svg viewBox="0 ${a.vb.top} 260 ${a.vb.h}" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:var(--silw,${pct}%);--silw-d:${pct}%;color:${catColor(a)}">
 <g fill="currentColor">${SIL[a.slug]}</g></svg></div>`;
 };
 const rkLen = [...A].sort((x, y) => y.core.length_m - x.core.length_m).map(x => x.slug);
 const rkWt = [...A].sort((x, y) => (y.core.mtow_kg || 0) - (x.core.mtow_kg || 0)).map(x => x.slug);
 const rkSp = A.filter(x => x.core.speed_kmh).sort((x, y) => y.core.speed_kmh - x.core.speed_kmh).map(x => x.slug);
 
-const silUse = (a, w) => `<svg viewBox="0 ${a.vb.top} 260 ${a.vb.h}" preserveAspectRatio="xMidYMax meet" aria-hidden="true"${w ? ` style="max-width:${w}px"` : ''}><g fill="currentColor">${SIL[a.slug]}</g></svg>`;
+const silUse = (a, w) => `<svg viewBox="0 ${a.vb.top} 260 ${a.vb.h}" preserveAspectRatio="xMidYMax meet" aria-hidden="true" style="color:${catColor(a)}${w ? `;max-width:${w}px` : ''}"><g fill="currentColor">${SIL[a.slug]}</g></svg>`;
 
 function specTable(a) {
   const id = 'spec-' + a.slug;
@@ -389,7 +440,7 @@ ${a.specs.map(s => `<tr><th scope="row">${esc(s.label)}</th><td data-metric="${e
 
 function aircraftCard(a) {
   const top = a.specs.slice(0, 4);
-  return `<article class="acard" data-cat="${typeOf(a)}" data-slug="${a.slug}" data-wingspan="${a.core.wingspan_m}" data-length="${a.core.length_m}" data-height="${a.core.height_m}" data-mtow="${a.core.mtow_kg}" data-year="${a.core.firstFlightYear}" data-name="${esc(a.name.toLowerCase())}">
+  return `<article class="acard" data-cat="${typeOf(a)}" data-slug="${a.slug}" data-wingspan="${a.core.wingspan_m}" data-length="${a.core.length_m}" data-height="${a.core.height_m}" data-mtow="${a.core.mtow_kg}" data-year="${a.core.firstFlightYear}" data-name="${esc(a.name.toLowerCase())}" data-manufacturer="${esc(a.manufacturer.toLowerCase())}">
 <button class="addcmp" type="button" data-slug="${a.slug}" data-short="${esc(shortName(a))}" aria-pressed="false" title="Add to compare tray" aria-label="Add ${esc(a.name)} to the compare tray">⇄</button>
 <div class="sil">${silScaled(a)}</div>
 <h3><a href="/aircraft/${a.slug}">${esc(a.name)}</a></h3>
@@ -468,6 +519,7 @@ renderPage({
 <h2 class="title">Aircraft, page by page</h2>
 <p class="sub">Every silhouette below is sized by real wingspan — the bigger the aircraft, the bigger it draws. Each page carries the full sourced spec table, every variant, and every operator.</p>
 <div class="filterbar" id="fleetFilter" role="group" aria-label="Filter the fleet by type">
+<span class="fsort-lbl">Filter</span>
 <button class="fchip" type="button" data-filter="all" aria-pressed="true">All <span class="n">${A.length}</span></button>
 ${TY.map(t => `<button class="fchip" type="button" data-filter="${t.slug}" aria-pressed="false">${esc(t.name.replace(/ (airliners|& outsize cargo|& experimental giants|& flying boats)/, ''))} <span class="n">${byType(t).length}</span></button>`).join('\n')}
 </div>
@@ -476,6 +528,7 @@ ${TY.map(t => `<button class="fchip" type="button" data-filter="${t.slug}" aria-
 <span class="fsort-lbl">Sort</span>
 <button class="fchip" type="button" data-sort="wingspan" aria-pressed="true">Wingspan</button>
 <button class="fchip" type="button" data-sort="length" aria-pressed="false">Length</button>
+<button class="fchip" type="button" data-sort="manufacturer" aria-pressed="false">Manufacturer</button>
 <button class="fchip" type="button" data-sort="height" aria-pressed="false">Height</button>
 <button class="fchip" type="button" data-sort="mtow" aria-pressed="false">Weight</button>
 <button class="fchip" type="button" data-sort="year" aria-pressed="false">First flight</button>
@@ -625,14 +678,25 @@ ${a.operatorsOther ? `<div class="oprow other"><span class="who"><span><b>${esc(
 ${a.operatorsOnOrder ? `<p class="sub" style="margin-top:18px">${esc(a.operatorsOnOrder)}</p>` : ''}
 </div></section>
 ${aff}
+${a.gear && a.gear.length ? `<section class="section" style="padding-top:0"><div class="wrap">
+<span class="eyebrow">For the collector</span>
+<h2 class="title">Build it yourself</h2>
+<div class="gearcard">
+<div class="gear-body">
+<span class="gear-tag">Collector&rsquo;s pick</span>
+<h3>${esc(a.gear[0].title)}</h3>
+<p>${esc(a.gear[0].blurb)}</p>
+<a class="gear-cta" href="${esc(a.gear[0].url)}" target="_blank" rel="sponsored nofollow noopener">View on Amazon &rarr;</a>
+<p class="gear-disc">${AFFDISC}</p>
+</div>
+</div>
+</div></section>` : ''}
 <section class="section" style="padding-top:0"><div class="wrap">
 <span class="eyebrow">Compare</span>
 <h2 class="title">Put it next to something</h2>
 <ul style="list-style:none;margin:20px 0 0;padding:0">${compareLinks}</ul>
 <h3 style="margin-top:32px;font-size:1.1rem">Sources</h3>
-<ul style="list-style:none;margin:10px auto 0;padding:0;max-width:64ch;text-align:left">
-${a.sources.map(s => `<li style="margin-bottom:8px"><a href="${esc(s.url)}" rel="noopener" target="_blank" style="color:var(--muted);font-size:.88rem">${esc(s.name)} &nearr;</a></li>`).join('\n')}
-</ul>
+${sourcesBlock(a.sources, 'aircraft', a.slug, a.name)}
 </div></section>`
   });
 }
@@ -738,9 +802,7 @@ ${al.facts && al.facts.length ? `<section class="section" style="padding-top:0">
 </div></section>` : ''}
 <section class="section" style="padding-top:0"><div class="wrap">
 <span class="eyebrow" style="display:block">Sources</span>
-<ul style="list-style:none;margin:10px auto 0;padding:0;max-width:64ch;text-align:left">
-${al.sources.map(s => `<li style="margin-bottom:8px"><a href="${esc(s.url)}" rel="noopener" target="_blank" style="color:var(--muted);font-size:.88rem">${esc(s.name)} &nearr;</a></li>`).join('\n')}
-</ul>
+${sourcesBlock(al.sources, 'airlines', al.slug, al.name)}
 </div></section>`
   });
 }
@@ -974,12 +1036,41 @@ ${miniTable(list)}
 </div></section>
 <section class="section" style="padding-top:0"><div class="wrap">
 <span class="eyebrow" style="display:block">Sources</span>
-<ul style="list-style:none;margin:10px auto 0;padding:0;max-width:64ch;text-align:left">
-${m.sources.map(s => `<li style="margin-bottom:8px"><a href="${esc(s.url)}" rel="noopener" target="_blank" style="color:var(--muted);font-size:.88rem">${esc(s.name)} &nearr;</a></li>`).join('\n')}
-</ul>
+${sourcesBlock(m.sources, 'makers', m.slug, m.name)}
 </div></section>`
   });
 }
+
+renderPage({
+  file: 'gear.html', urlPath: '/gear',
+  title: 'The hangar shop — aircraft models, LEGO & gifts for avgeeks',
+  description: 'A short, honest shelf of the best aircraft models, LEGO sets and gifts for people who love flying machines. Hand-picked, never paid placement.',
+  jsonld: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'The hangar shop', url: 'https://aircraft.fyi/gear' },
+  content: `
+<section class="hero"><div class="wrap">
+<div class="crumb"><a href="/">Home</a> › The hangar shop</div>
+<h1>The hangar shop</h1>
+<p class="lead">A short, honest shelf for people who love flying machines. Everything here is hand-picked on merit — no sponsored slots, no filler. ${AFFDISC}</p>
+</div></section>
+<section class="section" style="padding-top:0"><div class="wrap">
+${GEAR.map(grp => `<div class="geargroup">
+<span class="eyebrow" style="display:block">${esc(grp.group)}</span>
+<p class="sub" style="margin:2px auto 0">${esc(grp.note)}</p>
+<div class="gearlist">
+${grp.items.map(g => { const href = g.url || amz(g.q); const kind = g.url ? 'sponsored nofollow noopener' : 'nofollow noopener'; const key = 'gear:' + g.title.replace(/[^a-z0-9]+/gi, '-').toLowerCase(); return `<article class="gearitem" data-key="${key}">
+<div class="gi-head"><span class="gear-tag">${esc(g.tag)}</span><button class="gi-own" type="button" aria-pressed="false" title="Mark as owned">Own it</button></div>
+<h3>${esc(g.title)}</h3>
+<p>${esc(g.blurb)}</p>
+<div class="gear-row">
+<a class="gear-cta" href="${esc(href)}" target="_blank" rel="${kind}">${g.url ? 'View on Amazon' : 'Find on Amazon'} &rarr;</a>
+${g.link ? `<a class="gear-alt" href="${g.link}">Explore on site &rarr;</a>` : ''}
+</div>
+</article>`; }).join('\n')}
+</div>
+</div>`).join('\n')}
+<p class="sub" style="margin-top:8px">Your &ldquo;owned&rdquo; ticks are saved on this device only — nothing leaves your browser. Spotted something that belongs here? <a href="mailto:business@luck.fyi?subject=Hangar%20shop%20suggestion" style="color:var(--gold)">Tell us</a>.</p>
+</div></section>`
+});
 
 renderPage({
   file: 'quiz.html', urlPath: '/quiz',
@@ -1003,7 +1094,7 @@ renderPage({
 </div></section>
 <script>
 (function(){
-  var QD = ${JSON.stringify(A.map(x => ({ n: x.name, s: silUse(x) })))};
+  var QD = ${JSON.stringify(A.map(x => ({ n: x.name, s: silUse(x).replace(/color:[^;"]+;?/, '') })))};
   var sil = document.getElementById('qSil'), opts = document.getElementById('qOpts'), msg = document.getElementById('qMsg');
   var stEl = document.getElementById('qStreak'), bEl = document.getElementById('qBest');
   if (!sil) return;
@@ -1047,6 +1138,154 @@ renderPage({
   pick();
 })();
 </script>`
+});
+
+/* ---------- fear of flying (clean, no affiliate) ---------- */
+renderPage({
+  file: 'fear-of-flying.html', urlPath: '/fear-of-flying', current: '',
+  title: 'Scared of flying? The engineering that makes it safe',
+  description: 'A calm, factual guide to the fear of flying — what turbulence really is, why the noises happen, how aircraft are built to cope, and gentle ways to feel more in control. Understanding is the cure for a lot of fear.',
+  jsonld: { '@context': 'https://schema.org', '@type': 'Article', headline: 'Scared of flying? The engineering that makes it safe', description: 'What turbulence really is, why the noises happen, and how aircraft are built to cope.', url: 'https://aircraft.fyi/fear-of-flying' },
+  content: `
+<section class="hero"><div class="wrap">
+<div class="crumb"><a href="/">Home</a> › Scared of flying</div>
+<h1>Scared of flying? Let&rsquo;s demystify it.</h1>
+<p class="lead">Most fear of flying is really a fear of the <em>unknown</em> — a strange noise, a sudden bump, a feeling with no explanation. This whole site exists to explain these machines, so here is the calm, honest version: what is actually happening up there, and why the aircraft is built to handle every bit of it.</p>
+</div></section>
+
+<section class="section" style="padding-top:0"><div class="wrap">
+<span class="eyebrow">The big one</span>
+<h2 class="title" style="margin-bottom:8px">Turbulence feels dangerous. It isn&rsquo;t.</h2>
+<div class="prose" style="margin-top:12px">
+<p>Turbulence is just uneven air — pockets moving at slightly different speeds, the way a boat rocks on choppy water. It feels dramatic because you can&rsquo;t see it coming, but to the aircraft it is completely routine. Wings are not rigid: they are engineered to <b>flex</b>, and on a big airliner the wingtips can move several metres up and down without any trouble at all. That flexing is the wing doing its job, not a sign of strain.</p>
+<p>Test aircraft are deliberately pushed far beyond anything you will ever feel — wings bent upward past 1.5 times the worst imaginable load until they finally break, purely to prove how enormous the margin is. The bumps on your flight are a tiny fraction of what the airframe shrugs off by design. Pilots slow down or change altitude in turbulence mostly for <em>your comfort</em>, not because the aircraft is in any danger.</p>
+<p>The single best thing you can do: keep your seatbelt loosely fastened the whole flight. Not because the plane is at risk — but because it means a sudden bump can never unseat you. That one habit removes the only real hazard turbulence poses.</p>
+</div>
+</div></section>
+
+<section class="section" style="padding-top:0"><div class="wrap">
+<span class="eyebrow">The mindset shift</span>
+<h2 class="title" style="margin-bottom:8px">Learn to think like a pilot</h2>
+<div class="prose" style="margin-top:12px">
+<p>Here is the single idea that turns fear into fascination: <b>almost every movement you feel is the direct result of an input the pilot chose to make.</b> The aircraft is not being thrown around — it is being <em>flown</em>, deliberately, by two people following a precise plan. Once you understand what they are doing and why, the bumps and turns stop being mysterious forces and become a conversation you can follow.</p>
+<p>Take off and landing — the parts that scare people most — are the most <em>hands-on</em> of all, and that is exactly why so much is happening. On take-off the pilot pulls back to rotate the nose up, so you feel pushed into your seat as the jet climbs steeply and deliberately. The engines are at high power on purpose; that is the plan, not a struggle. Moments later the power eases back to a calmer climb setting, the nose lowers slightly, and you feel the change — because the pilot <em>commanded</em> it, right on schedule.</p>
+<p>Landing is the same story in reverse. The sinking feeling as the aircraft descends is a controlled, chosen descent. The whine and rumble is the pilot lowering flaps and gear to fly slower and steadier. A bank to one side is a planned turn onto the final approach. Even a firm touchdown is usually intentional — on a wet runway pilots plant the aircraft down firmly on purpose, to get the wheels gripping. Every one of those sensations has a hand on a control behind it.</p>
+<p>So the trick that works: instead of bracing against each movement, ask yourself <em>&ldquo;what did the pilot just do to make that happen?&rdquo;</em> Climbing, easing power, banking into a turn, extending flaps, descending. You will nearly always be right — and the moment you can name the input, the fear has nothing left to feed on. You have stopped being a passenger something is happening <em>to</em>, and started being someone who understands the flight.</p>
+</div>
+</div></section>
+
+<section class="section" style="padding-top:0"><div class="wrap">
+<span class="eyebrow">That noise</span>
+<h2 class="title" style="margin-bottom:8px">The sounds are the aircraft working &mdash; here&rsquo;s each one</h2>
+<div class="qa-list">
+<details class="qa" open><summary>A loud whirr or clunk after take-off<i class="caret"></i></summary><div class="body">The landing gear retracting into the belly, then the doors closing over it. It is meant to be firm and loud. A few minutes later you may hear the reverse: the whine of the wing flaps sliding back in as the plane picks up speed.</div></details>
+<details class="qa"><summary>A change in engine pitch, like it&rsquo;s &ldquo;giving up&rdquo;<i class="caret"></i></summary><div class="body">Completely normal. Just after take-off the pilots reduce power from full-thrust to a quieter climb setting — it is planned, and it happens on every single flight. The engines are still doing exactly what they should.</div></details>
+<details class="qa"><summary>Barking or dog-like sounds before push-back (Airbus)<i class="caret"></i></summary><div class="body">A hydraulic pump on many Airbus jets, nicknamed the &ldquo;barking dog.&rdquo; Odd, but entirely mechanical and harmless — just a pump doing its job.</div></details>
+<details class="qa"><summary>A bong or chime mid-flight<i class="caret"></i></summary><div class="body">Usually just the crew signalling each other, or the seatbelt sign changing. It is an intercom tone, nothing more — the aviation equivalent of a doorbell.</div></details>
+<details class="qa"><summary>Rushing air / a whooshing hiss<i class="caret"></i></summary><div class="body">Air conditioning and pressurisation, constantly cycling fresh air through the cabin. Cabin air is fully refreshed every couple of minutes, cleaner than most offices.</div></details>
+</div>
+</div></section>
+
+<section class="section" style="padding-top:0"><div class="wrap">
+<span class="eyebrow">Built for it</span>
+<h2 class="title" style="margin-bottom:8px">How much the aircraft can take</h2>
+<div class="prose" style="margin-top:12px">
+<p>Modern airliners are among the most redundant machines ever built. Two or more engines, and a fully loaded jet can climb and fly safely on just one — pilots train for it constantly. Multiple independent hydraulic systems, multiple electrical systems, backups for the backups. If something fails, there is almost always a second and third way to do the same job.</p>
+<p>A jet does not fall if the engines quit, either — it glides. An airliner at cruise can glide well over 100 kilometres with no thrust at all, giving crews enormous time and distance to restart or divert. Lightning strikes aircraft routinely and the charge simply flows around the metal skin and off the other side; passengers rarely even notice.</p>
+<p>And every one of those pilots has rehearsed the rare scenarios hundreds of times in simulators before they ever carry you. When something unusual happens, they are not surprised — they are running a checklist they know by heart.</p>
+</div>
+</div></section>
+
+<section class="section" style="padding-top:0"><div class="wrap">
+<span class="eyebrow">In your control</span>
+<h2 class="title" style="margin-bottom:8px">Gentle things that genuinely help</h2>
+<div class="prose" style="margin-top:12px">
+<p><b>Choose your seat.</b> A seat over the wing, toward the middle of the aircraft, feels the least motion — it is the balance point, the way the centre of a see-saw barely moves. A window seat lets some people feel more oriented; an aisle helps others feel less boxed in. Pick what suits <em>you</em>.</p>
+<p><b>Breathe slowly and deliberately.</b> Fear speeds up your breathing, which fuels more fear. Breathe in for four counts, out for six. The long exhale is the part that calms your nervous system — do it for a minute and the physical panic genuinely eases.</p>
+<p><b>Tell a crew member.</b> Cabin crew help nervous flyers all the time and will happily check in on you. Knowing someone calm knows how you feel is a real comfort — and they have seen every bump a thousand times.</p>
+<p><b>Give your mind a job.</b> A gripping playlist, a film you&rsquo;ve saved, a game, a conversation. Anticipation feeds fear; occupying your attention starves it.</p>
+<p><b>Learn what the flight will feel like.</b> Bumps on climb-out, the engine easing back, the flaps humming, a turn banking the whole cabin — all normal. When you know the script, the surprises stop being frightening.</p>
+</div>
+</div></section>
+
+<section class="section" style="padding-top:0"><div class="wrap">
+<div class="mf-rg" style="line-height:1.6">
+<b>If your fear runs deeper than nerves.</b> For some people, flight anxiety is a genuine phobia, and no web page can talk that away — nor should it try. That is not a weakness; it is a common, treatable thing. Airline-run and pilot-led <b>fear-of-flying courses</b> have excellent track records, and a GP or a therapist trained in anxiety (CBT works especially well here) can help you get back in the air for good. Reaching out for that support is a strong, sensible move — and the reward is the whole world opening back up to you.</div>
+<p class="sub" style="margin-top:22px;text-align:center">Curious rather than calm now? That is the goal. <a href="/explained" style="color:var(--gold)">Explore how these machines actually work &rarr;</a></p>
+</div></section>`
+});
+
+/* ---------- travel classes, bargains & points (affiliate where relevant) ---------- */
+renderPage({
+  file: 'travel-classes.html', urlPath: '/travel-classes', current: '',
+  title: 'Flight classes, bargains & points — fly better for less',
+  description: 'How economy, premium economy, business and first really differ, the evergreen strategies for cheaper flights, and how transferable points can unlock business and first-class seats. Durable principles, not deals that expire.',
+  jsonld: { '@context': 'https://schema.org', '@type': 'Article', headline: 'Flight classes, bargains & points — how to fly better for less', description: 'How the cabins differ, how to find cheaper flights, and how points unlock premium seats.', url: 'https://aircraft.fyi/travel-classes' },
+  content: `
+<section class="hero"><div class="wrap">
+<div class="crumb"><a href="/">Home</a> › Classes, bargains &amp; points</div>
+<h1>Fly better for less</h1>
+<p class="lead">How the cabins actually differ, the strategies for cheaper flights that never go out of date, and how points and miles can turn an economy budget into a business-class seat. We stick to <em>durable principles</em> — the specifics of any card or programme change constantly, so treat named examples as a starting point and always check current terms yourself.</p>
+</div></section>
+
+<section class="section" style="padding-top:0"><div class="wrap">
+<span class="eyebrow">The cabins</span>
+<h2 class="title" style="margin-bottom:8px">What you&rsquo;re actually paying for</h2>
+<div class="qa-list">
+<details class="qa" open><summary>Economy<i class="caret"></i></summary><div class="body">The core product: you and your bag, from A to B. The price gap between airlines here is mostly about baggage rules, seat pitch and how much a change costs you — not safety or the flying itself. On most airlines the cheapest &ldquo;basic&rdquo; fares trade flexibility and seat choice for the low headline price.</div></details>
+<details class="qa"><summary>Premium economy<i class="caret"></i></summary><div class="body">A bigger seat, more recline and legroom, better food and service — but still an upright seat, not a bed. Often the best <em>value</em> jump on a long flight: a large comfort gain for a fraction of the business-class price. The sweet spot for many long-haul travellers paying their own way.</div></details>
+<details class="qa"><summary>Business<i class="caret"></i></summary><div class="body">On long-haul, this usually means a lie-flat bed, lounge access, priced meals and direct-aisle access. The single biggest leap in comfort for overnight flights — arriving rested instead of wrecked. Short-haul &ldquo;business&rdquo; is often just economy with a blocked middle seat and better catering, so check what you&rsquo;re actually buying.</div></details>
+<details class="qa"><summary>First<i class="caret"></i></summary><div class="body">A shrinking, ultra-premium cabin — private suites, doors, exceptional dining — offered by only a handful of airlines now, as many replace it with very good business class. This is the cabin points-and-miles are uniquely good at unlocking, because paying cash is eye-watering but the points price can be merely ambitious.</div></details>
+</div>
+</div></section>
+
+<section class="section" style="padding-top:0"><div class="wrap">
+<span class="eyebrow">Cheaper flights</span>
+<h2 class="title" style="margin-bottom:8px">Evergreen ways to pay less</h2>
+<div class="prose" style="margin-top:12px">
+<p><b>Be flexible on dates.</b> The same seat swings wildly in price by day and season. Mid-week departures and the quiet &ldquo;shoulder&rdquo; weeks either side of peak season are reliably cheaper. If a tool lets you see a whole month at once, the cheap days jump right out.</p>
+<p><b>Book in the sweet spot.</b> Painfully early rarely wins, and last-minute long-haul is usually dear. For most international trips a booking window of a couple of months out tends to land near the low — not a magic date, just the fat middle of the curve where airlines haven&rsquo;t yet started squeezing.</p>
+<p><b>Consider positioning.</b> Sometimes a cheap short hop to a bigger hub, then a separate long-haul from there, beats the single through-fare from your local airport. It takes more effort and a little risk if connections are tight, but the savings can be large.</p>
+<p><b>Weigh the basic fares honestly.</b> A rock-bottom fare with no bag and no changes is a bargain <em>only</em> if that genuinely fits your trip. Add the bag you&rsquo;ll actually check and compare the real totals, not the headline numbers.</p>
+</div>
+</div></section>
+
+<section class="section" style="padding-top:0"><div class="wrap">
+<span class="eyebrow">The real magic</span>
+<h2 class="title" style="margin-bottom:8px">Points &amp; miles, explained properly</h2>
+<div class="prose" style="margin-top:12px">
+<p>Here is the idea that changes everything: <b>the cash price and the points price of a seat have almost nothing to do with each other.</b> A business-class seat that costs thousands in money might cost a points total you can realistically earn from everyday spending and sign-up bonuses. Points are worth wildly more in a lie-flat seat than against a cheap economy fare — so the winning move is to <em>save</em> them for the premium cabins where cash prices are absurd.</p>
+<p><b>Transferable points beat airline-specific ones.</b> The most flexible currencies are the &ldquo;transferable&rdquo; points from major card programmes — American Express Membership Rewards, and its equivalents — because you can move them to <em>many</em> different airline and hotel partners. That flexibility is the whole game: you&rsquo;re not locked to one airline&rsquo;s seats or one airline&rsquo;s devaluations. A co-branded airline card ties you to that one airline; a transferable-points card keeps your options open. <span style="color:var(--muted)">(Which programmes transfer where, and at what ratio, changes regularly — check current terms.)</span></p>
+<p><b>Sign-up bonuses are the fast lane.</b> A single card&rsquo;s welcome bonus can be worth more points than a year of ordinary spending. That&rsquo;s often the difference between &ldquo;someday&rdquo; and &ldquo;this year&rdquo; for a premium redemption — just never chase one by spending money you wouldn&rsquo;t have spent, or carrying a balance whose interest dwarfs any reward.</p>
+<p><b>Alliances widen the door.</b> Airlines sit in three big alliances, and points with one carrier can often book seats on its partners. That&rsquo;s how points earned at home can fly you on a completely different airline across the world.</p>
+<p><b>The honest catch:</b> premium award seats are limited and go fast, so this rewards flexibility and a little planning. It is not free money — it is a skill. But it is a very learnable one, and the payoff is real: seats most people believe are out of reach, for a fraction of the cash.</p>
+</div>
+<div class="mf-rg" style="margin-top:22px;line-height:1.6"><b>Why we won&rsquo;t quote exact numbers.</b> Points transfer ratios, card bonuses and award prices change constantly — anything specific we printed today could be wrong within months, and this site&rsquo;s whole promise is accuracy. So we&rsquo;ve given you the durable principles that stay true. For today&rsquo;s exact figures, check the card or airline programme directly before you commit.</div>
+</div></section>
+
+<section class="section" style="padding-top:0"><div class="wrap">
+<span class="eyebrow">For the shelf</span>
+<h2 class="title" style="margin-bottom:8px">Go deeper</h2>
+<div class="gearlist">
+<article class="gearitem">
+<span class="gear-tag">Reading</span>
+<h3>Points &amp; miles strategy books</h3>
+<p>The field moves fast, but a good guide to the <em>fundamentals</em> — how earning, transferring and award-booking actually work — pays for itself on the first redemption. Look for a recent edition, since the specifics date quickly.</p>
+<div class="gear-row">
+<a class="gear-cta" href="${amz('points and miles travel hacking guide book')}" target="_blank" rel="nofollow noopener">Find on Amazon &rarr;</a>
+</div>
+</article>
+<article class="gearitem">
+<span class="gear-tag">On the flight</span>
+<h3>What actually makes premium cabins comfortable</h3>
+<p>If you&rsquo;re turning left for the first time — or just want economy to feel better — a decent noise-cancelling headset is the one upgrade that genuinely transforms a long flight, in any cabin.</p>
+<div class="gear-row">
+<a class="gear-cta" href="${amz('noise cancelling headphones travel')}" target="_blank" rel="nofollow noopener">Find on Amazon &rarr;</a>
+</div>
+</article>
+</div>
+<p class="gear-disc" style="max-width:64ch;margin:16px auto 0">${AFFDISC}</p>
+</div></section>`
 });
 
 renderPage({
@@ -1133,6 +1372,12 @@ renderPage({
 <p class="lead">Eight categories, from two-aisle widebodies to the outsize freighters that carry what nothing else can — each one defined, illustrated and ranked.</p>
 </div></section>
 <section class="section" style="padding-top:0"><div class="wrap">
+<div class="sillegend">
+${Object.entries(CATCOLOR).map(([cat, col]) => `<span class="slg"><a class="slg-link" href="/types/${CATLINK[cat] || 'widebody'}"><i style="background:${col}"></i>${esc(cat)}</a><button class="slg-hex" type="button" data-hex="${col}" title="Copy ${col}">${col}</button></span>`).join('')}
+</div>
+<p class="sub" style="text-align:center;margin-top:10px">Every silhouette on the site is tinted by category. Tap a name to see the aircraft; tap a hex to copy it.</p>
+</div></section>
+<section class="section" style="padding-top:0"><div class="wrap">
 <span class="eyebrow">The categories</span>
 <h2 class="title">Every type</h2>
 <div class="pillars two">
@@ -1173,15 +1418,21 @@ for (const h of HUBS) {
 
 
 /* ---------- search index: everything on the site, one small file ---------- */
+const COLORWORD = {
+  'Widebody': 'blue', 'Narrowbody': 'sky blue', 'Supersonic transport': 'burple violet purple',
+  'Strategic bomber': 'slate navy', 'Military transport': 'steel grey', 'Cargo': 'teal',
+  'Outsize freighter': 'deep teal', 'Trijet': 'plum purple', 'Turboprop airliner': 'sage green',
+  'Piston airliner': 'taupe brown', 'Flying boat': 'lagoon blue', 'Experimental': 'mauve'
+};
 const SEARCH = [
   ...A.map(a => ({ t: a.name, u: `/aircraft/${a.slug}`, k: 'Aircraft', d: `${a.manufacturer} · ${a.status}`,
-    q: [a.name, a.manufacturer, a.category, shortName(a), (a.headline || '')].join(' ').toLowerCase() })),
+    q: [a.name, a.manufacturer, a.category, shortName(a), (a.headline || ''), (CATCOLOR[a.category] || ''), COLORWORD[a.category] || ''].join(' ').toLowerCase() })),
   ...MK.map(m => ({ t: m.name, u: `/manufacturers/${m.slug}`, k: 'Manufacturer', d: `${byMaker(m).length} aircraft`,
     q: [m.name, ...(m.matches || [])].join(' ').toLowerCase() })),
   ...AL.map(x => ({ t: x.name, u: `/airlines/${x.slug}`, k: 'Airline', d: x.cc || '',
     q: [x.name, x.cc || ''].join(' ').toLowerCase() })),
   ...TY.map(t => ({ t: t.name, u: `/types/${t.slug}`, k: 'Type', d: `${byType(t).length} aircraft`,
-    q: [t.name, ...(t.cats || [])].join(' ').toLowerCase() })),
+    q: [t.name, ...(t.cats || []), ...(t.cats || []).map(cn => CATCOLOR[cn] || '')].join(' ').toLowerCase() })),
   ...EX.map(e => ({ t: e.name.split(' — ')[0], u: `/explained/${e.slug}`, k: 'Explained', d: e.tagline,
     q: [e.name, e.tagline].join(' ').toLowerCase() })),
   ...POSTS.map(p => ({ t: p.title, u: `/blog/${p.slug}`, k: 'Blog', d: p.dek.slice(0, 70) + '…',
@@ -1191,7 +1442,9 @@ const SEARCH = [
   ...RECORD_BOARDS.map(r => ({ t: r.h1, u: r.urlPath, k: 'Records', d: r.lead.slice(0, 70) + '…', q: r.h1.toLowerCase() })),
   { t: 'Compare aircraft', u: '/compare', k: 'Tool', d: 'Any three aircraft at true scale', q: 'compare tool scale engine side by side' },
   { t: 'Bring back Concorde', u: '/bring-back-concorde', k: 'Petition', d: 'Sign it', q: 'concorde petition bring back supersonic sign' },
-  { t: 'Methodology', u: '/methodology', k: 'Reference', d: 'How every number is calculated', q: 'methodology sources how we calculate data' }
+  { t: 'Methodology', u: '/methodology', k: 'Reference', d: 'How every number is calculated', q: 'methodology sources how we calculate data' },
+  { t: 'Scared of flying?', u: '/fear-of-flying', k: 'Guide', d: 'The engineering that makes flying safe', q: 'fear of flying scared afraid nervous anxiety turbulence safe phobia calm' },
+  { t: 'Classes, bargains & points', u: '/travel-classes', k: 'Guide', d: 'Fly better for less', q: 'business first class economy premium points miles amex upgrade cheap flights bargains award' }
 ];
 fs.writeFileSync(path.join(SITE, 'assets', 'js', 'search-index.js'),
   '/* GENERATED by build.js — do not edit by hand. */\nwindow.SEARCH_INDEX = ' + JSON.stringify(SEARCH) + ';\n');
