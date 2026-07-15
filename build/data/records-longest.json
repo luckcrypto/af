@@ -1,0 +1,466 @@
+{
+  "title": "The 50 longest aircraft ever built",
+  "asOf": "2026-07-14",
+  "records": [
+    {
+      "rank": 1,
+      "name": "Antonov An-225 Mriya",
+      "length_m": 84.0,
+      "length_ft": "275 ft 7 in",
+      "firstFlight": "1988",
+      "status": "Destroyed 2022 — one built",
+      "slug": "antonov-an-225"
+    },
+    {
+      "rank": 2,
+      "name": "Boeing 777-9",
+      "length_m": 76.72,
+      "length_ft": "251 ft 8 in",
+      "firstFlight": "2020",
+      "status": "In certification",
+      "slug": "boeing-777x"
+    },
+    {
+      "rank": 3,
+      "name": "Boeing 747-8",
+      "length_m": 76.25,
+      "length_ft": "250 ft 2 in",
+      "firstFlight": "2010",
+      "status": "In service",
+      "slug": "boeing-747"
+    },
+    {
+      "rank": 4,
+      "name": "Airbus A340-600",
+      "length_m": 75.36,
+      "length_ft": "247 ft 3 in",
+      "firstFlight": "2001",
+      "status": "In service",
+      "slug": "airbus-a340"
+    },
+    {
+      "rank": 5,
+      "name": "Lockheed C-5M Super Galaxy",
+      "length_m": 75.31,
+      "length_ft": "247 ft 1 in",
+      "firstFlight": "1968",
+      "status": "In service (military)",
+      "slug": "lockheed-c-5-galaxy"
+    },
+    {
+      "rank": 6,
+      "name": "Boeing 777-300ER",
+      "length_m": 73.86,
+      "length_ft": "242 ft 4 in",
+      "firstFlight": "2003",
+      "status": "In service",
+      "slug": "boeing-777"
+    },
+    {
+      "rank": 7,
+      "name": "Airbus A350-1000",
+      "length_m": 73.79,
+      "length_ft": "242 ft 1 in",
+      "firstFlight": "2016",
+      "status": "In production",
+      "slug": "airbus-a350"
+    },
+    {
+      "rank": 8,
+      "name": "Airbus A380-800",
+      "length_m": 72.72,
+      "length_ft": "238 ft 7 in",
+      "firstFlight": "2005",
+      "status": "In service",
+      "slug": "airbus-a380"
+    },
+    {
+      "rank": 9,
+      "name": "Boeing 747 Dreamlifter",
+      "length_m": 71.68,
+      "length_ft": "235 ft 2 in",
+      "firstFlight": "2006",
+      "status": "In service (outsize freighter)",
+      "slug": "boeing-dreamlifter"
+    },
+    {
+      "rank": 10,
+      "name": "Boeing 747-100 to -400",
+      "length_m": 70.66,
+      "length_ft": "231 ft 10 in",
+      "firstFlight": "1969",
+      "status": "In service",
+      "slug": "boeing-747"
+    },
+    {
+      "rank": 11,
+      "name": "Boeing 777-8",
+      "length_m": 69.79,
+      "length_ft": "229 ft 0 in",
+      "firstFlight": "—",
+      "status": "In development",
+      "slug": "boeing-777x"
+    },
+    {
+      "rank": 12,
+      "name": "Antonov An-124 Ruslan",
+      "length_m": 69.1,
+      "length_ft": "226 ft 8 in",
+      "firstFlight": "1982",
+      "status": "In service",
+      "slug": "antonov-an-124"
+    },
+    {
+      "rank": 13,
+      "name": "Boeing 787-10",
+      "length_m": 68.28,
+      "length_ft": "224 ft 0 in",
+      "firstFlight": "2017",
+      "status": "In production",
+      "slug": "boeing-787"
+    },
+    {
+      "rank": 14,
+      "name": "Airbus A340-500",
+      "length_m": 67.93,
+      "length_ft": "222 ft 10 in",
+      "firstFlight": "2002",
+      "status": "In service (few)",
+      "slug": "airbus-a340"
+    },
+    {
+      "rank": 15,
+      "name": "Airbus A350-900",
+      "length_m": 66.8,
+      "length_ft": "219 ft 2 in",
+      "firstFlight": "2013",
+      "status": "In production",
+      "slug": "airbus-a350"
+    },
+    {
+      "rank": 16,
+      "name": "Hughes H-4 Hercules 'Spruce Goose'",
+      "length_m": 66.65,
+      "length_ft": "218 ft 8 in",
+      "firstFlight": "1947",
+      "status": "Preserved — flew once",
+      "slug": "hughes-h-4-hercules"
+    },
+    {
+      "rank": 17,
+      "name": "Tupolev Tu-144",
+      "length_m": 65.7,
+      "length_ft": "215 ft 7 in",
+      "firstFlight": "1968",
+      "status": "Retired — first supersonic airliner",
+      "slug": "tupolev-tu-144"
+    },
+    {
+      "rank": 18,
+      "name": "Ilyushin Il-96-400",
+      "length_m": 63.94,
+      "length_ft": "209 ft 9 in",
+      "firstFlight": "1997",
+      "status": "In service (limited)",
+      "slug": "ilyushin-il-96"
+    },
+    {
+      "rank": 19,
+      "name": "Boeing 777-200 / -200ER / -200LR / 777F",
+      "length_m": 63.73,
+      "length_ft": "209 ft 1 in",
+      "firstFlight": "1994",
+      "status": "In service",
+      "slug": "boeing-777"
+    },
+    {
+      "rank": 20,
+      "name": "Airbus A340-300",
+      "length_m": 63.69,
+      "length_ft": "208 ft 11 in",
+      "firstFlight": "1991",
+      "status": "In service",
+      "slug": "airbus-a340"
+    },
+    {
+      "rank": 21,
+      "name": "Airbus A330-300 / A330-900",
+      "length_m": 63.66,
+      "length_ft": "208 ft 10 in",
+      "firstFlight": "1992",
+      "status": "In production",
+      "slug": "airbus-a330"
+    },
+    {
+      "rank": 22,
+      "name": "Airbus BelugaXL",
+      "length_m": 63.1,
+      "length_ft": "207 ft 0 in",
+      "firstFlight": "2018",
+      "status": "In service (outsize freighter)",
+      "slug": "airbus-beluga"
+    },
+    {
+      "rank": 23,
+      "name": "Boeing 787-9",
+      "length_m": 62.81,
+      "length_ft": "206 ft 1 in",
+      "firstFlight": "2013",
+      "status": "In production",
+      "slug": "boeing-787"
+    },
+    {
+      "rank": 24,
+      "name": "Aérospatiale/BAC Concorde",
+      "length_m": 61.66,
+      "length_ft": "202 ft 4 in",
+      "firstFlight": "1969",
+      "status": "Retired 2003",
+      "slug": "concorde"
+    },
+    {
+      "rank": 25,
+      "name": "McDonnell Douglas MD-11",
+      "length_m": 61.62,
+      "length_ft": "202 ft 2 in",
+      "firstFlight": "1990",
+      "status": "In service (freighters)",
+      "slug": "mcdonnell-douglas-md-11"
+    },
+    {
+      "rank": 26,
+      "name": "Boeing 767-400ER",
+      "length_m": 61.37,
+      "length_ft": "201 ft 4 in",
+      "firstFlight": "1999",
+      "status": "In service",
+      "slug": "boeing-767"
+    },
+    {
+      "rank": 27,
+      "name": "Ilyushin Il-86",
+      "length_m": 59.54,
+      "length_ft": "195 ft 4 in",
+      "firstFlight": "1976",
+      "status": "Retired",
+      "slug": "ilyushin-il-86"
+    },
+    {
+      "rank": 28,
+      "name": "Airbus A330-200",
+      "length_m": 58.82,
+      "length_ft": "193 ft 0 in",
+      "firstFlight": "1997",
+      "status": "In production",
+      "slug": "airbus-a330"
+    },
+    {
+      "rank": 29,
+      "name": "Antonov An-22 Antei",
+      "length_m": 57.92,
+      "length_ft": "190 ft 0 in",
+      "firstFlight": "1965",
+      "status": "Retired — largest turboprop ever",
+      "slug": "antonov-an-22"
+    },
+    {
+      "rank": 30,
+      "name": "Douglas DC-8-61 / -63",
+      "length_m": 57.12,
+      "length_ft": "187 ft 5 in",
+      "firstFlight": "1966",
+      "status": "Retired",
+      "slug": "douglas-dc-8"
+    },
+    {
+      "rank": 31,
+      "name": "Boeing 787-8",
+      "length_m": 56.72,
+      "length_ft": "186 ft 1 in",
+      "firstFlight": "2009",
+      "status": "In production",
+      "slug": "boeing-787"
+    },
+    {
+      "rank": 32,
+      "name": "North American XB-70 Valkyrie",
+      "length_m": 56.62,
+      "length_ft": "185 ft 9 in",
+      "firstFlight": "1964",
+      "status": "Experimental — preserved",
+      "slug": "north-american-xb-70"
+    },
+    {
+      "rank": 33,
+      "name": "Boeing 747SP",
+      "length_m": 56.31,
+      "length_ft": "184 ft 9 in",
+      "firstFlight": "1975",
+      "status": "In service (VIP, few)",
+      "slug": "boeing-747"
+    },
+    {
+      "rank": 34,
+      "name": "Airbus Beluga ST",
+      "length_m": 56.15,
+      "length_ft": "184 ft 3 in",
+      "firstFlight": "1994",
+      "status": "In service (outsize freighter)",
+      "slug": "airbus-beluga"
+    },
+    {
+      "rank": 35,
+      "name": "McDonnell Douglas DC-10 / KC-10",
+      "length_m": 55.5,
+      "length_ft": "182 ft 1 in",
+      "firstFlight": "1970",
+      "status": "Retired 2024 (KC-10)",
+      "slug": "mcdonnell-douglas-dc-10"
+    },
+    {
+      "rank": 36,
+      "name": "Ilyushin Il-96-300",
+      "length_m": 55.35,
+      "length_ft": "181 ft 7 in",
+      "firstFlight": "1988",
+      "status": "In service (limited)",
+      "slug": "ilyushin-il-96"
+    },
+    {
+      "rank": 37,
+      "name": "Boeing 767-300 / -300ER",
+      "length_m": 54.94,
+      "length_ft": "180 ft 3 in",
+      "firstFlight": "1986",
+      "status": "In service",
+      "slug": "boeing-767"
+    },
+    {
+      "rank": 38,
+      "name": "Boeing 757-300",
+      "length_m": 54.47,
+      "length_ft": "178 ft 8 in",
+      "firstFlight": "1998",
+      "status": "In service",
+      "slug": "boeing-757"
+    },
+    {
+      "rank": 39,
+      "name": "Lockheed L-1011 TriStar",
+      "length_m": 54.17,
+      "length_ft": "177 ft 9 in",
+      "firstFlight": "1970",
+      "status": "Retired",
+      "slug": "lockheed-l-1011"
+    },
+    {
+      "rank": 40,
+      "name": "Tupolev Tu-160",
+      "length_m": 54.1,
+      "length_ft": "177 ft 6 in",
+      "firstFlight": "1981",
+      "status": "In service — longest combat aircraft",
+      "slug": "tupolev-tu-160"
+    },
+    {
+      "rank": 41,
+      "name": "Tupolev Tu-114",
+      "length_m": 54.1,
+      "length_ft": "177 ft 6 in",
+      "firstFlight": "1957",
+      "status": "Retired",
+      "slug": "tupolev-tu-114"
+    },
+    {
+      "rank": 42,
+      "name": "Airbus A300-600",
+      "length_m": 54.08,
+      "length_ft": "177 ft 5 in",
+      "firstFlight": "1983",
+      "status": "In service (freighters)",
+      "slug": "airbus-a300"
+    },
+    {
+      "rank": 43,
+      "name": "Bristol Brabazon",
+      "length_m": 53.95,
+      "length_ft": "177 ft 0 in",
+      "firstFlight": "1949",
+      "status": "Prototype only — scrapped",
+      "slug": "bristol-brabazon"
+    },
+    {
+      "rank": 44,
+      "name": "Ilyushin Il-62",
+      "length_m": 53.12,
+      "length_ft": "174 ft 3 in",
+      "firstFlight": "1963",
+      "status": "Retired (few government)",
+      "slug": "ilyushin-il-62"
+    },
+    {
+      "rank": 45,
+      "name": "Boeing C-17 Globemaster III",
+      "length_m": 53.04,
+      "length_ft": "174 ft 0 in",
+      "firstFlight": "1991",
+      "status": "In service (military)",
+      "slug": "boeing-c-17"
+    },
+    {
+      "rank": 46,
+      "name": "Vickers Super VC10",
+      "length_m": 52.32,
+      "length_ft": "171 ft 8 in",
+      "firstFlight": "1964",
+      "status": "Retired",
+      "slug": "vickers-vc10"
+    },
+    {
+      "rank": 47,
+      "name": "Boeing KC-46 Pegasus",
+      "length_m": 50.5,
+      "length_ft": "165 ft 8 in",
+      "firstFlight": "2014",
+      "status": "In service (military)",
+      "slug": "boeing-767"
+    },
+    {
+      "rank": 48,
+      "name": "Boeing 767-200",
+      "length_m": 48.51,
+      "length_ft": "159 ft 2 in",
+      "firstFlight": "1981",
+      "status": "In service (freight/military)",
+      "slug": "boeing-767"
+    },
+    {
+      "rank": 49,
+      "name": "Boeing B-52 Stratofortress",
+      "length_m": 48.5,
+      "length_ft": "159 ft 1 in",
+      "firstFlight": "1952",
+      "status": "In service since 1955",
+      "slug": "boeing-b-52"
+    },
+    {
+      "rank": 50,
+      "name": "Ilyushin Il-76",
+      "length_m": 46.59,
+      "length_ft": "152 ft 10 in",
+      "firstFlight": "1971",
+      "status": "In service",
+      "slug": "ilyushin-il-76"
+    }
+  ],
+  "sources": [
+    {
+      "name": "Manufacturer specifications (Boeing, Airbus, Antonov, Lockheed, Tupolev, Ilyushin)",
+      "url": "https://www.boeing.com/commercial"
+    },
+    {
+      "name": "Cross-checked against type Wikipedia articles (CC BY-SA)",
+      "url": "https://en.wikipedia.org/wiki/List_of_large_aircraft"
+    }
+  ]
+}
