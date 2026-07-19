@@ -51,7 +51,10 @@
   });
 
   /* scroll state */
-  function onScroll() { mn.classList.toggle('is-scrolled', (window.scrollY || 0) > 12); }
+  function onScroll() {
+    if (mn.classList.contains('is-drawer')) return; /* drawer open: keep the bar exactly as it was */
+    mn.classList.toggle('is-scrolled', (window.scrollY || 0) > 12);
+  }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
@@ -82,6 +85,7 @@
     mn.classList.remove('is-drawer');
     if (burger) burger.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
+    onScroll(); /* re-sync to the real scroll position now the drawer is shut */
   }
   if (burger) burger.addEventListener('click', function () {
     mn.classList.contains('is-drawer') ? closeDrawer() : openDrawer();
@@ -520,3 +524,5 @@
     });
   });
 })();
+
+
