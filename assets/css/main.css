@@ -29,7 +29,7 @@
 }
 *{box-sizing:border-box;forced-color-adjust:none}
 html::before{content:"";position:fixed;inset:0;background:#FFFFFF;z-index:-1}  /* the floor */
-html{background:#ffffff;color-scheme:light only;forced-color-adjust:none}   /* NEVER overflow-x here */
+html{background:#ffffff;color-scheme:light;forced-color-adjust:none;scrollbar-gutter:stable}   /* NEVER overflow-x here */
 body{
   margin:0;overflow-x:hidden;
   background-color:#FFFFFF;background-image:radial-gradient(1200px 720px at 85% -15%,rgba(27,111,207,.05),transparent 60%);
@@ -54,7 +54,6 @@ textarea,[contenteditable=true]{cursor:text}
 
 /* ---------- eyebrow / buttons (family) ---------- */
 .eyebrow{font-family:var(--display);font-size:.72rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);display:inline-flex;gap:.6em;align-items:center}
-.eyebrow::before{content:"";width:26px;height:1px;background:#1B6FCF;opacity:.6}
 .btn{--bg:#1B6FCF;--fg:#ffffff;display:inline-flex;align-items:center;gap:.55em;justify-content:center;font-family:var(--display);font-weight:600;font-size:.95rem;padding:.85em 1.4em;border-radius:999px;border:0;cursor:pointer;background:var(--bg);color:var(--fg);transition:transform .15s ease,box-shadow .2s ease,filter .2s ease;box-shadow:0 10px 24px -10px rgba(27,111,207,.45)}
 .btn:hover{transform:translateY(1px);filter:brightness(1.05)}
 .btn:active{transform:translateY(2px)}
@@ -123,7 +122,7 @@ textarea,[contenteditable=true]{cursor:text}
 .mn.is-drawer .mn-burger span{background:transparent}
 .mn.is-drawer .mn-burger span::before{transform:translate(-50%,0) rotate(45deg)}
 .mn.is-drawer .mn-burger span::after{transform:translate(-50%,0) rotate(-45deg)}
-.mn-drawer{position:fixed;inset:0;z-index:490;width:100vw;height:100dvh;background:#ffffff;opacity:0;visibility:hidden;transform:translateY(-2%);transition:opacity .38s ease,transform .4s cubic-bezier(.2,1,.3,1),visibility .4s;display:flex;flex-direction:column;padding:14px 0 28px}
+.mn-drawer{position:fixed;inset:0;z-index:490;height:100dvh;background:#ffffff;opacity:0;visibility:hidden;transform:translateY(-2%);transition:opacity .38s ease,transform .4s cubic-bezier(.2,1,.3,1),visibility .4s;display:flex;flex-direction:column;padding:14px 0 28px}
 .mn.is-drawer .mn-drawer{opacity:1;visibility:visible;transform:none}
 .mn-drawer-top{display:flex;align-items:center;justify-content:space-between;padding:6px 22px 16px;max-width:560px;width:100%;margin:0 auto;border-bottom:1px solid var(--line)}
 .mn-drawer-scroll{overflow-y:auto;flex:1;padding:10px 22px;max-width:560px;width:100%;margin:0 auto;-webkit-overflow-scrolling:touch}
@@ -793,3 +792,25 @@ html[dir="rtl"] .i18n-note{border-left:1px solid var(--line);border-right:3px so
 
 /* stacked accordions on guide pages */
 .qa-list{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+
+/* footer sub-heading spacing when a column stacks two groups */
+.mf-h.mt{margin-top:20px}
+
+/* airline cards: IATA tag on its own top line, name beneath */
+.acard > .iata{margin-bottom:9px;vertical-align:baseline}
+
+/* ---------- body copy: justified with a natural last line ----------
+   hyphens:auto prevents the word-gap "rivers" justification causes on narrow columns. */
+p{text-align:justify;text-align-last:left;hyphens:auto;-webkit-hyphens:auto}
+.prose p,.qa .body,.acard p,.alh,.opnote,.gearitem p,.gearcard .gear-body p,.mf-rg{text-align:justify;text-align-last:left;hyphens:auto;-webkit-hyphens:auto}
+/* display, UI and deliberately-centred text keeps its design — never justified */
+.lead,.sub,.kicker,.eyebrow,.gear-disc,.dm-formula,
+.hero p,.callout p,.statstrip p,.mf p,.pn p,.facts li{
+  text-align:inherit;text-align-last:auto;hyphens:none;-webkit-hyphens:none}
+/* these centre themselves — keep that, just don't justify them */
+.srch-hint,.srch-none{text-align:center;text-align-last:auto;hyphens:none;-webkit-hyphens:none}
+
+
+
+
+
