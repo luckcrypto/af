@@ -134,71 +134,47 @@ function navHTML(current) {
 <div class="mn-bar">
 ${BRAND('mn-logo')}
 <div class="mn-groups">
-<div class="mn-group" data-key="aircraft">
-<button class="mn-top" type="button" aria-expanded="false" aria-haspopup="true"><svg class="gi" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12.5 10 3.5l7.5 9-7.5-2.6z"/></svg>Aircraft<i class="caret"></i></button>
+<div class="mn-group" data-key="menu">
+<button class="mn-top" type="button" aria-expanded="false" aria-haspopup="true"><svg class="gi" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h14M3 10h14M3 15h9"/></svg>Explore<i class="caret"></i></button>
 <div class="mn-panel" role="menu">
-<div class="mn-panel-inner" style="grid-template-columns:1fr 1fr 1.9fr">
+<div class="mn-panel-inner" style="grid-template-columns:1.05fr 1.15fr 1.15fr 1fr">
 <div>
 <div class="mn-col-h">Airbus</div>
 ${airbus.map(link).join('\n')}
-</div>
-<div>
-<div class="mn-col-h">Boeing</div>
+<div class="mn-col-h mt">Boeing</div>
 ${boeing.map(link).join('\n')}
 </div>
 <div>
-<div class="mn-col-h">More</div>
+<div class="mn-col-h">Every other maker</div>
 <div class="mn-2col">
 ${others.map(link).join('\n')}
 </div>
 </div>
-</div>
-</div>
-</div>
-<div class="mn-group" data-key="airlines">
-<button class="mn-top" type="button" aria-expanded="false" aria-haspopup="true"><svg class="gi" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="10" cy="10" r="7.2"/><path d="M2.8 10h14.4M10 2.8c2.6 2.2 2.6 12.2 0 14.4M10 2.8c-2.6 2.2-2.6 12.2 0 14.4"/></svg>Airlines<i class="caret"></i></button>
-<div class="mn-panel" role="menu">
-<div class="mn-panel-inner" style="grid-template-columns:2.4fr 1fr">
 <div>
-<div class="mn-col-h">Flag carriers &amp; majors</div>
-<div class="mn-3col">
+<div class="mn-col-h">Airlines</div>
+<div class="mn-2col">
 ${AL.filter(x => !x.cargo).map(alink).join('\n')}
 </div>
-</div>
-<div>
-<div class="mn-col-h">Cargo</div>
+<div class="mn-col-h mt">Cargo</div>
 ${AL.filter(x => x.cargo).map(alink).join('\n')}
-<div class="mn-col-h mt">Reference</div>
-<a class="mn-link" href="/records/longest-flights"><span class="lbl">The longest flights</span><span class="arr">&rarr;</span></a>
-<a class="mn-link" href="/records"><span class="lbl">Records board</span><span class="arr">&rarr;</span></a>
-</div>
-</div>
-</div>
-</div>
-<div class="mn-group" data-key="explore">
-<button class="mn-top" type="button" aria-expanded="false" aria-haspopup="true"><svg class="gi" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2.5 3 6.5v7l7 4 7-4v-7z"/><path d="M10 2.5v15M3 6.5l7 4 7-4"/></svg>Explore<i class="caret"></i></button>
-<div class="mn-panel" role="menu">
-<div class="mn-panel-inner" style="grid-template-columns:1fr 1fr 1fr">
-<div>
-<div class="mn-col-h">Understand</div>
-<a class="mn-link" href="/explained"><span class="lbl">Explained</span><span class="arr">&rarr;</span></a>
-<a class="mn-link" href="/types"><span class="lbl">Aircraft types</span><span class="arr">&rarr;</span></a>
-<a class="mn-link" href="/manufacturers"><span class="lbl">Manufacturers</span><span class="arr">&rarr;</span></a>
-<a class="mn-link" href="/methodology"><span class="lbl">Methodology</span><span class="arr">&rarr;</span></a>
 </div>
 <div>
-<div class="mn-col-h">Play &amp; compare</div>
-<a class="mn-link" href="/quiz"><span class="lbl">The Silhouette Quiz</span><span class="arr">&rarr;</span></a>
-<a class="mn-link" href="/compare"><span class="lbl">Compare aircraft</span><span class="arr">&rarr;</span></a>
-<a class="mn-link" href="/records"><span class="lbl">Record boards</span><span class="arr">&rarr;</span></a>
-<a class="mn-link" href="/bring-back-concorde"><span class="lbl">Bring back Concorde</span><span class="arr">&rarr;</span></a>
-</div>
-<div>
-<div class="mn-col-h">For travellers</div>
+<div class="mn-col-h">Guides</div>
 <a class="mn-link" href="/fear-of-flying"><span class="lbl">Scared of flying?</span><span class="arr">&rarr;</span></a>
 <a class="mn-link" href="/travel-classes"><span class="lbl">Classes &amp; points</span><span class="arr">&rarr;</span></a>
 <a class="mn-link" href="/gear"><span class="lbl">The hangar shop</span><span class="arr">&rarr;</span></a>
+<div class="mn-col-h mt">Explore &amp; learn</div>
+<a class="mn-link" href="/explained"><span class="lbl">Explained</span><span class="arr">&rarr;</span></a>
+<a class="mn-link" href="/types"><span class="lbl">Aircraft types</span><span class="arr">&rarr;</span></a>
+<a class="mn-link" href="/manufacturers"><span class="lbl">Manufacturers</span><span class="arr">&rarr;</span></a>
+<a class="mn-link" href="/quiz"><span class="lbl">The Silhouette Quiz</span><span class="arr">&rarr;</span></a>
+<a class="mn-link" href="/compare"><span class="lbl">Compare aircraft</span><span class="arr">&rarr;</span></a>
+<div class="mn-col-h mt">Records &amp; more</div>
+<a class="mn-link" href="/records"><span class="lbl">Record boards</span><span class="arr">&rarr;</span></a>
+<a class="mn-link" href="/records/longest-flights"><span class="lbl">The longest flights</span><span class="arr">&rarr;</span></a>
+<a class="mn-link" href="/bring-back-concorde"><span class="lbl">Bring back Concorde</span><span class="arr">&rarr;</span></a>
 <a class="mn-link" href="/blog"><span class="lbl">The blog</span><span class="arr">&rarr;</span></a>
+<a class="mn-link" href="/methodology"><span class="lbl">Methodology</span><span class="arr">&rarr;</span></a>
 </div>
 </div>
 </div>
@@ -208,8 +184,6 @@ ${I18N_LANGS.length ? `<div class="lang" id="langPill">
 <button class="lang-btn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Language"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="10" cy="10" r="7.2"/><path d="M2.8 10h14.4M10 2.8c2.5 2.3 2.5 12.1 0 14.4M10 2.8c-2.5 2.3-2.5 12.1 0 14.4"/></svg><span class="lang-cur">EN</span></button>
 <ul class="lang-menu" role="listbox" aria-label="Choose language" hidden></ul>
 </div>` : ''}
-<a class="mn-plain" href="/records"${current === 'records' ? ' aria-current="page"' : ''}>Records</a>
-<a class="mn-plain" href="/blog"${current === 'blog' ? ' aria-current="page"' : ''}>Blog</a>
 <button class="mn-search" type="button" id="mnSearchBtn" aria-label="Search the site" aria-haspopup="dialog"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="9" r="5.4"/><path d="m13.2 13.2 3.3 3.3"/></svg><span>Search</span><kbd>/</kbd></button>
 <a class="mn-cta" href="/compare"${current === 'compare' ? ' aria-current="page"' : ''}>Compare</a>
 <button class="mn-search-icon" type="button" id="mnSearchBtn2" aria-label="Search the site"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="9" r="5.4"/><path d="m13.2 13.2 3.3 3.3"/></svg></button>
@@ -285,8 +259,10 @@ ${BRAND('mf-logo mn-logo')}
 <ul>${AL.slice(0, 10).map(al => `<li><a href="/airlines/${al.slug}">${esc(al.name)}</a></li>`).join('')}<li><a href="/#airlines"><b>All ${AL.length} airlines &rarr;</b></a></li></ul>
 </div>
 <div>
-<h3 class="mf-h">Reference</h3>
-<ul><li><a href="/manufacturers">Manufacturers</a></li><li><a href="/types">Aircraft types</a></li><li><a href="/records/longest-aircraft">Longest aircraft</a></li><li><a href="/blog">Blog</a></li><li><a href="/explained">Explained</a></li><li><a href="/compare">Compare aircraft</a></li><li><a href="/bring-back-concorde">Bring back Concorde</a></li><li><a href="/methodology">Methodology</a></li><li><a href="/quiz">The Silhouette Quiz</a></li><li><a href="/gear">The hangar shop</a></li><li><a href="/fear-of-flying">Scared of flying?</a></li><li><a href="/travel-classes">Classes &amp; points</a></li></ul>
+<h3 class="mf-h">Guides</h3>
+<ul><li><a href="/fear-of-flying">Scared of flying?</a></li><li><a href="/travel-classes">Classes &amp; points</a></li><li><a href="/gear">The hangar shop</a></li></ul>
+<h3 class="mf-h mt">Reference</h3>
+<ul><li><a href="/manufacturers">Manufacturers</a></li><li><a href="/types">Aircraft types</a></li><li><a href="/records/longest-aircraft">Longest aircraft</a></li><li><a href="/blog">Blog</a></li><li><a href="/explained">Explained</a></li><li><a href="/compare">Compare aircraft</a></li><li><a href="/bring-back-concorde">Bring back Concorde</a></li><li><a href="/methodology">Methodology</a></li><li><a href="/quiz">The Silhouette Quiz</a></li></ul>
 </div>
 <div>
 <h3 class="mf-h">Site</h3>
@@ -602,7 +578,7 @@ ${TY.map(t => `<button class="fchip" type="button" data-filter="${t.slug}" aria-
 <button class="fchip cols-m" type="button" data-cols="m2" aria-pressed="true">2</button>
 </div>
 <div class="grid2 cardgrid" data-scope="airlines">
-${AL.map(al => `<article class="acard"><h3>${al.iata ? `<span class="iata" style="background:${al.brand}">${al.iata}</span> ` : ''}<a href="/airlines/${al.slug}">${esc(al.name)}</a></h3><p class="kicker">${esc(al.country)} · ${esc(al.alliance)}</p><p class="alh" style="color:var(--muted);font-size:.92rem;margin:0 0 14px">${esc(al.headline)}</p><a class="mini" href="/airlines/${al.slug}">See the fleet &rarr;</a></article>`).join('\n')}
+${AL.map(al => `<article class="acard">${al.iata ? `<span class="iata" style="background:${al.brand}">${al.iata}</span>` : ''}<h3><a href="/airlines/${al.slug}">${esc(al.name)}</a></h3><p class="kicker">${esc(al.country)} · ${esc(al.alliance)}</p><p class="alh" style="color:var(--muted);font-size:.92rem;margin:0 0 14px">${esc(al.headline)}</p><a class="mini" href="/airlines/${al.slug}">See the fleet &rarr;</a></article>`).join('\n')}
 </div>
 </div></section>
 <section class="section" style="padding-top:0"><div class="wrap">
@@ -627,9 +603,14 @@ ${AL.map(al => `<article class="acard"><h3>${al.iata ? `<span class="iata" style
 <section class="section" style="padding-top:0"><div class="wrap">
 <span class="eyebrow">For travellers</span>
 <h2 class="title">Before you fly</h2>
-<div class="pillars two">
+<div class="pillars">
 <article class="acard"><h3><a href="/fear-of-flying">Scared of flying?</a></h3><p style="color:var(--muted);font-size:.92rem;margin:0 0 14px">The fear is usually a fear of the unknown. Learn to think like a pilot, understand every noise and movement, and let the engineering put you at ease.</p><a class="mini" href="/fear-of-flying">Feel calmer &rarr;</a></article>
 <article class="acard"><h3><a href="/travel-classes">Fly better for less</a></h3><p style="color:var(--muted);font-size:.92rem;margin:0 0 14px">How the cabins really differ, the evergreen tricks for cheaper flights, and how points can turn an economy budget into a business-class seat.</p><a class="mini" href="/travel-classes">Fly smarter &rarr;</a></article>
+<article class="acard"><h3><a href="/gear">The hangar shop</a></h3><p style="color:var(--muted);font-size:.92rem;margin:0 0 14px">A short, honest shelf for people who love flying machines — LEGO sets, die-cast models, spotter tech and flight-sim kit. Picked on merit, never paid placement.</p><a class="mini" href="/gear">Browse the shelf &rarr;</a></article>
+</div>
+<div class="heroCtas" style="justify-content:center">
+<a class="btn" href="/fear-of-flying">Beat the fear</a>
+<a class="btn ghost" href="/travel-classes">Fly for less</a>
 </div>
 </div></section>
 <section class="section" style="padding-top:0"><div class="wrap">
