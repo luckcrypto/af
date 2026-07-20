@@ -324,6 +324,41 @@
     var b = document.getElementById(id);
     if (b) b.addEventListener('click', show);
   });
+  /* ---- hero inline search: same index, same scoring, expands in place ---- */
+  (function () {
+    var wrap = document.getElementById('heroSearch');
+    var hIn  = document.getElementById('heroInput');
+    var hRes = document.getElementById('heroResults');
+    var hPh  = document.getElementById('heroPh');
+    if (!wrap || !hIn || !hRes) return;
+    function draw() {
+      var raw = hIn.value.trim(), q = raw.toLowerCase();
+      if (hPh) hPh.style.display = raw ? 'none' : '';
+      if (!q) { wrap.classList.remove('on'); hRes.innerHTML = ''; return; }
+      var out = IDX.map(function (i) { return { i: i, s: score(i, q) }; })
+        .filter(function (x) { return x.s > 0; })
+        .sort(function (a, b) { return b.s - a.s || a.i.t.length - b.i.t.length; })
+        .slice(0, 6).map(function (x) { return x.i; });
+      hRes.innerHTML = out.length
+        ? out.map(function (h) {
+            return '<li><a href="' + h.u + '"><span class="sr-k">' + esc(h.k) + '</span>' +
+              '<span class="sr-t">' + esc(h.t) + '</span>' +
+              '<span class="sr-d">' + esc(h.d || '') + '</span></a></li>'; }).join('')
+        : '<li class="srch-none">Nothing matches \u201C' + esc(raw) + '\u201D.</li>';
+      wrap.classList.add('on');
+    }
+    hIn.addEventListener('input', draw);
+    hIn.addEventListener('focus', function () { if (hPh) hPh.style.display = 'none'; });
+    hIn.addEventListener('blur', function () { if (hPh && !hIn.value) hPh.style.display = ''; });
+    hIn.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') { hIn.value = ''; draw(); hIn.blur(); }
+      if (e.key === 'Enter') { var a = hRes.querySelector('a'); if (a) window.location.href = a.getAttribute('href'); }
+    });
+    document.addEventListener('click', function (e) {
+      if (!wrap.contains(e.target)) wrap.classList.remove('on');
+    });
+  })();
+
   var close = document.getElementById('srchClose');
   if (close) close.addEventListener('click', hide);
   var scrim = document.getElementById('srchScrim');
@@ -526,3 +561,30 @@
 })();
 
 
+
+/* ---------- hero search: typed hints to inspire a query ---------- */
+(function () {
+  var el = document.getElementById('heroType'); if (!el) return;
+  var QS = ['Concorde', 'the longest wings ever built', 'Emirates', 'how a jet engine works',
+            'An-225 Mriya', 'Boeing 747', 'widebody or narrowbody?', 'Dreamlifter',
+            'is turbulence dangerous?', 'the fastest airliner'];
+  var reduce = false;
+  try { reduce = window.matchMedia && matchMedia('(prefers-reduced-motion:reduce)').matches; } catch (e) {}
+  if (reduce) { el.textContent = 'Search every aircraft, airline and record'; return; }
+
+  var qi = 0, ci = 0, deleting = false;
+  var ph = document.getElementById('heroPh');
+  function tick() {
+    if (ph && ph.style.display === 'none') return setTimeout(tick, 500); /* paused while typing */
+    var q = QS[qi];
+    if (!deleting) {
+      ci++; el.textContent = q.slice(0, ci);
+      if (ci >= q.length) { deleting = true; return setTimeout(tick, 1700); }
+      return setTimeout(tick, 55 + Math.random() * 45);
+    }
+    ci--; el.textContent = q.slice(0, ci);
+    if (ci <= 0) { deleting = false; qi = (qi + 1) % QS.length; return setTimeout(tick, 300); }
+    return setTimeout(tick, 26);
+  }
+  tick();
+})();
