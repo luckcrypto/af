@@ -10,22 +10,22 @@
 <link rel="alternate" type="application/rss+xml" title="aircraft.fyi" href="/feed.xml">
 <meta name="color-scheme" content="light only">
 
-<title>The hangar shop — aircraft models &amp; gifts for avgeeks</title>
-<meta name="description" content="A short, honest shelf of the best aircraft models, LEGO sets and gifts for people who love flying machines. Hand-picked, never paid placement.">
-<link rel="canonical" href="https://aircraft.fyi/gear">
+<title>Blueprint Designer — build your own aircraft</title>
+<meta name="description" content="Design an aircraft from scratch by adjusting length, wingspan, decks, sweep and tail, rotate it freely, and export a precise prompt for AI image generation.">
+<link rel="canonical" href="https://aircraft.fyi/design">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="aircraft.fyi">
-<meta property="og:url" content="https://aircraft.fyi/gear">
+<meta property="og:url" content="https://aircraft.fyi/design">
 <meta property="og:site_name" content="aircraft.fyi">
-<meta property="og:title" content="The hangar shop — aircraft models &amp; gifts for avgeeks">
-<meta property="og:description" content="A short, honest shelf of the best aircraft models, LEGO sets and gifts for people who love flying machines. Hand-picked, never paid placement.">
+<meta property="og:title" content="Blueprint Designer — build your own aircraft">
+<meta property="og:description" content="Design an aircraft from scratch by adjusting length, wingspan, decks, sweep and tail, rotate it freely, and export a precise prompt for AI image generation.">
 <meta property="og:image" content="https://aircraft.fyi/assets/img/og/default.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="The hangar shop — aircraft models &amp; gifts for avgeeks">
+<meta property="og:image:alt" content="Blueprint Designer — build your own aircraft">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="The hangar shop — aircraft models &amp; gifts for avgeeks">
-<meta name="twitter:description" content="A short, honest shelf of the best aircraft models, LEGO sets and gifts for people who love flying machines. Hand-picked, never paid placement.">
+<meta name="twitter:title" content="Blueprint Designer — build your own aircraft">
+<meta name="twitter:description" content="Design an aircraft from scratch by adjusting length, wingspan, decks, sweep and tail, rotate it freely, and export a precise prompt for AI image generation.">
 <meta name="twitter:image" content="https://aircraft.fyi/assets/img/og/default.png">
 <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
@@ -38,13 +38,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/main.css">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"The hangar shop","url":"https://aircraft.fyi/gear"}</script>
+<script src="assets/js/design.js" defer></script>
+<script type="application/ld+json">[{"@context":"https://schema.org","@type":"WebApplication","name":"Blueprint Designer","url":"https://aircraft.fyi/design","applicationCategory":"DesignApplication","operatingSystem":"Any","description":"A parametric aircraft design tool that draws a rotatable 3D wireframe and exports a precise geometry prompt for AI image generators.","offers":{"@type":"Offer","price":"0","priceCurrency":"GBP"},"publisher":{"@type":"Organization","name":"aircraft.fyi"}},{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the Blueprint Designer?","acceptedAnswer":{"@type":"Answer","text":"A parametric drawing tool. You set length, wingspan, fuselage diameter, sweep, taper, dihedral, tail height, deck count and engine layout, and it draws the resulting aircraft as a rotatable 3D wireframe."}},{"@type":"Question","name":"Can I use it to generate an image?","acceptedAnswer":{"@type":"Answer","text":"Yes. It exports a prompt describing the exact geometry you have built — bounding box, nose-to-wing and wing-to-tail distances, sweep, camera angle — so an image generator follows your proportions rather than defaulting to a familiar airliner shape."}},{"@type":"Question","name":"Do I need an account or any software?","acceptedAnswer":{"@type":"Answer","text":"No. It runs entirely in the browser, free, with nothing to install."}}]}]</script>
 </head>
 <body>
 <a class="skip" href="#content">Skip to content</a>
 
-<nav class="mn" id="mn" data-current="" aria-label="Primary">
+<nav class="mn" id="mn" data-current="design" aria-label="Primary">
 <div class="mn-shell">
 <div class="mn-bar">
 <a class="mn-logo" href="/" aria-label="aircraft.fyi home"><span class="mn-mark" aria-hidden="true"><span class="mm-b">B737</span></span><span class="lw">aircraft<b><i class="ld">.</i><span class="fw"><span class="fwt">fyi</span></span></b></span></a>
@@ -65,7 +65,7 @@
 </div>
 <div>
 <div class="mn-col-h">Build</div>
-<a class="mn-link" href="/design"><span class="lbl">Blueprint Designer</span><span class="arr">&rarr;</span></a>
+<a class="mn-link" href="/design" aria-current="page"><span class="lbl">Blueprint Designer</span><span class="arr">&rarr;</span></a>
 <p class="mn-note">Draw your own airframe and export it as an AI image prompt.</p>
 </div>
 </div>
@@ -398,100 +398,46 @@
 <main id="content">
 
 <section class="hero"><div class="wrap">
-<div class="crumb"><a href="/">Home</a> › The hangar shop</div>
-<h1>The hangar shop</h1>
-<p class="lead">A short, honest shelf for people who love flying machines. Everything here is hand-picked on merit — no sponsored slots, no filler. As an Amazon Associate, aircraft.fyi earns from qualifying purchases. This never affects the price you pay, and links are chosen on merit — never paid placement.</p>
+<div class="crumb"><a href="/">Home</a> › Blueprint Designer</div>
+<h1>Blueprint Designer</h1>
+<p class="lead">Build an aircraft from scratch, turn it in your hand, and export the exact geometry as a prompt.</p>
 </div></section>
 <section class="section" style="padding-top:0"><div class="wrap">
-<div class="geargroup">
-<span class="eyebrow" style="display:block">Build it yourself</span>
-<p class="sub" style="margin:2px auto 0">The LEGO sets worth clearing desk space for.</p>
-<div class="gearlist">
-<article class="gearitem" data-key="gear:lego-icons-10318-concorde">
-<div class="gi-head"><span class="gear-tag">Display shelf</span><button class="gi-own" type="button" aria-pressed="false" title="Mark as owned">Own it</button></div>
-<h3>LEGO Icons 10318 Concorde</h3>
-<p>The 2,083-piece flagship of the most beautiful airliner ever made — droop nose, retractable gear, display stand. The centrepiece of any desk.</p>
-<div class="gear-row">
-<a class="gear-cta" href="https://amzn.to/3SWF01r" target="_blank" rel="sponsored nofollow noopener">View on Amazon &rarr;</a>
-<a class="gear-alt" href="/aircraft/concorde">Explore on site &rarr;</a>
+<div id="dz" class="dzwrap">
+  <div class="dzstage">
+    <svg id="dzScene" viewBox="0 0 1000 640" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Aircraft wireframe">
+      <rect x="0" y="0" width="1000" height="640" fill="#FFFFFF"></rect>
+      <path id="dzFar" d="" fill="none" stroke="#C2CCD6" stroke-width="1.1" stroke-linecap="round"></path>
+      <path id="dzNear" d="" fill="none" stroke="#0E141C" stroke-width="1.5" stroke-linecap="round"></path>
+    </svg>
+    <p class="dzhint">Drag to rotate</p>
+  </div>
+  <div class="dzbar">
+    <select id="dParam" class="dsel" aria-label="Choose what to adjust"></select>
+    <div class="dzslide">
+      <input type="range" id="dSlider" aria-label="Adjust selected value">
+      <span class="dpv" id="dSliderV">&mdash;</span>
+    </div>
+    <div class="dzbtns">
+      <button id="dPrev" class="btn ghost" type="button">Clean sheet</button>
+      <button id="dSpin" class="btn ghost" type="button" aria-pressed="false">Auto-rotate</button>
+      <button id="dReset" class="btn ghost" type="button">Reset view</button>
+    </div>
+  </div>
+  <div class="dzout">
+    <label for="dzPrompt">Image prompt</label>
+    <textarea id="dzPrompt" rows="10" readonly></textarea>
+    <p style="margin-top:10px"><button id="dCopy" class="btn" type="button">Create prompt</button></p>
+  </div>
 </div>
-</article>
-<article class="gearitem" data-key="gear:lego-city-60367-passenger-aeroplane">
-<div class="gi-head"><span class="gear-tag">Younger pilots</span><button class="gi-own" type="button" aria-pressed="false" title="Mark as owned">Own it</button></div>
-<h3>LEGO City 60367 Passenger Aeroplane</h3>
-<p>A wide-body with a full ground crew — pushback tug, catering loader, baggage truck, apron bus and nine minifigures. The best starter set for a young avgeek.</p>
-<div class="gear-row">
-<a class="gear-cta" href="https://amzn.to/4hdX695" target="_blank" rel="sponsored nofollow noopener">View on Amazon &rarr;</a>
-
-</div>
-</article>
-</div>
-</div>
-<div class="geargroup">
-<span class="eyebrow" style="display:block">On the shelf</span>
-<p class="sub" style="margin:2px auto 0">Die-cast models and reference books — the collector’s core.</p>
-<div class="gearlist">
-<article class="gearitem" data-key="gear:die-cast-airliners-1-400-1-200-">
-<div class="gi-head"><span class="gear-tag">Collectors</span><button class="gi-own" type="button" aria-pressed="false" title="Mark as owned">Own it</button></div>
-<h3>Die-cast airliners (1:400 &amp; 1:200)</h3>
-<p>Gemini Jets and Herpa are the names to know — accurately scaled metal models in real airline liveries. Search your favourite carrier and scale; the A380 and 747 look superb on a shelf.</p>
-<div class="gear-row">
-<a class="gear-cta" href="https://www.amazon.co.uk/s?k=Gemini%20Jets%201%3A400%20diecast%20airliner&amp;tag=luck11106-21" target="_blank" rel="nofollow noopener">Find on Amazon &rarr;</a>
-<a class="gear-alt" href="/records/longest-aircraft">Explore on site &rarr;</a>
-</div>
-</article>
-<article class="gearitem" data-key="gear:aviation-reference-books">
-<div class="gi-head"><span class="gear-tag">Reading</span><button class="gi-own" type="button" aria-pressed="false" title="Mark as owned">Own it</button></div>
-<h3>Aviation reference books</h3>
-<p>From airliner-recognition guides to the deep engineering histories. A good coffee-table book on jet development is the natural companion to this site.</p>
-<div class="gear-row">
-<a class="gear-cta" href="https://www.amazon.co.uk/s?k=commercial%20aviation%20airliner%20book&amp;tag=luck11106-21" target="_blank" rel="nofollow noopener">Find on Amazon &rarr;</a>
-<a class="gear-alt" href="/explained">Explore on site &rarr;</a>
-</div>
-</article>
-</div>
-</div>
-<div class="geargroup">
-<span class="eyebrow" style="display:block">Track the skies</span>
-<p class="sub" style="margin:2px auto 0">Turn real aircraft overhead into data on your screen.</p>
-<div class="gearlist">
-<article class="gearitem" data-key="gear:rtl-sdr-receiver-ads-b-flightradar-">
-<div class="gi-head"><span class="gear-tag">Spotter tech</span><button class="gi-own" type="button" aria-pressed="false" title="Mark as owned">Own it</button></div>
-<h3>RTL-SDR receiver (ADS-B / Flightradar)</h3>
-<p>A cheap software-defined-radio USB stick that picks up ADS-B — the signals aircraft broadcast — so you can track everything flying near you and even feed Flightradar24. The gateway drug of plane-spotting tech.</p>
-<div class="gear-row">
-<a class="gear-cta" href="https://www.amazon.co.uk/s?k=RTL-SDR%20ADS-B%20receiver%20USB&amp;tag=luck11106-21" target="_blank" rel="nofollow noopener">Find on Amazon &rarr;</a>
-
-</div>
-</article>
-<article class="gearitem" data-key="gear:plane-spotting-binoculars-8x42-">
-<div class="gi-head"><span class="gear-tag">Spotter tech</span><button class="gi-own" type="button" aria-pressed="false" title="Mark as owned">Own it</button></div>
-<h3>Plane-spotting binoculars (8x42)</h3>
-<p>8x42 is the spotter’s sweet spot — bright, steady, wide enough to find a jet on approach and hold it. The classic airfield-fence companion.</p>
-<div class="gear-row">
-<a class="gear-cta" href="https://www.amazon.co.uk/s?k=8x42%20binoculars%20plane%20spotting&amp;tag=luck11106-21" target="_blank" rel="nofollow noopener">Find on Amazon &rarr;</a>
-
-</div>
-</article>
-</div>
-</div>
-<div class="geargroup">
-<span class="eyebrow" style="display:block">In the cockpit (at home)</span>
-<p class="sub" style="margin:2px auto 0">The flight-sim hardware that makes it feel real.</p>
-<div class="gearlist">
-<article class="gearitem" data-key="gear:flight-sim-joystick-throttle-hotas-">
-<div class="gi-head"><span class="gear-tag">Flight sim</span><button class="gi-own" type="button" aria-pressed="false" title="Mark as owned">Own it</button></div>
-<h3>Flight-sim joystick &amp; throttle (HOTAS)</h3>
-<p>A HOTAS — hands-on throttle-and-stick — is the single biggest upgrade to any flight simulator. Logitech and Thrustmaster make the go-to starter sets.</p>
-<div class="gear-row">
-<a class="gear-cta" href="https://www.amazon.co.uk/s?k=HOTAS%20flight%20simulator%20joystick%20throttle&amp;tag=luck11106-21" target="_blank" rel="nofollow noopener">Find on Amazon &rarr;</a>
-<a class="gear-alt" href="/compare">Explore on site &rarr;</a>
-</div>
-</article>
-</div>
-</div>
-<p class="sub" style="margin-top:8px">Your &ldquo;owned&rdquo; ticks are saved on this device only — nothing leaves your browser. Spotted something that belongs here? <a href="mailto:business@luck.fyi?subject=Hangar%20shop%20suggestion" style="color:var(--gold)">Tell us</a>.</p>
 </div></section>
+<section class="section" style="padding-top:0"><div class="wrap prose">
+<span class="eyebrow">How to use it</span>
+<h2 class="title">From parameters to a picture</h2>
+<p>Every line on the drawing is generated from the numbers you set, so what you see is what the prompt describes. Change the fuselage diameter and the cross-section changes. Stack decks and the body grows <em>upward</em> rather than outward &mdash; the belly line stays put so the landing gear still reaches the ground, and the crown climbs. It goes to eight decks, which is well past anything sane and exactly the point.</p>
+<p>The exported prompt leads with the dimensions rather than a description, because image models default hard to familiar shapes. Telling one to draw an aircraft gives you something 737-ish every time. Telling it the span-to-length ratio, the fineness ratio, the sweep angle and the deck count gives you the aeroplane you actually designed.</p>
+</div></section>
+
 </main>
 
 <footer class="mf">
