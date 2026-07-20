@@ -134,6 +134,28 @@ function navHTML(current) {
 <div class="mn-bar">
 ${BRAND('mn-logo')}
 <div class="mn-groups">
+<div class="mn-group" data-key="games">
+<button class="mn-top" type="button" aria-expanded="false" aria-haspopup="true"><svg class="gi" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.2" y="6" width="15.6" height="9" rx="3.2"/><path d="M6 9v3M4.5 10.5h3M13 10h.01M15 12h.01"/></svg>Games<i class="caret"></i></button>
+<div class="mn-panel" role="menu">
+<div class="mn-panel-inner" style="grid-template-columns:1fr 1fr 1fr">
+<div>
+<div class="mn-col-h">Fly</div>
+<a class="mn-link" href="/fly"${current === 'fly' ? ' aria-current="page"' : ''}><span class="lbl">Gate Runner</span><span class="arr">&rarr;</span></a>
+<p class="mn-note">Fly real aircraft round a winding circuit of rings. Your true wingspan is the hitbox.</p>
+</div>
+<div>
+<div class="mn-col-h">Test yourself</div>
+<a class="mn-link" href="/quiz"${current === 'quiz' ? ' aria-current="page"' : ''}><span class="lbl">The Silhouette Quiz</span><span class="arr">&rarr;</span></a>
+<p class="mn-note">Name the aircraft from its outline alone.</p>
+</div>
+<div>
+<div class="mn-col-h">Build</div>
+<a class="mn-link" href="/design"${current === 'design' ? ' aria-current="page"' : ''}><span class="lbl">Blueprint Designer</span><span class="arr">&rarr;</span></a>
+<p class="mn-note">Draw your own airframe and export it as an AI image prompt.</p>
+</div>
+</div>
+</div>
+</div>
 <div class="mn-group" data-key="menu">
 <button class="mn-top" type="button" aria-expanded="false" aria-haspopup="true"><svg class="gi" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h14M3 10h14M3 15h9"/></svg>Explore<i class="caret"></i></button>
 <div class="mn-panel" role="menu">
@@ -167,7 +189,6 @@ ${AL.filter(x => x.cargo).map(alink).join('\n')}
 <a class="mn-link" href="/explained"><span class="lbl">Explained</span><span class="arr">&rarr;</span></a>
 <a class="mn-link" href="/types"><span class="lbl">Aircraft types</span><span class="arr">&rarr;</span></a>
 <a class="mn-link" href="/manufacturers"><span class="lbl">Manufacturers</span><span class="arr">&rarr;</span></a>
-<a class="mn-link" href="/quiz"><span class="lbl">The Silhouette Quiz</span><span class="arr">&rarr;</span></a>
 <a class="mn-link" href="/compare"><span class="lbl">Compare aircraft</span><span class="arr">&rarr;</span></a>
 <div class="mn-col-h mt">Records &amp; more</div>
 <a class="mn-link" href="/records"><span class="lbl">Record boards</span><span class="arr">&rarr;</span></a>
@@ -222,7 +243,11 @@ ${TY.map(t => mlink('/types/' + t.slug, t.name, '')).join('\n')}
 </div>
 <a class="mn-acc-direct" href="/records/longest-aircraft">Records</a>
 <a class="mn-acc-direct" href="/compare">Compare aircraft</a>
+<div class="mn-acc-head">Games</div>
+<a class="mn-acc-direct" href="/fly">Gate Runner &mdash; flying game</a>
 <a class="mn-acc-direct" href="/quiz">The Silhouette Quiz</a>
+<a class="mn-acc-direct" href="/design">Blueprint Designer</a>
+<div class="mn-acc-head">More</div>
 <a class="mn-acc-direct" href="/blog">Blog</a>
 <a class="mn-acc-direct" href="/explained">Explained</a>
 <a class="mn-acc-direct" href="/methodology">Methodology</a>
@@ -262,7 +287,7 @@ ${BRAND('mf-logo mn-logo')}
 <h3 class="mf-h">Guides</h3>
 <ul><li><a href="/fear-of-flying">Scared of flying?</a></li><li><a href="/travel-classes">Classes &amp; points</a></li><li><a href="/gear">The hangar shop</a></li></ul>
 <h3 class="mf-h mt">Reference</h3>
-<ul><li><a href="/manufacturers">Manufacturers</a></li><li><a href="/types">Aircraft types</a></li><li><a href="/records/longest-aircraft">Longest aircraft</a></li><li><a href="/blog">Blog</a></li><li><a href="/explained">Explained</a></li><li><a href="/compare">Compare aircraft</a></li><li><a href="/bring-back-concorde">Bring back Concorde</a></li><li><a href="/methodology">Methodology</a></li><li><a href="/quiz">The Silhouette Quiz</a></li></ul>
+<ul><li><a href="/manufacturers">Manufacturers</a></li><li><a href="/types">Aircraft types</a></li><li><a href="/records/longest-aircraft">Longest aircraft</a></li><li><a href="/blog">Blog</a></li><li><a href="/explained">Explained</a></li><li><a href="/compare">Compare aircraft</a></li><li><a href="/bring-back-concorde">Bring back Concorde</a></li><li><a href="/methodology">Methodology</a></li><li><a href="/quiz">The Silhouette Quiz</a></li><li><a href="/fly">Gate Runner</a></li><li><a href="/design">Blueprint Designer</a></li></ul>
 </div>
 <div>
 <h3 class="mf-h">Site</h3>
@@ -347,6 +372,23 @@ function faqLd(qas) {
     '@type': 'Question', name: qa.q,
     acceptedAnswer: { '@type': 'Answer', text: qa.a }
   })) };
+}
+
+
+function aircraftFaqs(a) {
+  const c = a.core, n = a.name, qas = [];
+  const num = v => v.toLocaleString();
+  if (c.speed_kmh) qas.push({ q: `How fast is the ${n}?`,
+    a: `The ${n} cruises at about ${num(c.speed_kmh)} km/h — roughly ${Math.round(c.speed_kmh / 1.852)} knots, or ${num(Math.round(c.speed_kmh / 1.609))} mph.` });
+  if (c.range_km) qas.push({ q: `How far can the ${n} fly?`,
+    a: `The ${n} has a maximum range of about ${num(c.range_km)} km (${num(Math.round(c.range_km / 1.852))} nautical miles, ${num(Math.round(c.range_km / 1.609))} miles).${c.speed_kmh ? ` At its cruise speed that is roughly ${(c.range_km / c.speed_kmh).toFixed(1)} hours in the air.` : ''}` });
+  if (c.seats_typical) qas.push({ q: `How many people does the ${n} carry?`,
+    a: `A typical ${n} carries ${c.seats_typical} ${c.seats_typical > 20 ? 'passengers' : 'people including crew'}. Exact figures vary with the operator's chosen configuration.` });
+  qas.push({ q: `Is the ${n} still in production?`,
+    a: `Status: ${a.status}.${c.firstFlightYear ? ` The ${n} first flew in ${c.firstFlightYear}` : ''}${c.produced ? `, and about ${num(c.produced)} have been built` : c.firstFlightYear ? '' : ''}.` });
+  if (c.length_m && c.wingspan_m && c.height_m) qas.push({ q: `How big is the ${n}?`,
+    a: `The ${n} is ${c.length_m} m long with a wingspan of ${c.wingspan_m} m and a height of ${c.height_m} m.${c.mtow_kg ? ` Its maximum takeoff weight is ${num(c.mtow_kg)} kg.` : ''}` });
+  return qas;
 }
 
 function metricValue(key, a) {
@@ -437,7 +479,9 @@ const CATLINK = {
   'Turboprop airliner': 'propliners', 'Piston airliner': 'propliners',
   'Flying boat': 'propliners', 'Experimental': 'bombers'
 };
-const catColor = a => CATCOLOR[a.category] || 'var(--text)';
+/* A specific aircraft may override its category colour — a fighter's scheme is a real
+   published shade, not a family default, and almost none of them are black. */
+const catColor = a => a.color || CATCOLOR[a.category] || 'var(--text)';
 const MAXSPAN = Math.max(...DATA.aircraft.map(x => x.core.wingspan_m || 0));
 const silScaled = a => {
   const pct = Math.max(46, Math.round(98 * Math.pow((a.core.wingspan_m || 0) / MAXSPAN, 0.38)));
@@ -523,6 +567,14 @@ renderPage({
 <section class="hero home"><div class="wrap">
 <h1>Aircraft — <span class="em">for your information</span>.</h1>
 <p class="lead">Every giant of the sky — measured, sourced, and drawn to true scale. No stock photos. No guesswork.</p>
+<div class="heroSearch" id="heroSearch">
+<div class="hs-bar">
+<svg class="hs-i" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="9" cy="9" r="6"/><path d="M13.5 13.5 17 17"/></svg>
+<input class="hs-in" id="heroInput" type="text" autocomplete="off" spellcheck="false" aria-label="Search every aircraft, airline and record" aria-controls="heroResults">
+<span class="hs-ph" id="heroPh" aria-hidden="true"><span id="heroType"></span><i class="hs-cur"></i></span>
+</div>
+<ul class="hs-res srch-res" id="heroResults" role="listbox"></ul>
+</div>
 <div class="heroChips">
 <span class="chip"><b class="num">84.00 m</b><span>longest ever</span></span>
 <span class="chip"><b class="num">97.54 m</b><span>widest wings</span></span>
@@ -531,8 +583,7 @@ renderPage({
 </div>
 <div class="heroCtas">
 <a class="btn" href="/records/longest-aircraft">See the Top 50 &rarr;</a>
-<a class="btn ghost" href="#fleet">Browse the fleet</a>
-<a class="btn ghost" href="/quiz">&#127922; Silhouette quiz</a></div>
+<a class="btn ghost" href="#fleet">Browse the fleet</a></div>
 </div></section>
 <section class="section" id="fleet" style="padding-top:30px"><div class="wrap">
 <span class="eyebrow">The fleet</span>
@@ -621,11 +672,267 @@ ${AL.map(al => `<article class="acard">${al.iata ? `<span class="iata" style="ba
 </div></section>`
 });
 
+/* ---------- Blueprint Designer ---------- */
+renderPage({
+  file: 'design.html', urlPath: '/design', current: 'design',
+  title: 'Blueprint Designer — build your own aircraft',
+  description: 'Design an aircraft from scratch by adjusting length, wingspan, decks, sweep and tail, rotate it freely, and export a precise prompt for AI image generation.',
+  ogImage: 'default.png',
+  head: `<script src="/assets/js/design.js" defer></script>`,
+  jsonld: [{ '@context': 'https://schema.org', '@type': 'WebApplication', name: 'Blueprint Designer',
+    url: 'https://aircraft.fyi/design', applicationCategory: 'DesignApplication', operatingSystem: 'Any',
+    description: 'A parametric aircraft design tool that draws a rotatable 3D wireframe and exports a precise geometry prompt for AI image generators.',
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'GBP' },
+    publisher: { '@type': 'Organization', name: 'aircraft.fyi' } },
+    faqLd([
+      { q: 'What is the Blueprint Designer?', a: 'A parametric drawing tool. You set length, wingspan, fuselage diameter, sweep, taper, dihedral, tail height, deck count and engine layout, and it draws the resulting aircraft as a rotatable 3D wireframe.' },
+      { q: 'Can I use it to generate an image?', a: 'Yes. It exports a prompt describing the exact geometry you have built — bounding box, nose-to-wing and wing-to-tail distances, sweep, camera angle — so an image generator follows your proportions rather than defaulting to a familiar airliner shape.' },
+      { q: 'Do I need an account or any software?', a: 'No. It runs entirely in the browser, free, with nothing to install.' }
+    ])],
+  content: `
+<section class="hero"><div class="wrap">
+<div class="crumb"><a href="/">Home</a> › Blueprint Designer</div>
+<h1>Blueprint Designer</h1>
+<p class="lead">Build an aircraft from scratch, turn it in your hand, and export the exact geometry as a prompt.</p>
+</div></section>
+<section class="section" style="padding-top:0"><div class="wrap">
+<div id="dz" class="dzwrap">
+  <div class="dzstage">
+    <svg id="dzScene" viewBox="0 0 1000 640" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Aircraft wireframe">
+      <rect x="0" y="0" width="1000" height="640" fill="#FFFFFF"></rect>
+      <path id="dzFar" d="" fill="none" stroke="#C2CCD6" stroke-width="1.1" stroke-linecap="round"></path>
+      <path id="dzNear" d="" fill="none" stroke="#0E141C" stroke-width="1.5" stroke-linecap="round"></path>
+    </svg>
+    <p class="dzhint">Drag to rotate</p>
+  </div>
+  <div class="dzbar">
+    <select id="dParam" class="dsel" aria-label="Choose what to adjust"></select>
+    <div class="dzslide">
+      <input type="range" id="dSlider" aria-label="Adjust selected value">
+      <span class="dpv" id="dSliderV">&mdash;</span>
+    </div>
+    <div class="dzbtns">
+      <button id="dPrev" class="btn ghost" type="button">Clean sheet</button>
+      <button id="dSpin" class="btn ghost" type="button" aria-pressed="false">Auto-rotate</button>
+      <button id="dReset" class="btn ghost" type="button">Reset view</button>
+    </div>
+  </div>
+  <div class="dzout">
+    <label for="dzPrompt">Image prompt</label>
+    <textarea id="dzPrompt" rows="10" readonly></textarea>
+    <p style="margin-top:10px"><button id="dCopy" class="btn" type="button">Create prompt</button></p>
+  </div>
+</div>
+</div></section>
+<section class="section" style="padding-top:0"><div class="wrap prose">
+<span class="eyebrow">How to use it</span>
+<h2 class="title">From parameters to a picture</h2>
+<p>Every line on the drawing is generated from the numbers you set, so what you see is what the prompt describes. Change the fuselage diameter and the cross-section changes. Stack decks and the body grows <em>upward</em> rather than outward &mdash; the belly line stays put so the landing gear still reaches the ground, and the crown climbs. It goes to eight decks, which is well past anything sane and exactly the point.</p>
+<p>The exported prompt leads with the dimensions rather than a description, because image models default hard to familiar shapes. Telling one to draw an aircraft gives you something 737-ish every time. Telling it the span-to-length ratio, the fineness ratio, the sweep angle and the deck count gives you the aeroplane you actually designed.</p>
+</div></section>
+` });
+
+/* ---------- Gate Runner: the flying game ---------- */
+{
+  /* Military aircraft are reference content by default. A handpicked few are playable —
+     the ones people actually want to fly. */
+  const GAME_MIL = new Set(['lockheed-sr-71-blackbird', 'northrop-b-2-spirit',
+    'lockheed-martin-f-22-raptor', 'sukhoi-su-57-felon', 'lockheed-f-117-nighthawk',
+    'grumman-f-14-tomcat', 'lockheed-martin-f-35-lightning-ii', 'mikoyan-mig-31-foxhound',
+    'fairchild-republic-a-10-thunderbolt-ii', 'rockwell-b-1b-lancer']);
+  /* Regional-indicator pairs give a flag for any ISO code. USSR has no flag of its own,
+     so those aircraft fly the Russian one, which is what their successors operate under. */
+  const ccFlag = cc => {
+    if (!cc) return '';
+    const k = cc === 'USSR' ? 'RU' : cc;
+    if (k.length !== 2) return '';
+    return String.fromCodePoint(...[...k.toUpperCase()].map(c => 0x1F1E6 + c.charCodeAt(0) - 65));
+  };
+  const flyFleet = A.filter(a => a.core.wingspan_m && a.core.speed_kmh && (!a.military || GAME_MIL.has(a.slug)))
+    .sort((p, q) => p.core.wingspan_m - q.core.wingspan_m)
+    .map(a => ({ slug: a.slug, name: a.name, span: a.core.wingspan_m, kmh: Math.round(a.core.speed_kmh),
+                 mtow: a.core.mtow_kg || 5000, sil: SIL[a.slug], vbTop: a.vb.top, vbH: a.vb.h,
+                 /* extra figures so the game can surface real numbers mid-flight */
+                 len: a.core.length_m || null, seats: a.core.seats_typical || null,
+                 hgt: a.core.height_m || null,
+                 flag: ccFlag(a.cc), cc: a.cc || '',
+                 col: a.color || CATCOLOR[a.category] || '#10233A',
+                 /* Weight alone says an F-22 handles like an A320. It does not. Combat
+                    aircraft carry a manoeuvre multiplier so they answer the stick the
+                    way they actually do. */
+                 agi: ({ 'Fighter': 2.2, 'Interceptor': 1.9, 'Attack aircraft': 1.6,
+                         'Stealth aircraft': 1.35, 'Reconnaissance': 1.1,
+                         'Stealth bomber': 1.0, 'Strategic bomber': 1.05 })[a.category] || 1,
+                 range: a.core.range_km || null, year: a.core.firstFlightYear || null }));
+  /* Gates are sized off the widest aircraft in the fleet, so every one of them can
+     actually be flown. Add a wider aircraft later and the gates grow to suit. */
+  const widest = Math.max(...flyFleet.map(f => f.span));
+  const gateHalf = Math.ceil(widest / 2 + 20);
+  /* Width was the only axis of difficulty, which broke down once fighters arrived: an
+     F-22 has 62 m of clearance either side but crosses a gate in a fraction of the time
+     a Cessna takes. Anything past Mach 1.6 is banded on pace instead. */
+  /* Thresholds are fractions of the ring, not fixed metres. Widening the ring from 126 m
+     to 138 m had quietly emptied the brutal band, because nothing on earth is 102 m wide. */
+  const flyDiff = (s, kmh) => {
+    if (kmh && kmh >= 1960) return 'supersonic';
+    const room = gateHalf - s / 2;          /* clearance either side */
+    return room < gateHalf * 0.38 ? 'brutal'
+         : room < gateHalf * 0.52 ? 'hard'
+         : room < gateHalf * 0.75 ? 'tricky' : 'forgiving';
+  };
+  renderPage({
+    file: 'fly.html', urlPath: '/fly', current: 'fly',
+    title: `Gate Runner — free flying game with ${flyFleet.length} real aircraft`,
+    description: `A free flying game in your browser. Fly ${flyFleet.length} real aircraft around a winding circuit of ${gateHalf * 2} m rings, where your true wingspan is the hitbox.`,
+    ogImage: 'default.png',
+    head: `<script src="/assets/js/fly.js" defer></script>\n<script>window.FLY_GATE=${gateHalf};window.FLY_FLEET=${JSON.stringify(flyFleet)};</script>`,
+    jsonld: [
+    { '@context': 'https://schema.org', '@type': 'VideoGame',
+      name: 'Gate Runner', alternateName: 'aircraft.fyi flying game',
+      url: 'https://aircraft.fyi/fly',
+      description: `A free browser flying game. Pick any of ${flyFleet.length} real aircraft and fly it through ${gateHalf * 2} metre gates. Your true wingspan is the hitbox, cruise speed sets the pace and maximum takeoff weight sets how the aircraft answers the controls.`,
+      genre: ['Flight simulation', 'Arcade', 'Casual', 'Racing'],
+      gamePlatform: ['Web browser', 'Mobile web'],
+      applicationCategory: 'Game',
+      operatingSystem: 'Any',
+      playMode: 'SinglePlayer',
+      numberOfPlayers: { '@type': 'QuantitativeValue', minValue: 1, maxValue: 1 },
+      inLanguage: 'en',
+      isAccessibleForFree: true,
+      accessibilityFeature: ['highContrastDisplay', 'alternativeText', 'fullKeyboardControl'],
+      accessibilityHazard: ['noFlashingHazard'],
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'GBP', availability: 'https://schema.org/InStock' },
+      author: { '@type': 'Organization', name: 'aircraft.fyi', url: 'https://aircraft.fyi' },
+      publisher: { '@type': 'Organization', name: 'aircraft.fyi', url: 'https://aircraft.fyi' },
+      screenshot: 'https://aircraft.fyi/assets/img/og/default.png',
+      gameItem: flyFleet.map(f => ({ '@type': 'Thing', name: f.name, url: `https://aircraft.fyi/aircraft/${f.slug}` })) },
+    { '@context': 'https://schema.org', '@type': 'ItemList',
+      name: `Every aircraft you can fly in Gate Runner`,
+      description: `All ${flyFleet.length} aircraft playable in the game, ordered by wingspan.`,
+      numberOfItems: flyFleet.length,
+      itemListOrder: 'https://schema.org/ItemListOrderAscending',
+      itemListElement: flyFleet.map((f, n) => ({
+        '@type': 'ListItem', position: n + 1,
+        url: `https://aircraft.fyi/aircraft/${f.slug}`,
+        name: `${f.name} — ${f.span.toFixed(1)} m wingspan, ${(gateHalf - f.span / 2).toFixed(1)} m clearance` })) },
+    { '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://aircraft.fyi/' },
+        { '@type': 'ListItem', position: 2, name: 'Gate Runner', item: 'https://aircraft.fyi/fly' }] },
+    faqLd([
+      { q: 'Is Gate Runner free to play?', a: 'Yes. It runs in the browser with no account, no download and no payment, on desktop and mobile.' },
+      { q: 'What kind of flying game is it?', a: `An arcade flight game built on real aircraft data. You fly one of ${flyFleet.length} real aircraft around a winding circuit of ${gateHalf * 2} metre rings — banking through turns, climbing and descending — and your actual wingspan is the hitbox.` },
+      { q: 'Which aircraft can I fly?', a: `All ${flyFleet.length} are playable, from a Cessna 172 with an 11 metre wingspan to the Hughes H-4 Hercules at 97.5 metres. Airliners, freighters, business jets, light aircraft and a selection of military types including the SR-71 Blackbird, F-22 Raptor, Su-57 and B-2 Spirit.` },
+      { q: 'How do the controls work?', a: 'Drag the thumbstick to bank and pitch, and the vertical slider to set throttle. On a keyboard use the arrow keys or WASD, S and F for throttle, and space to firewall it. Banking turns the aircraft, exactly as it does in flight.' },
+      { q: 'Why are big aircraft so hard to fly?', a: `The rings are ${gateHalf * 2} metres across and your wingspan is the hitbox, so a Cessna has around ${(gateHalf - 5.5).toFixed(0)} metres of clearance either side while a Hughes H-4 Hercules has about ${(gateHalf - 48.75).toFixed(0)}. Heavier aircraft also roll and turn far more slowly.` },
+      { q: 'What makes the supersonic aircraft different?', a: 'Speed rather than size is what makes them hard. An SR-71 has a small wingspan but covers the gap between rings in about a second and a half, against six for a Cessna, so there is far less time to line up each one.' },
+      { q: 'Does the course get harder?', a: 'Yes. It opens with long sweeping turns and gradually tightens — shorter segments, sharper turns and steeper climbs and descents, often combined into a single movement.' },
+      { q: 'What is the daily challenge?', a: 'Every day the game picks one aircraft and one fixed circuit from the date, so everyone flying that day gets exactly the same run. It resets at midnight UTC.' }
+    ])],
+  content: `
+<section class="hero tight"><div class="wrap">
+<div class="crumb"><a href="/">Home</a> › Gate Runner</div>
+<h1>Gate Runner</h1>
+</div></section>
+<section class="section" style="padding-top:0"><div class="wrap">
+<div id="fly" class="flywrap">
+  <div class="flystage" role="region" aria-label="Gate Runner game">
+    <svg id="flyScene" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Flight view: your aircraft seen from behind, flying a circuit of rings"></svg>
+    <div class="flyhud">
+      <button id="flyName" class="fh-l" type="button" aria-label="Change aircraft"><b id="hName">&mdash;</b><span><i id="hSpan">0</i> m span &middot; change</span></button>
+      <div class="fh-r">
+        <span>SPEED <b id="hSpd">0</b> km/h</span>
+        <span>ALT <b id="hAlt">0</b> m</span>
+        <span>GATES <b id="hGate">0</b></span>
+        <span>SCORE <b id="hScore">0</b></span>
+        <span>BEST <b id="hBest">0</b></span>
+      </div>
+    </div>
+    <div id="flyStick" class="flystick" role="application" aria-label="Flight stick — drag left and right to bank and turn, up and down to pitch" aria-hidden="true"><i id="flyKnob" class="flyknob"></i></div>
+    <button id="flyPause" class="flypause" type="button" aria-label="Pause">&#10073;&#10073;</button>
+    <div id="flyThr" class="flythr" role="slider" aria-label="Throttle" aria-valuemin="0" aria-valuemax="100" aria-valuenow="33" aria-hidden="true">
+      <i id="flyThrFill" class="ft-fill"></i>
+      <i id="flyThrKnob" class="ft-knob"></i>
+      <span id="flyThrVal" class="ft-val">33%</span>
+    </div>
+    <div id="flyEnd" class="flyend" hidden role="dialog" aria-modal="true" aria-labelledby="flyEndH">
+      <div class="flyend-card">
+        <button id="flyEndX" class="flyendx" type="button" aria-label="Close">&times;</button>
+        <h3 id="flyEndH">Clipped a gate</h3>
+        <p id="flyEndB"></p>
+        <p id="flyEndCmp" class="flycmp"></p>
+        <div class="flyacts">
+          <button id="flyAgain" class="btn" type="button">Fly again</button>
+          <button id="flyPick" class="btn ghost" type="button">Choose plane</button>
+          <a id="flyCta" class="btn ghost" href="/types">Learn more</a>
+          <button id="flyShare" class="btn ghost" type="button" aria-label="Share your result">Share result</button>
+        </div>
+      </div>
+    </div>
+    <div id="flyMsg" class="flymsg">
+      <h3 id="flyMsgH">Pick your aircraft</h3>
+      <p id="flyMsgB">Rings are ${gateHalf * 2} m across. Your wingspan is the hitbox.</p>
+      <div class="flypick">
+        <button id="flyDaily" class="flydaily" type="button" aria-pressed="false" aria-describedby="flyDailyHint">Daily challenge</button><span id="flyDailyHint" class="vh">Same aircraft and same circuit for everyone today, resetting at midnight UTC</span>
+        <input type="search" id="flyFilter" class="flyfilter" placeholder="Filter ${flyFleet.length} aircraft" aria-label="Filter aircraft">
+        <div id="flyBands" class="flybands" role="group" aria-label="Filter by difficulty"></div>
+        <div id="flyGrid" class="flygrid" role="listbox" aria-label="Choose an aircraft">${
+          flyFleet.map(f => {
+            const room = gateHalf - f.span / 2;
+            return `<a class="flyopt" href="/aircraft/${f.slug}" data-s="${f.slug}" role="option" aria-selected="false">` +
+              `<span class="fo-n">${f.flag ? f.flag + ' ' : ''}${f.name}</span>` +
+              `<span class="fo-m">${f.span.toFixed(1)} m span &middot; ${room.toFixed(0)} m clear</span>` +
+              `<span class="fo-b b-${flyDiff(f.span, f.kmh)}">${flyDiff(f.span, f.kmh)}</span></a>`;
+          }).join('')
+        }</div>
+      </div>
+      <button id="flyGo" class="btn" type="button">Fly</button>
+    </div>
+  </div>
+  <p class="sub" style="margin-top:14px">Desktop: <b>&darr;</b> pull back to climb, <b>&uarr;</b> push forward to dive, <b>&larr;</b>/<b>&rarr;</b> turn · <b>A</b>/<b>D</b> yaw · <b>S</b>/<b>F</b> throttle down/up · <b>space</b> firewalls it. Phone: stick bottom-left (pull <b>down</b> to climb), throttle slider bottom-right.</p>
+<p style="margin-top:8px"><button id="flyInv" class="btn ghost" type="button" aria-pressed="true">Pitch: joystick (pull back to climb)</button></p>
+</div>
+</div></section>
+<section class="section" style="padding-top:0"><div class="wrap prose">
+<span class="eyebrow">How it works</span>
+<h2 class="title">The numbers are doing the flying</h2>
+<p>Every aircraft in Gate Runner handles according to its own entry on this site. Cruise speed sets how fast the course comes at you. Maximum takeoff weight sets how quickly the aircraft answers the controls: a Cessna responds instantly, an A320 at less than half that rate, an An&#8209;225 at under a third. The gates are then placed within whatever that particular aircraft can actually reach between them, so a heavy jet gets a course it can fly rather than one it is physically unable to make.</p>
+<p>The wingspan is the part people notice. The gate rings are a fixed ${gateHalf * 2} metres across, sized so that every aircraft on this site can get through one, and your hitbox is your real span. A Cessna 172 has 11 metres of wing and around ${(gateHalf - 5.5).toFixed(0)} metres of clearance either side. A Hughes H-4 Hercules has 97.5 metres of wing and about ${(gateHalf - 48.75).toFixed(0)} metres. Same gate, entirely different problem.</p>
+</div></section>
+<section class="section"><div class="wrap">
+<h2 class="title">Every aircraft you can fly</h2>
+<p class="prose" style="margin-bottom:18px">All ${flyFleet.length} are playable, listed smallest wingspan first with the clearance each one gets through a ${gateHalf * 2} metre gate. Follow any link for its full specifications.</p>
+<ul class="flyseo">${
+  flyFleet.map(f => `<li><a href="/aircraft/${f.slug}">${f.name}</a> <span>${f.span.toFixed(1)} m span &middot; ${(gateHalf - f.span / 2).toFixed(1)} m clearance &middot; ${flyDiff(f.span, f.kmh)}</span></li>`).join('')
+}</ul>
+</div></section>
+` });
+}
+
 /* ---------- aircraft pages ---------- */
 for (const a of A) {
   const compareLinks = a.compareWith.map(s => A.find(x => x.slug === s)).filter(Boolean)
     .map(x => `<li style="margin-bottom:9px"><a href="/aircraft/${x.slug}" style="color:var(--gold);font-family:var(--display);font-weight:600">${esc(a.name)} vs ${esc(x.name)} &rarr;</a></li>`).join('\n');
   const ops = (a.operators || []).slice().sort((p, q) => opNum(q.count) - opNum(p.count)).map(o => operatorRow(o, a)).filter(Boolean).join('\n');
+  /* small aircraft read better against an airliner than against a football pitch */
+  const SMALL_CATS = ['Light aircraft', 'Business jet'];
+  const isSmall = SMALL_CATS.includes(a.category);
+  const a380span = (A.find(x => x.slug === 'airbus-a380') || { core: { wingspan_m: 79.75 } }).core.wingspan_m;
+  const sizeHeading = isSmall ? 'What size is it, really?' : 'How big is it, really?';
+  const sizeRows = [[a.name, a.core.wingspan_m, 1]]
+    .concat(isSmall && a.slug !== 'airbus-a380' ? [['Airbus A380', a380span, 0]] : [])
+    .concat([['Football pitch (width)', 68, 0], ['Blue whale', 25, 0], ['New Routemaster bus', 11.2, 0], ['You (probably)', 1.75, 0]]);
+  const sizeMax = Math.max.apply(null, sizeRows.map(r => r[1]).concat([68]));
+  const faqs = aircraftFaqs(a);
+  const isGA = !(a.operators || []).length;   /* light aircraft have owners, not airline operators */
+  const opsSection = isGA ? '' : `<section class="section" style="padding-top:0"><div class="wrap">
+<span class="eyebrow">Operators</span>
+<h2 class="title">Who flies the ${esc(a.name)}</h2>
+${operatorsMeta(a)}
+${ops}
+${a.operatorsOther ? `<div class="oprow other"><span class="who"><span><b>${esc(a.operatorsOther.label)}</b><span class="note">${esc(a.operatorsOther.note)}</span></span></span><span class="tail"><span class="count num">${esc(a.operatorsOther.count)}</span></span></div>` : ''}
+${a.operatorsOnOrder ? `<p class="sub" style="margin-top:18px">${esc(a.operatorsOnOrder)}</p>` : ''}
+</div></section>`;
   const aff = (a.affiliate && a.affiliate.active && a.affiliate.url)
     ? `<section class="section" style="padding-top:0"><div class="wrap">
 <span class="eyebrow">Fly it</span>
@@ -636,10 +943,15 @@ for (const a of A) {
 
   renderPage({
     file: `aircraft/${a.slug}.html`, urlPath: `/aircraft/${a.slug}`, current: 'aircraft',
-    title: `${a.name} — specs, size & operators`,
-    description: `${a.headline} Sourced specs, every variant, and every airline that flies it.`,
+    /* A few names are long enough to blow the 60-character title budget on their own,
+       so those get a short form for the title tag only. */
+    title: (() => {
+      const short = a.shortName || a.name;
+      return isGA ? `${short} — specs, size & performance` : `${short} — specs, size & operators`;
+    })(),
+    description: isGA ? `${a.headline} Sourced specs, every variant, and how it compares.` : `${a.headline} Sourced specs, every variant, and every airline that flies it.`,
     ogImage: `${a.slug}.png`,
-    jsonld: { '@context': 'https://schema.org', '@type': 'Dataset', name: `${a.name} specifications`, description: a.headline, url: `https://aircraft.fyi/aircraft/${a.slug}`, image: `https://aircraft.fyi/assets/img/og/${a.slug}.png`, dateModified: a.lastVerified, license: 'https://aircraft.fyi/methodology', creator: { '@type': 'Organization', name: 'aircraft.fyi', url: 'https://aircraft.fyi' } },
+    jsonld: [faqLd(faqs), { '@context': 'https://schema.org', '@type': 'Dataset', name: `${a.name} specifications`, description: a.headline, url: `https://aircraft.fyi/aircraft/${a.slug}`, image: `https://aircraft.fyi/assets/img/og/${a.slug}.png`, dateModified: a.lastVerified, license: 'https://aircraft.fyi/methodology', creator: { '@type': 'Organization', name: 'aircraft.fyi', url: 'https://aircraft.fyi' } }],
     content: `
 <section class="hero"><div class="wrap">
 <div class="crumb"><a href="/">Home</a> › <a href="/#fleet">Aircraft</a> › ${esc(a.name)}</div>
@@ -652,10 +964,10 @@ ${statStrip(a)}
 ${derivedSection(a)}
 <section class="section" style="padding-top:0"><div class="wrap">
 <span class="eyebrow">Sense of scale</span>
-<h2 class="title">How big is it, really?</h2>
+<h2 class="title">${sizeHeading}</h2>
 <p class="sub">The ${esc(a.name)}'s wingspan, against things you already know the size of.</p>
 <div class="sizebars">
-${[[a.name, a.core.wingspan_m, 1], ['Football pitch (width)', 68, 0], ['Blue whale', 25, 0], ['New Routemaster bus', 11.2, 0], ['You (probably)', 1.75, 0]].map(r => `<div class="szrow${r[2] ? ' me' : ''}"><span class="szl">${esc(String(r[0]))}</span><span class="szb"><i style="width:${Math.max(1.2, r[1] / Math.max(a.core.wingspan_m, 68) * 100).toFixed(1)}%"></i></span><span class="szv num">${r[1]} m</span></div>`).join('')}
+${sizeRows.map(r => `<div class="szrow${r[2] ? ' me' : ''}"><span class="szl">${esc(String(r[0]))}</span><span class="szb"><i style="width:${Math.max(1.2, r[1] / sizeMax * 100).toFixed(1)}%"></i></span><span class="szv num">${r[1]} m</span></div>`).join('')}
 </div>
 <div class="recrow">
 <a class="recchip" href="/records/longest-aircraft">#${rkLen.indexOf(a.slug) + 1} of ${A.length} by length &rarr;</a>
@@ -696,20 +1008,20 @@ ${a.prose.map(p => `<p>${esc(p)}</p>`).join('\n')}
 </div>
 </div></section>
 <section class="section" style="padding-top:0"><div class="wrap">
+<span class="eyebrow">Common questions</span>
+<h2 class="title">${esc(a.name)} — the short answers</h2>
+<div data-accordion>
+${faqs.map((qa, i) => `<details class="qa"${i === 0 ? ' open' : ''}><summary>${esc(qa.q)}<i class="caret"></i></summary><div class="body">${esc(qa.a)}</div></details>`).join('\n')}
+</div>
+</div></section>
+<section class="section" style="padding-top:0"><div class="wrap">
 <span class="eyebrow">Variants</span>
 <h2 class="title">The ${esc(a.name)} line</h2>
 <div data-accordion>
 ${a.variants.map((v, i) => `<details class="qa"${i === 0 ? ' open' : ''}><summary>${esc(v.name)}<i class="caret"></i></summary><div class="body">${esc(v.note)}</div></details>`).join('\n')}
 </div>
 </div></section>
-<section class="section" style="padding-top:0"><div class="wrap">
-<span class="eyebrow">Operators</span>
-<h2 class="title">Who flies the ${esc(a.name)}</h2>
-${operatorsMeta(a)}
-${ops}
-${a.operatorsOther ? `<div class="oprow other"><span class="who"><span><b>${esc(a.operatorsOther.label)}</b><span class="note">${esc(a.operatorsOther.note)}</span></span></span><span class="tail"><span class="count num">${esc(a.operatorsOther.count)}</span></span></div>` : ''}
-${a.operatorsOnOrder ? `<p class="sub" style="margin-top:18px">${esc(a.operatorsOnOrder)}</p>` : ''}
-</div></section>
+${opsSection}
 ${aff}
 ${a.gear && a.gear.length ? `<section class="section" style="padding-top:0"><div class="wrap">
 <span class="eyebrow">For the collector</span>
@@ -1031,7 +1343,9 @@ for (const m of MK) {
   const longest = list.slice().sort((x, y) => y.core.length_m - x.core.length_m)[0];
   renderPage({
     file: `manufacturers/${m.slug}.html`, urlPath: `/manufacturers/${m.slug}`, current: '',
-    title: `${m.name} aircraft — every type, sourced`.slice(0, 60),
+    /* Entity-encoding an ampersand costs four extra characters, so a 60-char slice can
+       still emit a 64-char title. titleName lets a maker opt out of the ampersand. */
+    title: `${m.titleName || m.name} aircraft — every type`.slice(0, 58),
     description: fitDesc(`${m.tagline} ${list.length} ${m.name} aircraft on aircraft.fyi, led by the ${longest.name} — full specs, silhouettes and operators.`),
     jsonld: { '@context': 'https://schema.org', '@type': 'Organization', name: m.name, foundingDate: String(m.founded), url: `https://aircraft.fyi/manufacturers/${m.slug}` },
     content: `
@@ -1076,7 +1390,7 @@ ${sourcesBlock(m.sources, 'makers', m.slug, m.name)}
 
 renderPage({
   file: 'gear.html', urlPath: '/gear',
-  title: 'The hangar shop — aircraft models, LEGO & gifts for avgeeks',
+  title: 'The hangar shop — aircraft models & gifts for avgeeks',
   description: 'A short, honest shelf of the best aircraft models, LEGO sets and gifts for people who love flying machines. Hand-picked, never paid placement.',
   jsonld: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'The hangar shop', url: 'https://aircraft.fyi/gear' },
   content: `
@@ -1177,7 +1491,7 @@ renderPage({
 renderPage({
   file: 'fear-of-flying.html', urlPath: '/fear-of-flying', current: '',
   title: 'Scared of flying? The engineering that makes it safe',
-  description: 'A calm, factual guide to the fear of flying — what turbulence really is, why the noises happen, how aircraft are built to cope, and gentle ways to feel more in control. Understanding is the cure for a lot of fear.',
+  description: 'A calm, factual guide to the fear of flying — what turbulence really is, why the noises happen, how aircraft are built to cope, and gentle ways to.',
   jsonld: [{ '@context': 'https://schema.org', '@type': 'Article', headline: 'Scared of flying? The engineering that makes it safe', description: 'What turbulence really is, why the noises happen, and how aircraft are built to cope.', url: 'https://aircraft.fyi/fear-of-flying' }, faqLd([
     { q: 'Is turbulence dangerous?', a: 'No. Turbulence is just uneven air, and aircraft wings are built to flex several metres and withstand far more than any turbulence you will ever feel. Pilots slow down mainly for comfort, not safety. Keep your seatbelt loosely fastened and it poses no real hazard.' },
     { q: 'What is the loud clunk after take-off?', a: 'That is the landing gear retracting into the belly and the doors closing over it. It is meant to be firm and loud. Minutes later you may hear the wing flaps sliding back in as the aircraft speeds up.' },
@@ -1257,7 +1571,7 @@ renderPage({
 renderPage({
   file: 'travel-classes.html', urlPath: '/travel-classes', current: '',
   title: 'Flight classes, bargains & points — fly better for less',
-  description: 'How economy, premium economy, business and first really differ, the evergreen strategies for cheaper flights, and how transferable points can unlock business and first-class seats. Durable principles, not deals that expire.',
+  description: 'How economy, premium economy, business and first really differ, the evergreen strategies for cheaper flights, and how transferable points can unlock.',
   jsonld: [{ '@context': 'https://schema.org', '@type': 'Article', headline: 'Flight classes, bargains & points', description: 'How the cabins differ, how to find cheaper flights, and how points unlock premium seats.', url: 'https://aircraft.fyi/travel-classes' }, faqLd([
     { q: 'What is the difference between premium economy and business class?', a: 'Premium economy is a bigger, more reclined seat with better food and service, but still an upright seat. Business class on long-haul usually means a lie-flat bed, lounge access and direct aisle access. Premium economy is often the best value; business is the biggest comfort leap for overnight flights.' },
     { q: 'How do points and miles get you business or first class?', a: 'The cash price and points price of a seat are largely unrelated. A business seat costing thousands in cash may cost a points total you can realistically earn from everyday spending and sign-up bonuses. Points are worth most in premium cabins, so saving them for business or first gives the best value.' },
@@ -1488,7 +1802,17 @@ const SEARCH = [
   { t: 'Bring back Concorde', u: '/bring-back-concorde', k: 'Petition', d: 'Sign it', q: 'concorde petition bring back supersonic sign' },
   { t: 'Methodology', u: '/methodology', k: 'Reference', d: 'How every number is calculated', q: 'methodology sources how we calculate data' },
   { t: 'Scared of flying?', u: '/fear-of-flying', k: 'Guide', d: 'The engineering that makes flying safe', q: 'fear of flying scared afraid nervous anxiety turbulence safe phobia calm' },
-  { t: 'Classes, bargains & points', u: '/travel-classes', k: 'Guide', d: 'Fly better for less', q: 'business first class economy premium points miles amex upgrade cheap flights bargains award' }
+  { t: 'Classes, bargains & points', u: '/travel-classes', k: 'Guide', d: 'Fly better for less', q: 'business first class economy premium points miles amex upgrade cheap flights bargains award' },
+  { t: 'The Silhouette Quiz', u: '/quiz', k: 'Play', d: 'Name the aircraft from its outline', q: 'quiz game play guess silhouette outline identify test trivia' },
+  { t: 'Gate Runner', u: '/fly', k: 'Play', d: 'Free flying game — your wingspan is the hitbox', q: 'fly flying game free airplane games plane game simulator flight sim play arcade gate runner' },
+  { t: 'Blueprint Designer', u: '/design', k: 'Play', d: 'Design your own aircraft and export an AI prompt', q: 'design your own plane aircraft designer builder create custom airplane blueprint 3d wireframe prompt generator' },
+  { t: 'The Scale Engine', u: '/scale', k: 'Tool', d: 'Every aircraft at true scale', q: 'scale engine true size comparison how big measure' },
+  { t: 'The hangar shop', u: '/gear', k: 'Shop', d: 'Models, kits and spotter gear', q: 'gear shop lego models die cast kits flight sim spotter presents gifts' },
+  { t: 'Explained', u: '/explained', k: 'Hub', d: 'How aircraft actually work', q: 'explained how it works learn guides physics engineering' },
+  { t: 'Aircraft types', u: '/types', k: 'Hub', d: 'Every category of aircraft', q: 'types categories widebody narrowbody cargo military kinds' },
+  { t: 'Manufacturers', u: '/manufacturers', k: 'Hub', d: 'Every maker in the fleet', q: 'manufacturers makers builders companies boeing airbus list' },
+  { t: 'Record boards', u: '/records', k: 'Hub', d: 'Biggest, fastest, longest', q: 'records boards biggest largest fastest longest heaviest top 50' },
+  { t: 'The blog', u: '/blog', k: 'Hub', d: 'Writing about aircraft', q: 'blog posts articles writing news' }
 ];
 fs.writeFileSync(path.join(SITE, 'assets', 'js', 'search-index.js'),
   '/* GENERATED by build.js — do not edit by hand. */\nwindow.SEARCH_INDEX = ' + JSON.stringify(SEARCH) + ';\n');
