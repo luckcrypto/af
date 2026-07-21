@@ -1197,7 +1197,7 @@
    "identity": "The largest aircraft ever built.",
    "silhouette": "assets/img/silhouettes/antonov-an-225.svg",
    "core": {
-    "length_m": 84.0,
+    "length_m": 84,
     "wingspan_m": 88.4,
     "height_m": 18.1,
     "mtow_kg": 640000,
@@ -2952,7 +2952,7 @@
    "silhouette": "assets/img/silhouettes/airbus-a330.svg",
    "core": {
     "length_m": 63.66,
-    "wingspan_m": 64.0,
+    "wingspan_m": 64,
     "height_m": 16.79,
     "mtow_kg": 251000,
     "range_km": 13334,
@@ -4142,7 +4142,7 @@
    "silhouette": "assets/img/silhouettes/north-american-xb-70.svg",
    "core": {
     "length_m": 56.62,
-    "wingspan_m": 32.0,
+    "wingspan_m": 32,
     "height_m": 9.14,
     "mtow_kg": 246365,
     "firstFlightYear": 1964,
@@ -7219,7 +7219,7 @@
    ],
    "core": {
     "length_m": 8.28,
-    "wingspan_m": 11.0,
+    "wingspan_m": 11,
     "height_m": 2.72,
     "mtow_kg": 1157,
     "range_km": 1185,
