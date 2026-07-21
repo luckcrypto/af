@@ -588,3 +588,105 @@
   }
   tick();
 })();
+
+/* ---------- type photography, fetched at load ----------
+   No build step and no image folder: every aircraft page emits an empty .photoSlot and
+   this fills it from Wikipedia + Wikimedia Commons. If anything at all is missing or
+   unfree the slot stays empty, and an empty slot is display:none — so a page without a
+   usable free photograph simply has no card rather than a gap or a placeholder. */
+(function () {
+  var slots = [].slice.call(document.querySelectorAll('.photoSlot'));
+  /* the fetch guard matters: a headless smoke harness has no fetch and must not throw */
+  if (!slots.length || typeof fetch !== 'function') return;
+
+  var FREE    = /^(cc[ -]?0|cc[ -]?by([ -]sa)?\b|public domain|pd[ -]|no restrictions)/i;
+  var NONFREE = /(non[- ]?commercial|\bnc\b|no[- ]?deriv|\bnd\b|fair use|all rights)/i;
+  /* AIRCRAFT subject filter. Cockpit and cabin shots are the most common wrong result on
+     Commons, so they lead. Then close-ups, models, crash imagery, factory and museum
+     shots. Single line and /i only: JavaScript has no /x flag and a regex literal cannot
+     contain line breaks. */
+  var BAD = /(cockpit|flight[ _-]?deck|interior|cabin|seat[ _-]?map|seating|galley|lavatory|overhead|lego|model|scale[ _-]?model|toy|diagram|cutaway|schematic|patch|logo|livery[ _-]?chart|engine|turbofan|nacelle|winglet|wingtip|landing[ _-]?gear|tyre|tire|nose[ _-]?gear|crash|accident|wreck|wreckage|debris|memorial|fire|incident|hijack|simulator|mock[ _-]?up|assembly|production[ _-]?line|factory|scrap|stored|boneyard|night)/i;
+
+  /* AIRCRAFT CATEGORY GATE — the real fix for ambiguous names.
+     Aircraft names are overwhelmingly common nouns: Eagle, Falcon, Harrier, Comet,
+     Vulcan, Spirit, Archer, Gripen. Wikipedia returns the bird or the Roman god with a
+     perfectly valid free image and the card renders a lie. Checking the article's
+     categories catches every one of these, including the ones nobody would think to list. */
+  var AIRCAT = /(aircraft|airliner|aeroplane|airplane|jetliner|\btwinjets?\b|\btrijets?\b|\bquadjets?\b|bomber|fighter[ _-]?aircraft|interceptor|military[ _-]?transport|aviation|monoplane|biplane|seaplane|flying[ _-]?wing|supersonic[ _-]?transport|business[ _-]?jets?|airlift)/i;
+
+  var strip = function (s) { return String(s || '').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim(); };
+
+  function api(base, params) {
+    var q = Object.keys(params).map(function (k) {
+      return encodeURIComponent(k) + '=' + encodeURIComponent(params[k]);
+    }).join('&');
+    /* origin=* is what makes MediaWiki send CORS headers */
+    return fetch(base + '?' + q + '&format=json&origin=*', { mode: 'cors' })
+      .then(function (r) { return r.ok ? r.json() : null; });
+  }
+
+  function render(slot, d) {
+    var fig = document.createElement('figure');
+    fig.className = 'typePhoto';
+    var img = document.createElement('img');
+    img.src = d.src;
+    img.alt = slot.getAttribute('data-name') || '';
+    img.loading = 'lazy'; img.decoding = 'async';
+    img.width = 1200; img.height = 800;            /* reserve space, avoid layout shift */
+    img.onerror = function () { fig.parentNode && fig.parentNode.removeChild(fig); };
+    var cap = document.createElement('figcaption');
+    cap.className = 'photoCredit';
+    cap.innerHTML = 'Photo: ' + d.author +
+      ' \u00b7 <a href="' + d.licenseUrl + '" rel="license nofollow noopener" target="_blank">' + d.license + '</a>' +
+      ' \u00b7 via <a href="' + d.source + '" rel="nofollow noopener" target="_blank">Wikimedia Commons</a>';
+    fig.appendChild(img); fig.appendChild(cap);
+    slot.appendChild(fig);
+  }
+
+  slots.forEach(function (slot) {
+    var maker = slot.getAttribute('data-maker') || '';
+    var name  = slot.getAttribute('data-name') || '';
+    var title = slot.getAttribute('data-wiki');
+    /* With no curated article, a manufacturer prefix is far safer than the bare name:
+       "Hawker Siddeley Harrier" is unambiguous where "Harrier" is a bird. */
+    if (!title && maker && name) title = maker + ' ' + name;
+    if (!title) return;
+    api('https://en.wikipedia.org/w/api.php', {
+      action: 'query', titles: title, prop: 'pageimages|categories',
+      piprop: 'original', pilicense: 'free', cllimit: 'max', clshow: '!hidden',
+      redirects: '1', formatversion: '2'
+    }).then(function (j) {
+      var pages = j && j.query && j.query.pages;
+      var pg    = pages && pages[0];
+      var orig  = pg && pg.original;
+      if (!orig || !orig.source) return null;                    /* no article or image */
+      /* the categories ride along on this same request — no extra round trip */
+      var cats = (pg.categories || []).map(function (c) { return c.title || ''; }).join(' | ');
+      var isAircraft = AIRCAT.test(cats);
+      if (!isAircraft) return null;                              /* not an aircraft article */
+      var file = 'File:' + decodeURIComponent(orig.source.split('/').pop()).replace(/_/g, ' ');
+      if (BAD.test(file)) return null;                           /* wrong subject */
+      return api('https://commons.wikimedia.org/w/api.php', {
+        action: 'query', titles: file, prop: 'imageinfo',
+        iiprop: 'url|extmetadata', iiurlwidth: '1200',
+        iiextmetadatafilter: 'Artist|LicenseShortName|LicenseUrl', formatversion: '2'
+      });
+    }).then(function (j) {
+      if (!j) return;
+      var pages = j.query && j.query.pages;
+      var ii = pages && pages[0] && pages[0].imageinfo && pages[0].imageinfo[0];
+      if (!ii) return;
+      var em = ii.extmetadata || {};
+      var lic = strip(em.LicenseShortName && em.LicenseShortName.value);
+      var author = strip(em.Artist && em.Artist.value);
+      if (!lic || NONFREE.test(lic) || !FREE.test(lic)) return;  /* unfree */
+      if (!author || author.length > 140) return;                /* no attribution */
+      var licUrl = (em.LicenseUrl && em.LicenseUrl.value) || '';
+      if (!licUrl) return;                                       /* no licence URL */
+      render(slot, {
+        src: ii.thumburl || ii.url, author: author, license: lic,
+        licenseUrl: licUrl, source: ii.descriptionurl || ''
+      });
+    }).catch(function () { /* offline, blocked, rate limited — slot stays empty */ });
+  });
+})();

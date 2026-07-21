@@ -281,6 +281,15 @@
     }
   }
 
+  /* The airspeed a given power setting settles at in level flight. Solving the energy
+     model at equilibrium: (thr - 1) * 0.34 + (1 - spd) * 0.30 = 0. Used when a run
+     starts so the aircraft begins at the speed its throttle implies, rather than at
+     cruise regardless — restarting an SR-71 at firewall used to drop it to 1.0x and
+     make it accelerate back up as if the power had just been chopped. */
+  function trimSpeed(throttle) {
+    return Math.max(0.10, Math.min(2.4, 1 + (throttle - 1) * 0.34 / 0.30));
+  }
+
   function seedGates(s) {
     s.gates = [];
     s.pathX = 0; s.pathY = 0; s.pathZ = 0; s.pathYaw = 0;
@@ -1022,7 +1031,10 @@
     var ac = current();
     buildScene(); buildSelf(ac);
     if (daily) dailyRng = mulberry(hashOf(todayKey()));
-    state = withReach(makeState(ac)); state.throttle = thrMult(); seedGates(state);
+    state = withReach(makeState(ac));
+    state.throttle = thrMult();
+    state.spd = trimSpeed(state.throttle);   /* start at the speed the throttle implies */
+    seedGates(state);
     hud.name.textContent = (ac.flag ? ac.flag + ' ' : '') + ac.name;
     hud.span.textContent = ac.span.toFixed(1);
     hud.best.textContent = best;
