@@ -450,6 +450,22 @@ function statStrip(a) {
 }
 
 /* ---------- content builders ---------- */
+/* ---------- self-fetching type photograph ----------
+   Every aircraft page emits an empty slot. A script in site.js asks Wikipedia for that
+   article's lead image and Commons for the licence and author, then builds a figure
+   inside it. An empty slot collapses to nothing, so a page with no usable free photo
+   simply has no card. No build step, no image folder, nothing to run before deploy.
+
+   The article title comes from the curated map, NEVER from a sources[] URL — several
+   records cite operator lists like "Emirates_fleet", which would fetch the wrong page. */
+/* NEVER fall back to the bare type name. Aircraft names are mostly common nouns —
+   Eagle, Falcon, Harrier, Spirit, Comet, Vulcan, Archer — and Wikipedia will happily
+   return the bird, the god or the star pattern with a real free image attached. An
+   empty data-wiki makes the client try a manufacturer-prefixed candidate instead. */
+const wikiTitle = a => (WIKI.aircraft && WIKI.aircraft[a.slug]) ? String(WIKI.aircraft[a.slug]).replace(/_/g, ' ') : '';
+const photoSlot = a =>
+  `<div class="photoSlot" data-wiki="${esc(wikiTitle(a))}" data-maker="${esc(a.manufacturer)}" data-name="${esc(a.name)}"></div>`;
+
 const SIL = {};
 for (const a of DATA.aircraft) {
   const raw = fs.readFileSync(path.join(SITE, a.silhouette), 'utf8');
@@ -507,7 +523,7 @@ function aircraftCard(a) {
   return `<article class="acard" data-cat="${typeOf(a)}" data-slug="${a.slug}" data-wingspan="${a.core.wingspan_m}" data-length="${a.core.length_m}" data-height="${a.core.height_m}" data-mtow="${a.core.mtow_kg}" data-year="${a.core.firstFlightYear}" data-name="${esc(a.name.toLowerCase())}" data-manufacturer="${esc(a.manufacturer.toLowerCase())}">
 <button class="addcmp" type="button" data-slug="${a.slug}" data-short="${esc(shortName(a))}" aria-pressed="false" title="Add to compare tray" aria-label="Add ${esc(a.name)} to the compare tray">⇄</button>
 <div class="sil">${silScaled(a)}</div>
-<h3><a href="/aircraft/${a.slug}">${esc(a.name)}</a></h3>
+<h3><a class="cardlink" href="/aircraft/${a.slug}">${esc(a.name)}</a></h3>
 <p class="kicker">${esc(a.manufacturer)} · ${esc(a.status)}</p>
 <div class="stats">${top.map(s => `<div><span class="k">${esc(s.label)}</span><span class="v">${esc(s.metric)}</span></div>`).join('')}</div>
 <a class="mini" href="/aircraft/${a.slug}">Full specification &rarr;</a>
@@ -958,6 +974,7 @@ ${a.operatorsOnOrder ? `<p class="sub" style="margin-top:18px">${esc(a.operators
 <h1>${esc(a.name)}</h1>
 <p class="kicker" style="margin-top:2px">${esc(a.manufacturer)} · ${esc(a.category)} · ${esc(a.status)}</p>
 <p class="lead">${esc(a.identity)}</p>
+${photoSlot(a)}
 <div class="hero-sil">${silUse(a, 520)}</div>
 ${statStrip(a)}
 </div></section>
