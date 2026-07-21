@@ -4,8 +4,8 @@
   "description": "Every aircraft, at true scale.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#FFFFFF",
-  "theme_color": "#FFFFFF",
+  "background_color": "#FAFBFC",
+  "theme_color": "#FAFBFC",
   "icons": [
     {
       "src": "/assets/img/icon-192.png",
