@@ -1051,3 +1051,41 @@ button.fh-l:hover{border-color:#1B6FCF}
 .typePhoto img{display:block;width:100%;height:auto}
 .photoCredit{padding:10px 16px;font-size:.72rem;line-height:1.4;color:var(--muted);background:#FAFBFC;border-top:1px solid var(--line)}
 .photoCredit a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
+
+/* ---------- fleet filter accordion ----------
+   The type list is long (16 categories); collapsing it behind a Filter trigger reclaims
+   the space above the fleet while keeping the current selection always visible on the head. */
+.filterAcc{margin:20px 0 26px}
+.filterAcc-head{display:flex;align-items:center;gap:10px;width:100%;
+  background:#FAFBFC;border:1px solid var(--line);border-radius:14px;
+  padding:11px 15px;font-family:var(--display);font-weight:600;font-size:.9rem;
+  color:var(--text);cursor:pointer;transition:border-color .16s ease,box-shadow .16s ease}
+.filterAcc-head:hover{border-color:var(--line-2)}
+.filterAcc-head:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.fa-ico{width:18px;height:18px;flex:none;color:var(--gold)}
+.fa-lbl{flex:none}
+.fa-current{flex:1;min-width:0;text-align:left;color:var(--muted);font-weight:500;
+  font-size:.84rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fa-current .n{font-variant-numeric:tabular-nums;font-size:.76rem;opacity:.7;margin-left:2px}
+.fa-caret{width:17px;height:17px;flex:none;color:var(--muted);transition:transform .28s ease}
+.filterAcc-head[aria-expanded="true"]{border-color:var(--gold)}
+.filterAcc-head[aria-expanded="true"] .fa-caret{transform:rotate(180deg)}
+
+/* the panel collapses with max-height, same technique as the search container */
+.filterAcc-panel{max-height:0;overflow:hidden;margin:0;
+  transition:max-height .3s ease,margin .3s ease,padding .3s ease}
+.filterAcc-head[aria-expanded="true"] + .filterAcc-panel{max-height:600px;margin:12px 0 0}
+@media (prefers-reduced-motion: reduce){
+  .filterAcc-panel{transition:none}
+  .fa-caret{transition:none}
+}
+
+/* ---------- Filter / Sort accordion: grouped panel ----------
+   The one panel now holds three labelled groups. Raise the max-height ceiling to fit
+   them, and give each group a small caption so the three controls stay legible. */
+.filterAcc-head[aria-expanded="true"] + .filterAcc-panel{max-height:900px}
+.fa-group{margin-top:14px}
+.fa-group:first-child{margin-top:0}
+.fa-group-lbl{display:block;font-family:var(--display);font-weight:600;font-size:.7rem;
+  letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
+.fa-group .filterbar{margin:0}
