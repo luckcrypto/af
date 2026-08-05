@@ -1,5 +1,5 @@
 /* ------------------------------------------------------------------
-   aircraft.fyi — Gate Runner
+   aircraft.fyi Gate Runner
    The handling comes from the real numbers: cruise speed sets pace,
    MTOW sets inertia, and your WINGSPAN is the hitbox. The aircraft you
    fly is the same silhouette used everywhere else on the site, drawn
