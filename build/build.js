@@ -10,21 +10,28 @@ const path = require('path');
 const ROOT = __dirname;                       // build/ — data + templates live here
 const SITE = path.join(ROOT, '..');
 const STAMP = new Date().toISOString().slice(0, 10);
+/* American Tourister Soundbox 77cm hard-shell case. A OneLink short URL: it localises to the
+   visitor's Amazon store on its own, so it is used verbatim and never wrapped in the UK tag
+   (double-tagging would break attribution). Defined before GEAR because GEAR references it. */
+const SUITCASE = 'https://link.amazon/B09SrR3X8';
 const GEAR = [
   { group: 'Build it yourself', note: 'The LEGO sets worth clearing desk space for.', items: [
-    { title: 'LEGO Icons 10318 Concorde', blurb: 'The 2,083-piece flagship of the most beautiful airliner ever made — droop nose, retractable gear, display stand. The centrepiece of any desk.', url: 'https://amzn.to/3SWF01r', link: '/aircraft/concorde', tag: 'Display shelf' },
-    { title: 'LEGO City 60367 Passenger Aeroplane', blurb: 'A wide-body with a full ground crew — pushback tug, catering loader, baggage truck, apron bus and nine minifigures. The best starter set for a young avgeek.', url: 'https://amzn.to/4hdX695', link: '', tag: 'Younger pilots' }
+    { title: 'LEGO Icons 10318 Concorde', blurb: 'The 2,083-piece flagship of the most beautiful airliner ever made, droop nose, retractable gear, display stand. The centrepiece of any desk.', url: 'https://amzn.to/3SWF01r', link: '/aircraft/concorde', tag: 'Display shelf' },
+    { title: 'LEGO City 60367 Passenger Aeroplane', blurb: 'A wide-body with a full ground crew, pushback tug, catering loader, baggage truck, apron bus and nine minifigures. The best starter set for a young avgeek.', url: 'https://amzn.to/4hdX695', link: '', tag: 'Younger pilots' }
   ] },
-  { group: 'On the shelf', note: 'Die-cast models and reference books — the collector\u2019s core.', items: [
-    { title: 'Die-cast airliners (1:400 & 1:200)', blurb: 'Gemini Jets and Herpa are the names to know — accurately scaled metal models in real airline liveries. Search your favourite carrier and scale; the A380 and 747 look superb on a shelf.', q: 'Gemini Jets 1:400 diecast airliner', link: '/records/longest-aircraft', tag: 'Collectors' },
+  { group: 'On the shelf', note: 'Die-cast models and reference books, the collector\u2019s core.', items: [
+    { title: 'Die-cast airliners (1:400 & 1:200)', blurb: 'Gemini Jets and Herpa are the names to know, accurately scaled metal models in real airline liveries. Search your favourite carrier and scale; the A380 and 747 look superb on a shelf.', q: 'Gemini Jets 1:400 diecast airliner', link: '/records/longest-aircraft', tag: 'Collectors' },
     { title: 'Aviation reference books', blurb: 'From airliner-recognition guides to the deep engineering histories. A good coffee-table book on jet development is the natural companion to this site.', q: 'commercial aviation airliner book', link: '/explained', tag: 'Reading' }
   ] },
   { group: 'Track the skies', note: 'Turn real aircraft overhead into data on your screen.', items: [
-    { title: 'RTL-SDR receiver (ADS-B / Flightradar)', blurb: 'A cheap software-defined-radio USB stick that picks up ADS-B — the signals aircraft broadcast — so you can track everything flying near you and even feed Flightradar24. The gateway drug of plane-spotting tech.', q: 'RTL-SDR ADS-B receiver USB', link: '', tag: 'Spotter tech' },
-    { title: 'Plane-spotting binoculars (8x42)', blurb: '8x42 is the spotter\u2019s sweet spot — bright, steady, wide enough to find a jet on approach and hold it. The classic airfield-fence companion.', q: '8x42 binoculars plane spotting', link: '', tag: 'Spotter tech' }
+    { title: 'RTL-SDR receiver (ADS-B / Flightradar)', blurb: 'A cheap software-defined-radio USB stick that picks up ADS-B, the signals aircraft broadcast, so you can track everything flying near you and even feed Flightradar24. The gateway drug of plane-spotting tech.', q: 'RTL-SDR ADS-B receiver USB', link: '', tag: 'Spotter tech' },
+    { title: 'Plane-spotting binoculars (8x42)', blurb: '8x42 is the spotter\u2019s sweet spot, bright, steady, wide enough to find a jet on approach and hold it. The classic airfield-fence companion.', q: '8x42 binoculars plane spotting', link: '', tag: 'Spotter tech' }
   ] },
   { group: 'In the cockpit (at home)', note: 'The flight-sim hardware that makes it feel real.', items: [
-    { title: 'Flight-sim joystick & throttle (HOTAS)', blurb: 'A HOTAS — hands-on throttle-and-stick — is the single biggest upgrade to any flight simulator. Logitech and Thrustmaster make the go-to starter sets.', q: 'HOTAS flight simulator joystick throttle', link: '/compare', tag: 'Flight sim' }
+    { title: 'Flight-sim joystick & throttle (HOTAS)', blurb: 'A HOTAS, hands-on throttle-and-stick, is the single biggest upgrade to any flight simulator. Logitech and Thrustmaster make the go-to starter sets.', q: 'HOTAS flight simulator joystick throttle', link: '/compare', tag: 'Flight sim' }
+  ] },
+  { group: 'For the trip itself', note: 'When you are the one flying, not just watching.', items: [
+    { title: 'American Tourister Soundbox hard-shell case (77 cm)', blurb: 'A large four-wheel hard shell with a TSA lock, expandable, and light for its size. It comes in a wide range of colours, so it is easy to pick out on the carousel. The workhorse of checked baggage.', url: SUITCASE, link: '/travel-classes', tag: 'Checked bag' }
   ] }
 ];
 const amz = q => 'https://www.amazon.co.uk/s?k=' + encodeURIComponent(q) + '&tag=luck11106-21';
@@ -37,7 +44,7 @@ function sourcesBlock(primary, kind, slug, label) {
   const further = w ? `<div class="src-further"><span class="src-sub">Further reading</span><ul style="list-style:none;margin:8px 0 0;padding:0"><li><a href="https://en.wikipedia.org/wiki/${w}" rel="noopener" target="_blank" style="color:var(--muted);font-size:.88rem">${esc(label)} on Wikipedia &nearr;</a></li></ul></div>` : '';
   return `<div class="srcwrap"><div class="src-primary"><span class="src-sub">Primary sources</span><ul style="list-style:none;margin:8px 0 0;padding:0">${prim}</ul></div>${further}</div>`;
 }
-const AFFDISC = 'As an Amazon Associate, aircraft.fyi earns from qualifying purchases. This never affects the price you pay, and links are chosen on merit \u2014 never paid placement.';
+const AFFDISC = 'As an Amazon Associate, aircraft.fyi earns from qualifying purchases. This never affects the price you pay, and links are chosen on merit, never paid placement.';
 
 /* LAUNCH CONFIG: English-only. To open a market later, add its code here (e.g. ['es'])
    once (a) Search Console shows real demand from that language and (b) the prose for it
@@ -61,6 +68,11 @@ for (const f of fs.readdirSync(SITE)) {
 
 const esc = s => (s === undefined || s === null ? '' : String(s)).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const A = DATA.aircraft, AL = DATA.airlines, HUBS = DATA.hubs;
+/* spell small counts for prose; keeps "sixteen manufacturers" reading naturally while
+   staying derived from the data so it never goes stale (the 404 said 43 for months). */
+const NUMWORD = ['zero','one','two','three','four','five','six','seven','eight','nine','ten',
+  'eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen','twenty'];
+const numWord = n => NUMWORD[n] || String(n);
 const MK = DATA.makers, TY = DATA.types;
 const EX = DATA.explained;
 const POSTS = DATA.posts || [];
@@ -79,19 +91,19 @@ const shortName = a => a.name
   .replace(/ (family|Ruslan|Mriya|Antei|Dreamliner|Stratofortress|Galaxy|Globemaster III|TriStar|Valkyrie|Hercules|Super Galaxy)$/, '');
 
 const RECORD_BOARDS = [
-  { urlPath: '/records/longest-aircraft', h1: 'The 50 longest aircraft ever built', lead: 'Ranked by fuselage length — the definitive board, from the An-225 down to the Il-76.' },
+  { urlPath: '/records/longest-aircraft', h1: 'The 50 longest aircraft ever built', lead: 'Ranked by fuselage length, the definitive board, from the An-225 down to the Il-76.' },
   { file: 'records/heaviest-aircraft.html', urlPath: '/records/heaviest-aircraft',
-    title: 'The heaviest aircraft ever built — ranked by MTOW',
+    title: 'The heaviest aircraft ever built, ranked by MTOW',
     description: 'Every aircraft on aircraft.fyi ranked by maximum take-off weight, from the 640-tonne Antonov An-225 down. Sourced figures, true-scale silhouettes.',
-    h1: 'The heaviest aircraft ever built', lead: 'Ranked by maximum take-off weight — the total mass an aircraft is certified to lift off the runway.',
+    h1: 'The heaviest aircraft ever built', lead: 'Ranked by maximum take-off weight, the total mass an aircraft is certified to lift off the runway.',
     note: 'MTOW is the honest measure of an aircraft\u2019s lifting power: structure, fuel and payload combined. Figures are the highest certified weight for each type.',
     key: 'mtow_kg', jsonldName: 'Heaviest aircraft by MTOW',
     fmt: a => Math.round(a.core.mtow_kg / 1000).toLocaleString('en-US') + ' t',
     sub: a => a.core.mtow_kg.toLocaleString('en-US') + ' kg' },
   { file: 'records/fastest-aircraft.html', urlPath: '/records/fastest-aircraft',
-    title: 'The fastest aircraft here — ranked by top speed',
+    title: 'The fastest aircraft here, ranked by top speed',
     description: 'Every aircraft on aircraft.fyi ranked by maximum speed, from the Mach 3 XB-70 Valkyrie down to the propliners. Sourced figures and true-scale silhouettes.',
-    h1: 'The fastest aircraft here', lead: 'Ranked by maximum speed — where the supersonics leave everything else standing.',
+    h1: 'The fastest aircraft here', lead: 'Ranked by maximum speed, where the supersonics leave everything else standing.',
     note: 'Military and supersonic figures are maximum speed; airliner figures are maximum operating speed, which is faster than the cruise they actually fly. Comparing them is unavoidable, so it is stated plainly.',
     key: 'speed_kmh', jsonldName: 'Fastest aircraft by top speed',
     fmt: a => a.core.speed_kmh.toLocaleString('en-US') + ' km/h',
@@ -99,14 +111,14 @@ const RECORD_BOARDS = [
   { file: 'records/most-produced.html', urlPath: '/records/most-produced',
     title: 'The most-produced large aircraft ever',
     description: 'Every aircraft on aircraft.fyi ranked by how many were built, from the 12,000-strong Boeing 737 down to the one-off Spruce Goose. Sourced production numbers.',
-    h1: 'The most-produced large aircraft', lead: 'Ranked by how many were actually built — where the giants of the size charts meet the giants of the sales charts.',
+    h1: 'The most-produced large aircraft', lead: 'Ranked by how many were actually built, where the giants of the size charts meet the giants of the sales charts.',
     note: 'Counts are total airframes built or delivered to date, across all variants of each family. This board covers the large aircraft on this site, not light aviation.',
     key: 'produced', jsonldName: 'Most-produced large aircraft',
     fmt: a => a.core.produced.toLocaleString('en-US') + (a.status.startsWith('In produc') ? '+' : ''),
     sub: a => 'First flew ' + a.core.firstFlightYear }
 ];
 RECORD_BOARDS.push({ urlPath: '/records/longest-flights', h1: 'The longest flights in the world',
-  lead: 'Every scheduled route over 12,900 km — filterable by aircraft and airline, with the record-breakers still to come.' });
+  lead: 'Every scheduled route over 12,900 km, filterable by aircraft and airline, with the record-breakers still to come.' });
 
 const typeOf = a => (TY.find(t => t.cats.includes(a.category)) || {}).slug || '';
 const byMaker = m => A.filter(a => m.matches.includes(a.manufacturer));
@@ -194,6 +206,7 @@ ${AL.filter(x => x.cargo).map(alink).join('\n')}
 <a class="mn-link" href="/records"><span class="lbl">Record boards</span><span class="arr">&rarr;</span></a>
 <a class="mn-link" href="/records/longest-flights"><span class="lbl">The longest flights</span><span class="arr">&rarr;</span></a>
 <a class="mn-link" href="/bring-back-concorde"><span class="lbl">Bring back Concorde</span><span class="arr">&rarr;</span></a>
+<a class="mn-link" href="/project-sunrise"><span class="lbl">Project Sunrise</span><span class="arr">&rarr;</span></a>
 <a class="mn-link" href="/blog"><span class="lbl">The blog</span><span class="arr">&rarr;</span></a>
 <a class="mn-link" href="/methodology"><span class="lbl">Methodology</span><span class="arr">&rarr;</span></a>
 </div>
@@ -244,7 +257,7 @@ ${TY.map(t => mlink('/types/' + t.slug, t.name, '')).join('\n')}
 <a class="mn-acc-direct" href="/records/longest-aircraft">Records</a>
 <a class="mn-acc-direct" href="/compare">Compare aircraft</a>
 <div class="mn-acc-head">Games</div>
-<a class="mn-acc-direct" href="/fly">Gate Runner &mdash; flying game</a>
+<a class="mn-acc-direct" href="/fly">Gate Runner, flying game</a>
 <a class="mn-acc-direct" href="/quiz">The Silhouette Quiz</a>
 <a class="mn-acc-direct" href="/design">Blueprint Designer</a>
 <div class="mn-acc-head">More</div>
@@ -255,6 +268,7 @@ ${TY.map(t => mlink('/types/' + t.slug, t.name, '')).join('\n')}
 <a class="mn-acc-direct" href="/travel-classes">Classes &amp; points</a>
 <a class="mn-acc-direct" href="/gear">The hangar shop</a>
 <a class="mn-acc-direct" href="/bring-back-concorde">Bring back Concorde</a>
+<a class="mn-acc-direct" href="/project-sunrise">Project Sunrise</a>
 </div>
 <div class="mn-drawer-foot"><a class="mn-cta" href="/#fleet">Explore the fleet</a></div>
 </aside>
@@ -268,7 +282,7 @@ function footerHTML() {
 <div class="mf-top">
 <div class="mf-brand">
 ${BRAND('mf-logo mn-logo')}
-<p>The visual reference for aircraft. Sourced spec tables, every operator, and — soon — true-scale comparison of anything that flies.</p>
+<p>The visual reference for aircraft. Sourced spec tables, every operator, and, soon, true-scale comparison of anything that flies.</p>
 <div class="mf-soc">
 <a href="https://ships.fyi">ships.fyi</a>
 <a href="https://luck.fyi" target="_blank" rel="noopener">luck.fyi</a>
@@ -287,7 +301,7 @@ ${BRAND('mf-logo mn-logo')}
 <h3 class="mf-h">Guides</h3>
 <ul><li><a href="/fear-of-flying">Scared of flying?</a></li><li><a href="/travel-classes">Classes &amp; points</a></li><li><a href="/gear">The hangar shop</a></li></ul>
 <h3 class="mf-h mt">Reference</h3>
-<ul><li><a href="/manufacturers">Manufacturers</a></li><li><a href="/types">Aircraft types</a></li><li><a href="/records/longest-aircraft">Longest aircraft</a></li><li><a href="/blog">Blog</a></li><li><a href="/explained">Explained</a></li><li><a href="/compare">Compare aircraft</a></li><li><a href="/bring-back-concorde">Bring back Concorde</a></li><li><a href="/methodology">Methodology</a></li><li><a href="/quiz">The Silhouette Quiz</a></li><li><a href="/fly">Gate Runner</a></li><li><a href="/design">Blueprint Designer</a></li></ul>
+<ul><li><a href="/manufacturers">Manufacturers</a></li><li><a href="/types">Aircraft types</a></li><li><a href="/records/longest-aircraft">Longest aircraft</a></li><li><a href="/blog">Blog</a></li><li><a href="/explained">Explained</a></li><li><a href="/compare">Compare aircraft</a></li><li><a href="/bring-back-concorde">Bring back Concorde</a></li><li><a href="/project-sunrise">Project Sunrise</a></li><li><a href="/methodology">Methodology</a></li><li><a href="/quiz">The Silhouette Quiz</a></li><li><a href="/fly">Gate Runner</a></li><li><a href="/design">Blueprint Designer</a></li></ul>
 </div>
 <div>
 <h3 class="mf-h">Site</h3>
@@ -306,7 +320,7 @@ ${MK.map(m => `<a href="/manufacturers/${m.slug}">${esc(m.name)}<span class="cc"
 ${TY.map(t => `<a href="/types/${t.slug}">${esc(t.name)}</a>`).join('\n')}
 </div>
 </div>
-<div class="mf-rg"><b>About the data.</b> Every specification is compiled from manufacturer documents and cited per row. Operator fleet counts are approximate snapshots, marked ≈ and dated; individually verified figures carry a ✓. All silhouettes are original works of aircraft.fyi, drawn to true scale. <b>Corrections and enquiries:</b> <a href="mailto:${DATA.site.corrections}" style="color:var(--gold)">${esc(DATA.site.corrections)}</a> — we fix errors visibly, not silently.</div>
+<div class="mf-rg"><b>About the data.</b> Every specification is compiled from manufacturer documents and cited per row. Operator fleet counts are approximate snapshots, marked ≈ and dated; individually verified figures carry a ✓. All silhouettes are original works of aircraft.fyi, drawn to true scale. <b>Corrections and enquiries:</b> <a href="mailto:${DATA.site.corrections}" style="color:var(--gold)">${esc(DATA.site.corrections)}</a>, we fix errors visibly, not silently.</div>
 <div class="mf-bot">
 <span>&copy; ${new Date().getFullYear()} aircraft.fyi</span>
 <div class="mf-legal"><a href="/records">Records</a><a href="/explained">Explained</a></div>
@@ -330,14 +344,14 @@ function crumbLd(urlPath, title) {
     acc += '/' + p;
     const last = i === parts.length - 1;
     items.push({ '@type': 'ListItem', position: i + 2,
-      name: last ? title.split(' — ')[0] : (CRUMB_NAMES[p] || p),
+      name: last ? title.split(', ')[0] : (CRUMB_NAMES[p] || p),
       item: 'https://aircraft.fyi' + acc });
   });
   return { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: items };
 }
 
 const BUILT_PAGES = [];
-function renderPage({ file, urlPath, title, description, ogImage, jsonld, content, head = '', ogType = 'website', current = '', sitemap = true }) {
+function renderPage({ file, urlPath, title, description, ogImage, jsonld, content, head = '', ogType = 'website', current = '', sitemap = true, canonicalOverride = '' }) {
   BUILT_PAGES.push({ file, urlPath, indexable: sitemap });
   if (title.length > 60) console.warn(`⚠ title > 60 (${title.length}): ${urlPath}`);
   if (description.length < 110 || description.length > 160) console.warn(`⚠ description ${description.length} (want 110–160): ${urlPath}`);
@@ -345,6 +359,7 @@ function renderPage({ file, urlPath, title, description, ogImage, jsonld, conten
     .replace(/{{TITLE}}/g, esc(title))
     .replace(/{{DESCRIPTION}}/g, esc(description))
     .replace(/{{PATH}}/g, urlPath)
+    .replace(/{{CANONICAL}}/g, (typeof canonicalOverride !== 'undefined' && canonicalOverride) ? canonicalOverride : ('https://aircraft.fyi' + urlPath))
     .replace(/{{OG_IMAGE}}/g, ogImage || 'default.png')
     .replace('{{OG_TYPE}}', ogType)
     .replace('{{HEAD}}', head)
@@ -379,7 +394,7 @@ function aircraftFaqs(a) {
   const c = a.core, n = a.name, qas = [];
   const num = v => v.toLocaleString();
   if (c.speed_kmh) qas.push({ q: `How fast is the ${n}?`,
-    a: `The ${n} cruises at about ${num(c.speed_kmh)} km/h — roughly ${Math.round(c.speed_kmh / 1.852)} knots, or ${num(Math.round(c.speed_kmh / 1.609))} mph.` });
+    a: `The ${n} cruises at about ${num(c.speed_kmh)} km/h, roughly ${Math.round(c.speed_kmh / 1.852)} knots, or ${num(Math.round(c.speed_kmh / 1.609))} mph.` });
   if (c.range_km) qas.push({ q: `How far can the ${n} fly?`,
     a: `The ${n} has a maximum range of about ${num(c.range_km)} km (${num(Math.round(c.range_km / 1.852))} nautical miles, ${num(Math.round(c.range_km / 1.609))} miles).${c.speed_kmh ? ` At its cruise speed that is roughly ${(c.range_km / c.speed_kmh).toFixed(1)} hours in the air.` : ''}` });
   if (c.seats_typical) qas.push({ q: `How many people does the ${n} carry?`,
@@ -426,7 +441,7 @@ function derivedSection(a) {
   return `<section class="section" style="padding-top:0"><div class="wrap">
 <span class="eyebrow">Our numbers</span>
 <h2 class="title">Derived metrics</h2>
-<p class="sub">Computed by aircraft.fyi from the core specification — <a href="/methodology" style="color:var(--gold)">see how we calculate these</a>.</p>
+<p class="sub">Computed by aircraft.fyi from the core specification, <a href="/methodology" style="color:var(--gold)">see how we calculate these</a>.</p>
 <div class="dgrid">${rows}</div>
 </div></section>`;
 }
@@ -463,8 +478,13 @@ function statStrip(a) {
    return the bird, the god or the star pattern with a real free image attached. An
    empty data-wiki makes the client try a manufacturer-prefixed candidate instead. */
 const wikiTitle = a => (WIKI.aircraft && WIKI.aircraft[a.slug]) ? String(WIKI.aircraft[a.slug]).replace(/_/g, ' ') : '';
+/* Commons category for the type: the two-stage photo engine walks this when the article
+   lead image fails, scoring every photo in the category rather than giving up. Defaults to
+   the (already curated) Wikipedia title, with explicit overrides where the names diverge. */
+const commonsCat = a => (WIKI.commonscat && WIKI.commonscat[a.slug]) ||
+  (WIKI.aircraft && WIKI.aircraft[a.slug] ? String(WIKI.aircraft[a.slug]).replace(/_/g, ' ') : '');
 const photoSlot = a =>
-  `<div class="photoSlot" data-wiki="${esc(wikiTitle(a))}" data-maker="${esc(a.manufacturer)}" data-name="${esc(a.name)}"></div>`;
+  `<div class="photoSlot" data-wiki="${esc(wikiTitle(a))}" data-maker="${esc(a.manufacturer)}" data-commonscat="${esc(commonsCat(a))}" data-name="${esc(a.name)}"></div>`;
 
 const SIL = {};
 for (const a of DATA.aircraft) {
@@ -501,7 +521,7 @@ const catColor = a => a.color || CATCOLOR[a.category] || 'var(--text)';
 const MAXSPAN = Math.max(...DATA.aircraft.map(x => x.core.wingspan_m || 0));
 const silScaled = a => {
   const pct = Math.max(46, Math.round(98 * Math.pow((a.core.wingspan_m || 0) / MAXSPAN, 0.38)));
-  return `<div class="silbox" style="--pct:${pct}%" title="Wingspan ${a.core.wingspan_m} m — drawn at ${pct}% of the widest wings ever built"><svg viewBox="0 ${a.vb.top} 260 ${a.vb.h}" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:var(--silw,${pct}%);--silw-d:${pct}%;color:${catColor(a)}">
+  return `<div class="silbox" style="--pct:${pct}%" title="Wingspan ${a.core.wingspan_m} m, drawn at ${pct}% of the widest wings ever built"><svg viewBox="0 ${a.vb.top} 260 ${a.vb.h}" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="width:var(--silw,${pct}%);--silw-d:${pct}%;color:${catColor(a)}">
 <g fill="currentColor">${SIL[a.slug]}</g></svg></div>`;
 };
 const rkLen = [...A].sort((x, y) => y.core.length_m - x.core.length_m).map(x => x.slug);
@@ -536,7 +556,7 @@ function operatorRow(op, a) {
   const name = al ? al.name : (op.name || op.airline);
   const cc = al ? al.cc : (op.cc || '');
   // a zero count means different things: launch orders on an unflown type, nothing at all on a retired one
-  const zero = (a && a.operatorsPreService) ? 'On order' : '—';
+  const zero = (a && a.operatorsPreService) ? 'On order' : ', ';
   const count = op.count === '0' ? zero : esc(op.count) + (op.verified ? '<span class="vtick" title="Individually verified against a cited source">✓</span>' : '');
   const note = op.note ? `<span class="note">${esc(op.note)}</span>` : '';
   const chip = al && al.iata ? `<span class="iata" style="background:${al.brand}">${al.iata}</span>` : (cc ? `<span class="cc">${esc(cc)}</span>` : '');
@@ -550,15 +570,15 @@ function operatorRow(op, a) {
 function operatorsMeta(a) {
   const n = (a.operators || []).length;
   if (a.operatorsPreService) {
-    return `<p class="sub">Not yet in service — the key customers below hold the launch order book. Verified ${esc(a.lastVerified)}.</p>`;
+    return `<p class="sub">Not yet in service, the key customers below hold the launch order book. Verified ${esc(a.lastVerified)}.</p>`;
   }
   if (a.operatorsHistorical) {
-    return `<p class="sub">No current operators — this aircraft's flying days are over. The operators of record are below.</p>`;
+    return `<p class="sub">No current operators, this aircraft's flying days are over. The operators of record are below.</p>`;
   }
   if (a.operatorsComplete) {
     return `<p class="sub">All ${a.operatorsTotal} current operators, verified ${esc(a.lastVerified)}. Fleet counts are approximate where marked ≈.</p>`;
   }
-  return `<p class="sub">The top ${n} operators by fleet size, of ${esc(String(a.operatorsTotal))} worldwide — the rest are aggregated below. Counts marked ≈ are approximate, verified ${esc(a.lastVerified)}.</p>`;
+  return `<p class="sub">The top ${n} operators by fleet size, of ${esc(String(a.operatorsTotal))} worldwide, the rest are aggregated below. Counts marked ≈ are approximate, verified ${esc(a.lastVerified)}.</p>`;
 }
 
 function fleetRow(entry) {
@@ -572,17 +592,16 @@ function fleetRow(entry) {
 /* ---------- home ---------- */
 renderPage({
   file: 'index.html', urlPath: '/', current: '',
-  title: 'aircraft.fyi — every aircraft, at true scale',
+  title: 'aircraft.fyi, every aircraft, at true scale',
   description: 'The visual reference for aircraft. Sourced spec tables for every major type, full operator fleets, and true-scale comparison coming soon.',
   jsonld: [
     { '@context': 'https://schema.org', '@type': 'Organization', name: 'aircraft.fyi', url: 'https://aircraft.fyi/', logo: 'https://aircraft.fyi/assets/img/icon-512.png', email: DATA.site.contact, description: DATA.site.description },
     { '@context': 'https://schema.org', '@type': 'WebSite', name: 'aircraft.fyi', url: 'https://aircraft.fyi/', description: DATA.site.description }
   ],
   content: `
-<div class="wip">&#128679; Website under construction &mdash; we&rsquo;re still building this site. &#128679;</div>
 <section class="hero home"><div class="wrap">
-<h1>Aircraft — <span class="em">for your information</span>.</h1>
-<p class="lead">Every giant of the sky — measured, sourced, and drawn to true scale. No stock photos. No guesswork.</p>
+<h1>Aircraft, <span class="em">for your information</span>.</h1>
+<p class="lead">Every giant of the sky, measured, sourced, and drawn to true scale. No stock photos. No guesswork.</p>
 <div class="heroSearch" id="heroSearch">
 <div class="hs-bar">
 <svg class="hs-i" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="9" cy="9" r="6"/><path d="M13.5 13.5 17 17"/></svg>
@@ -604,15 +623,25 @@ renderPage({
 <section class="section" id="fleet" style="padding-top:30px"><div class="wrap">
 <span class="eyebrow">The fleet</span>
 <h2 class="title">Aircraft, page by page</h2>
-<p class="sub">Every silhouette below is sized by real wingspan — the bigger the aircraft, the bigger it draws. Each page carries the full sourced spec table, every variant, and every operator.</p>
+<p class="sub">Every silhouette below is sized by real wingspan, the bigger the aircraft, the bigger it draws. Each page carries the full sourced spec table, every variant, and every operator.</p>
+<div class="filterAcc" id="fleetFilterAcc">
+<button class="filterAcc-head" type="button" id="fleetFilterToggle" aria-expanded="false" aria-controls="fleetFilterPanel">
+<svg class="fa-ico" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h14M6 10h8M9 15h2"/></svg>
+<span class="fa-lbl">Filter / Sort</span>
+<span class="fa-current" id="fleetFilterCurrent">All ${A.length}</span>
+<svg class="fa-caret" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8l4 4 4-4"/></svg>
+</button>
+<div class="filterAcc-panel" id="fleetFilterPanel">
+<div class="fa-group">
+<span class="fa-group-lbl">Filter</span>
 <div class="filterbar" id="fleetFilter" role="group" aria-label="Filter the fleet by type">
-<span class="fsort-lbl">Filter</span>
 <button class="fchip" type="button" data-filter="all" aria-pressed="true">All <span class="n">${A.length}</span></button>
 ${TY.map(t => `<button class="fchip" type="button" data-filter="${t.slug}" aria-pressed="false">${esc(t.name.replace(/ (airliners|& outsize cargo|& experimental giants|& flying boats)/, ''))} <span class="n">${byType(t).length}</span></button>`).join('\n')}
 </div>
-<div class="fleetTools">
+</div>
+<div class="fa-group">
+<span class="fa-group-lbl">Sort</span>
 <div class="filterbar" id="fleetSort" role="group" aria-label="Sort the fleet">
-<span class="fsort-lbl">Sort</span>
 <button class="fchip" type="button" data-sort="wingspan" aria-pressed="true">Wingspan</button>
 <button class="fchip" type="button" data-sort="length" aria-pressed="false">Length</button>
 <button class="fchip" type="button" data-sort="manufacturer" aria-pressed="false">Manufacturer</button>
@@ -621,13 +650,17 @@ ${TY.map(t => `<button class="fchip" type="button" data-filter="${t.slug}" aria-
 <button class="fchip" type="button" data-sort="year" aria-pressed="false">First flight</button>
 <button class="fchip" type="button" data-sort="name" aria-pressed="false">A–Z</button>
 </div>
+</div>
+<div class="fa-group">
+<span class="fa-group-lbl">Grid</span>
 <div class="filterbar colsbar" id="fleetCols" role="group" aria-label="Grid columns">
-<span class="fsort-lbl">Grid</span>
 <button class="fchip cols-d" type="button" data-cols="2" aria-pressed="true">2 columns</button>
 <button class="fchip cols-d" type="button" data-cols="3" aria-pressed="false">3</button>
 <button class="fchip cols-d" type="button" data-cols="4" aria-pressed="false">4</button>
 <button class="fchip cols-m" type="button" data-cols="m1" aria-pressed="false">1 column</button>
 <button class="fchip cols-m" type="button" data-cols="m2" aria-pressed="true">2</button>
+</div>
+</div>
 </div>
 </div>
 <div class="grid2 cardgrid" id="fleetGrid">${[...A].sort((p,q)=>(q.core.wingspan_m||0)-(p.core.wingspan_m||0)).map(aircraftCard).join('\n')}</div>
@@ -652,7 +685,7 @@ ${AL.map(al => `<article class="acard">${al.iata ? `<span class="iata" style="ba
 <span class="eyebrow">Novelty</span>
 <h2 class="title">Bring back Concorde</h2>
 <div class="callout" style="border-color:var(--gold)">
-<p style="margin:0 0 6px"><b>Twenty-three years ago, the fastest way across the Atlantic retired — and nothing replaced it.</b></p>
+<p style="margin:0 0 6px"><b>Twenty-three years ago, the fastest way across the Atlantic retired, and nothing replaced it.</b></p>
 <p style="margin:0 0 14px;color:var(--muted)">A petition with absolutely no legal force, a slide-to-verify gate, one signature per browser, and a SHA-256 receipt for every name. Purely because we miss it.</p>
 <div class="heroCtas" style="margin:0"><a class="btn" href="/bring-back-concorde">Sign the petition &rarr;</a><a class="btn ghost" href="/blog/is-supersonic-travel-coming-back">Is supersonic coming back?</a></div>
 </div>
@@ -661,10 +694,10 @@ ${AL.map(al => `<article class="acard">${al.iata ? `<span class="iata" style="ba
 <span class="eyebrow">Browse</span>
 <h2 class="title">By maker, or by kind</h2>
 <div class="pillars two">
-<article class="acard"><h3><a href="/manufacturers">Manufacturers</a></h3><p style="color:var(--muted);font-size:.92rem;margin:0 0 14px">Twelve builders, from Airbus and Boeing to Antonov, Tupolev, Hughes and Bristol — each with its full line-up.</p><a class="mini" href="/manufacturers">All manufacturers &rarr;</a></article>
-<article class="acard"><h3><a href="/types">Aircraft types</a></h3><p style="color:var(--muted);font-size:.92rem;margin:0 0 14px">Widebody, narrowbody, freighter, military transport, bomber, supersonic, trijet, propliner — every category explained.</p><a class="mini" href="/types">All types &rarr;</a></article>
-<article class="acard"><h3><a href="/blog">The blog</a></h3><p style="color:var(--muted);font-size:.92rem;margin:0 0 14px">Long-form writing on the aircraft we cover — sourced, dated, and honest about what nobody knows yet.</p><a class="mini" href="/blog">Read the blog &rarr;</a></article>
-<article class="acard"><h3><a href="/explained">Explained</a></h3><p style="color:var(--muted);font-size:.92rem;margin:0 0 14px">MTOW, ETOPS, range versus payload, winglets, turbofans — the ideas behind every spec table.</p><a class="mini" href="/explained">Start reading &rarr;</a></article>
+<article class="acard"><h3><a href="/manufacturers">Manufacturers</a></h3><p style="color:var(--muted);font-size:.92rem;margin:0 0 14px">Twelve builders, from Airbus and Boeing to Antonov, Tupolev, Hughes and Bristol, each with its full line-up.</p><a class="mini" href="/manufacturers">All manufacturers &rarr;</a></article>
+<article class="acard"><h3><a href="/types">Aircraft types</a></h3><p style="color:var(--muted);font-size:.92rem;margin:0 0 14px">Widebody, narrowbody, freighter, military transport, bomber, supersonic, trijet, propliner, every category explained.</p><a class="mini" href="/types">All types &rarr;</a></article>
+<article class="acard"><h3><a href="/blog">The blog</a></h3><p style="color:var(--muted);font-size:.92rem;margin:0 0 14px">Long-form writing on the aircraft we cover, sourced, dated, and honest about what nobody knows yet.</p><a class="mini" href="/blog">Read the blog &rarr;</a></article>
+<article class="acard"><h3><a href="/explained">Explained</a></h3><p style="color:var(--muted);font-size:.92rem;margin:0 0 14px">MTOW, ETOPS, range versus payload, winglets, turbofans, the ideas behind every spec table.</p><a class="mini" href="/explained">Start reading &rarr;</a></article>
 </div>
 </div></section>
 <section class="section" style="padding-top:0"><div class="wrap">
@@ -673,7 +706,7 @@ ${AL.map(al => `<article class="acard">${al.iata ? `<span class="iata" style="ba
 <div class="pillars">
 <article class="acard"><h3><a href="/fear-of-flying">Scared of flying?</a></h3><p style="color:var(--muted);font-size:.92rem;margin:0 0 14px">The fear is usually a fear of the unknown. Learn to think like a pilot, understand every noise and movement, and let the engineering put you at ease.</p><a class="mini" href="/fear-of-flying">Feel calmer &rarr;</a></article>
 <article class="acard"><h3><a href="/travel-classes">Fly better for less</a></h3><p style="color:var(--muted);font-size:.92rem;margin:0 0 14px">How the cabins really differ, the evergreen tricks for cheaper flights, and how points can turn an economy budget into a business-class seat.</p><a class="mini" href="/travel-classes">Fly smarter &rarr;</a></article>
-<article class="acard"><h3><a href="/gear">The hangar shop</a></h3><p style="color:var(--muted);font-size:.92rem;margin:0 0 14px">A short, honest shelf for people who love flying machines — LEGO sets, die-cast models, spotter tech and flight-sim kit. Picked on merit, never paid placement.</p><a class="mini" href="/gear">Browse the shelf &rarr;</a></article>
+<article class="acard"><h3><a href="/gear">The hangar shop</a></h3><p style="color:var(--muted);font-size:.92rem;margin:0 0 14px">A short, honest shelf for people who love flying machines, LEGO sets, die-cast models, spotter tech and flight-sim kit. Picked on merit, never paid placement.</p><a class="mini" href="/gear">Browse the shelf &rarr;</a></article>
 </div>
 <div class="heroCtas" style="justify-content:center">
 <a class="btn" href="/fear-of-flying">Beat the fear</a>
@@ -683,15 +716,15 @@ ${AL.map(al => `<article class="acard">${al.iata ? `<span class="iata" style="ba
 <section class="section" style="padding-top:0"><div class="wrap">
 <span class="eyebrow">Now live</span>
 <h2 class="title">The Scale Engine</h2>
-<div class="callout"><p>Any two aircraft, rendered at true relative scale — next to a 1.8&nbsp;m person, a double-decker bus and a Boeing 737. Honest proportions, always.</p></div>
-<div class="heroCtas" style="margin-top:18px"><a class="btn" href="/compare">Open the compare tool &rarr;</a><a class="btn ghost" href="/records">See all four record boards</a></div>
+<div class="callout"><p>Any two aircraft, rendered at true relative scale, next to a 1.8&nbsp;m person, a double-decker bus and a Boeing 737. Honest proportions, always.</p></div>
+<div class="heroCtas" style="margin-top:18px"><a class="btn" href="/compare">Open the compare tool &rarr;</a><a class="btn ghost" href="/records">See all ${numWord(RECORD_BOARDS.length)} record boards</a></div>
 </div></section>`
 });
 
 /* ---------- Blueprint Designer ---------- */
 renderPage({
   file: 'design.html', urlPath: '/design', current: 'design',
-  title: 'Blueprint Designer — build your own aircraft',
+  title: 'Blueprint Designer, build your own aircraft',
   description: 'Design an aircraft from scratch by adjusting length, wingspan, decks, sweep and tail, rotate it freely, and export a precise prompt for AI image generation.',
   ogImage: 'default.png',
   head: `<script src="/assets/js/design.js" defer></script>`,
@@ -702,7 +735,7 @@ renderPage({
     publisher: { '@type': 'Organization', name: 'aircraft.fyi' } },
     faqLd([
       { q: 'What is the Blueprint Designer?', a: 'A parametric drawing tool. You set length, wingspan, fuselage diameter, sweep, taper, dihedral, tail height, deck count and engine layout, and it draws the resulting aircraft as a rotatable 3D wireframe.' },
-      { q: 'Can I use it to generate an image?', a: 'Yes. It exports a prompt describing the exact geometry you have built — bounding box, nose-to-wing and wing-to-tail distances, sweep, camera angle — so an image generator follows your proportions rather than defaulting to a familiar airliner shape.' },
+      { q: 'Can I use it to generate an image?', a: 'Yes. It exports a prompt describing the exact geometry you have built, bounding box, nose-to-wing and wing-to-tail distances, sweep, camera angle, so an image generator follows your proportions rather than defaulting to a familiar airliner shape.' },
       { q: 'Do I need an account or any software?', a: 'No. It runs entirely in the browser, free, with nothing to install.' }
     ])],
   content: `
@@ -725,7 +758,7 @@ renderPage({
     <select id="dParam" class="dsel" aria-label="Choose what to adjust"></select>
     <div class="dzslide">
       <input type="range" id="dSlider" aria-label="Adjust selected value">
-      <span class="dpv" id="dSliderV">&mdash;</span>
+      <span class="dpv" id="dSliderV">, </span>
     </div>
     <div class="dzbtns">
       <button id="dPrev" class="btn ghost" type="button">Clean sheet</button>
@@ -743,7 +776,7 @@ renderPage({
 <section class="section" style="padding-top:0"><div class="wrap prose">
 <span class="eyebrow">How to use it</span>
 <h2 class="title">From parameters to a picture</h2>
-<p>Every line on the drawing is generated from the numbers you set, so what you see is what the prompt describes. Change the fuselage diameter and the cross-section changes. Stack decks and the body grows <em>upward</em> rather than outward &mdash; the belly line stays put so the landing gear still reaches the ground, and the crown climbs. It goes to eight decks, which is well past anything sane and exactly the point.</p>
+<p>Every line on the drawing is generated from the numbers you set, so what you see is what the prompt describes. Change the fuselage diameter and the cross-section changes. Stack decks and the body grows <em>upward</em> rather than outward, the belly line stays put so the landing gear still reaches the ground, and the crown climbs. It goes to eight decks, which is well past anything sane and exactly the point.</p>
 <p>The exported prompt leads with the dimensions rather than a description, because image models default hard to familiar shapes. Telling one to draw an aircraft gives you something 737-ish every time. Telling it the span-to-length ratio, the fineness ratio, the sweep angle and the deck count gives you the aeroplane you actually designed.</p>
 </div></section>
 ` });
@@ -798,7 +831,7 @@ renderPage({
   };
   renderPage({
     file: 'fly.html', urlPath: '/fly', current: 'fly',
-    title: `Gate Runner — free flying game with ${flyFleet.length} real aircraft`,
+    title: `Gate Runner, free flying game with ${flyFleet.length} real aircraft`,
     description: `A free flying game in your browser. Fly ${flyFleet.length} real aircraft around a winding circuit of ${gateHalf * 2} m rings, where your true wingspan is the hitbox.`,
     ogImage: 'default.png',
     head: `<script src="/assets/js/fly.js" defer></script>\n<script>window.FLY_GATE=${gateHalf};window.FLY_FLEET=${JSON.stringify(flyFleet)};</script>`,
@@ -830,19 +863,19 @@ renderPage({
       itemListElement: flyFleet.map((f, n) => ({
         '@type': 'ListItem', position: n + 1,
         url: `https://aircraft.fyi/aircraft/${f.slug}`,
-        name: `${f.name} — ${f.span.toFixed(1)} m wingspan, ${(gateHalf - f.span / 2).toFixed(1)} m clearance` })) },
+        name: `${f.name}, ${f.span.toFixed(1)} m wingspan, ${(gateHalf - f.span / 2).toFixed(1)} m clearance` })) },
     { '@context': 'https://schema.org', '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://aircraft.fyi/' },
         { '@type': 'ListItem', position: 2, name: 'Gate Runner', item: 'https://aircraft.fyi/fly' }] },
     faqLd([
       { q: 'Is Gate Runner free to play?', a: 'Yes. It runs in the browser with no account, no download and no payment, on desktop and mobile.' },
-      { q: 'What kind of flying game is it?', a: `An arcade flight game built on real aircraft data. You fly one of ${flyFleet.length} real aircraft around a winding circuit of ${gateHalf * 2} metre rings — banking through turns, climbing and descending — and your actual wingspan is the hitbox.` },
+      { q: 'What kind of flying game is it?', a: `An arcade flight game built on real aircraft data. You fly one of ${flyFleet.length} real aircraft around a winding circuit of ${gateHalf * 2} metre rings, banking through turns, climbing and descending, and your actual wingspan is the hitbox.` },
       { q: 'Which aircraft can I fly?', a: `All ${flyFleet.length} are playable, from a Cessna 172 with an 11 metre wingspan to the Hughes H-4 Hercules at 97.5 metres. Airliners, freighters, business jets, light aircraft and a selection of military types including the SR-71 Blackbird, F-22 Raptor, Su-57 and B-2 Spirit.` },
       { q: 'How do the controls work?', a: 'Drag the thumbstick to bank and pitch, and the vertical slider to set throttle. On a keyboard use the arrow keys or WASD, S and F for throttle, and space to firewall it. Banking turns the aircraft, exactly as it does in flight.' },
       { q: 'Why are big aircraft so hard to fly?', a: `The rings are ${gateHalf * 2} metres across and your wingspan is the hitbox, so a Cessna has around ${(gateHalf - 5.5).toFixed(0)} metres of clearance either side while a Hughes H-4 Hercules has about ${(gateHalf - 48.75).toFixed(0)}. Heavier aircraft also roll and turn far more slowly.` },
       { q: 'What makes the supersonic aircraft different?', a: 'Speed rather than size is what makes them hard. An SR-71 has a small wingspan but covers the gap between rings in about a second and a half, against six for a Cessna, so there is far less time to line up each one.' },
-      { q: 'Does the course get harder?', a: 'Yes. It opens with long sweeping turns and gradually tightens — shorter segments, sharper turns and steeper climbs and descents, often combined into a single movement.' },
+      { q: 'Does the course get harder?', a: 'Yes. It opens with long sweeping turns and gradually tightens, shorter segments, sharper turns and steeper climbs and descents, often combined into a single movement.' },
       { q: 'What is the daily challenge?', a: 'Every day the game picks one aircraft and one fixed circuit from the date, so everyone flying that day gets exactly the same run. It resets at midnight UTC.' }
     ])],
   content: `
@@ -855,7 +888,7 @@ renderPage({
   <div class="flystage" role="region" aria-label="Gate Runner game">
     <svg id="flyScene" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Flight view: your aircraft seen from behind, flying a circuit of rings"></svg>
     <div class="flyhud">
-      <button id="flyName" class="fh-l" type="button" aria-label="Change aircraft"><b id="hName">&mdash;</b><span><i id="hSpan">0</i> m span &middot; change</span></button>
+      <button id="flyName" class="fh-l" type="button" aria-label="Change aircraft"><b id="hName">, </b><span><i id="hSpan">0</i> m span &middot; change</span></button>
       <div class="fh-r">
         <span>SPEED <b id="hSpd">0</b> km/h</span>
         <span>ALT <b id="hAlt">0</b> m</span>
@@ -864,7 +897,7 @@ renderPage({
         <span>BEST <b id="hBest">0</b></span>
       </div>
     </div>
-    <div id="flyStick" class="flystick" role="application" aria-label="Flight stick — drag left and right to bank and turn, up and down to pitch" aria-hidden="true"><i id="flyKnob" class="flyknob"></i></div>
+    <div id="flyStick" class="flystick" role="application" aria-label="Flight stick, drag left and right to bank and turn, up and down to pitch" aria-hidden="true"><i id="flyKnob" class="flyknob"></i></div>
     <button id="flyPause" class="flypause" type="button" aria-label="Pause">&#10073;&#10073;</button>
     <div id="flyThr" class="flythr" role="slider" aria-label="Throttle" aria-valuemin="0" aria-valuemax="100" aria-valuenow="33" aria-hidden="true">
       <i id="flyThrFill" class="ft-fill"></i>
@@ -954,7 +987,7 @@ ${a.operatorsOnOrder ? `<p class="sub" style="margin-top:18px">${esc(a.operators
 <span class="eyebrow">Fly it</span>
 <h2 class="title">${esc(a.affiliate.label)}</h2>
 <p style="margin-top:18px"><a class="btn" href="${esc(a.affiliate.url)}" rel="sponsored noopener" target="_blank">${esc(a.affiliate.label)} &rarr;</a></p>
-<p class="note-aff">Affiliate link — aircraft.fyi may earn a commission. It never affects the data.</p>
+<p class="note-aff">Affiliate link, aircraft.fyi may earn a commission. It never affects the data.</p>
 </div></section>` : '';
 
   renderPage({
@@ -963,7 +996,7 @@ ${a.operatorsOnOrder ? `<p class="sub" style="margin-top:18px">${esc(a.operators
        so those get a short form for the title tag only. */
     title: (() => {
       const short = a.shortName || a.name;
-      return isGA ? `${short} — specs, size & performance` : `${short} — specs, size & operators`;
+      return isGA ? `${short}, specs, size & performance` : `${short}, specs, size & operators`;
     })(),
     description: isGA ? `${a.headline} Sourced specs, every variant, and how it compares.` : `${a.headline} Sourced specs, every variant, and every airline that flies it.`,
     ogImage: `${a.slug}.png`,
@@ -1026,7 +1059,7 @@ ${a.prose.map(p => `<p>${esc(p)}</p>`).join('\n')}
 </div></section>
 <section class="section" style="padding-top:0"><div class="wrap">
 <span class="eyebrow">Common questions</span>
-<h2 class="title">${esc(a.name)} — the short answers</h2>
+<h2 class="title">${esc(a.name)}, the short answers</h2>
 <div data-accordion>
 ${faqs.map((qa, i) => `<details class="qa"${i === 0 ? ' open' : ''}><summary>${esc(qa.q)}<i class="caret"></i></summary><div class="body">${esc(qa.a)}</div></details>`).join('\n')}
 </div>
@@ -1089,10 +1122,10 @@ ${x.op.note ? `<p class="opnote">${esc(x.op.note)}</p>` : ''}
 <a class="mini" href="/aircraft/${x.a.slug}">Full specification &rarr;</a>
 </article>`).join('\n');
   const aff = (al.affiliate && al.affiliate.active && al.affiliate.url)
-    ? `<p style="margin-top:22px"><a class="btn" href="${esc(al.affiliate.url)}" rel="sponsored noopener" target="_blank">${esc(al.affiliate.label)} &rarr;</a></p><p class="note-aff">Affiliate link — aircraft.fyi may earn a commission. It never affects the data.</p>` : '';
+    ? `<p style="margin-top:22px"><a class="btn" href="${esc(al.affiliate.url)}" rel="sponsored noopener" target="_blank">${esc(al.affiliate.label)} &rarr;</a></p><p class="note-aff">Affiliate link, aircraft.fyi may earn a commission. It never affects the data.</p>` : '';
   renderPage({
     file: `airlines/${al.slug}.html`, urlPath: `/airlines/${al.slug}`, current: 'airlines',
-    title: `${al.name} fleet — every aircraft they fly`,
+    title: `${al.name} fleet, every aircraft they fly`,
     description: `${al.headline} Full fleet, aircraft by aircraft, sourced.`,
     jsonld: { '@context': 'https://schema.org', '@type': 'Airline', name: al.name, iataCode: al.iata, foundingDate: al.founded, url: `https://aircraft.fyi/airlines/${al.slug}` },
     content: `
@@ -1106,7 +1139,7 @@ ${aff}
 <section class="section" style="padding-top:0"><div class="wrap">
 <div class="statstrip">
 <div class="ss"><span class="k">Types in fleet</span><span class="v num">${cur.length}</span></div>
-<div class="ss"><span class="k">Biggest aircraft</span><span class="v">${cur.length ? esc(shortName(cur[0].a)) : '—'}</span></div>
+<div class="ss"><span class="k">Biggest aircraft</span><span class="v">${cur.length ? esc(shortName(cur[0].a)) : ', '}</span></div>
 <div class="ss"><span class="k">Alliance</span><span class="v">${esc(al.alliance)}</span></div>
 <div class="ss"><span class="k">Founded</span><span class="v num">${esc(al.founded)}</span></div>
 <div class="ss"><span class="k">IATA</span><span class="v">${esc(al.iata)}</span></div>
@@ -1116,7 +1149,7 @@ ${past.length ? `<div class="ss"><span class="k">Retired types</span><span class
 ${cur.length > 1 ? `<section class="section" style="padding-top:6px"><div class="wrap">
 <span class="eyebrow">Side by side</span>
 <h2 class="title">The fleet at true scale</h2>
-<p class="sub">Every type ${esc(al.name)} flies, drawn to the same scale — widest wings on the left. Tap any silhouette.</p>
+<p class="sub">Every type ${esc(al.name)} flies, drawn to the same scale, widest wings on the left. Tap any silhouette.</p>
 <div class="allineup">${cur.map(x => `<a class="lu" href="/aircraft/${x.a.slug}"${x.a.core.wingspan_m ? ` style="flex:${x.a.core.wingspan_m} 1 0"` : ''}><span class="lu-s">${silScaled(x.a)}</span><span class="lu-n">${esc(shortName(x.a))}</span></a>`).join('')}</div>
 </div></section>` : ''}
 <section class="section" style="padding-top:0"><div class="wrap">
@@ -1133,7 +1166,7 @@ ${(cur.length + ord.length) ? `<div class="filterbar colsbar" role="group" aria-
 <div class="grid2 cardgrid">
 ${flCards}
 </div>` : '<p class="sub">Fleet pages for this airline are in build.</p>'}
-${recs.length ? `<div class="recrow">${recs.map(x => `<a class="recchip" href="/aircraft/${x.a.slug}">${isPast(x) ? 'Flew' : 'Flies'} ${esc(shortName(x.a))} — ${REC[x.a.slug]} &rarr;</a>`).join('')}</div>` : ''}
+${recs.length ? `<div class="recrow">${recs.map(x => `<a class="recchip" href="/aircraft/${x.a.slug}">${isPast(x) ? 'Flew' : 'Flies'} ${esc(shortName(x.a))}, ${REC[x.a.slug]} &rarr;</a>`).join('')}</div>` : ''}
 </div></section>
 ${past.length ? `<section class="section" style="padding-top:0"><div class="wrap">
 <span class="eyebrow">The history</span>
@@ -1154,7 +1187,7 @@ ${rts.length ? `<section class="section" style="padding-top:0"><div class="wrap"
 <h2 class="title">Their longest flights</h2>
 <div class="specwrap"><table class="spec">
 <thead><tr><th>Route</th><th>Aircraft</th><th>Distance</th><th>Block time</th></tr></thead>
-<tbody>${rts.map(r => `<tr><td>${esc(r.fr)} (${esc(r.fri)}) &rarr; ${esc(r.to)} (${esc(r.toi)})${String(r.status).toLowerCase() === 'announced' ? ' <span class="rt-ann">announced</span>' : ''}</td><td>${r.acs ? `<a href="/aircraft/${r.acs}">${esc(r.ac)}</a>` : esc(r.ac)}</td><td class="num">${r.km.toLocaleString('en-US')} km</td><td class="num">${esc(r.time || '—')}</td></tr>`).join('\n')}</tbody></table></div>
+<tbody>${rts.map(r => `<tr><td>${esc(r.fr)} (${esc(r.fri)}) &rarr; ${esc(r.to)} (${esc(r.toi)})${String(r.status).toLowerCase() === 'announced' ? ' <span class="rt-ann">announced</span>' : ''}</td><td>${r.acs ? `<a href="/aircraft/${r.acs}">${esc(r.ac)}</a>` : esc(r.ac)}</td><td class="num">${r.km.toLocaleString('en-US')} km</td><td class="num">${esc(r.time || ', ')}</td></tr>`).join('\n')}</tbody></table></div>
 <p class="sub" style="margin-top:10px">From our <a href="/records/longest-flights">longest flights in the world</a> board.</p>
 </div></section>` : ''}
 ${al.facts && al.facts.length ? `<section class="section" style="padding-top:0"><div class="wrap">
@@ -1172,13 +1205,13 @@ ${sourcesBlock(al.sources, 'airlines', al.slug, al.name)}
 /* ---------- methodology page (E-E-A-T: publish how the numbers are made) ---------- */
 renderPage({
   file: 'methodology.html', urlPath: '/methodology', current: '',
-  title: 'Methodology — how aircraft.fyi calculates its numbers',
+  title: 'Methodology, how aircraft.fyi calculates its numbers',
   description: 'How every aircraft.fyi derived metric is computed, where the core specifications come from, and how corrections work. Every number, explained.',
   jsonld: { '@context': 'https://schema.org', '@type': 'TechArticle', headline: 'How aircraft.fyi calculates its numbers', url: 'https://aircraft.fyi/methodology' },
   content: `
 <section class="hero"><div class="wrap">
 <h1>How we calculate our numbers</h1>
-<p class="lead">Every derived metric on this site is computed from the sourced core specification. Here is exactly how — so the numbers are checkable, and citable.</p>
+<p class="lead">Every derived metric on this site is computed from the sourced core specification. Here is exactly how, so the numbers are checkable, and citable.</p>
 </div></section>
 <section class="section" style="padding-top:0"><div class="wrap">
 <span class="eyebrow">Our numbers</span>
@@ -1192,13 +1225,13 @@ ${METRICS.map(m => `<div class="qa" style="margin-top:12px"><div style="padding:
 <h3 style="margin-top:40px;font-size:1.15rem">What the ✓ tick actually means</h3>
 <div class="prose" style="margin-top:12px">
 <p>Operator fleet counts move constantly, and most aviation sites quietly present a stale number as fact. We do not. Every operator row on this site is one of two things, and we say which.</p>
-<p>A row marked <b>✓</b> has been individually checked against a named, dated source — an airline filing, a manufacturer statement, or a maintained fleet record — and that source is listed at the bottom of the page. A row marked <b>≈</b> is an approximate snapshot: broadly right, good enough to reason about, and not something you should quote in a contract. Currently ${(() => { const t = A.reduce((n, a) => n + (a.operators || []).length, 0); const v = A.reduce((n, a) => n + (a.operators || []).filter(o => o.verified).length, 0); return `<b>${v} of ${t}</b> operator rows`; })()} carry a tick, and the flagship fleets — Emirates, Southwest, United — are among them. That number will only go up.</p>
+<p>A row marked <b>✓</b> has been individually checked against a named, dated source, an airline filing, a manufacturer statement, or a maintained fleet record, and that source is listed at the bottom of the page. A row marked <b>≈</b> is an approximate snapshot: broadly right, good enough to reason about, and not something you should quote in a contract. Currently ${(() => { const t = A.reduce((n, a) => n + (a.operators || []).length, 0); const v = A.reduce((n, a) => n + (a.operators || []).filter(o => o.verified).length, 0); return `<b>${v} of ${t}</b> operator rows`; })()} carry a tick, and the flagship fleets, Emirates, Southwest, United, are among them. That number will only go up.</p>
 <p>We would rather show you an honest ≈ than a confident lie.</p>
 </div>
 <h3 style="margin-top:40px;font-size:1.15rem">Where the core data comes from</h3>
 <div class="prose" style="margin-top:12px">
-<p>Core specifications are taken from manufacturer documents — Boeing and Airbus airport-planning manuals and technical pages — and type certificate data sheets, cited per row on every spec table. Operator fleet counts are approximate snapshots, marked with ≈ and a last-verified date, and re-checked against airline press material.</p>
-<p>Where sources conflict, we say so on the page and cite both. If you spot an error, tell us — corrections are made visibly, not silently.</p>
+<p>Core specifications are taken from manufacturer documents, Boeing and Airbus airport-planning manuals and technical pages, and type certificate data sheets, cited per row on every spec table. Operator fleet counts are approximate snapshots, marked with ≈ and a last-verified date, and re-checked against airline press material.</p>
+<p>Where sources conflict, we say so on the page and cite both. If you spot an error, tell us, corrections are made visibly, not silently.</p>
 </div>
 </div></section>`
 });
@@ -1215,19 +1248,19 @@ function recordRow(r) {
 }
 renderPage({
   file: 'records/longest-aircraft.html', urlPath: '/records/longest-aircraft', current: 'records',
-  title: 'The 50 longest aircraft ever built — full ranked list',
-  description: 'Every one of the 50 longest aircraft in history, ranked by fuselage length — from the destroyed Antonov An-225 to the 777-9, with dates and status.',
+  title: 'The 50 longest aircraft ever built, full ranked list',
+  description: 'Every one of the 50 longest aircraft in history, ranked by fuselage length, from the destroyed Antonov An-225 to the 777-9, with dates and status.',
   jsonld: { '@context': 'https://schema.org', '@type': 'ItemList', name: RL.title,
     itemListElement: RL.records.slice(0, 10).map(r => ({ '@type': 'ListItem', position: r.rank, name: r.name })) },
   content: `
 <section class="hero"><div class="wrap">
 <div class="crumb"><a href="/">Home</a> › <a href="/records">Records</a> › Longest aircraft</div>
 <h1>The 50 longest aircraft ever built</h1>
-<p class="lead">Ranked by fuselage length — airliners, freighters, military giants, one flying boat and two supersonic transports. Number one no longer exists.</p>
+<p class="lead">Ranked by fuselage length, airliners, freighters, military giants, one flying boat and two supersonic transports. Number one no longer exists.</p>
 </div></section>
 <section class="section" style="padding-top:0"><div class="wrap">
 <div class="prose">
-<p>Length is the record that tells the most stories. The top of this list is a graveyard of ambition: the An-225 destroyed in war after a life of world records, the Spruce Goose that flew for under a minute, Concorde and the Tu-144 racing each other into retirement. And the contest is still live — when the 777-9 enters service it will become the longest airliner ever to carry passengers, at 76.72 metres.</p>
+<p>Length is the record that tells the most stories. The top of this list is a graveyard of ambition: the An-225 destroyed in war after a life of world records, the Spruce Goose that flew for under a minute, Concorde and the Tu-144 racing each other into retirement. And the contest is still live, when the 777-9 enters service it will become the longest airliner ever to carry passengers, at 76.72 metres.</p>
 <p>Lengths are manufacturer figures for the longest variant named in each row. Aircraft covered in depth on this site are linked.</p>
 </div>
 <h2 class="title" style="margin-top:34px">The board, one to fifty</h2>
@@ -1248,8 +1281,8 @@ ${RECORD_BOARDS.filter(x => x.urlPath !== '/records/longest-aircraft').map(x => 
 });
 renderPage({
   file: 'records.html', urlPath: '/records', current: 'records', ogImage: 'records.png',
-  title: 'Aircraft records — the longest, biggest and fastest',
-  description: 'Five ranked record boards compiled from sourced data: the longest, heaviest, fastest and most-produced aircraft — and the longest flights on Earth.',
+  title: 'Aircraft records, the longest, biggest and fastest',
+  description: 'Five ranked record boards compiled from sourced data: the longest, heaviest, fastest and most-produced aircraft, and the longest flights on Earth.',
   jsonld: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Aircraft records', url: 'https://aircraft.fyi/records' },
   content: `
 <section class="hero"><div class="wrap">
@@ -1314,12 +1347,13 @@ renderPage({
   file: 'scale.html', urlPath: '/scale', current: '', sitemap: false,
   title: 'The Scale Engine has moved to /compare',
   description: 'The Scale Engine now lives at /compare, where you can put any three aircraft side by side at true relative scale with every specification compared.',
-  head: '<meta http-equiv="refresh" content="0; url=/compare"><link rel="canonical" href="https://aircraft.fyi/compare"><meta name="robots" content="noindex,follow">',
+  head: '<meta http-equiv="refresh" content="0; url=/compare"><meta name="robots" content="noindex,follow">',
+  canonicalOverride: 'https://aircraft.fyi/compare',
   jsonld: { '@context': 'https://schema.org', '@type': 'WebPage', name: 'Moved to /compare', url: 'https://aircraft.fyi/compare' },
   content: `
 <section class="hero"><div class="wrap">
 <h1>It moved to <span class="em">/compare</span>.</h1>
-<p class="lead">The Scale Engine is now part of the compare tool — same true-scale drawing, but three aircraft instead of two, and the full specification table alongside it.</p>
+<p class="lead">The Scale Engine is now part of the compare tool, same true-scale drawing, but three aircraft instead of two, and the full specification table alongside it.</p>
 <div class="heroCtas"><a class="btn" href="/compare">Open the compare tool &rarr;</a></div>
 </div></section>
 <section class="section" style="padding-top:0"><div class="wrap">
@@ -1336,7 +1370,7 @@ function fitDesc(s) {
 }
 function miniTable(list) {
   const rows = list.slice().sort((x, y) => y.core.length_m - x.core.length_m).map(a =>
-    `<tr><td><a href="/aircraft/${a.slug}">${esc(a.name)}</a></td><td class="num">${a.core.length_m.toFixed(2)} m</td><td class="num">${a.core.wingspan_m ? a.core.wingspan_m.toFixed(2) + ' m' : '—'}</td><td class="num">${a.core.firstFlightYear || '—'}</td><td style="color:var(--muted);font-size:.88em">${esc(a.status)}</td></tr>`).join('\n');
+    `<tr><td><a href="/aircraft/${a.slug}">${esc(a.name)}</a></td><td class="num">${a.core.length_m.toFixed(2)} m</td><td class="num">${a.core.wingspan_m ? a.core.wingspan_m.toFixed(2) + ' m' : ', '}</td><td class="num">${a.core.firstFlightYear || ', '}</td><td style="color:var(--muted);font-size:.88em">${esc(a.status)}</td></tr>`).join('\n');
   return `<div class="specwrap"><table class="spec">
 <thead><tr><th>Aircraft</th><th>Length</th><th>Wingspan</th><th>First flight</th><th>Status</th></tr></thead>
 <tbody>${rows}</tbody></table></div>`;
@@ -1349,7 +1383,7 @@ function groupStats(list) {
     ['Aircraft here', String(list.length)],
     ['Longest', longest.core.length_m.toFixed(2) + ' m'],
     ['Combined built', built.toLocaleString('en-US')],
-    ['First flights', years.length ? `${years[0]}–${years[years.length - 1]}` : '—']
+    ['First flights', years.length ? `${years[0]}–${years[years.length - 1]}` : ', ']
   ];
   return `<div class="statstrip">${items.map(i => `<div class="ss"><span class="k">${esc(i[0])}</span><span class="v num">${esc(i[1])}</span></div>`).join('')}</div>`;
 }
@@ -1362,8 +1396,8 @@ for (const m of MK) {
     file: `manufacturers/${m.slug}.html`, urlPath: `/manufacturers/${m.slug}`, current: '',
     /* Entity-encoding an ampersand costs four extra characters, so a 60-char slice can
        still emit a 64-char title. titleName lets a maker opt out of the ampersand. */
-    title: `${m.titleName || m.name} aircraft — every type`.slice(0, 58),
-    description: fitDesc(`${m.tagline} ${list.length} ${m.name} aircraft on aircraft.fyi, led by the ${longest.name} — full specs, silhouettes and operators.`),
+    title: `${m.titleName || m.name} aircraft, every type`.slice(0, 58),
+    description: fitDesc(`${m.tagline} ${list.length} ${m.name} aircraft on aircraft.fyi, led by the ${longest.name}, full specs, silhouettes and operators.`),
     jsonld: { '@context': 'https://schema.org', '@type': 'Organization', name: m.name, foundingDate: String(m.founded), url: `https://aircraft.fyi/manufacturers/${m.slug}` },
     content: `
 <section class="hero"><div class="wrap">
@@ -1381,7 +1415,7 @@ ${m.prose.map(p => `<p>${esc(p)}</p>`).join('\n')}
 <section class="section" style="padding-top:0"><div class="wrap">
 <span class="eyebrow">The line-up</span>
 <h2 class="title">${esc(m.name)} aircraft</h2>
-<p class="sub">Silhouettes are sized by real wingspan — bigger aircraft draw bigger.</p>
+<p class="sub">Silhouettes are sized by real wingspan, bigger aircraft draw bigger.</p>
 ${list.length > 1 ? `<div class="allineup" style="margin-bottom:20px">${list.slice().sort((x, y) => (y.core.wingspan_m || 0) - (x.core.wingspan_m || 0)).map(x => `<a class="lu" href="/aircraft/${x.slug}" style="flex:${x.core.wingspan_m || 10} 1 0"><span class="lu-s">${silScaled(x)}</span><span class="lu-n">${esc(shortName(x))}</span></a>`).join('')}</div>` : ''}
 <div class="filterbar colsbar" role="group" aria-label="Grid columns">
 <span class="fsort-lbl">Grid</span>
@@ -1407,14 +1441,14 @@ ${sourcesBlock(m.sources, 'makers', m.slug, m.name)}
 
 renderPage({
   file: 'gear.html', urlPath: '/gear',
-  title: 'The hangar shop — aircraft models & gifts for avgeeks',
+  title: 'The hangar shop, aircraft models & gifts for avgeeks',
   description: 'A short, honest shelf of the best aircraft models, LEGO sets and gifts for people who love flying machines. Hand-picked, never paid placement.',
   jsonld: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'The hangar shop', url: 'https://aircraft.fyi/gear' },
   content: `
 <section class="hero"><div class="wrap">
 <div class="crumb"><a href="/">Home</a> › The hangar shop</div>
 <h1>The hangar shop</h1>
-<p class="lead">A short, honest shelf for people who love flying machines. Everything here is hand-picked on merit — no sponsored slots, no filler. ${AFFDISC}</p>
+<p class="lead">A short, honest shelf for people who love flying machines. Everything here is hand-picked on merit, no sponsored slots, no filler. ${AFFDISC}</p>
 </div></section>
 <section class="section" style="padding-top:0"><div class="wrap">
 ${GEAR.map(grp => `<div class="geargroup">
@@ -1432,20 +1466,20 @@ ${g.link ? `<a class="gear-alt" href="${g.link}">Explore on site &rarr;</a>` : '
 </article>`; }).join('\n')}
 </div>
 </div>`).join('\n')}
-<p class="sub" style="margin-top:8px">Your &ldquo;owned&rdquo; ticks are saved on this device only — nothing leaves your browser. Spotted something that belongs here? <a href="mailto:business@luck.fyi?subject=Hangar%20shop%20suggestion" style="color:var(--gold)">Tell us</a>.</p>
+<p class="sub" style="margin-top:8px">Your &ldquo;owned&rdquo; ticks are saved on this device only, nothing leaves your browser. Spotted something that belongs here? <a href="mailto:business@luck.fyi?subject=Hangar%20shop%20suggestion" style="color:var(--gold)">Tell us</a>.</p>
 </div></section>`
 });
 
 renderPage({
   file: 'quiz.html', urlPath: '/quiz',
-  title: 'The Silhouette Quiz — can you name the aircraft?',
+  title: 'The Silhouette Quiz, can you name the aircraft?',
   description: 'A planform appears. Four names. One is right. How long a streak can you build from ' + A.length + ' aircraft drawn to true scale?',
   jsonld: { '@context': 'https://schema.org', '@type': 'WebPage', name: 'The Silhouette Quiz', url: 'https://aircraft.fyi/quiz' },
   content: `
 <section class="hero"><div class="wrap">
 <div class="crumb"><a href="/">Home</a> › Quiz</div>
 <h1>The Silhouette Quiz</h1>
-<p class="lead">A planform appears. Four names. One is right. All ${A.length} aircraft, drawn to true scale — how long a streak can you build?</p>
+<p class="lead">A planform appears. Four names. One is right. All ${A.length} aircraft, drawn to true scale, how long a streak can you build?</p>
 </div></section>
 <section class="section" style="padding-top:0"><div class="wrap">
 <div class="quizcard">
@@ -1484,7 +1518,7 @@ renderPage({
       btn.classList.add('ok'); streak++;
       if (streak > best) { best = streak; bEl.textContent = best; try { localStorage.setItem('acfyi.quiz.best', String(best)); } catch (e2) {} }
       stEl.textContent = streak;
-      msg.textContent = 'Correct — it\u2019s the ' + QD[cur].n + '.';
+      msg.textContent = 'Correct, it\u2019s the ' + QD[cur].n + '.';
       setTimeout(pick, 750);
     } else {
       btn.classList.add('no');
@@ -1497,7 +1531,7 @@ renderPage({
   document.getElementById('qSkip').addEventListener('click', function(){ if (!lock) { streak = 0; stEl.textContent = 0; pick(); } });
   document.getElementById('qShare').addEventListener('click', function(){
     var t = 'My best streak naming aircraft silhouettes is ' + best + ' \u2708\uFE0F Try it: https://aircraft.fyi/quiz';
-    try { navigator.clipboard.writeText(t); msg.textContent = 'Copied — paste it anywhere.'; } catch (e) { msg.textContent = t; }
+    try { navigator.clipboard.writeText(t); msg.textContent = 'Copied, paste it anywhere.'; } catch (e) { msg.textContent = t; }
   });
   pick();
 })();
@@ -1508,27 +1542,27 @@ renderPage({
 renderPage({
   file: 'fear-of-flying.html', urlPath: '/fear-of-flying', current: '',
   title: 'Scared of flying? The engineering that makes it safe',
-  description: 'A calm, factual guide to the fear of flying — what turbulence really is, why the noises happen, how aircraft are built to cope, and gentle ways to.',
+  description: 'A calm, factual guide to the fear of flying, what turbulence really is, why the noises happen, how aircraft are built to cope, and gentle ways to.',
   jsonld: [{ '@context': 'https://schema.org', '@type': 'Article', headline: 'Scared of flying? The engineering that makes it safe', description: 'What turbulence really is, why the noises happen, and how aircraft are built to cope.', url: 'https://aircraft.fyi/fear-of-flying' }, faqLd([
     { q: 'Is turbulence dangerous?', a: 'No. Turbulence is just uneven air, and aircraft wings are built to flex several metres and withstand far more than any turbulence you will ever feel. Pilots slow down mainly for comfort, not safety. Keep your seatbelt loosely fastened and it poses no real hazard.' },
     { q: 'What is the loud clunk after take-off?', a: 'That is the landing gear retracting into the belly and the doors closing over it. It is meant to be firm and loud. Minutes later you may hear the wing flaps sliding back in as the aircraft speeds up.' },
     { q: 'Why does the engine sound like it is giving up after take-off?', a: 'It is not. Just after take-off the pilots reduce power from full thrust to a quieter climb setting. It is planned and happens on every flight.' },
-    { q: 'Can a plane still fly if an engine fails?', a: 'Yes. A fully loaded airliner can climb and fly safely on one engine, and pilots train for it constantly. If all thrust is lost the aircraft glides — an airliner at cruise can glide well over 100 kilometres.' }
+    { q: 'Can a plane still fly if an engine fails?', a: 'Yes. A fully loaded airliner can climb and fly safely on one engine, and pilots train for it constantly. If all thrust is lost the aircraft glides, an airliner at cruise can glide well over 100 kilometres.' }
   ])],
   content: `
 <section class="hero"><div class="wrap">
 <div class="crumb"><a href="/">Home</a> › Scared of flying</div>
 <h1>Scared of flying? Let&rsquo;s demystify it.</h1>
-<p class="lead">Most fear of flying is really a fear of the <em>unknown</em> — a strange noise, a sudden bump, a feeling with no explanation. This whole site exists to explain these machines, so here is the calm, honest version: what is actually happening up there, and why the aircraft is built to handle every bit of it.</p>
+<p class="lead">Most fear of flying is really a fear of the <em>unknown</em>, a strange noise, a sudden bump, a feeling with no explanation. This whole site exists to explain these machines, so here is the calm, honest version: what is actually happening up there, and why the aircraft is built to handle every bit of it.</p>
 </div></section>
 
 <section class="section" style="padding-top:0"><div class="wrap">
 <span class="eyebrow">The big one</span>
 <h2 class="title" style="margin-bottom:8px">Turbulence feels dangerous. It isn&rsquo;t.</h2>
 <div class="prose" style="margin-top:12px">
-<p>Turbulence is just uneven air — pockets moving at slightly different speeds, the way a boat rocks on choppy water. It feels dramatic because you can&rsquo;t see it coming, but to the aircraft it is completely routine. Wings are not rigid: they are engineered to <b>flex</b>, and on a big airliner the wingtips can move several metres up and down without any trouble at all. That flexing is the wing doing its job, not a sign of strain.</p>
-<p>Test aircraft are deliberately pushed far beyond anything you will ever feel — wings bent upward past 1.5 times the worst imaginable load until they finally break, purely to prove how enormous the margin is. The bumps on your flight are a tiny fraction of what the airframe shrugs off by design. Pilots slow down or change altitude in turbulence mostly for <em>your comfort</em>, not because the aircraft is in any danger.</p>
-<p>The single best thing you can do: keep your seatbelt loosely fastened the whole flight. Not because the plane is at risk — but because it means a sudden bump can never unseat you. That one habit removes the only real hazard turbulence poses.</p>
+<p>Turbulence is just uneven air, pockets moving at slightly different speeds, the way a boat rocks on choppy water. It feels dramatic because you can&rsquo;t see it coming, but to the aircraft it is completely routine. Wings are not rigid: they are engineered to <b>flex</b>, and on a big airliner the wingtips can move several metres up and down without any trouble at all. That flexing is the wing doing its job, not a sign of strain.</p>
+<p>Test aircraft are deliberately pushed far beyond anything you will ever feel, wings bent upward past 1.5 times the worst imaginable load until they finally break, purely to prove how enormous the margin is. The bumps on your flight are a tiny fraction of what the airframe shrugs off by design. Pilots slow down or change altitude in turbulence mostly for <em>your comfort</em>, not because the aircraft is in any danger.</p>
+<p>The single best thing you can do: keep your seatbelt loosely fastened the whole flight. Not because the plane is at risk, but because it means a sudden bump can never unseat you. That one habit removes the only real hazard turbulence poses.</p>
 </div>
 </div></section>
 
@@ -1536,21 +1570,21 @@ renderPage({
 <span class="eyebrow">The mindset shift</span>
 <h2 class="title" style="margin-bottom:8px">Learn to think like a pilot</h2>
 <div class="prose" style="margin-top:12px">
-<p>Here is the single idea that turns fear into fascination: <b>almost every movement you feel is the direct result of an input the pilot chose to make.</b> The aircraft is not being thrown around — it is being <em>flown</em>, deliberately, by two people following a precise plan. Once you understand what they are doing and why, the bumps and turns stop being mysterious forces and become a conversation you can follow.</p>
-<p>Take off and landing — the parts that scare people most — are the most <em>hands-on</em> of all, and that is exactly why so much is happening. On take-off the pilot pulls back to rotate the nose up, so you feel pushed into your seat as the jet climbs steeply and deliberately. The engines are at high power on purpose; that is the plan, not a struggle. Moments later the power eases back to a calmer climb setting, the nose lowers slightly, and you feel the change — because the pilot <em>commanded</em> it, right on schedule.</p>
-<p>Landing is the same story in reverse. The sinking feeling as the aircraft descends is a controlled, chosen descent. The whine and rumble is the pilot lowering flaps and gear to fly slower and steadier. A bank to one side is a planned turn onto the final approach. Even a firm touchdown is usually intentional — on a wet runway pilots plant the aircraft down firmly on purpose, to get the wheels gripping. Every one of those sensations has a hand on a control behind it.</p>
-<p>So the trick that works: instead of bracing against each movement, ask yourself <em>&ldquo;what did the pilot just do to make that happen?&rdquo;</em> Climbing, easing power, banking into a turn, extending flaps, descending. You will nearly always be right — and the moment you can name the input, the fear has nothing left to feed on. You have stopped being a passenger something is happening <em>to</em>, and started being someone who understands the flight.</p>
+<p>Here is the single idea that turns fear into fascination: <b>almost every movement you feel is the direct result of an input the pilot chose to make.</b> The aircraft is not being thrown around, it is being <em>flown</em>, deliberately, by two people following a precise plan. Once you understand what they are doing and why, the bumps and turns stop being mysterious forces and become a conversation you can follow.</p>
+<p>Take off and landing, the parts that scare people most, are the most <em>hands-on</em> of all, and that is exactly why so much is happening. On take-off the pilot pulls back to rotate the nose up, so you feel pushed into your seat as the jet climbs steeply and deliberately. The engines are at high power on purpose; that is the plan, not a struggle. Moments later the power eases back to a calmer climb setting, the nose lowers slightly, and you feel the change, because the pilot <em>commanded</em> it, right on schedule.</p>
+<p>Landing is the same story in reverse. The sinking feeling as the aircraft descends is a controlled, chosen descent. The whine and rumble is the pilot lowering flaps and gear to fly slower and steadier. A bank to one side is a planned turn onto the final approach. Even a firm touchdown is usually intentional, on a wet runway pilots plant the aircraft down firmly on purpose, to get the wheels gripping. Every one of those sensations has a hand on a control behind it.</p>
+<p>So the trick that works: instead of bracing against each movement, ask yourself <em>&ldquo;what did the pilot just do to make that happen?&rdquo;</em> Climbing, easing power, banking into a turn, extending flaps, descending. You will nearly always be right, and the moment you can name the input, the fear has nothing left to feed on. You have stopped being a passenger something is happening <em>to</em>, and started being someone who understands the flight.</p>
 </div>
 </div></section>
 
 <section class="section" style="padding-top:0"><div class="wrap">
 <span class="eyebrow">That noise</span>
-<h2 class="title" style="margin-bottom:8px">The sounds are the aircraft working &mdash; here&rsquo;s each one</h2>
+<h2 class="title" style="margin-bottom:8px">The sounds are the aircraft working, here&rsquo;s each one</h2>
 <div class="qa-list">
 <details class="qa" open><summary>A loud whirr or clunk after take-off<i class="caret"></i></summary><div class="body">The landing gear retracting into the belly, then the doors closing over it. It is meant to be firm and loud. A few minutes later you may hear the reverse: the whine of the wing flaps sliding back in as the plane picks up speed.</div></details>
-<details class="qa"><summary>A change in engine pitch, like it&rsquo;s &ldquo;giving up&rdquo;<i class="caret"></i></summary><div class="body">Completely normal. Just after take-off the pilots reduce power from full-thrust to a quieter climb setting — it is planned, and it happens on every single flight. The engines are still doing exactly what they should.</div></details>
-<details class="qa"><summary>Barking or dog-like sounds before push-back (Airbus)<i class="caret"></i></summary><div class="body">A hydraulic pump on many Airbus jets, nicknamed the &ldquo;barking dog.&rdquo; Odd, but entirely mechanical and harmless — just a pump doing its job.</div></details>
-<details class="qa"><summary>A bong or chime mid-flight<i class="caret"></i></summary><div class="body">Usually just the crew signalling each other, or the seatbelt sign changing. It is an intercom tone, nothing more — the aviation equivalent of a doorbell.</div></details>
+<details class="qa"><summary>A change in engine pitch, like it&rsquo;s &ldquo;giving up&rdquo;<i class="caret"></i></summary><div class="body">Completely normal. Just after take-off the pilots reduce power from full-thrust to a quieter climb setting, it is planned, and it happens on every single flight. The engines are still doing exactly what they should.</div></details>
+<details class="qa"><summary>Barking or dog-like sounds before push-back (Airbus)<i class="caret"></i></summary><div class="body">A hydraulic pump on many Airbus jets, nicknamed the &ldquo;barking dog.&rdquo; Odd, but entirely mechanical and harmless, just a pump doing its job.</div></details>
+<details class="qa"><summary>A bong or chime mid-flight<i class="caret"></i></summary><div class="body">Usually just the crew signalling each other, or the seatbelt sign changing. It is an intercom tone, nothing more, the aviation equivalent of a doorbell.</div></details>
 <details class="qa"><summary>Rushing air / a whooshing hiss<i class="caret"></i></summary><div class="body">Air conditioning and pressurisation, constantly cycling fresh air through the cabin. Cabin air is fully refreshed every couple of minutes, cleaner than most offices.</div></details>
 </div>
 </div></section>
@@ -1559,9 +1593,9 @@ renderPage({
 <span class="eyebrow">Built for it</span>
 <h2 class="title" style="margin-bottom:8px">How much the aircraft can take</h2>
 <div class="prose" style="margin-top:12px">
-<p>Modern airliners are among the most redundant machines ever built. Two or more engines, and a fully loaded jet can climb and fly safely on just one — pilots train for it constantly. Multiple independent hydraulic systems, multiple electrical systems, backups for the backups. If something fails, there is almost always a second and third way to do the same job.</p>
-<p>A jet does not fall if the engines quit, either — it glides. An airliner at cruise can glide well over 100 kilometres with no thrust at all, giving crews enormous time and distance to restart or divert. Lightning strikes aircraft routinely and the charge simply flows around the metal skin and off the other side; passengers rarely even notice.</p>
-<p>And every one of those pilots has rehearsed the rare scenarios hundreds of times in simulators before they ever carry you. When something unusual happens, they are not surprised — they are running a checklist they know by heart.</p>
+<p>Modern airliners are among the most redundant machines ever built. Two or more engines, and a fully loaded jet can climb and fly safely on just one, pilots train for it constantly. Multiple independent hydraulic systems, multiple electrical systems, backups for the backups. If something fails, there is almost always a second and third way to do the same job.</p>
+<p>A jet does not fall if the engines quit, either, it glides. An airliner at cruise can glide well over 100 kilometres with no thrust at all, giving crews enormous time and distance to restart or divert. Lightning strikes aircraft routinely and the charge simply flows around the metal skin and off the other side; passengers rarely even notice.</p>
+<p>And every one of those pilots has rehearsed the rare scenarios hundreds of times in simulators before they ever carry you. When something unusual happens, they are not surprised, they are running a checklist they know by heart.</p>
 </div>
 </div></section>
 
@@ -1569,25 +1603,26 @@ renderPage({
 <span class="eyebrow">In your control</span>
 <h2 class="title" style="margin-bottom:8px">Gentle things that genuinely help</h2>
 <div class="prose" style="margin-top:12px">
-<p><b>Choose your seat.</b> A seat over the wing, toward the middle of the aircraft, feels the least motion — it is the balance point, the way the centre of a see-saw barely moves. A window seat lets some people feel more oriented; an aisle helps others feel less boxed in. Pick what suits <em>you</em>.</p>
-<p><b>Breathe slowly and deliberately.</b> Fear speeds up your breathing, which fuels more fear. Breathe in for four counts, out for six. The long exhale is the part that calms your nervous system — do it for a minute and the physical panic genuinely eases.</p>
-<p><b>Tell a crew member.</b> Cabin crew help nervous flyers all the time and will happily check in on you. Knowing someone calm knows how you feel is a real comfort — and they have seen every bump a thousand times.</p>
+<p><b>Choose your seat.</b> A seat over the wing, toward the middle of the aircraft, feels the least motion, it is the balance point, the way the centre of a see-saw barely moves. A window seat lets some people feel more oriented; an aisle helps others feel less boxed in. Pick what suits <em>you</em>.</p>
+<p><b>Breathe slowly and deliberately.</b> Fear speeds up your breathing, which fuels more fear. Breathe in for four counts, out for six. The long exhale is the part that calms your nervous system, do it for a minute and the physical panic genuinely eases.</p>
+<p><b>Tell a crew member.</b> Cabin crew help nervous flyers all the time and will happily check in on you. Knowing someone calm knows how you feel is a real comfort, and they have seen every bump a thousand times.</p>
 <p><b>Give your mind a job.</b> A gripping playlist, a film you&rsquo;ve saved, a game, a conversation. Anticipation feeds fear; occupying your attention starves it.</p>
-<p><b>Learn what the flight will feel like.</b> Bumps on climb-out, the engine easing back, the flaps humming, a turn banking the whole cabin — all normal. When you know the script, the surprises stop being frightening.</p>
+<p><b>Learn what the flight will feel like.</b> Bumps on climb-out, the engine easing back, the flaps humming, a turn banking the whole cabin, all normal. When you know the script, the surprises stop being frightening.</p>
+<p><b>Take the friction out of the day.</b> A lot of pre-flight stress is just logistics: rushing, repacking, hunting for a bag at the carousel. Being organised the night before helps more than people expect. A reliable <a href="${SUITCASE}" rel="sponsored nofollow noopener" target="_blank">hard-shell case</a> that closes without a fight is a small thing that makes the whole morning calmer.</p>
 </div>
 </div></section>
 
 <section class="section" style="padding-top:0"><div class="wrap">
 <div class="mf-rg" style="line-height:1.6">
-<b>If your fear runs deeper than nerves.</b> For some people, flight anxiety is a genuine phobia, and no web page can talk that away — nor should it try. That is not a weakness; it is a common, treatable thing. Airline-run and pilot-led <b>fear-of-flying courses</b> have excellent track records, and a GP or a therapist trained in anxiety (CBT works especially well here) can help you get back in the air for good. Reaching out for that support is a strong, sensible move — and the reward is the whole world opening back up to you.</div>
-<p class="sub" style="margin-top:22px;text-align:center">Curious rather than calm now? That is the goal. <a href="/explained" style="color:var(--gold)">Explore how these machines work</a> — or plan the trip itself with our guide to <a href="/travel-classes" style="color:var(--gold)">classes, bargains &amp; points &rarr;</a></p>
+<b>If your fear runs deeper than nerves.</b> For some people, flight anxiety is a genuine phobia, and no web page can talk that away, nor should it try. That is not a weakness; it is a common, treatable thing. Airline-run and pilot-led <b>fear-of-flying courses</b> have excellent track records, and a GP or a therapist trained in anxiety (CBT works especially well here) can help you get back in the air for good. Reaching out for that support is a strong, sensible move, and the reward is the whole world opening back up to you.</div>
+<p class="sub" style="margin-top:22px;text-align:center">Curious rather than calm now? That is the goal. <a href="/explained" style="color:var(--gold)">Explore how these machines work</a>, or plan the trip itself with our guide to <a href="/travel-classes" style="color:var(--gold)">classes, bargains &amp; points &rarr;</a></p>
 </div></section>`
 });
 
 /* ---------- travel classes, bargains & points (affiliate where relevant) ---------- */
 renderPage({
   file: 'travel-classes.html', urlPath: '/travel-classes', current: '',
-  title: 'Flight classes, bargains & points — fly better for less',
+  title: 'Flight classes, bargains & points, fly better for less',
   description: 'How economy, premium economy, business and first really differ, the evergreen strategies for cheaper flights, and how transferable points can unlock.',
   jsonld: [{ '@context': 'https://schema.org', '@type': 'Article', headline: 'Flight classes, bargains & points', description: 'How the cabins differ, how to find cheaper flights, and how points unlock premium seats.', url: 'https://aircraft.fyi/travel-classes' }, faqLd([
     { q: 'What is the difference between premium economy and business class?', a: 'Premium economy is a bigger, more reclined seat with better food and service, but still an upright seat. Business class on long-haul usually means a lie-flat bed, lounge access and direct aisle access. Premium economy is often the best value; business is the biggest comfort leap for overnight flights.' },
@@ -1599,7 +1634,7 @@ renderPage({
 <section class="hero"><div class="wrap">
 <div class="crumb"><a href="/">Home</a> › Classes, bargains &amp; points</div>
 <h1>Fly better for less</h1>
-<p class="lead">How the cabins actually differ, the strategies for cheaper flights that never go out of date, and how points and miles can turn an economy budget into a business-class seat. We stick to <em>durable principles</em> — the specifics of any card or programme change constantly, so treat named examples as a starting point and always check current terms yourself.</p>
+<p class="lead">How the cabins actually differ, the strategies for cheaper flights that never go out of date, and how points and miles can turn an economy budget into a business-class seat. We stick to <em>durable principles</em>, the specifics of any card or programme change constantly, so treat named examples as a starting point and always check current terms yourself.</p>
 <p class="sub" style="margin-top:10px">First time in the air, or a nervous flyer? Start with <a href="/fear-of-flying" style="color:var(--gold)">our guide to feeling calm on board &rarr;</a></p>
 </div></section>
 
@@ -1607,10 +1642,10 @@ renderPage({
 <span class="eyebrow">The cabins</span>
 <h2 class="title" style="margin-bottom:8px">What you&rsquo;re actually paying for</h2>
 <div class="qa-list">
-<details class="qa" open><summary>Economy<i class="caret"></i></summary><div class="body">The core product: you and your bag, from A to B. The price gap between airlines here is mostly about baggage rules, seat pitch and how much a change costs you — not safety or the flying itself. On most airlines the cheapest &ldquo;basic&rdquo; fares trade flexibility and seat choice for the low headline price.</div></details>
-<details class="qa"><summary>Premium economy<i class="caret"></i></summary><div class="body">A bigger seat, more recline and legroom, better food and service — but still an upright seat, not a bed. Often the best <em>value</em> jump on a long flight: a large comfort gain for a fraction of the business-class price. The sweet spot for many long-haul travellers paying their own way.</div></details>
-<details class="qa"><summary>Business<i class="caret"></i></summary><div class="body">On long-haul, this usually means a lie-flat bed, lounge access, priced meals and direct-aisle access. The single biggest leap in comfort for overnight flights — arriving rested instead of wrecked. Short-haul &ldquo;business&rdquo; is often just economy with a blocked middle seat and better catering, so check what you&rsquo;re actually buying.</div></details>
-<details class="qa"><summary>First<i class="caret"></i></summary><div class="body">A shrinking, ultra-premium cabin — private suites, doors, exceptional dining — offered by only a handful of airlines now, as many replace it with very good business class. This is the cabin points-and-miles are uniquely good at unlocking, because paying cash is eye-watering but the points price can be merely ambitious.</div></details>
+<details class="qa" open><summary>Economy<i class="caret"></i></summary><div class="body">The core product: you and your bag, from A to B. The price gap between airlines here is mostly about baggage rules, seat pitch and how much a change costs you, not safety or the flying itself. On most airlines the cheapest &ldquo;basic&rdquo; fares trade flexibility and seat choice for the low headline price.</div></details>
+<details class="qa"><summary>Premium economy<i class="caret"></i></summary><div class="body">A bigger seat, more recline and legroom, better food and service, but still an upright seat, not a bed. Often the best <em>value</em> jump on a long flight: a large comfort gain for a fraction of the business-class price. The sweet spot for many long-haul travellers paying their own way.</div></details>
+<details class="qa"><summary>Business<i class="caret"></i></summary><div class="body">On long-haul, this usually means a lie-flat bed, lounge access, priced meals and direct-aisle access. The single biggest leap in comfort for overnight flights, arriving rested instead of wrecked. Short-haul &ldquo;business&rdquo; is often just economy with a blocked middle seat and better catering, so check what you&rsquo;re actually buying.</div></details>
+<details class="qa"><summary>First<i class="caret"></i></summary><div class="body">A shrinking, ultra-premium cabin, private suites, doors, exceptional dining, offered by only a handful of airlines now, as many replace it with very good business class. This is the cabin points-and-miles are uniquely good at unlocking, because paying cash is eye-watering but the points price can be merely ambitious.</div></details>
 </div>
 </div></section>
 
@@ -1619,7 +1654,7 @@ renderPage({
 <h2 class="title" style="margin-bottom:8px">Evergreen ways to pay less</h2>
 <div class="prose" style="margin-top:12px">
 <p><b>Be flexible on dates.</b> The same seat swings wildly in price by day and season. Mid-week departures and the quiet &ldquo;shoulder&rdquo; weeks either side of peak season are reliably cheaper. If a tool lets you see a whole month at once, the cheap days jump right out.</p>
-<p><b>Book in the sweet spot.</b> Painfully early rarely wins, and last-minute long-haul is usually dear. For most international trips a booking window of a couple of months out tends to land near the low — not a magic date, just the fat middle of the curve where airlines haven&rsquo;t yet started squeezing.</p>
+<p><b>Book in the sweet spot.</b> Painfully early rarely wins, and last-minute long-haul is usually dear. For most international trips a booking window of a couple of months out tends to land near the low, not a magic date, just the fat middle of the curve where airlines haven&rsquo;t yet started squeezing.</p>
 <p><b>Consider positioning.</b> Sometimes a cheap short hop to a bigger hub, then a separate long-haul from there, beats the single through-fare from your local airport. It takes more effort and a little risk if connections are tight, but the savings can be large.</p>
 <p><b>Weigh the basic fares honestly.</b> A rock-bottom fare with no bag and no changes is a bargain <em>only</em> if that genuinely fits your trip. Add the bag you&rsquo;ll actually check and compare the real totals, not the headline numbers.</p>
 </div>
@@ -1629,13 +1664,13 @@ renderPage({
 <span class="eyebrow">The real magic</span>
 <h2 class="title" style="margin-bottom:8px">Points &amp; miles, explained properly</h2>
 <div class="prose" style="margin-top:12px">
-<p>Here is the idea that changes everything: <b>the cash price and the points price of a seat have almost nothing to do with each other.</b> A business-class seat that costs thousands in money might cost a points total you can realistically earn from everyday spending and sign-up bonuses. Points are worth wildly more in a lie-flat seat than against a cheap economy fare — so the winning move is to <em>save</em> them for the premium cabins where cash prices are absurd.</p>
-<p><b>Transferable points beat airline-specific ones.</b> The most flexible currencies are the &ldquo;transferable&rdquo; points from major card programmes — American Express Membership Rewards, and its equivalents — because you can move them to <em>many</em> different airline and hotel partners. That flexibility is the whole game: you&rsquo;re not locked to one airline&rsquo;s seats or one airline&rsquo;s devaluations. A co-branded airline card ties you to that one airline; a transferable-points card keeps your options open. <span style="color:var(--muted)">(Which programmes transfer where, and at what ratio, changes regularly — check current terms.)</span></p>
-<p><b>Sign-up bonuses are the fast lane.</b> A single card&rsquo;s welcome bonus can be worth more points than a year of ordinary spending. That&rsquo;s often the difference between &ldquo;someday&rdquo; and &ldquo;this year&rdquo; for a premium redemption — just never chase one by spending money you wouldn&rsquo;t have spent, or carrying a balance whose interest dwarfs any reward.</p>
+<p>Here is the idea that changes everything: <b>the cash price and the points price of a seat have almost nothing to do with each other.</b> A business-class seat that costs thousands in money might cost a points total you can realistically earn from everyday spending and sign-up bonuses. Points are worth wildly more in a lie-flat seat than against a cheap economy fare, so the winning move is to <em>save</em> them for the premium cabins where cash prices are absurd.</p>
+<p><b>Transferable points beat airline-specific ones.</b> The most flexible currencies are the &ldquo;transferable&rdquo; points from major card programmes, American Express Membership Rewards, and its equivalents, because you can move them to <em>many</em> different airline and hotel partners. That flexibility is the whole game: you&rsquo;re not locked to one airline&rsquo;s seats or one airline&rsquo;s devaluations. A co-branded airline card ties you to that one airline; a transferable-points card keeps your options open. <span style="color:var(--muted)">(Which programmes transfer where, and at what ratio, changes regularly, check current terms.)</span></p>
+<p><b>Sign-up bonuses are the fast lane.</b> A single card&rsquo;s welcome bonus can be worth more points than a year of ordinary spending. That&rsquo;s often the difference between &ldquo;someday&rdquo; and &ldquo;this year&rdquo; for a premium redemption, just never chase one by spending money you wouldn&rsquo;t have spent, or carrying a balance whose interest dwarfs any reward.</p>
 <p><b>Alliances widen the door.</b> Airlines sit in three big alliances, and points with one carrier can often book seats on its partners. That&rsquo;s how points earned at home can fly you on a completely different airline across the world.</p>
-<p><b>The honest catch:</b> premium award seats are limited and go fast, so this rewards flexibility and a little planning. It is not free money — it is a skill. But it is a very learnable one, and the payoff is real: seats most people believe are out of reach, for a fraction of the cash.</p>
+<p><b>The honest catch:</b> premium award seats are limited and go fast, so this rewards flexibility and a little planning. It is not free money, it is a skill. But it is a very learnable one, and the payoff is real: seats most people believe are out of reach, for a fraction of the cash.</p>
 </div>
-<div class="mf-rg" style="margin-top:22px;line-height:1.6"><b>Why we won&rsquo;t quote exact numbers.</b> Points transfer ratios, card bonuses and award prices change constantly — anything specific we printed today could be wrong within months, and this site&rsquo;s whole promise is accuracy. So we&rsquo;ve given you the durable principles that stay true. For today&rsquo;s exact figures, check the card or airline programme directly before you commit.</div>
+<div class="mf-rg" style="margin-top:22px;line-height:1.6"><b>Why we won&rsquo;t quote exact numbers.</b> Points transfer ratios, card bonuses and award prices change constantly, anything specific we printed today could be wrong within months, and this site&rsquo;s whole promise is accuracy. So we&rsquo;ve given you the durable principles that stay true. For today&rsquo;s exact figures, check the card or airline programme directly before you commit.</div>
 </div></section>
 
 <section class="section" style="padding-top:0"><div class="wrap">
@@ -1645,7 +1680,7 @@ renderPage({
 <article class="gearitem">
 <span class="gear-tag">Reading</span>
 <h3>Points &amp; miles strategy books</h3>
-<p>The field moves fast, but a good guide to the <em>fundamentals</em> — how earning, transferring and award-booking actually work — pays for itself on the first redemption. Look for a recent edition, since the specifics date quickly.</p>
+<p>The field moves fast, but a good guide to the <em>fundamentals</em>, how earning, transferring and award-booking actually work, pays for itself on the first redemption. Look for a recent edition, since the specifics date quickly.</p>
 <div class="gear-row">
 <a class="gear-cta" href="${amz('points and miles travel hacking guide book')}" target="_blank" rel="nofollow noopener">Find on Amazon &rarr;</a>
 </div>
@@ -1653,9 +1688,17 @@ renderPage({
 <article class="gearitem">
 <span class="gear-tag">On the flight</span>
 <h3>What actually makes premium cabins comfortable</h3>
-<p>If you&rsquo;re turning left for the first time — or just want economy to feel better — a decent noise-cancelling headset is the one upgrade that genuinely transforms a long flight, in any cabin.</p>
+<p>If you&rsquo;re turning left for the first time, or just want economy to feel better, a decent noise-cancelling headset is the one upgrade that genuinely transforms a long flight, in any cabin.</p>
 <div class="gear-row">
-<a class="gear-cta" href="${amz('noise cancelling headphones travel')}" target="_blank" rel="nofollow noopener">Find on Amazon &rarr;</a>
+<a class="gear-cta" href="${amz('noise cancelling headphones travel')}" target="_blank" rel="sponsored nofollow noopener">Find on Amazon &rarr;</a>
+</div>
+</article>
+<article class="gearitem">
+<span class="gear-tag">Going on a trip?</span>
+<h3>A hard-shell case that survives the hold</h3>
+<p>A large four-wheel hard shell is the workhorse of checked baggage: the American Tourister Soundbox is a 77&nbsp;cm expandable case with a TSA lock, and it comes in a wide range of colours so yours is easy to spot on the carousel. Light for its size, and it takes a beating.</p>
+<div class="gear-row">
+<a class="gear-cta" href="${SUITCASE}" target="_blank" rel="sponsored nofollow noopener">View on Amazon &rarr;</a>
 </div>
 </article>
 </div>
@@ -1665,13 +1708,13 @@ renderPage({
 
 renderPage({
   file: 'manufacturers.html', urlPath: '/manufacturers', current: '',
-  title: 'Aircraft manufacturers — who builds the giants',
-  description: fitDesc(`Every manufacturer on aircraft.fyi, from Airbus and Boeing to Antonov, Tupolev and Lockheed — line-ups, production numbers and full sourced specifications.`),
+  title: 'Aircraft manufacturers, who builds the giants',
+  description: fitDesc(`Every manufacturer on aircraft.fyi, from Airbus and Boeing to Antonov, Tupolev and Lockheed, line-ups, production numbers and full sourced specifications.`),
   jsonld: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Aircraft manufacturers', url: 'https://aircraft.fyi/manufacturers' },
   content: `
 <section class="hero"><div class="wrap">
 <h1>The people who <span class="em">build</span> them.</h1>
-<p class="lead">Sixteen manufacturers, one line-up each — every aircraft they built that appears on this site, with production numbers and true-scale silhouettes.</p>
+<p class="lead">Sixteen manufacturers, one line-up each, every aircraft they built that appears on this site, with production numbers and true-scale silhouettes.</p>
 </div></section>
 <section class="section" style="padding-top:0"><div class="wrap">
 <span class="eyebrow">The builders</span>
@@ -1698,8 +1741,8 @@ for (const t of TY) {
   const longest = list.slice().sort((x, y) => y.core.length_m - x.core.length_m)[0];
   renderPage({
     file: `types/${t.slug}.html`, urlPath: `/types/${t.slug}`, current: '',
-    title: `${t.name} — explained and compared`.slice(0, 60),
-    description: fitDesc(`${t.tagline} ${list.length} ${t.name.toLowerCase()} on aircraft.fyi, led by the ${longest.name} — sourced specs, silhouettes and every operator.`),
+    title: `${t.name}, explained and compared`.slice(0, 60),
+    description: fitDesc(`${t.tagline} ${list.length} ${t.name.toLowerCase()} on aircraft.fyi, led by the ${longest.name}, sourced specs, silhouettes and every operator.`),
     jsonld: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: t.name, url: `https://aircraft.fyi/types/${t.slug}` },
     content: `
 <section class="hero"><div class="wrap">
@@ -1716,7 +1759,7 @@ ${t.prose.map(p => `<p>${esc(p)}</p>`).join('\n')}
 <section class="section" style="padding-top:0"><div class="wrap">
 <span class="eyebrow">The aircraft</span>
 <h2 class="title">Every ${esc(t.name.toLowerCase().replace(/s$/, ''))} here</h2>
-<p class="sub">Silhouettes are sized by real wingspan — bigger aircraft draw bigger.</p>
+<p class="sub">Silhouettes are sized by real wingspan, bigger aircraft draw bigger.</p>
 ${list.length > 1 ? `<div class="allineup" style="margin-bottom:20px">${list.slice().sort((x, y) => (y.core.wingspan_m || 0) - (x.core.wingspan_m || 0)).map(x => `<a class="lu" href="/aircraft/${x.slug}" style="flex:${x.core.wingspan_m || 10} 1 0"><span class="lu-s">${silScaled(x)}</span><span class="lu-n">${esc(shortName(x))}</span></a>`).join('')}</div>` : ''}
 <div class="filterbar colsbar" role="group" aria-label="Grid columns">
 <span class="fsort-lbl">Grid</span>
@@ -1738,13 +1781,13 @@ ${miniTable(list)}
 
 renderPage({
   file: 'types.html', urlPath: '/types', current: '',
-  title: 'Aircraft types — every category explained',
-  description: fitDesc(`Widebody, narrowbody, freighter, military transport, bomber, supersonic, trijet and propliner — every aircraft category explained and compared at true scale.`),
+  title: 'Aircraft types, every category explained',
+  description: fitDesc(`Widebody, narrowbody, freighter, military transport, bomber, supersonic, trijet and propliner, every aircraft category explained and compared at true scale.`),
   jsonld: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Aircraft types', url: 'https://aircraft.fyi/types' },
   content: `
 <section class="hero"><div class="wrap">
 <h1>Every kind of <span class="em">aircraft</span>, explained.</h1>
-<p class="lead">Eight categories, from two-aisle widebodies to the outsize freighters that carry what nothing else can — each one defined, illustrated and ranked.</p>
+<p class="lead">Eight categories, from two-aisle widebodies to the outsize freighters that carry what nothing else can, each one defined, illustrated and ranked.</p>
 </div></section>
 <section class="section" style="padding-top:0"><div class="wrap">
 <div class="sillegend">
@@ -1774,7 +1817,7 @@ ${TY.map(t => {
 for (const h of HUBS) {
   renderPage({
     file: `${h.slug}.html`, urlPath: `/${h.slug}`, current: '',
-    title: `${h.name} — aircraft.fyi`, description: h.description, sitemap: false,
+    title: `${h.name}, aircraft.fyi`, description: h.description, sitemap: false,
     jsonld: { '@context': 'https://schema.org', '@type': 'WebPage', name: h.name, url: `https://aircraft.fyi/${h.slug}` },
     content: `
 <section class="hero"><div class="wrap">
@@ -1808,7 +1851,7 @@ const SEARCH = [
     q: [x.name, x.cc || ''].join(' ').toLowerCase() })),
   ...TY.map(t => ({ t: t.name, u: `/types/${t.slug}`, k: 'Type', d: `${byType(t).length} aircraft`,
     q: [t.name, ...(t.cats || []), ...(t.cats || []).map(cn => CATCOLOR[cn] || '')].join(' ').toLowerCase() })),
-  ...EX.map(e => ({ t: e.name.split(' — ')[0], u: `/explained/${e.slug}`, k: 'Explained', d: e.tagline,
+  ...EX.map(e => ({ t: e.name.split(', ')[0], u: `/explained/${e.slug}`, k: 'Explained', d: e.tagline,
     q: [e.name, e.tagline].join(' ').toLowerCase() })),
   ...POSTS.map(p => ({ t: p.title, u: `/blog/${p.slug}`, k: 'Blog', d: p.dek.slice(0, 70) + '…',
     q: [p.title, p.dek, ...(p.tags || [])].join(' ').toLowerCase() })),
@@ -1817,11 +1860,12 @@ const SEARCH = [
   ...RECORD_BOARDS.map(r => ({ t: r.h1, u: r.urlPath, k: 'Records', d: r.lead.slice(0, 70) + '…', q: r.h1.toLowerCase() })),
   { t: 'Compare aircraft', u: '/compare', k: 'Tool', d: 'Any three aircraft at true scale', q: 'compare tool scale engine side by side' },
   { t: 'Bring back Concorde', u: '/bring-back-concorde', k: 'Petition', d: 'Sign it', q: 'concorde petition bring back supersonic sign' },
+  { t: 'Project Sunrise', u: '/project-sunrise', k: 'Feature', d: 'Qantas non-stop Sydney flights', q: 'project sunrise qantas a350 ulr ultra long haul sydney london new york non-stop' },
   { t: 'Methodology', u: '/methodology', k: 'Reference', d: 'How every number is calculated', q: 'methodology sources how we calculate data' },
   { t: 'Scared of flying?', u: '/fear-of-flying', k: 'Guide', d: 'The engineering that makes flying safe', q: 'fear of flying scared afraid nervous anxiety turbulence safe phobia calm' },
   { t: 'Classes, bargains & points', u: '/travel-classes', k: 'Guide', d: 'Fly better for less', q: 'business first class economy premium points miles amex upgrade cheap flights bargains award' },
   { t: 'The Silhouette Quiz', u: '/quiz', k: 'Play', d: 'Name the aircraft from its outline', q: 'quiz game play guess silhouette outline identify test trivia' },
-  { t: 'Gate Runner', u: '/fly', k: 'Play', d: 'Free flying game — your wingspan is the hitbox', q: 'fly flying game free airplane games plane game simulator flight sim play arcade gate runner' },
+  { t: 'Gate Runner', u: '/fly', k: 'Play', d: 'Free flying game, your wingspan is the hitbox', q: 'fly flying game free airplane games plane game simulator flight sim play arcade gate runner' },
   { t: 'Blueprint Designer', u: '/design', k: 'Play', d: 'Design your own aircraft and export an AI prompt', q: 'design your own plane aircraft designer builder create custom airplane blueprint 3d wireframe prompt generator' },
   { t: 'The Scale Engine', u: '/scale', k: 'Tool', d: 'Every aircraft at true scale', q: 'scale engine true size comparison how big measure' },
   { t: 'The hangar shop', u: '/gear', k: 'Shop', d: 'Models, kits and spotter gear', q: 'gear shop lego models die cast kits flight sim spotter presents gifts' },
@@ -1832,13 +1876,13 @@ const SEARCH = [
   { t: 'The blog', u: '/blog', k: 'Hub', d: 'Writing about aircraft', q: 'blog posts articles writing news' }
 ];
 fs.writeFileSync(path.join(SITE, 'assets', 'js', 'search-index.js'),
-  '/* GENERATED by build.js — do not edit by hand. */\nwindow.SEARCH_INDEX = ' + JSON.stringify(SEARCH) + ';\n');
+  '/* GENERATED by build.js, do not edit by hand. */\nwindow.SEARCH_INDEX = ' + JSON.stringify(SEARCH) + ';\n');
 console.log(`  · search index: ${SEARCH.length} entries`);
 
 /* ---------- the client data file: GENERATED from data/aircraft.json, never hand-edited ---------- */
 fs.mkdirSync(path.join(SITE, 'assets', 'js'), { recursive: true });
 fs.writeFileSync(path.join(SITE, 'assets', 'js', 'aircraft-data.js'),
-  '/* GENERATED by build.js from data/aircraft.json — do not edit by hand, your changes will be overwritten. */\n' +
+  '/* GENERATED by build.js from data/aircraft.json, do not edit by hand, your changes will be overwritten. */\n' +
   'window.AIRCRAFT = ' + JSON.stringify(A.map(a => ({
     slug: a.slug, name: a.name, short: shortName(a), maker: a.manufacturer,
     type: typeOf(a), typeName: (TY.find(t => t.slug === typeOf(a)) || {}).name || '',
@@ -1850,14 +1894,14 @@ fs.writeFileSync(path.join(SITE, 'assets', 'js', 'aircraft-data.js'),
 /* ---------- COMPARE: one tool, any three aircraft ---------- */
 renderPage({
   file: 'compare.html', urlPath: '/compare', current: 'compare', ogImage: 'compare-tool.png',
-  title: 'Compare aircraft — side by side, at true scale',
-  description: 'Pick any two or three aircraft and see them drawn at true relative scale, with every specification side by side. 43 aircraft, from the A320 to the An-225.',
+  title: 'Compare aircraft, side by side, at true scale',
+  description: `Pick any two or three aircraft and see them drawn at true relative scale, with every specification side by side. ${A.length} aircraft, from the A320 to the An-225.`,
   jsonld: { '@context': 'https://schema.org', '@type': 'WebApplication', name: 'aircraft.fyi Compare', applicationCategory: 'ReferenceApplication', url: 'https://aircraft.fyi/compare', operatingSystem: 'Any' },
   head: '<script src="/assets/js/aircraft-data.js" defer></script>',
   content: `
 <section class="hero"><div class="wrap">
 <h1>Compare any <span class="em">three</span> aircraft.</h1>
-<p class="lead">Drawn to true relative scale from sourced figures — against a 1.8 m person and a double-decker bus — with every specification side by side. Same metres, same pixels, no artistic licence.</p>
+<p class="lead">Drawn to true relative scale from sourced figures, against a 1.8 m person and a double-decker bus, with every specification side by side. Same metres, same pixels, no artistic licence.</p>
 </div></section>
 
 <section class="section" style="padding-top:0"><div class="wrap">
@@ -1888,7 +1932,7 @@ renderPage({
 <section class="section" style="padding-top:0"><div class="wrap">
 <span class="eyebrow">Popular matchups</span>
 <h2 class="title">The ones everybody asks about</h2>
-<p class="sub" style="margin-bottom:18px">Every other combination — all 903 of them — lives in the tool above. These six get a page of their own because they are the ones people actually search for.</p>
+<p class="sub" style="margin-bottom:18px">Every other combination, all 903 of them, lives in the tool above. These six get a page of their own because they are the ones people actually search for.</p>
 <div class="pillars two">
 ${COMPARES.slice(0, 6).map(([x, y]) => `<article class="acard"><h3><a href="/compare/${x.slug}-vs-${y.slug}">${esc(shortName(x))} vs ${esc(shortName(y))}</a></h3><p style="color:var(--muted);font-size:.92rem;margin:0 0 14px">A written verdict, both aircraft at true scale, and the full difference table.</p><a class="mini" href="/compare/${x.slug}-vs-${y.slug}">Read the matchup &rarr;</a></article>`).join('\n')}
 </div>
@@ -1908,7 +1952,7 @@ ${COMPARES.slice(0, 6).map(([x, y]) => `<article class="acard"><h3><a href="/com
   var groups = {};
   D.forEach(function(a){ (groups[a.typeName] = groups[a.typeName] || []).push(a); });
   function fill(sel, allowNone){
-    var html = allowNone ? '<option value="">— none —</option>' : '';
+    var html = allowNone ? '<option value="">,  none , </option>' : '';
     Object.keys(groups).forEach(function(g){
       html += '<optgroup label="' + g + '">';
       groups[g].slice().sort(function(p,q){ return p.name.localeCompare(q.name); })
@@ -1949,7 +1993,7 @@ ${COMPARES.slice(0, 6).map(([x, y]) => `<article class="acard"><h3><a href="/com
     out += '<rect x="' + x.toFixed(1) + '" y="' + (GROUND-hh).toFixed(1) + '" width="' + hw.toFixed(1) + '" height="' + hh.toFixed(1) + '" rx="' + (hw/2).toFixed(1) + '" fill="#1B6FCF"/>';
     out += '<text x="' + (x+hw/2).toFixed(1) + '" y="' + (GROUND+24) + '" text-anchor="middle" class="sl2">1.8 m</text>';
     svg.innerHTML = out;
-    $('cmpNote').textContent = items.map(function(a){ return a.name; }).join(' · ') + ' — all drawn at the same scale, standing on the same ground line.';
+    $('cmpNote').textContent = items.map(function(a){ return a.name; }).join(' · ') + ', all drawn at the same scale, standing on the same ground line.';
   }
 
   /* --- the spec table --- */
@@ -1974,7 +2018,7 @@ ${COMPARES.slice(0, 6).map(([x, y]) => `<article class="acard"><h3><a href="/com
       var best = r.noWin ? null : Math.max.apply(null, vals.filter(function(v){ return typeof v === 'number'; }));
       body += '<tr><td>' + r.label + '</td>' + items.map(function(a){
         var v = a.core[r.k];
-        if (v === undefined || v === null || v === '') return '<td class="num">—</td>';
+        if (v === undefined || v === null || v === '') return '<td class="num">, </td>';
         var txt = (imperial && r.imp) ? r.imp(v) : r.fmt(v);
         var win = (!r.noWin && v === best && items.length > 1 && vals.filter(function(x){ return x === best; }).length === 1);
         return '<td class="num' + (win ? ' win' : '') + '">' + txt + '</td>';
@@ -2069,8 +2113,8 @@ ${COMPARES.slice(0, 6).map(([x, y]) => `<article class="acard"><h3><a href="/com
   const acFams = [...new Set(RT.routes.map(r => r.ac.split('-')[0].replace('Airbus ', '').replace('Boeing ', '')))];
   renderPage({
     file: 'records/longest-flights.html', urlPath: '/records/longest-flights', current: 'records',
-    title: 'The longest flights in the world — ranked and filterable',
-    description: fitDesc(`Every scheduled flight over 12,900 km, ranked by great-circle distance — filter by aircraft or airline, switch to the longest route per aircraft, and see the record-breakers still to come.`),
+    title: 'The longest flights in the world, ranked and filterable',
+    description: fitDesc(`Every scheduled flight over 12,900 km, ranked by great-circle distance, filter by aircraft or airline, switch to the longest route per aircraft, and see the record-breakers still to come.`),
     ogImage: 'flights.png',
     jsonld: { '@context': 'https://schema.org', '@type': 'ItemList', name: RT.title, url: 'https://aircraft.fyi/records/longest-flights',
       itemListElement: RT.routes.filter(r => r.status === 'flying').slice(0, 10).map((r, i) => ({ '@type': 'ListItem', position: i + 1, name: `${r.fr}–${r.to} (${r.airline})` })) },
@@ -2078,7 +2122,7 @@ ${COMPARES.slice(0, 6).map(([x, y]) => `<article class="acard"><h3><a href="/com
 <section class="hero"><div class="wrap">
 <div class="crumb"><a href="/">Home</a> › <a href="/records">Records</a> › Longest flights</div>
 <h1>The longest <span class="em">flights</span> in the world.</h1>
-<p class="lead">Every scheduled route over 12,900 km, ranked by great-circle distance. The current record is Singapore to New York — and Qantas has already announced the flight that will beat it by 1,700 km, sometimes routing directly over the North Pole.</p>
+<p class="lead">Every scheduled route over 12,900 km, ranked by great-circle distance. The current record is Singapore to New York, and Qantas has already announced the flight that will beat it by 1,700 km, sometimes routing directly over the North Pole.</p>
 </div></section>
 
 <section class="section" style="padding-top:0"><div class="wrap">
@@ -2144,12 +2188,12 @@ ${RECORD_BOARDS.filter(x => x.urlPath !== '/records/longest-flights').map(x => `
       return '<div class="flrow' + (r.status !== 'flying' ? ' soon' : '') + '">' +
         '<span class="fl-rank num">' + (i + 1) + '</span>' +
         '<span class="fl-main"><span class="fl-route">' + esc(r.fr) + ' <i>' + esc(r.fri) + '</i> → ' + esc(r.to) + ' <i>' + esc(r.toi) + '</i></span>' +
-        '<span class="fl-sub">' + alTxt + ' · ' + acLink + (r.note ? ' — <span class="fl-note">' + esc(r.note) + '</span>' : '') + '</span></span>' +
+        '<span class="fl-sub">' + alTxt + ' · ' + acLink + (r.note ? ', <span class="fl-note">' + esc(r.note) + '</span>' : '') + '</span></span>' +
         '<span class="fl-tail"><b class="num">' + dist(r.km) + '</b>' + st + '</span></div>';
     }).join('') : '<p class="sub" style="padding:22px">Nothing matches those filters.</p>';
     var f = list.filter(function(r){ return r.status === 'flying'; }).length;
     $('flCount').textContent = 'Showing ' + list.length + ' route' + (list.length === 1 ? '' : 's') +
-      (mode === 'per' ? ' — the single longest currently-flying route for each aircraft type.' :
+      (mode === 'per' ? ', the single longest currently-flying route for each aircraft type.' :
        ' (' + f + ' flying, ' + (list.length - f) + ' announced).');
   }
   function chips(bar, attr, set){
@@ -2179,32 +2223,32 @@ ${RECORD_BOARDS.filter(x => x.urlPath !== '/records/longest-flights').map(x => `
 /* ---------- BRING BACK CONCORDE — petition ---------- */
 renderPage({
   file: 'bring-back-concorde.html', urlPath: '/bring-back-concorde', current: 'petition',
-  title: 'Bring Back Concorde — sign the petition',
-  description: 'Twenty-three years without supersonic flight. Sign the Bring Back Concorde petition — one signature per browser, each hashed into a verifiable receipt.',
+  title: 'Bring Back Concorde, sign the petition',
+  description: 'Twenty-three years without supersonic flight. Sign the Bring Back Concorde petition, one signature per browser, each hashed into a verifiable receipt.',
   ogImage: 'petition.png',
   jsonld: { '@context': 'https://schema.org', '@type': 'WebPage', name: 'Bring Back Concorde', url: 'https://aircraft.fyi/bring-back-concorde' },
   content: `
 <section class="hero"><div class="wrap">
 <div class="crumb"><a href="/">Home</a> › Bring Back Concorde</div>
 <h1>Bring back <span class="em">Concorde</span>.</h1>
-<p class="lead">On 24 October 2003 the fastest way to cross the Atlantic retired, and nothing has replaced it. Twenty-three years later, the journey takes twice as long as it did in 1996. This is a novelty petition with no legal force whatsoever — and we would still like to know how many of you feel the same way.</p>
+<p class="lead">On 24 October 2003 the fastest way to cross the Atlantic retired, and nothing has replaced it. Twenty-three years later, the journey takes twice as long as it did in 1996. This is a novelty petition with no legal force whatsoever, and we would still like to know how many of you feel the same way.</p>
 <div class="hero-sil" style="margin-top:8px">${silUse(A.find(x => x.slug === 'concorde'), 460)}</div>
 </div></section>
 
 <section class="section" style="padding-top:0"><div class="wrap">
 <div class="petStats">
-<div class="ss"><span class="k">Signatures</span><span class="v num" id="petTally">—</span></div>
+<div class="ss"><span class="k">Signatures</span><span class="v num" id="petTally">, </span></div>
 <div class="ss"><span class="k">Retired</span><span class="v num">24 Oct 2003</span></div>
-<div class="ss"><span class="k">Years grounded</span><span class="v num" id="petYears">—</span></div>
+<div class="ss"><span class="k">Years grounded</span><span class="v num" id="petYears">, </span></div>
 <div class="ss"><span class="k">Top speed lost</span><span class="v num">2,179 km/h</span></div>
 </div>
 
 <div class="qa" id="petCard" style="margin-top:24px"><div style="padding:22px">
 <h2 class="title" style="font-size:1.35rem;margin-bottom:6px">Sign it</h2>
-<p class="sub" style="margin-bottom:18px">One signature per browser. Your name never leaves your device unless the public tally is connected — and either way you get a verifiable receipt.</p>
+<p class="sub" style="margin-bottom:18px">One signature per browser. Your name never leaves your device unless the public tally is connected, and either way you get a verifiable receipt.</p>
 
 <label class="pick" style="margin-bottom:14px"><span>Your name</span>
-<input id="petName" type="text" maxlength="40" placeholder="e.g. Brian Trubshaw" autocomplete="name">
+<input id="petName" type="text" maxlength="40" placeholder="e.g. Brian Trubshaw" autocomplete="name" aria-label="Your name for the petition">
 </label>
 
 <div class="slideWrap" id="petSlide" role="slider" tabindex="0" aria-label="Slide to verify you are human" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
@@ -2231,11 +2275,11 @@ renderPage({
 <h2 class="title">The case, in four numbers</h2>
 <div class="pillars two">
 <article class="acard"><h3>2 h 52 min</h3><p style="color:var(--muted);font-size:.92rem;margin:0">Concorde's record New York to London. A 777 needs about seven hours for the same crossing today.</p></article>
-<article class="acard"><h3>Mach 2.04</h3><p style="color:var(--muted);font-size:.92rem;margin:0">Cruise speed — faster than a rifle bullet, at 60,000 ft, where you could see the curvature of the Earth.</p></article>
+<article class="acard"><h3>Mach 2.04</h3><p style="color:var(--muted);font-size:.92rem;margin:0">Cruise speed, faster than a rifle bullet, at 60,000 ft, where you could see the curvature of the Earth.</p></article>
 <article class="acard"><h3>23 years</h3><p style="color:var(--muted);font-size:.92rem;margin:0">Since the last commercial supersonic flight. Aviation is the only mode of transport that got slower.</p></article>
 <article class="acard"><h3>0</h3><p style="color:var(--muted);font-size:.92rem;margin:0">Supersonic airliners currently carrying passengers, anywhere in the world.</p></article>
 </div>
-<div class="callout" style="margin-top:26px"><p style="margin:0 0 12px">Realistically, Concorde is not coming back — but something might. We looked hard at whether it actually will.</p><a class="btn ghost" href="/blog/is-supersonic-travel-coming-back">Read: is supersonic travel actually coming back? &rarr;</a></div>
+<div class="callout" style="margin-top:26px"><p style="margin:0 0 12px">Realistically, Concorde is not coming back, but something might. We looked hard at whether it actually will.</p><a class="btn ghost" href="/blog/is-supersonic-travel-coming-back">Read: is supersonic travel actually coming back? &rarr;</a></div>
 </div></section>
 
 <script>
@@ -2306,7 +2350,7 @@ renderPage({
     signBtn.disabled = true;
     signBtn.textContent = 'You have signed ✓';
     name.disabled = true;
-    msg.textContent = 'Thank you. This browser has already signed — one signature each, that is the whole point.';
+    msg.textContent = 'Thank you. This browser has already signed, one signature each, that is the whole point.';
   }
 
   signBtn.addEventListener('click', async function(){
@@ -2326,7 +2370,7 @@ renderPage({
           body: JSON.stringify({ name: n, hash: hash, t: t }) });
         var j = await r.json();
         if (j && typeof j.count === 'number') $('petTally').textContent = j.count.toLocaleString('en-GB');
-      } catch(e){ msg.textContent = 'Signed locally — the public tally could not be reached just now.'; }
+      } catch(e){ msg.textContent = 'Signed locally, the public tally could not be reached just now.'; }
     }
     showReceipt(rec);
   });
@@ -2340,12 +2384,12 @@ renderPage({
         $('petTally').textContent = (j.count || 0).toLocaleString('en-GB');
         mode.textContent = 'Public tally is live. One signature per browser.';
       } catch(e){
-        $('petTally').textContent = '—';
-        mode.textContent = 'The public tally is temporarily unreachable. You can still sign — your receipt is stored on this device.';
+        $('petTally').textContent = ', ';
+        mode.textContent = 'The public tally is temporarily unreachable. You can still sign, your receipt is stored on this device.';
       }
     } else {
       $('petTally').textContent = signed() ? '1' : '0';
-      mode.innerHTML = '<b>Honest note:</b> this is a static site, so there is no public counter connected yet — the number above is what <i>this browser</i> has signed, not a global total. We are not going to invent a number. Wire up the counter endpoint (petition-worker.js ships in the repo) and it becomes a real, public tally.';
+      mode.innerHTML = '<b>Honest note:</b> this is a static site, so there is no public counter connected yet, the number above is what <i>this browser</i> has signed, not a global total. We are not going to invent a number. Wire up the counter endpoint (petition-worker.js ships in the repo) and it becomes a real, public tally.';
     }
     var rec = load();
     if (rec) showReceipt(rec);
@@ -2400,7 +2444,7 @@ ${post.sources.map(s => `<li style="margin-bottom:8px"><a href="${esc(s.url)}" r
 <span class="eyebrow">Related</span>
 <h2 class="title">Go deeper</h2>
 <div class="pillars two">
-<article class="acard"><div class="sil">${silScaled(A.find(x => x.slug === 'concorde'))}</div><h3><a href="/aircraft/concorde">Concorde</a></h3><p style="color:var(--muted);font-size:.92rem;margin:0 0 14px">The only supersonic airliner that ever really worked — full specification, operators and history.</p><a class="mini" href="/aircraft/concorde">Open the page &rarr;</a></article>
+<article class="acard"><div class="sil">${silScaled(A.find(x => x.slug === 'concorde'))}</div><h3><a href="/aircraft/concorde">Concorde</a></h3><p style="color:var(--muted);font-size:.92rem;margin:0 0 14px">The only supersonic airliner that ever really worked, full specification, operators and history.</p><a class="mini" href="/aircraft/concorde">Open the page &rarr;</a></article>
 <article class="acard"><div class="sil">${silScaled(A.find(x => x.slug === 'tupolev-tu-144'))}</div><h3><a href="/types/supersonic">Supersonic transports</a></h3><p style="color:var(--muted);font-size:.92rem;margin:0 0 14px">Two aircraft, one era, and a speed record nobody has taken back.</p><a class="mini" href="/types/supersonic">Open the category &rarr;</a></article>
 </div>
 </div></section>`
@@ -2409,12 +2453,12 @@ ${post.sources.map(s => `<li style="margin-bottom:8px"><a href="${esc(s.url)}" r
 renderPage({
   file: 'blog.html', urlPath: '/blog', current: 'blog', ogImage: 'blog.png',
   title: 'The aircraft.fyi blog',
-  description: 'Long-form aviation writing from aircraft.fyi — supersonic comebacks, engineering explainers and the stories behind the specifications. Sourced and dated.',
+  description: 'Long-form aviation writing from aircraft.fyi, supersonic comebacks, engineering explainers and the stories behind the specifications. Sourced and dated.',
   jsonld: { '@context': 'https://schema.org', '@type': 'Blog', name: 'aircraft.fyi blog', url: 'https://aircraft.fyi/blog' },
   content: `
 <section class="hero"><div class="wrap">
 <h1>The <span class="em">blog</span>.</h1>
-<p class="lead">Long-form writing on the aircraft we cover — sourced, dated, and honest about what nobody actually knows yet.</p>
+<p class="lead">Long-form writing on the aircraft we cover, sourced, dated, and honest about what nobody actually knows yet.</p>
 </div></section>
 <section class="section" style="padding-top:0"><div class="wrap">
 <span class="eyebrow">Latest</span>
@@ -2490,14 +2534,14 @@ function compareProse(a, b2) {
   const S = a.core.wingspan_m > b2.core.wingspan_m ? [a, b2] : [b2, a];
   const dl = Math.abs(a.core.length_m - b2.core.length_m).toFixed(2);
   const ds = Math.abs(a.core.wingspan_m - b2.core.wingspan_m).toFixed(2);
-  const p1 = `The ${esc(L[0].name)} is the longer of the two, at ${L[0].core.length_m.toFixed(2)} m against ${L[1].core.length_m.toFixed(2)} m — a difference of ${dl} m. ` +
+  const p1 = `The ${esc(L[0].name)} is the longer of the two, at ${L[0].core.length_m.toFixed(2)} m against ${L[1].core.length_m.toFixed(2)} m, a difference of ${dl} m. ` +
     (S[0].slug === L[0].slug
       ? `It also has the greater wingspan, ${ds} m wider, so it is the bigger aircraft on both measures.`
       : `Wingspan tells the opposite story: the ${esc(S[0].name)} spreads ${ds} m wider, so which one is "bigger" depends entirely on which dimension you care about.`);
-  const p2 = `${esc(a.identity)} ${esc(b2.identity)} The silhouettes above are drawn at true relative scale from the sourced figures on each aircraft's page — same metres, same pixels, no artistic licence.`;
+  const p2 = `${esc(a.identity)} ${esc(b2.identity)} The silhouettes above are drawn at true relative scale from the sourced figures on each aircraft's page, same metres, same pixels, no artistic licence.`;
   const sa = a.core.seats_typical, sb = b2.core.seats_typical;
   const p3 = (sa && sb)
-    ? `On capacity, the ${esc(sa > sb ? a.name : b2.name)} carries more people in a typical layout — ${Math.max(sa, sb)} against ${Math.min(sa, sb)}.`
+    ? `On capacity, the ${esc(sa > sb ? a.name : b2.name)} carries more people in a typical layout, ${Math.max(sa, sb)} against ${Math.min(sa, sb)}.`
     : `The two are built for different jobs, which is why a straight capacity comparison does not apply.`;
   return [p1, p2, p3];
 }
@@ -2505,7 +2549,7 @@ function compareProse(a, b2) {
 
 for (const [a, b2, verdict] of COMPARES) {
   const slug = `${a.slug}-vs-${b2.slug}`;
-  let title = `${shortName(a)} vs ${shortName(b2)} — size comparison`;
+  let title = `${shortName(a)} vs ${shortName(b2)}, size comparison`;
   if (title.length > 60) title = `${shortName(a)} vs ${shortName(b2)}`;
   if (title.length > 60) title = title.slice(0, 57) + '…';
   const related = COMPARES.filter(p => (p[0].slug === a.slug || p[1].slug === a.slug || p[0].slug === b2.slug || p[1].slug === b2.slug))
@@ -2521,7 +2565,7 @@ for (const [a, b2, verdict] of COMPARES) {
 <section class="hero"><div class="wrap">
 <div class="crumb"><a href="/">Home</a> › <a href="/compare">Compare</a> › ${esc(shortName(a))} vs ${esc(shortName(b2))}</div>
 <h1>${esc(shortName(a))} vs ${esc(shortName(b2))}</h1>
-<p class="lead">Both aircraft at true relative scale — against a 1.8 m person and a double-decker bus.</p>
+<p class="lead">Both aircraft at true relative scale, against a 1.8 m person and a double-decker bus.</p>
 </div></section>
 <section class="section" style="padding-top:0"><div class="wrap">
 ${compareSVG(a, b2)}
@@ -2558,11 +2602,11 @@ for (const e of EX) {
   renderPage({
     file: `explained/${e.slug}.html`, urlPath: `/explained/${e.slug}`, current: '',
     title: e.name.length > 60 ? e.name.slice(0, 57) + '…' : e.name,
-    description: fitDesc(`${e.tagline} Explained plainly by aircraft.fyi, with the aircraft that prove it — sourced specifications and true-scale silhouettes.`),
+    description: fitDesc(`${e.tagline} Explained plainly by aircraft.fyi, with the aircraft that prove it, sourced specifications and true-scale silhouettes.`),
     jsonld: { '@context': 'https://schema.org', '@type': 'TechArticle', headline: e.name, description: e.tagline, url: `https://aircraft.fyi/explained/${e.slug}` },
     content: `
 <section class="hero"><div class="wrap">
-<div class="crumb"><a href="/">Home</a> › <a href="/explained">Explained</a> › ${esc(e.name.split(' — ')[0])}</div>
+<div class="crumb"><a href="/">Home</a> › <a href="/explained">Explained</a> › ${esc(e.name.split(', ')[0])}</div>
 <h1>${esc(e.name)}</h1>
 <p class="lead">${esc(e.tagline)}</p>
 </div></section>
@@ -2582,15 +2626,15 @@ ${e.links.map(l => `<li style="margin-bottom:10px"><a class="mini" href="${l[1]}
 <span class="eyebrow">Keep reading</span>
 <h2 class="title">Other concepts</h2>
 <div class="pillars two">
-${EX.filter(x => x.slug !== e.slug).slice(0, 4).map(x => `<article class="acard"><h3><a href="/explained/${x.slug}">${esc(x.name.split(' — ')[0])}</a></h3><p style="color:var(--muted);font-size:.92rem;margin:0 0 14px">${esc(x.tagline)}</p><a class="mini" href="/explained/${x.slug}">Read it &rarr;</a></article>`).join('\n')}
+${EX.filter(x => x.slug !== e.slug).slice(0, 4).map(x => `<article class="acard"><h3><a href="/explained/${x.slug}">${esc(x.name.split(', ')[0])}</a></h3><p style="color:var(--muted);font-size:.92rem;margin:0 0 14px">${esc(x.tagline)}</p><a class="mini" href="/explained/${x.slug}">Read it &rarr;</a></article>`).join('\n')}
 </div>
 </div></section>`
   });
 }
 renderPage({
   file: 'explained.html', urlPath: '/explained', current: '',
-  title: 'Explained — the concepts behind the spec tables',
-  description: 'MTOW, ETOPS, range versus payload, wingtip devices, high-bypass turbofans and the widebody divide — the ideas behind the numbers, explained plainly.',
+  title: 'Explained, the concepts behind the spec tables',
+  description: 'MTOW, ETOPS, range versus payload, wingtip devices, high-bypass turbofans and the widebody divide, the ideas behind the numbers, explained plainly.',
   jsonld: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Explained', url: 'https://aircraft.fyi/explained' },
   content: `
 <section class="hero"><div class="wrap">
@@ -2601,8 +2645,83 @@ renderPage({
 <span class="eyebrow">The concepts</span>
 <h2 class="title">Start anywhere</h2>
 <div class="pillars two">
-${EX.map(e => `<article class="acard"><h3><a href="/explained/${e.slug}">${esc(e.name.split(' — ')[0])}</a></h3><p style="color:var(--muted);font-size:.92rem;margin:0 0 14px">${esc(e.tagline)}</p><a class="mini" href="/explained/${e.slug}">Read it &rarr;</a></article>`).join('\n')}
+${EX.map(e => `<article class="acard"><h3><a href="/explained/${e.slug}">${esc(e.name.split(', ')[0])}</a></h3><p style="color:var(--muted);font-size:.92rem;margin:0 0 14px">${esc(e.tagline)}</p><a class="mini" href="/explained/${e.slug}">Read it &rarr;</a></article>`).join('\n')}
 </div>
+</div></section>`
+});
+
+
+/* ---------- PROJECT SUNRISE, live tracker of Qantas' ultra-long-haul programme ----------
+   Current as of 24 July 2026. Dated facts are labelled so the page ages honestly. */
+renderPage({
+  file: 'project-sunrise.html', urlPath: '/project-sunrise', current: '',
+  title: 'Project Sunrise, Qantas\u2019 non-stop Sydney flights',
+  description: fitDesc('Qantas\u2019 Project Sunrise, tracked: the Airbus A350-1000ULR, the 19-hour test flights, the October 2027 Sydney\u2013London launch, and every milestone so far. Sourced and dated.'),
+  jsonld: { '@context': 'https://schema.org', '@type': 'Article', headline: 'Project Sunrise: Qantas\u2019 non-stop Sydney\u2013London flights', description: 'A tracker of Qantas\u2019 Project Sunrise ultra-long-haul programme and its purpose-built Airbus A350-1000ULR.', url: 'https://aircraft.fyi/project-sunrise', dateModified: '2026-07-24' },
+  content: `
+<section class="hero"><div class="wrap">
+<div class="crumb"><a href="/">Home</a> \u203a Project Sunrise</div>
+<h1>Project Sunrise <span class="em">\u2600\ufe0f</span></h1>
+<p class="lead">Qantas\u2019 bid to fly the longest routes in commercial aviation, Sydney to London and New York, non-stop, on a purpose-built Airbus A350-1000ULR. Named for the two sunrises you\u2019d see on a single flight.</p>
+<div class="heroCtas" style="margin:0"><a class="btn" href="/aircraft/airbus-a350">The A350 &rarr;</a><a class="btn ghost" href="/compare">Compare its range</a></div>
+<p class="sub" style="margin-top:16px;color:var(--muted);font-size:.85rem">Tracker current as of <b>24 July 2026</b>. Dates beyond that are Qantas\u2019 stated plans and may move, this programme has slipped before.</p>
+</div></section>
+
+<section class="section" style="padding-top:0"><div class="wrap">
+<span class="eyebrow">Latest</span>
+<h2 class="title">The jet just flew to Australia for the first time</h2>
+<div class="prose">
+<p>On <b>23\u201324 July 2026</b> the first A350-1000ULR built for Qantas flew non-stop from Airbus\u2019 factory in Toulouse to Melbourne, around <b>17,000\u202fkm in just over 19 hours</b>, touching down at 10:46 local time. Registered <b>F-WULR</b>, it carried nine crew: four Airbus test pilots and five flight-test engineers. More than <b>67,000 people</b> tracked it live on Flightradar24, making it the most-watched flight in the world that day.</p>
+<p>The flight tested the systems that make ultra-long-haul possible, fuel transfer and air conditioning chief among them. The return leg to Toulouse, leaving Melbourne on 27 July with two Qantas pilots joining the Airbus crew, is expected to take around 23 hours. Melbourne was a proving ground only; there\u2019s no word yet on whether it will get a scheduled Project Sunrise service of its own.</p>
+</div>
+</div></section>
+
+<section class="section" style="padding-top:0"><div class="wrap">
+<span class="eyebrow">The aircraft</span>
+<h2 class="title">Airbus A350-1000ULR</h2>
+<div class="prose">
+<p>The ULR, ultra-long-range, is a modified A350-1000. Its defining change is an extra <b>20,000-litre rear centre fuel tank</b>, which pushes range to roughly <b>18,500\u202fkm</b> and enables flights of up to <b>22 hours</b>. It also gains a higher maximum take-off weight and structural reinforcement to carry it.</p>
+<p>Qantas has ordered <b>12</b>, each fitted with just <b>238 seats</b> against the 300-plus of a standard A350-1000, the lowest seat count of any A350-1000 in service. The space goes to comfort: six first-class suites Qantas likens to \u201cmini boutique hotel rooms,\u201d 52 business suites, 40 premium economy, 140 economy, and a <b>wellbeing zone</b> between cabins with stretch handles, hydration and on-screen movement programmes for the 20-hour haul.</p>
+<p>The first aircraft in full Qantas livery, named <b>Vega</b>, is still on the assembly line, with delivery expected in <b>April 2027</b>. The Melbourne test jet wears a tan scheme with Qantas branding on the wingtips rather than the red-and-white.</p>
+</div>
+<div style="margin-top:20px"><a class="mini" href="/aircraft/airbus-a350">See the A350 spec &amp; true-scale silhouette &rarr;</a></div>
+</div></section>
+
+<section class="section" style="padding-top:0"><div class="wrap">
+<span class="eyebrow">Timeline</span>
+<h2 class="title">How it got here</h2>
+<div class="prose">
+<p><b>2017</b>, Qantas issues the Project Sunrise challenge: link eastern Australia to London and New York non-stop. Airbus answers with the A350-1000ULR.</p>
+<p><b>2018</b>, The Perth\u2013London route opens on a Boeing 787-9, non-stop at around 17 hours. It becomes Qantas\u2019 ultra-long-haul proving ground.</p>
+<p><b>COVID era</b>, The programme slips as production, certification and supply chains are disrupted.</p>
+<p><b>Late 2025</b>, The first ULR airframe rolls out of the factory.</p>
+<p><b>2 June 2026</b>, Maiden flight from Toulouse: 3 hours 43 minutes over France and the Atlantic coast, beginning a roughly two-month, ~80-hour certification campaign.</p>
+<p><b>June 2026</b>, Airbus confirms first delivery slips from late 2026 to <b>April 2027</b>.</p>
+<p><b>23\u201324 July 2026</b>, First flight to Australia: Toulouse\u2013Melbourne non-stop in ~19 hours.</p>
+<p><b>February 2027</b>, Tickets for the inaugural non-stop Sydney\u2013London flights due to go on sale.</p>
+<p><b>April 2027</b>, Vega, the first liveried aircraft, expected to be handed over.</p>
+<p><b>October 2027</b>, Planned launch of scheduled non-stop Sydney\u2013London service. Sydney\u2013New York flagged as the likely next step once London is established.</p>
+</div>
+</div></section>
+
+<section class="section" style="padding-top:0"><div class="wrap">
+<span class="eyebrow">Context</span>
+<h2 class="title">Why it matters</h2>
+<div class="prose">
+<p>Sydney\u2013London non-stop would be the longest scheduled passenger flight in the world, going several hours beyond today\u2019s benchmark, Singapore Airlines\u2019 Singapore\u2013New York, at around 18 hours, and on a larger, purpose-built aircraft. Qantas says it will save passengers up to four hours versus the fastest one-stop option today.</p>
+<p>The strategic logic is bypass. For years the A380 and 787 let hub carriers like Emirates, Etihad and Qatar Airways flood the Europe\u2013Australia market via their home stopovers. Flying direct lets Qantas, in CEO Vanessa Hudson\u2019s words, \u201ccompete on our own terms\u201d rather than through a rival\u2019s hub.</p>
+<p>The hard problem was never just distance, it\u2019s keeping people and crew well for 20 hours. Qantas ran years of research flights studying the effects of ultra-long-haul on the body before committing, which is why the cabin trades seats for space and adds a wellbeing zone.</p>
+</div>
+</div></section>
+
+<section class="section" style="padding-top:0"><div class="wrap">
+<span class="eyebrow">Explore</span>
+<h2 class="title">Related</h2>
+<div class="pillars two">
+<article class="acard"><h3><a href="/aircraft/airbus-a350">Airbus A350</a></h3><p style="color:var(--muted);font-size:.92rem;margin:0 0 14px">The type behind the ULR, full spec table and true-scale silhouette.</p><a class="mini" href="/aircraft/airbus-a350">See the aircraft &rarr;</a></article>
+<article class="acard"><h3><a href="/records/longest-aircraft">Records</a></h3><p style="color:var(--muted);font-size:.92rem;margin:0 0 14px">Where the A350 sits among the record holders of the sky.</p><a class="mini" href="/records/longest-aircraft">See the boards &rarr;</a></article>
+</div>
+<p class="sub" style="margin-top:20px;color:var(--muted);font-size:.8rem">Sources: Airbus, Qantas, Business Traveller, CNN, Reuters wire reports. Figures are the latest published as of 24 July 2026 and may be revised.</p>
 </div></section>`
 });
 
@@ -2610,14 +2729,14 @@ ${EX.map(e => `<article class="acard"><h3><a href="/explained/${e.slug}">${esc(e
 /* ---------- 404 ---------- */
 renderPage({
   file: '404.html', urlPath: '/404', current: '', sitemap: false,
-  title: 'Page not found — aircraft.fyi',
-  description: 'That page does not exist. Search 43 aircraft, sixteen manufacturers, eleven airlines and four record boards — or head back to the fleet.',
+  title: 'Page not found, aircraft.fyi',
+  description: `That page does not exist. Search ${A.length} aircraft, ${numWord(MK.length)} manufacturers, ${AL.length} airlines and ${numWord(RECORD_BOARDS.length)} record boards, or head back to the fleet.`,
   head: '<meta name="robots" content="noindex,follow">',
   jsonld: { '@context': 'https://schema.org', '@type': 'WebPage', name: 'Page not found', url: 'https://aircraft.fyi/404' },
   content: `
 <section class="hero"><div class="wrap">
 <h1>Lost the <span class="em">approach</span>.</h1>
-<p class="lead">That page does not exist — mistyped, moved, or never built. Here is everything that does.</p>
+<p class="lead">That page does not exist, mistyped, moved, or never built. Here is everything that does.</p>
 <div class="heroCtas"><a class="btn" href="/">Back to the fleet &rarr;</a><a class="btn ghost" href="/compare">Compare aircraft</a></div>
 <p class="sub" style="margin-top:16px">Or press <b>/</b> anywhere on the site to search.</p>
 </div></section>
@@ -2628,7 +2747,7 @@ renderPage({
 <article class="acard"><h3><a href="/">All ${A.length} aircraft</a></h3><p style="color:var(--muted);font-size:.92rem;margin:0 0 14px">Every silhouette drawn to true scale, with sourced specifications and full operator fleets.</p><a class="mini" href="/">Open the fleet &rarr;</a></article>
 <article class="acard"><h3><a href="/compare">Compare aircraft</a></h3><p style="color:var(--muted);font-size:.92rem;margin:0 0 14px">Put any three aircraft side by side at true relative scale, against a person and a bus.</p><a class="mini" href="/compare">Open the tool &rarr;</a></article>
 <article class="acard"><h3><a href="/records">Record boards</a></h3><p style="color:var(--muted);font-size:.92rem;margin:0 0 14px">The longest, heaviest, fastest and most-produced aircraft ever built.</p><a class="mini" href="/records">See the records &rarr;</a></article>
-<article class="acard"><h3><a href="/blog">The blog</a></h3><p style="color:var(--muted);font-size:.92rem;margin:0 0 14px">Long-form writing on the aircraft we cover — sourced, dated, and honest.</p><a class="mini" href="/blog">Read it &rarr;</a></article>
+<article class="acard"><h3><a href="/blog">The blog</a></h3><p style="color:var(--muted);font-size:.92rem;margin:0 0 14px">Long-form writing on the aircraft we cover, sourced, dated, and honest.</p><a class="mini" href="/blog">Read it &rarr;</a></article>
 </div>
 </div></section>`
 });
