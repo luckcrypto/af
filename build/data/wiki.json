@@ -114,5 +114,17 @@
   "fedex-express": "FedEx_Express",
   "ups-airlines": "UPS_Airlines",
   "atlas-air": "Atlas_Air"
+ },
+ "commonscat": {
+  "lockheed-u-2-dragon-lady": "Lockheed U-2",
+  "rockwell-b-1b-lancer": "Rockwell B-1 Lancer",
+  "northrop-b-2-spirit": "Northrop B-2 Spirit",
+  "piper-pa-28-archer": "Piper PA-28",
+  "mikoyan-mig-29-fulcrum": "Mikoyan MiG-29",
+  "mikoyan-mig-31-foxhound": "Mikoyan MiG-31",
+  "sukhoi-su-27-flanker": "Sukhoi Su-27",
+  "sukhoi-su-57-felon": "Sukhoi Su-57",
+  "chengdu-j-20-mighty-dragon": "Chengdu J-20",
+  "boeing-f-a-18-super-hornet": "Boeing F/A-18E/F Super Hornet"
  }
 }

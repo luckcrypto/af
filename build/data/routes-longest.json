@@ -3,11 +3,11 @@
  "asOf": "2026-07-14",
  "sources": [
   {
-   "name": "Longest flights — Wikipedia (CC BY-SA), July 2026",
+   "name": "Longest flights, Wikipedia (CC BY-SA), July 2026",
    "url": "https://en.wikipedia.org/wiki/Longest_flights"
   },
   {
-   "name": "OAG — the world's longest routes by great-circle distance",
+   "name": "OAG, the world's longest routes by great-circle distance",
    "url": "https://www.oag.com/blog/exploring-the-worlds-10-longest-non-stop-airline-routes"
   },
   {
@@ -30,7 +30,7 @@
    "acs": "airbus-a350",
    "status": "announced",
    "when": "From Oct 2027",
-   "note": "Project Sunrise — will become the longest flight ever scheduled, and will sometimes route directly over the North Pole in northern winter."
+   "note": "Project Sunrise, will become the longest flight ever scheduled, and will sometimes route directly over the North Pole in northern winter."
   },
   {
    "fr": "Sydney",
@@ -61,7 +61,7 @@
    "ac": "Airbus A350-900ULR",
    "acs": "airbus-a350",
    "status": "flying",
-   "note": "The current longest scheduled flight in the world — no economy cabin at all, just 161 premium seats."
+   "note": "The current longest scheduled flight in the world, no economy cabin at all, just 161 premium seats."
   },
   {
    "fr": "Singapore",
@@ -137,7 +137,7 @@
    "ac": "Boeing 787-9",
    "acs": "boeing-787",
    "status": "flying",
-   "note": "The route that proved Project Sunrise possible — the longest 787 flight in the world, running since 2018."
+   "note": "The route that proved Project Sunrise possible, the longest 787 flight in the world, running since 2018."
   },
   {
    "fr": "Dallas/Fort Worth",
@@ -179,7 +179,7 @@
    "ac": "Airbus A380",
    "acs": "airbus-a380",
    "status": "flying",
-   "note": "The longest A380 flight in the world — the four-engine giant's last record."
+   "note": "The longest A380 flight in the world, the four-engine giant's last record."
   },
   {
    "fr": "Singapore",
@@ -221,7 +221,7 @@
    "ac": "Boeing 777-200LR",
    "acs": "boeing-777",
    "status": "flying",
-   "note": "The longest 777 flight in the world — its 2021 inaugural flew directly over the North Pole with an all-women crew."
+   "note": "The longest 777 flight in the world, its 2021 inaugural flew directly over the North Pole with an all-women crew."
   },
   {
    "fr": "Houston",
@@ -320,7 +320,7 @@
    "ac": "Airbus A350-1000",
    "acs": "airbus-a350",
    "status": "flying",
-   "note": "Routinely crosses the Arctic — one of the great polar routes in daily service.",
+   "note": "Routinely crosses the Arctic, one of the great polar routes in daily service.",
    "als": "cathay-pacific"
   }
  ]
